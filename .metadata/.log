@@ -2049,3 +2049,8 @@ org.eclipse.jface.text.BadLocationException
 
 !ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-09-28 19:49:13.832
 !MESSAGE executing callback sts4.classpath.TzIjgJOw SUCCESS [done]
+
+!ENTRY org.eclipse.core.resources 2 2 2020-09-28 19:49:49.807
+!MESSAGE Save operation warnings.
+!SUBENTRY 1 org.eclipse.core.resources 2 234 2020-09-28 19:49:49.807
+!MESSAGE The project description file (.project) for '2009sep28react-irvingperez11' was missing.  This file contains important information about the project.  A new project description file has been created, but some information about the project may have been lost.
