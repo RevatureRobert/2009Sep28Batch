@@ -5,3 +5,9 @@ this is an edit for demonstration purposes
 Edited for another demo purpose
 
 2nd Edit by Kevin
+
+def message(name)
+
+	puts "Hello #{name}, it's a wonderful day today"
+
+end
