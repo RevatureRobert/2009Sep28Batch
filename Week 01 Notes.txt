@@ -143,3 +143,43 @@ Scopes
     block ({block})
         
 
+//==============================================================================================================================================================================================================//
+                    |||  Intermediate Java  |||                    |||  Intermediate Java  |||                    |||  Intermediate Java  |||                    |||  Intermediate Java  |||
+//==============================================================================================================================================================================================================//
+
+Strings
+    String is a Final Class
+    Strings are immutable
+    Strings are stored in the String Pool
+    String Pool
+        Stored inside the Heap
+        Strings are stored as a Final char[]
+    Methods
+        .equals(String string) //compares two strings
+        .substring(int i)       //returns a substring between the given indexes. begining(inclusive) ending(exclusive)
+        .length()
+        .toUpperCase()
+        .toLowerCase()
+        .charAt(int i)          //returns char @ i
+        .indexOf(char 'x')      //returns index of x in String
+
+    what if Strings were mutable?
+        String Builder  faster & thread unsafe
+        String Buffer   slower & thread safe
+            .append(String "xy")    //appends "xy" to the end of the string
+
+Wrapper Classes 
+
+    Wrapper classes are the object representation of primative data types
+
+        int     ->  Intager
+        char    ->  Character
+        long    ->  Long
+        short   ->  Short
+        double  ->  Double
+        boolean ->  boolean
+        byte    ->  byte
+
+        Integer i = new Integer(5)
+        integer i2 = 5;             //autoboxing
+        int i3 = i;                 //un-boxing
