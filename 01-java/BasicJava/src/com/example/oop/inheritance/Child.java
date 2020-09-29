@@ -2,6 +2,10 @@ package com.example.oop.inheritance;
 
 public class Child extends Parent {
 	
+	static {
+		System.out.println("in the child static block");
+	}
+	
 	{
 		System.out.println("in the instance block for the child");
 	}

@@ -62,7 +62,19 @@ public class ControlFlow {
 //			System.out.println("infinite");		// infinite loop
 //		}
 		
-		// 
+		// while
+		test = false;
+		int x = 7;
+		while(test) {
+			System.out.println("here we go again");
+			x=x+1;
+		}
+		
+		// do while
+		do {
+			System.out.println("doing the thing");
+			x=x+1;
+		}while(test);
 		
 		
 		
