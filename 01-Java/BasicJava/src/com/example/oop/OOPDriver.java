@@ -25,4 +25,8 @@ public class OOPDriver {
 		
 		new Child();
 	}
+	
+	public static String toString(Parent P) {
+		return P.toString();
+	}
 }
