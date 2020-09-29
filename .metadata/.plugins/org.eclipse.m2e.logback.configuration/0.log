@@ -642,3 +642,29 @@ org.eclipse.jface.text.BadLocationException: null
 	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:154)
 	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:244)
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+2020-09-28 19:57:00,246 [Worker-72: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.revature.eval.java:core:1.0 @ C:\Users\irvin\Desktop\gitrepos\2009sep28react-irvingperez11\pom.xml.
+2020-09-28 19:57:00,622 [Worker-72: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-09-28 19:57:00,622 [Worker-72: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\irvin\Desktop\gitrepos\2009sep28react-irvingperez11\src\main\resources
+2020-09-28 19:57:00,623 [Worker-72: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-09-28 19:57:00,624 [Worker-72: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\irvin\Desktop\gitrepos\2009sep28react-irvingperez11\src\test\resources
+2020-09-28 19:57:01,760 [Worker-72: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-09-28 19:57:01,761 [Worker-72: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\irvin\Desktop\gitrepos\2009sep28react-irvingperez11\src\main\resources
+2020-09-28 19:57:01,761 [Worker-72: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-09-28 19:57:01,761 [Worker-72: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\irvin\Desktop\gitrepos\2009sep28react-irvingperez11\src\test\resources
+2020-09-28 20:04:19,628 [Worker-72: Launching EvaluationServiceTest.punctuationWithoutWhitespace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-09-28 20:04:19,628 [Worker-72: Launching EvaluationServiceTest.punctuationWithoutWhitespace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\irvin\Desktop\gitrepos\2009sep28react-irvingperez11\src\main\resources
+2020-09-28 20:04:19,629 [Worker-72: Launching EvaluationServiceTest.punctuationWithoutWhitespace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-09-28 20:04:19,629 [Worker-72: Launching EvaluationServiceTest.punctuationWithoutWhitespace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\irvin\Desktop\gitrepos\2009sep28react-irvingperez11\src\test\resources
+2020-09-28 20:04:58,453 [Worker-78: Launching EvaluationServiceTest.punctuationWithoutWhitespace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-09-28 20:04:58,453 [Worker-78: Launching EvaluationServiceTest.punctuationWithoutWhitespace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\irvin\Desktop\gitrepos\2009sep28react-irvingperez11\src\main\resources
+2020-09-28 20:04:58,454 [Worker-78: Launching EvaluationServiceTest.punctuationWithoutWhitespace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-09-28 20:04:58,454 [Worker-78: Launching EvaluationServiceTest.punctuationWithoutWhitespace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\irvin\Desktop\gitrepos\2009sep28react-irvingperez11\src\test\resources
+2020-09-28 20:24:14,794 [Worker-87: Launching EvaluationServiceTest.verySmallTrianglesCanBeIsosceles] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-09-28 20:24:14,795 [Worker-87: Launching EvaluationServiceTest.verySmallTrianglesCanBeIsosceles] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\irvin\Desktop\gitrepos\2009sep28react-irvingperez11\src\main\resources
+2020-09-28 20:24:14,797 [Worker-87: Launching EvaluationServiceTest.verySmallTrianglesCanBeIsosceles] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-09-28 20:24:14,797 [Worker-87: Launching EvaluationServiceTest.verySmallTrianglesCanBeIsosceles] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\irvin\Desktop\gitrepos\2009sep28react-irvingperez11\src\test\resources
+2020-09-28 22:45:13,125 [Worker-93: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-09-28 22:45:13,127 [Worker-93: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\irvin\Desktop\gitrepos\2009sep28react-irvingperez11\src\main\resources
+2020-09-28 22:45:13,130 [Worker-93: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-09-28 22:45:13,130 [Worker-93: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\irvin\Desktop\gitrepos\2009sep28react-irvingperez11\src\test\resources
+2020-09-29 09:44:04,658 [Worker-6: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
