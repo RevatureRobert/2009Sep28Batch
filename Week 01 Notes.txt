@@ -195,3 +195,25 @@ Generics
         public T getHiddenValue(){
             return hiddenValue;
         }
+
+
+Arrays
+    
+    An array is a collection of values of a certain data type.
+    Ways to instantiate arrays
+        int[] arr = new int[5];
+        [] int arr2 = new int[5];
+        int[] arr = {3,4,5,7,2,3}
+        int... arr = {3,8,5,7,6,2}
+    Ways to set value of item at index x
+    arr[x]=5;               //the index of x contains int = 5
+
+    for each loop control
+
+    for(int a: arr){
+        System.out.println(a);
+    }
+
+    Arrays is a Static Utilities class
+        .toString(arr)
+        .sort(arr)
