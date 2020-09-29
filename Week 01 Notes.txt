@@ -1,0 +1,145 @@
+Naming conventions in Java
+    Packages:
+        reverse of an address
+        lowercase
+    Class
+        noun
+        TitleCase
+    method
+        verb
+        camelCase
+    field  
+        noun
+        camelCase
+    interface
+        adjective
+        TitleCase
+    final field / constant
+        noun
+        UPPER_CASE
+
+
+How does Java achieve Encapsulation?
+    With Access Modifires
+
+    Access Modifires:
+        Public:     Anywhere
+        Protected:  within the same package and subclasses
+        Default:    within the same package
+        Private:    Within the same class
+    Non-access Modifires:
+        transient
+        syncronized
+        static
+        final       //the field cannot be reassigned
+                    //the method cannot be overriden
+                    //the class cannot be extended
+        abstract
+        virtual
+        naitive
+        etc.
+
+Packages and Imports
+    Packages are how we can organize our classes
+    Imports arem how we can bring classes in other packages into our class
+
+    com.example.oop.accesscheck.FirstHubCap is the FULLY QUALIFIED NAME of FirstHubCap
+
+    * birngs in all classes within the package, but not sub packages
+    
+
+Abstraction
+
+    Interfaces:
+        impliments instead of extends
+            Interfaces can extends other Interfaces
+
+        Public and abstract are implicit for methods inside of an interface
+        public abstract void read(); = void read();
+
+        Public, static, and final are implicit for fields inside of an interface
+
+        public static final int something; = int something;
+
+Control flow
+    If statements
+        if(boolean test){
+            executed code if true
+        }else executed code if false
+    Switch statements
+        switch(thing):{
+            case "something":
+                executed code if thing = "something"
+                break;
+            case "else"
+                executed code if thing = "else"
+                break;
+            default:
+                executed thing if thing != case "something", "else"
+        }
+    For loop
+        int j = 0;
+        for(int i=0;, i<10; i++){
+            if(i==4){
+                continue;
+            }
+            j++;
+        }
+
+    While loop
+        while (condition) 
+            executed code //executed if condition == true
+    
+    Do While loop 
+        do{
+            executed code //gets executed at least once
+        }while(condition) // heads back to begining of Do block if condition true
+
+Operators
+
+    unary
+        ++  addative incrimentor
+        --  subtractive incrimentor
+
+        ++X Pre incrimentor
+        X++ post incrimentor
+
+        !   not Operator
+        ~   bitwise not
+
+    binary
+        +   addition
+        -   subtraction
+        *   multiplication
+        /   divison
+        %   modulus
+        &&  AND
+        ||  OR      (short circuting Operators)
+        &   bitwise AND
+        |   bitwise OR
+        ^   exclusive Or
+    
+        =   assignment Operator
+        ==  comparison Operator
+        !=  not equal to Operator
+        >   greater than
+        <   less than
+        >=  greater than or equal to
+        <=  less than or equal to
+        +=  addition assignment
+        -=  subtraction assignment
+        *=  multiplication assignment
+        /=  division assignment
+        %=  modulus assignment
+    
+    ternary
+        condition ? ifTrue : ifFalse;
+
+
+Scopes
+    static(class)
+    instance(object)
+    method
+    block ({block})
+        
+
