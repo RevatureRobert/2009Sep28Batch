@@ -1,7 +1,7 @@
 
 import java.util.Arrays;
 
-public class ArrayExample {
+public class arrays {
 	
 	public static void main(String... args) {
 		
