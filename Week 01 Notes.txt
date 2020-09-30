@@ -1,4 +1,5 @@
 Naming conventions in Java
+
     Packages:
         reverse of an address
         lowercase
@@ -20,6 +21,7 @@ Naming conventions in Java
 
 
 How does Java achieve Encapsulation?
+
     With Access Modifires
 
     Access Modifires:
@@ -40,6 +42,7 @@ How does Java achieve Encapsulation?
         etc.
 
 Packages and Imports
+
     Packages are how we can organize our classes
     Imports arem how we can bring classes in other packages into our class
 
@@ -62,6 +65,7 @@ Abstraction
         public static final int something; = int something;
 
 Control flow
+
     If statements
         if(boolean test){
             executed code if true
@@ -137,6 +141,7 @@ Operators
 
 
 Scopes
+
     static(class)
     instance(object)
     method
@@ -148,6 +153,7 @@ Scopes
 //==============================================================================================================================================================================================================//
 
 Strings
+
     String is a Final Class
     Strings are immutable
     Strings are stored in the String Pool
@@ -217,3 +223,23 @@ Arrays
     Arrays is a Static Utilities class
         .toString(arr)
         .sort(arr)
+
+Collections Framework
+                                                                Comparable (I)   (Natural Sorting Order)
+                                                                Comparator (I)   (Unnatural Sorting Order)
+                    Iterable (Interface)                        Collections (C)  (Static Utility class)
+                                ^                             
+                                |
+                                |
+                    Collection (Interface)  
+                    /                 |                  \
+                List (I)            Set(I)               Queue(I)                       Map(I)
+                ^                       ^                   ^                              ^
+                |                       |                   |                              |
+                |                       |                   |                              |
+                ArrayList(C)        HashSet (C)         PriorityQueue(C)                HashMap (C)
+                LinkedList(C)       TreeSet (C)         Deque(I)                        TreeMap (C)
+                Stack(C)(LILO)
+
+                List Keeps Order    Set doesn't         FIFO                            
+                                    allow Duplicates
