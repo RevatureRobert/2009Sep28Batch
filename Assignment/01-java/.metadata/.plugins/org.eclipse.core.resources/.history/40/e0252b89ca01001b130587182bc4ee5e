@@ -1,0 +1,14 @@
+package com.example.object;
+
+public class Methods {
+
+	public static void main(String[] args) {
+		Object o = new Object();
+		o.equals(new Object());
+		
+//		System.out.println(5 == 4);
+		System.out.println(new String("hey") == "hey");
+		
+	}
+
+}

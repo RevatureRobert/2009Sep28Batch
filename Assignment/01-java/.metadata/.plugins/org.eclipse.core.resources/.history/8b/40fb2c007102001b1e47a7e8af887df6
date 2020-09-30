@@ -1,0 +1,33 @@
+package com.example.oop.polymorphism;
+
+import java.io.IOException;
+
+import com.example.oop.accesscheck.FirstHubCap;
+import com.example.oop.accesscheck.HubCap;
+
+/*
+ * Polymorphism is the ability for the child to change its ability form others
+ * 
+ * 	Compile Time polymorphism
+ * 		method overloading
+ * 	Runtime Polymorphism
+ * 		method overriding
+ * 			Rules of Overriding
+ * 				1. Can't reduce the visibility/accessibility of the method, but you can increase the accessibility
+ * 				2. Can change the return type to a covariance of the parent's return type (a subclass)
+ * 				3. If parent throws exception, you can throw the same exception or children of that exception
+ */
+public class Child extends Parent{
+	
+	//annotation is just metadata that tells the compiler and the developer the purpose of something
+	//  we can create custom annotations that perform some kind of action
+	
+	@Override
+	public FirstHubCap attach() {
+		return new FirstHubCap();
+	}
+	
+	//
+	
+
+}

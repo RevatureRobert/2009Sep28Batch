@@ -1,0 +1,37 @@
+package com.example.datatypes;
+
+public class DataTypes {
+	
+	/*
+	 * java has two different types, primitive and reference
+	 * 
+	 * primitives:
+	 * 		byte		  8 bits
+	 * 		boolean       1 bit (but depends on the jvm as well)
+	 * 		char          16 bits
+	 * 		float		  32 bits	
+	 * 		double        64 bits
+	 * 		int           32 bits
+	 * 		short		  16 bits	
+	 * 		long		  64 bits
+	 * 
+	 * 
+	 * 
+	 * 
+	 */
+
+	
+	public static void main(String[] args) {
+		//declaring a variable, datatype name == value;
+		
+		int x = 8;
+		boolean b = true;
+		char c = 'v';
+		double d = 5.5;
+		long l = 70;
+		byte b1 = (byte)800;
+		
+		System.out.println(b1);
+		
+	}
+}

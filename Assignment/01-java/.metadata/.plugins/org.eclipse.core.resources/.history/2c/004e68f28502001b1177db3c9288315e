@@ -1,0 +1,27 @@
+package com.example.intro;
+
+public class Operators {
+	
+	public static void main(String[] args) {
+		/*
+		 * 				unary
+		 * 
+		 * 
+		 * 
+		 * 
+		 * 				binary
+		 * 					+		addition
+		 * 					-		subtraction
+		 * 					* 		multiplication
+		 * 					/		division
+		 * 					%		modulus (remainder of the division of two numbers)
+		 * 					&& 		logical AND
+		 * 					||		logical ORS
+		 * 
+		 * 
+		 * 
+		 * 				ternary
+		 */
+	}
+
+}

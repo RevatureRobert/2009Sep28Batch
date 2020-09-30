@@ -1,0 +1,27 @@
+package com.inter.array;
+
+/*
+ * what is an array?
+ * 		a collection of values of a certain datatype
+ * 		
+ */
+
+public class ArrayExample {
+	
+	public static void main(String[] args) {
+		int[] arr = new int[5];
+		arr[0] = 5;
+		
+		String[] fargs = new String[10];
+		
+		for (int i = 0;i<fargs.length;i++) {
+			fargs[i] = "I is : " + i;
+		}
+		
+		for(String s:fargs) {
+			System.out.println(s);
+		}
+	}
+	
+
+}

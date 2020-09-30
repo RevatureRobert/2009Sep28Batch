@@ -1,0 +1,9 @@
+package com.example.oop.abstraction;
+
+public class Readble {
+
+	public FirstHubCap attach(String name) {
+			return null;
+		}
+
+}

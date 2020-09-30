@@ -1,0 +1,126 @@
+package com.revature.eval.java.core;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
+public class testing {
+	
+	public static void main(String[] args) {
+		//System.out.println(isArmstrongNumber(9474));
+		String hey = "ROT3";
+		String hi = "ROT33";
+		int num = Integer.parseInt((hey.substring(3)));
+		int bum = Integer.parseInt((hi.substring(3)));
+		System.out.println(num);
+		System.out.println(bum);
+		
+		
+	}
+	
+	
+	public static List<Long> calculatePrimeFactorsOf(long l) {
+		// TODO Write an implementation for this method declaration
+		//holds prime numbers
+		List<Long> primes = new ArrayList<Long>();
+		//loop through all the digits, i will be first factor
+		for(long i = 2; i <= (l/2);i++) {
+			long b = 0L; // holds the second factor
+			//test if its a factor
+			if(l%i == 0) {
+				b = l/i;
+				primes.addAll(calculatePrimeFactorsOf(b));
+				primes.addAll(calculatePrimeFactorsOf(i));
+				break;
+			}
+		}
+		//if there are no factors then l is prime
+		if(primes.size() == 0) {
+			primes.add(l);
+		}		
+		return primes;
+	}
+	
+	public static boolean isArmstrongNumber(int input) {
+		// TODO Write an implementation for this method declaration
+		//change input to string to split the digits up
+		String num = Integer.toString(input);
+		int len = num.length();
+		String[] separated = num.split("");
+		
+		//holds the sum
+		int sum = 0;
+		
+		//holds the integers
+		int[] numbers = new int[len];
+		for(int i = 0; i<len;i++) {
+			numbers[i] = Integer.parseInt(separated[i]);
+		}
+		for(int x:numbers) {
+			sum += Math.pow(x, len);
+		}
+		return sum == input;
+	}
+	static class BinarySearch<T> {
+		private List<T> sortedList;
+
+		public int indexOf(T t) {
+			// TODO Write an implementation for this method declaration
+			List<T> copy = sortedList;
+			int middle = (copy.size())/2;
+			int start = 0;
+			int end = copy.size()-1;
+			
+			//if String type
+			if(sortedList.get(0) instanceof String) {
+				while(true) {
+					int x = ((String)t).compareTo((String)copy.get(middle));
+					if(x == 0) {
+						return middle;
+					} else if(x == -1) {
+						end = middle-1;
+						middle = ((end-start)/2) +start;
+					} else if(x == 1) {
+						start = middle+1;
+						middle = ((end-start)/2)+middle+1; 
+					}
+				
+				}
+			} else if(sortedList.get(0) instanceof Integer) {
+				while(true) {
+					int x = ((Integer)t).compareTo((Integer)copy.get(middle));
+					if(x == 0) {
+						return middle;
+					} else if(x == -1) {
+						end = middle-1;
+						middle = ((end-start)/2) +start;
+					} else if(x == 1) {
+						start = middle+1;
+						middle = ((end-start)/2)+middle+1; 
+					}
+				}
+			} else {
+				throw new IllegalArgumentException("Unrecognized list type");
+			}
+			}
+		
+			
+		
+
+		public BinarySearch(List<T> sortedList) {
+			super();
+			this.sortedList = sortedList;
+		}
+
+		public List<T> getSortedList() {
+			return sortedList;
+		}
+
+		public void setSortedList(List<T> sortedList) {
+			this.sortedList = sortedList;
+		}
+
+	}
+
+}

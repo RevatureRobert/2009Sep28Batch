@@ -1,0 +1,18 @@
+package com.example.oop;
+
+import com.example.oop.encapsulation.HubCap;
+import com.example.oop.accesscheck.*;
+
+public class OOPDriver {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		HubCap h = new HubCap(17.5,"orange", "badCapsShop");
+		
+		//full qualified name
+		com.example.oop.accesscheck.FirstHubCap first = new com.example.oop.accesscheck.FirstHubCap();
+		
+
+	}
+
+}
