@@ -237,9 +237,74 @@ Collections Framework
                 ^                       ^                   ^                              ^
                 |                       |                   |                              |
                 |                       |                   |                              |
-                ArrayList(C)        HashSet (C)         PriorityQueue(C)                HashMap (C)
+                ArrayList(C)        HashSet (C)         PriorityQueue(C)                HashMap (C) // Use for question 6
                 LinkedList(C)       TreeSet (C)         Deque(I)                        TreeMap (C)
                 Stack(C)(LILO)
 
                 List Keeps Order    Set doesn't         FIFO                            
                                     allow Duplicates
+                                    Not Ordered
+    import java.utils.*
+
+
+    public class CollectionsExample{
+        public static void main (String[] args){
+            /*ArrayList 
+            *   Expands the underlying array by 50%, not syncronized (THREAD UNSAFE)
+            *
+            *Vector
+            *   impliments list, expands underlying array by 50%, syncronized (THREAD SAFE)
+            */
+            List<Integer> ints = new ArrayList();
+            ints.add(4);
+            ints.add(6);
+            ints.add(7);
+            System.out.println(ints);
+            System.out.println(ints.get(i));
+            System.out.println(ints.size());
+            
+            /*LinkedList
+            *   Doubly linked list. it has references to the next and the previous node. 
+            *   The underlying data structure does not house a conventional array, it will 
+            *   add nodes to the list and references it to the previous and next nodesl It impliments 
+            *   the Deque interface so retriving from the first and last positions will be O(1); 
+            *   however, retrieving from the middle of the list will be the same as a normal array.
+            */
+            List<String> strings = new LinkedList<>();
+            strings.add("added");
+            strings.add(0, "adfjkhf");
+            System.out.println(strings);
+            System.out.println(strings.get(0));
+            strings.clear();
+            System.out.println(strings)
+
+            //Sets
+            
+
+            //HashSet
+            // Uses a underlying HashTable to organize and store values
+            Set<Integer> intset = new HashSet();
+            
+            intset.add(8);
+            intset.add(3838);
+            intset.add(65);
+            System.out.println(intset);
+            intset.addAll(ints);
+            boolean b = intset.add(4);      //returns bool whether or not the value was added to the Set
+            System.out.println(inset);
+            System.out.println(b);
+
+            //TreeSet
+            // uses a red black tree algorithm for sorting values
+
+            Set<String> sortedStrings = new TreeSet<>();
+            sortedStrings.add("Go time");
+            sortedStrings.add("a bird in the sky");
+            sortedStrings.add("Zoo goers");
+            System.out.println(sortedStrings); // Capital Letters come first. Sorted by ASCII Code
+
+
+        }
+
+
+    }
