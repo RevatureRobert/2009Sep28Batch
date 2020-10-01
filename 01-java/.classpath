@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry excluding="HelloWorld/src/|BasicJava/src/|IntermediateJava/src/" kind="src" path=""/>
+	<classpathentry kind="src" path="BasicJava/src"/>
+	<classpathentry kind="src" path="HelloWorld/src"/>
+	<classpathentry kind="src" path="IntermediateJava/src"/>
+	<classpathentry kind="output" path="BasicJava/bin"/>
+</classpath>
