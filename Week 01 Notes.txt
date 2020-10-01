@@ -431,5 +431,90 @@ Garbage Collections
 
         
 ByteStream
+    //Write
+    try{
+        FileOutputStream fos = new FileOutputStream(filename); //write to string filename
+        fos.write(73);
+        fos.write(25);
+        fos.write(12);
 
-    
+        fos.close();
+
+    }catch (FileNotFoundException e){
+        e.printStackTrace();
+    }catch (IOException e){
+        e.printStackTrace();
+    }
+    //Read
+    try(InputStream is = new FileInputStream(filename)){ //try with resources block. This will automatically close any resource within it.
+        int i;
+        while((i=is.read()) != -1){
+            System.out.println(i);
+        }
+    }catch(FileNotFoundException e){
+        e.printStackTrace();
+    }catch(IOException e){
+        e.printStackTrace();
+    }
+
+CharacterStream
+    //Write
+    try(FileWriter fos = new FileWriter(filename)){ //write to string filename
+        for(int i = 62; i<74; i++)
+            fos.write(i);
+
+    }catch (IOException e){
+        e.printStackTrace();
+    }
+    //Read
+    try(FileReader is = new FileReader(filename)){ //try with resources block. This will automatically close any resource within it.
+        int i;
+        while((i=is.read()) != -1){
+            System.out.println((char)i);
+        }
+
+    }catch(IOException e){
+        e.printStackTrace();
+    }
+
+BufferedCharacterStream
+    //Write
+    try(BufferedWriter bf = new BufferedWriter(new FileWriter(filename))){  //write to string filename
+        bf.write("Hello File\n);        //\n is required to seperate strings
+        bf.write("tucker\n");
+        bf.write("dawit\n");
+        bf.write("kyle");
+
+
+    }catch(IOException e){
+        e.printStackTrace
+    }
+    //Read
+    try(BufferedReader br = new BufferedReader(new FileREader(filename)))
+        String line ="";
+        while (line = br.readLine()!=null){
+            System.out.println(line);
+        }
+    }catch(IOException e){
+        e.printStackTrace();
+    }
+Serialization
+    Public Person implements Serializeable{
+        int age = 0;
+        transient private ssn = 000000001; //doesn't copy into output streams
+    }
+
+    Person o = new Person();
+    //Write
+    try(ObjectOutputStream oos = new ObjectOutputStream(New FileOutputStream(filename))){ //write to string filename
+        oos.writeObject((Object)o);
+     }catch(IOException e){
+        e.printStackTrace
+    }
+    //Read
+    try(ObjectInputStream ios = new ObjectInputStream(New FileInputStream(filename))){
+        System.out.println((Person)ios.readObject());
+
+    }catch(IOException e){
+        e.printStackTrace();
+    }
