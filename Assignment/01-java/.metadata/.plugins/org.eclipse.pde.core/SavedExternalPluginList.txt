@@ -1,10 +1,14 @@
-# List of external plug-in models previously loaded. Timestamp: 1601322037532
+# List of external plug-in models previously loaded. Timestamp: 1601565686602
 file:/C:/Users/enocho/Downloads/sts-4.8.0.RELEASE/plugins/ch.qos.logback.classic_1.2.3.v20200428-2012.jar
 file:/C:/Users/enocho/Downloads/sts-4.8.0.RELEASE/plugins/ch.qos.logback.core_1.2.3.v20200428-2012.jar
 file:/C:/Users/enocho/Downloads/sts-4.8.0.RELEASE/plugins/ch.qos.logback.slf4j_1.2.3.v20200428-2012.jar
 file:/C:/Users/enocho/Downloads/sts-4.8.0.RELEASE/plugins/com.fasterxml.jackson.core.jackson-annotations_2.10.3.v20200512-1600.jar
 file:/C:/Users/enocho/Downloads/sts-4.8.0.RELEASE/plugins/com.fasterxml.jackson.core.jackson-core_2.10.3.v20200512-1600.jar
 file:/C:/Users/enocho/Downloads/sts-4.8.0.RELEASE/plugins/com.fasterxml.jackson.core.jackson-databind_2.10.3.v20200512-1600.jar
+file:/C:/Users/enocho/Downloads/sts-4.8.0.RELEASE/plugins/com.genuitec.eclipse.codetogether.cm_2.1.1.202008201228.jar
+file:/C:/Users/enocho/Downloads/sts-4.8.0.RELEASE/plugins/com.genuitec.eclipse.codetogether.core_2.1.1.202008201228.jar
+file:/C:/Users/enocho/Downloads/sts-4.8.0.RELEASE/plugins/com.genuitec.eclipse.codetogether.epl_2.1.1.202008201228.jar
+file:/C:/Users/enocho/Downloads/sts-4.8.0.RELEASE/plugins/com.genuitec.eclipse.codetogether.ui_2.1.1.202008201228.jar
 file:/C:/Users/enocho/Downloads/sts-4.8.0.RELEASE/plugins/com.github.jnr.constants_0.9.15.v20200501-1917.jar
 file:/C:/Users/enocho/Downloads/sts-4.8.0.RELEASE/plugins/com.github.jnr.enxio_0.25.0.v20200501-1917.jar
 file:/C:/Users/enocho/Downloads/sts-4.8.0.RELEASE/plugins/com.github.jnr.ffi_2.1.12.v20200513-1859.jar
@@ -46,6 +50,7 @@ file:/C:/Users/enocho/Downloads/sts-4.8.0.RELEASE/plugins/javax.el_2.2.0.v201303
 file:/C:/Users/enocho/Downloads/sts-4.8.0.RELEASE/plugins/javax.inject_1.0.0.v20091030.jar
 file:/C:/Users/enocho/Downloads/sts-4.8.0.RELEASE/plugins/javax.servlet_3.1.0.v201410161800.jar
 file:/C:/Users/enocho/Downloads/sts-4.8.0.RELEASE/plugins/javax.servlet.jsp_2.2.0.v201112011158.jar
+file:/C:/Users/enocho/Downloads/sts-4.8.0.RELEASE/plugins/javax.websocket-api_1.1.0.201606171313.jar
 file:/C:/Users/enocho/Downloads/sts-4.8.0.RELEASE/plugins/javax.ws.rs_2.1.6.v20200505-2127.jar
 file:/C:/Users/enocho/Downloads/sts-4.8.0.RELEASE/plugins/javax.wsdl_1.6.2.v201012040545.jar
 file:/C:/Users/enocho/Downloads/sts-4.8.0.RELEASE/plugins/javax.xml_1.3.4.v201005080400.jar
@@ -628,7 +633,6 @@ file:/C:/Users/enocho/Downloads/sts-4.8.0.RELEASE/plugins/org.jboss.tools.maven.
 file:/C:/Users/enocho/Downloads/sts-4.8.0.RELEASE/plugins/org.jcodings_1.0.18.v20170306-1742.jar
 file:/C:/Users/enocho/Downloads/sts-4.8.0.RELEASE/plugins/org.joni_2.1.11.v20170306-1742.jar
 file:/C:/Users/enocho/Downloads/sts-4.8.0.RELEASE/plugins/org.json_1.0.0.v201011060100.jar
-file:/C:/Users/enocho/Downloads/sts-4.8.0.RELEASE/plugins/org.jsoup_1.8.3.v20181012-1713.jar
 file:/C:/Users/enocho/Downloads/sts-4.8.0.RELEASE/plugins/org.junit_4.13.0.v20200204-1500.jar
 file:/C:/Users/enocho/Downloads/sts-4.8.0.RELEASE/plugins/org.junit.jupiter.api_5.6.0.v20200203-2009.jar
 file:/C:/Users/enocho/Downloads/sts-4.8.0.RELEASE/plugins/org.junit.jupiter.engine_5.6.0.v20200203-2009.jar
