@@ -303,8 +303,42 @@ Collections Framework
             sortedStrings.add("Zoo goers");
             System.out.println(sortedStrings); // Capital Letters come first. Sorted by ASCII Code
 
+            //Queue
 
-        }
+            //PriorityQueue
+            //      keeps everything organized by priority. Queue customarily keeps values in order as they are put in. 
+            //      This will keep them in order by priority. the first one out will be the one with the highest priority.
+            PriorityQueue<String> pq = new PriorityQueue();
+            pq.add("hey look mah");
+            pq.add("no hands!");
+            System.out.println(pq.remove());
+            System.out.println(pq.remove());
+            System.out.println(pq.remove());    //Throws Out of bounds exeption
+            ints.get(100);                      //Throws out of bounds exeption
+
+            //Deque
+            //  Double ended Queue, can retrieve from either end.
+
+            //Map
+
+            //HashMap  
+            //      HashMap is like Hash Table, but is not syncronized and is faster
+            Map<String, String> hashedStrings = new HashMap();
+            hashedStrings.put("Key", "Value");
+            hashedStrings.put("Another Key", "Another Value");
+            System.out.println(hashedStrings);
+
+            //TreeMap
+            //      Like TreeSet, is going to organize the elements according to thier natural sorting order
+            Map<String, String> dic = new TreeMap();
+            dic.put("aardvark","a difficult to spell animal");
+            dic.put("hammer","a thing to hit things with");
+            dic.put("car", "a thing to go places");
+            System.out.println(dic);
+            System.out.println(dic.keySet());
+            System.out.println(dic.values());
+            System.out.println(dic.values().getClass());
+            }
 
 
     }
