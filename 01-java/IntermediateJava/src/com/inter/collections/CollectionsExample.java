@@ -5,6 +5,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Hashtable;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -20,53 +21,53 @@ public class CollectionsExample {
 		/* ------ Lists ------ */
 		
 		// ArrayList
-		List<Integer> ints = new ArrayList<>();
-		ints.add(5);
-		ints.add(7);
-		ints.add(9);
-		System.out.println(ints);
-		System.out.println(ints.get(1));
-		System.out.println(ints.size());
+//		List<Integer> ints = new ArrayList<>();
+//		ints.add(5);
+//		ints.add(7);
+//		ints.add(9);
+//		System.out.println(ints);
+//		System.out.println(ints.get(1));
+//		System.out.println(ints.size());
 		
 		// LinkedList
-		List<String> strings = new LinkedList<>();
-		strings.add("added");
-		strings.add(0, "more");
-		System.out.println(strings);
-		System.out.println(strings.get(0));
-		strings.clear();
-		System.out.println(strings);
+//		List<String> strings = new LinkedList<>();
+//		strings.add("added");
+//		strings.add(0, "more");
+//		System.out.println(strings);
+//		System.out.println(strings.get(0));
+//		strings.clear();
+//		System.out.println(strings);
 		
 		/* ------ Sets ------ */
 		
 		// HashSet
-		Set<Integer> intset = new HashSet<>();
-		intset.add(12);
-		intset.add(9);
-		intset.add(855);
-		intset.add(4);
-		intset.addAll(ints);
-		System.out.println(intset);
-		boolean b = intset.add(5);
-		System.out.println(b);
-		System.out.println(intset);
+//		Set<Integer> intset = new HashSet<>();
+//		intset.add(12);
+//		intset.add(9);
+//		intset.add(855);
+//		intset.add(4);
+//		intset.addAll(ints);
+//		System.out.println(intset);
+//		boolean b = intset.add(5);
+//		System.out.println(b);
+//		System.out.println(intset);
 		
 		// TreeSet
-		Set<String> sortedStrings = new TreeSet<>();
-		sortedStrings.add("Go time");
-		sortedStrings.add("a bird in the sky");
-		sortedStrings.add("Zoo goers");
-		sortedStrings.add("&*&");
-		System.out.println(sortedStrings);
+//		Set<String> sortedStrings = new TreeSet<>();
+//		sortedStrings.add("Go time");
+//		sortedStrings.add("a bird in the sky");
+//		sortedStrings.add("Zoo goers");
+//		sortedStrings.add("&*&");
+//		System.out.println(sortedStrings);
 		
 		/* ------ Queues ------ */
 		
 		// PriorityQueue
-		PriorityQueue<String> pq = new PriorityQueue<>();
-		pq.add("hey look ma!");
-		pq.add("no hands");
-		System.out.println(pq.remove());
-		System.out.println(pq.remove());
+//		PriorityQueue<String> pq = new PriorityQueue<>();
+//		pq.add("hey look ma!");
+//		pq.add("no hands");
+//		System.out.println(pq.remove());
+//		System.out.println(pq.remove());
 //		ints.get(100);
 		
 		// Deque
@@ -79,7 +80,21 @@ public class CollectionsExample {
 		Map<String, String> hashedStrings = new HashMap<>();
 		hashedStrings.put("key1", "value");
 		hashedStrings.put("another key", "another value");
+		hashedStrings.put("key three", "s values");
+		hashedStrings.put("big key", "a value");
+		hashedStrings.put("cig key", "aerg value");
+		hashedStrings.put("dig key", "jtyjta value");
 		System.out.println(hashedStrings);
+		
+		// Hashtable
+		Map<String, String> ht = new Hashtable<>();
+		ht.put("key1", "value");
+		ht.put("another key", "another value");
+		ht.put("key three", "s values");
+		ht.put("big key", "a value");
+		ht.put("cig key", "aerg value");
+		ht.put("dig key", "jtyjta value");
+		System.out.println(ht);
 		
 		// TreeMap
 		Map<String, String> dictionary = new TreeMap<>();
@@ -105,6 +120,9 @@ public class CollectionsExample {
 		System.out.println(students);
 		Collections.sort(students, new StudentNameComparator());
 		System.out.println(students);
+		
+
+		
 		
 	}
 }
