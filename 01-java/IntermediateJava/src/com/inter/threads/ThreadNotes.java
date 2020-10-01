@@ -33,6 +33,7 @@ package com.inter.threads;
  * 
  * 		How to create a thread
  * 			extend the Thread class in a custom thread class
+ * 			use an instance of the runnable interface in the constructor of the Thread
  * 
  * 		multithreading issues (concurrency issues)
  * 
@@ -47,6 +48,26 @@ package com.inter.threads;
  * 			Producer consumer problem - One thread produces data, the other consumes the information.
  * 				When they are out of sync and working faster than the other, this creates 
  * 				data overflow or data starvation.
+ * 
+ * 		user threads vs daemon threads
+ * 				
+ * 			user threads - threads that we create with the purpose of joining the main thread
+ * 
+ * 			daemon threads - background threads whose purpose is outside the main threads concern.
+ * 					it is not meant to rejoin the main thread.
+ * 
+ * 
+ * 		methods of threads
+ * 			getters and setters for id, name, priority
+ * 			interrupt - interrupts the thread
+ * 			isAlive, isInterupted, isDaemon tests the state of the thread
+ * 			join - wait for the thread to finish execution
+ * 			start - starts the thread and begins execution
+ * 
+ * 		static methods
+ * 			currentThread - returns the current thread that is executing
+ * 			sleep(long milliseconds) causes the currently executing thread to 
+ * 				temporarily stop for a specified number of milliseconds.
  * 
  * 		
  */
