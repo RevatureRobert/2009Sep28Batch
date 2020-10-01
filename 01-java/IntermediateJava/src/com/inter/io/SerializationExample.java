@@ -7,14 +7,19 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 /*
+ * Serialization
  * 
- * In order to serialize an object, it must first be serializable.
+ * 		We can serialize an object into a byte stream and write that stream
+ * 			into a file. We can then read the bytes from the file and turn
+ * 			it back into the original object.
  * 
- * We need to "mark" it as serializable
+ * 		In order to serialize an object, it must first be serializable.
  * 
- * To do so, we implement the marker interface Serializable.
+ * 		We need to "mark" it as serializable
  * 
- * A marker interface is an interface with no methods.
+ * 		To do so, we implement the marker interface Serializable.
+ * 
+ * 		A marker interface is an interface with no methods.
  */
 public class SerializationExample {
 
