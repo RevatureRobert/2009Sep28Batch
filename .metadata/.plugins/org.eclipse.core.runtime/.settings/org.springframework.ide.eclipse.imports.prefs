@@ -1,2 +1,7 @@
+<<<<<<< HEAD
 eclipse.preferences.version=1
 org.springframework.ide.eclipse.imports.importStaticsInstanceScope=true
+=======
+eclipse.preferences.version=1
+org.springframework.ide.eclipse.imports.importStaticsInstanceScope=true
+>>>>>>> master
