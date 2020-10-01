@@ -515,6 +515,8 @@ Serialization
     try(ObjectInputStream ios = new ObjectInputStream(New FileInputStream(filename))){
         System.out.println((Person)ios.readObject());
 
+    }catch(ClassNotFoundException e){
+        e.printStackTrace();
     }catch(IOException e){
         e.printStackTrace();
     }
