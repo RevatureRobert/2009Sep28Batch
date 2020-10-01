@@ -408,4 +408,28 @@ Threads
         static methods
             currentThread - returns the current thread that is executing
             sleep(long milliseconds) - causes the currently executing thread to sleep for X ms.
-            
+
+Garbage Collections 
+
+        The GC will clean unrefferenced objects out of the Heap
+
+        when an Object has no more elements refernecing it, then it is eligible for garbage collection
+
+        System.gc()         //requests for the gc, but does not determin when it will run
+
+        the GC will call an Object's finalize method before the Object is destroyed
+
+        the purpose of the finalize method is to give last minute instructions to the object
+
+        if you need something done at the end of the program, do not rely on the finalize method, it is better to
+            put it in a finally block
+
+        Object o1 = new Object(); (A)
+        Object o2 = o1;
+        o1 = null;          // Object  (A) not eligable for Garbage Collection, o2 still references it.
+        o2 = null;          // Object  (A) now eligable for Garbage Collection
+
+        
+ByteStream
+
+    
