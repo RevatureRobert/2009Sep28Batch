@@ -24,6 +24,7 @@ package com.inter.collections;
  */
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
@@ -187,7 +188,9 @@ public class CollectionsExample {
 		while(dictionaryIterator.hasNext()) {
 			String key = dictionaryIterator.next();
 			System.out.println("The definition for "+key+" is "+dictionary.get(key));
+			
 		}
+		
 	}
 
 	
