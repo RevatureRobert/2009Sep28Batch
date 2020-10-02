@@ -28,8 +28,10 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.ListIterator;
 import java.util.Map;
 import java.util.PriorityQueue;
 import java.util.Set;
@@ -68,7 +70,7 @@ public class CollectionsExample {
 		strings.add(0, "sodafighoiu");
 		System.out.println(strings);
 		System.out.println(strings.get(0));
-		strings.clear();
+//		strings.clear();
 		System.out.println(strings);
 		
 		//Sets
@@ -148,6 +150,40 @@ public class CollectionsExample {
 		System.out.println(students);
 		Collections.sort(students, new StudentNameComparator());
 		System.out.println(students);
+		
+		//Iterator
+		
+		//	list iterator has a previous method, it is able to traverse the list back and forth 
+		ListIterator<String> stringIterator = strings.listIterator();
+//		System.out.println(stringIterator.next());
+//		System.out.println(stringIterator.next());
+//		System.out.println(stringIterator.previous());
+//		System.out.println(stringIterator.previous());
+//		System.out.println(stringIterator.previous());
+//		System.out.println(stringIterator.hasNext());
+		
+		while(stringIterator.hasNext()) {
+			System.out.println(stringIterator.next());
+		}
+		
+		for(String s : strings) {
+			System.out.println(s);
+		}
+		
+		Iterator<String> setIterator = sortedStrings.iterator();
+		System.out.println(setIterator.next());
+		System.out.println(setIterator.next());
+		System.out.println(setIterator.next());
+		System.out.println(setIterator.next());
+		while(setIterator.hasNext()) {
+			System.out.println(setIterator.next());
+		}
+		
+		Iterator<String> dictionaryIterator = dictionary.keySet().iterator();
+		while(dictionaryIterator.hasNext()) {
+			String key = dictionaryIterator.next();
+			System.out.println("The definition for " + key + " is " + dictionary.get(key));
+		}
 	}
 
 	

@@ -26,3 +26,4 @@ public class AbstractionExample extends FirstAbstract {
 	}
 
 }
+   
