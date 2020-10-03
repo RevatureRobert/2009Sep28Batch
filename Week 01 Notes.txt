@@ -30,15 +30,15 @@ How does Java achieve Encapsulation?
         Default:    within the same package
         Private:    Within the same class
     Non-access Modifires:
-        transient
-        syncronized
-        static
+        transient      // marks a member field to not be serialized when it is persisted to a stream of bytes
+        syncronized     // syncronized between all threads. slow.
+        static      // can be accessed without instantiation
         final       //the field cannot be reassigned
                     //the method cannot be overriden
                     //the class cannot be extended
-        abstract
-        virtual
-        naitive
+        abstract    //cannot be instantiated does not have to have implementation inside of an interface
+        virtual     
+        naitive     //breaks platform independence
         etc.
 
 Packages and Imports
@@ -48,7 +48,7 @@ Packages and Imports
 
     com.example.oop.accesscheck.FirstHubCap is the FULLY QUALIFIED NAME of FirstHubCap
 
-    * birngs in all classes within the package, but not sub packages
+    * brings in all classes within the package, but not sub packages
     
 
 Abstraction
@@ -304,6 +304,7 @@ Collections Framework
             System.out.println(sortedStrings); // Capital Letters come first. Sorted by ASCII Code
 
             //Queue
+            // FIFO
 
             //PriorityQueue
             //      keeps everything organized by priority. Queue customarily keeps values in order as they are put in. 
@@ -340,20 +341,17 @@ Collections Framework
             System.out.println(dic.values().getClass());
             }
 
-<<<<<<< Updated upstream
-=======
             //ITERATOR
             [COLLECTION_TYPE, i,e: List]Interator<c> cIterator = (field of type c).listIterator();
             while(cIterator.hasNext()){
                 System.out.println(cIterator.next());
             }
-            
-            Iterator<String> dicIterator = dic.keySet().iterator();
-            while(dicIterator.hasNext()){
-                System.out.println(dicIterator.next());
+                //EXAMPLE
+                Iterator<String> dicIterator = dic.keySet().iterator();
+                    while(dicIterator.hasNext()){
+                        System.out.println(dicIterator.next());
 
             }
->>>>>>> Stashed changes
 
     }
 
@@ -362,6 +360,8 @@ Exeptions
 
     int[] arr = new int[3];
     System.out.println(arr[10])     //array Index Out of bounds
+    //You know exceptions like the back of your hand.
+    //  Oh hey that's new.
 
 
 Threads
@@ -392,7 +392,7 @@ Threads
         
         Extend the Thread class into a Custom class
             override the run method
-        Use an instacne of an implimented Runnable interface in the constructor of the Thread.
+        Use an instance of an implimented Runnable interface in the constructor of the Thread.
 
     multithreading issues:
 
@@ -414,10 +414,10 @@ Threads
     
     Methods of threads
         getters and setters for id, name, priority
-        interrupt - intteruptst the thread
-        isAlive, isInterupted, isDaemon - tests the state of the thread
-        join - wait for the thread to finish execution
-        start - starts the thread an begins execution
+        interrupt() - intteruptst the thread
+        isAlive(), isInterupted, isDaemon - tests the state of the thread
+        join() - wait for the thread to finish execution
+        start() - starts the thread an begins execution
 
         static methods
             currentThread - returns the current thread that is executing
@@ -513,10 +513,7 @@ BufferedCharacterStream
         e.printStackTrace();
     }
 Serialization
-<<<<<<< Updated upstream
-=======
     
->>>>>>> Stashed changes
     Public Person implements Serializeable{
         int age = 0;
         transient private ssn = 000000001; //doesn't copy into output streams
@@ -537,9 +534,6 @@ Serialization
         e.printStackTrace();
     }catch(IOException e){
         e.printStackTrace();
-<<<<<<< Updated upstream
-    }
-=======
     }
 
 Scanner
@@ -554,4 +548,3 @@ Scanner
     String name = scanner.nextline();
     System.out.println("The name you entered is " + name);
     
->>>>>>> Stashed changes
