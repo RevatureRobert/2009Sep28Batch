@@ -340,6 +340,20 @@ Collections Framework
             System.out.println(dic.values().getClass());
             }
 
+<<<<<<< Updated upstream
+=======
+            //ITERATOR
+            [COLLECTION_TYPE, i,e: List]Interator<c> cIterator = (field of type c).listIterator();
+            while(cIterator.hasNext()){
+                System.out.println(cIterator.next());
+            }
+            
+            Iterator<String> dicIterator = dic.keySet().iterator();
+            while(dicIterator.hasNext()){
+                System.out.println(dicIterator.next());
+
+            }
+>>>>>>> Stashed changes
 
     }
 
@@ -499,6 +513,10 @@ BufferedCharacterStream
         e.printStackTrace();
     }
 Serialization
+<<<<<<< Updated upstream
+=======
+    
+>>>>>>> Stashed changes
     Public Person implements Serializeable{
         int age = 0;
         transient private ssn = 000000001; //doesn't copy into output streams
@@ -519,4 +537,21 @@ Serialization
         e.printStackTrace();
     }catch(IOException e){
         e.printStackTrace();
+<<<<<<< Updated upstream
     }
+=======
+    }
+
+Scanner
+
+    // Scanner is ment to gather input from the console and files.
+    // Scanener cannot be opened once closed, no matter the circumstances inside the same program
+
+
+    Scanner scanner = new Scanner(System.in);
+
+    System.out.println("What is your name?);
+    String name = scanner.nextline();
+    System.out.println("The name you entered is " + name);
+    
+>>>>>>> Stashed changes
