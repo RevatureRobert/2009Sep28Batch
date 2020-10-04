@@ -69,6 +69,10 @@ package com.inter.threads;
  * 			sleep(long milliseconds) causes the currently executing thread to 
  * 				temporarily stop for a specified number of milliseconds.
  * 
+ * 		synchronized modifier
+ * 			synchronized modifier will restrict the method or field from
+ * 				being accessed by more than one thread at a time.
+ * 
  * 		
  */
 public class ThreadNotes {
