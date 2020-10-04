@@ -7,12 +7,12 @@ import java.sql.SQLException;
 public class ExceptionDriver {
 	
 	public static void main(String[] args) {
-		int[] arr = new int[3];
-		try {
-			System.out.println(arr[10]);
-		} catch (Exception e) {
-			System.out.println(e.getMessage());
-		}
+//		int[] arr = new int[3];
+//		try {
+//			System.out.println(arr[10]);
+//		} catch (Exception e) {
+//			System.out.println(e.getMessage());
+//		}
 				// array index out of bounds
 		
 //		try {
@@ -60,8 +60,8 @@ public class ExceptionDriver {
 //		} finally {
 //			System.out.println("this line will always run");
 //		}
-		
-		method3();
+//		
+//		method3();
 		
 //		try {
 //			System.out.println("doing something");
