@@ -46,6 +46,7 @@ public class ScannerExample {
 		// scanners cannot be opened once closed. no matter the circumstance inside the same program.
 		scanner = new Scanner(System.in);
 		scanner.next();
+		scanner.close();
 //		Scanner scanner2 = new Scanner(System.in);
 //		System.out.println("get information");
 //		scanner2.next();
