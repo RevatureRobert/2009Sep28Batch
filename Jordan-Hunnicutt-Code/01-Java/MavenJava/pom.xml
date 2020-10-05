@@ -1,0 +1,76 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.example</groupId> <!-- this is the repo that package sends to -->
+  <artifactId>MavenJava</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <description>This is the intro to maven for sep 2009</description>
+  
+  
+  <properties>
+  	<maven.compiler.target>1.8</maven.compiler.target>
+  	<maven.compiler.source>1.8</maven.compiler.source>
+  
+  </properties>
+  
+  <dependencies>
+  
+  <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
+	<dependency>
+    	<groupId>com.fasterxml.jackson.core</groupId>
+    	<artifactId>jackson-databind</artifactId>
+   		<version>2.11.2</version>
+	</dependency>
+  
+  <!-- https://mvnrepository.com/artifact/junit/junit -->
+	<dependency>
+    	<groupId>junit</groupId>
+   		<artifactId>junit</artifactId>
+   		<version>4.13</version>
+    	<scope>test</scope><!-- this tells maven what the dependency will be used for. We can only use junit jars in a test directory -->
+	</dependency>  
+  
+  <!-- https://mvnrepository.com/artifact/org.mockito/mockito-core -->
+	<dependency>
+    	<groupId>org.mockito</groupId>
+    	<artifactId>mockito-core</artifactId>
+    	<version>3.5.13</version>
+    	<scope>test</scope>
+	</dependency>
+  
+  <!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core -->
+	<dependency>
+    	<groupId>org.apache.logging.log4j</groupId>
+    	<artifactId>log4j-core</artifactId>
+    	<version>2.13.3</version>
+	</dependency>
+  	
+  
+  
+  </dependencies>
+</project>
+
+<!-- no single line comments in xml 
+	The pom.xml
+			pom stands for project object model
+			this is your configuration and overall outline for your project
+			you can add dependencies, variables, plugins, and alter the lifecycle of the project
+			what is the lifecycle of a project? (the maven lifecycle)
+			
+lifecycles:					default (build)								clean									site
+phases:							validate								clean									site
+								compile
+								test-compile
+								test
+								package
+								install (put in local repo)
+								deploy (to mvncent repo/custom repo)
+
+(build) goals			individual goals inside each phase.  Phases are large steps and goals are small steps within each phase. Think 1 2 3 vs 1.2 1.5 1.8
+								You can create custom goals if you want
+
+
+purpose						build your application			clean target folder (rid of all compilations)		generate a documentation site
+								
+NOTE: When you run a command, it will automatically run the one above it.  I.E. you run compile, maven also runs validate
+			However, it will not automatically run them if you yourself have done the steps before.  Its safe to just use clean if unsure
+ -->
