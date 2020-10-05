@@ -1,0 +1,5 @@
+This text file was created using the echo command;
+
+echo "text to be input" > _test.txt
+
+This method is being used to record notes from the MINGW console.
