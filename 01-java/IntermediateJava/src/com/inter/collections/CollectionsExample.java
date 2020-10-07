@@ -24,7 +24,6 @@ package com.inter.collections;
  */
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
@@ -152,26 +151,15 @@ public class CollectionsExample {
 		Collections.sort(students, new StudentNameComparator());
 		System.out.println(students);
 		
-<<<<<<< HEAD
 		//Iterator
 		
 		//	list iterator has a previous method, it is able to traverse the list back and forth 
-=======
-		
-		//Iterator
-		
-		// list iterator has a previous method, it is able to traverse the list back and forth
->>>>>>> master
 		ListIterator<String> stringIterator = strings.listIterator();
 //		System.out.println(stringIterator.next());
 //		System.out.println(stringIterator.next());
 //		System.out.println(stringIterator.previous());
 //		System.out.println(stringIterator.previous());
-<<<<<<< HEAD
 //		System.out.println(stringIterator.previous());
-=======
-////		System.out.println(stringIterator.previous());
->>>>>>> master
 //		System.out.println(stringIterator.hasNext());
 		
 		while(stringIterator.hasNext()) {
@@ -187,33 +175,16 @@ public class CollectionsExample {
 		System.out.println(setIterator.next());
 		System.out.println(setIterator.next());
 		System.out.println(setIterator.next());
-<<<<<<< HEAD
-=======
-
->>>>>>> master
 		while(setIterator.hasNext()) {
 			System.out.println(setIterator.next());
 		}
 		
-<<<<<<< HEAD
 		Iterator<String> dictionaryIterator = dictionary.keySet().iterator();
 		while(dictionaryIterator.hasNext()) {
 			String key = dictionaryIterator.next();
 			System.out.println("The definition for " + key + " is " + dictionary.get(key));
-=======
-		
-		Iterator<String> dictionaryIterator = dictionary.keySet().iterator();
-		
-		while(dictionaryIterator.hasNext()) {
-			String key = dictionaryIterator.next();
-			System.out.println("The definition for "+key+" is "+dictionary.get(key));
-<<<<<<< HEAD
->>>>>>> master
-=======
 			
->>>>>>> master
 		}
-		
 	}
 
 	
