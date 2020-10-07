@@ -44,14 +44,9 @@ public class ScannerExample {
 		scanner.close();
 		
 		// scanners cannot be opened once closed. no matter the circumstance inside the same program.
-//<<<<<<< HEAD
-		scanner = new Scanner(System.in);
+		Scanner scanner = new Scanner(System.in);
 		scanner.next();
 		scanner.close();
-=======
-//		scanner = new Scanner(System.in);
-//		scanner.next();
->>>>>>> master
 //		Scanner scanner2 = new Scanner(System.in);
 //		System.out.println("get information");
 //		scanner2.next();
@@ -59,20 +54,9 @@ public class ScannerExample {
 	
 	static void GetInformation(Scanner scanner) {
 		
-		System.out.println("Login");
-		System.out.println("Username:");
-		String userName = scanner.nextLine();
-		System.out.println("Password:");
-		String password = scanner.nextLine();
-		System.out.println("Are you a: \n1. user,\n2. employee,\n3. customer");
-		int role = scanner.nextInt();
-		if(role == 1) {
-			System.out.println("Would you like to start a new account?: \n1. yes,\n2. no");
-			int option = scanner.nextInt();
-			if(option == 1) {
-				System.out.println("troubleshooting");
-			}
-		}
+		System.out.println("what is your name?");
+		String name = scanner.nextLine();
+		System.out.println("what is you preferred email address?");
 		String email = scanner.nextLine();
 		System.out.println("how old are you?");
 		int age = scanner.nextInt();
