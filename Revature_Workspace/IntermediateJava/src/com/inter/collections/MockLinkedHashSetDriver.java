@@ -1,5 +1,7 @@
 package com.inter.collections;
 
+import java.util.LinkedHashSet;
+
 public class MockLinkedHashSetDriver {
 	public static void main(String[] args) {
 		MockLinkedHashSet<Integer> testMLHS = new MockLinkedHashSet<>();
@@ -72,8 +74,8 @@ public class MockLinkedHashSetDriver {
 //		testMLHS1.ourAdd(983);
 //		testMLHS1.ourAdd(34875);
 
-//		System.out.println(testMLHS.toString());
-//		System.out.println(testMLHS1.toString());
+		System.out.println(testMLHS.toString());
+		System.out.println(testMLHS1.toString());
 		System.out.println(testMLHS2.toString());
 	}
 }

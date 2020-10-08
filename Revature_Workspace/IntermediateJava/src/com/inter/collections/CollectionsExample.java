@@ -4,9 +4,11 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.ListIterator;
 import java.util.Map;
 import java.util.PriorityQueue;
 import java.util.Set;
@@ -40,7 +42,7 @@ public class CollectionsExample {
 		strings.add(0, "idybfilsd");
 		System.out.println(strings);
 		System.out.println(strings.get(0));
-		strings.clear();
+//		strings.clear();
 		System.out.println(strings);
 
 //		Sets 
@@ -114,6 +116,25 @@ public class CollectionsExample {
 		System.out.println(students);
 		
 		Set<Integer> test = new LinkedHashSet<>();
+		
+		//Iterator
+//		List iterator has a previous method, it is able to traverse the list back and forth 
+		
+		ListIterator<String> stringIterator = strings.listIterator();
+//		System.out.println(stringIterator.next());
+//		System.out.println(stringIterator.next());
+//		System.out.println(stringIterator.previous());
+		while(stringIterator.hasNext()) {
+			System.out.println(stringIterator.next());
+		}
+		
+		for(String s : strings) {
+			System.out.println(s);
+		}
+		
+		Iterator<String> setIterator = sortedStrings.iterator();
+		
+		Iterator<String> dictionaryIterator = dictionary.keySet().iterator();
 		}
 	
 }

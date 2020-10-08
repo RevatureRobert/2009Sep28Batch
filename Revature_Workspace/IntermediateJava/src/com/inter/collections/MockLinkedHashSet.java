@@ -7,13 +7,13 @@ import java.util.LinkedList;
 import java.util.Set;
 
 public class MockLinkedHashSet<E> extends HashSet<E> implements Set<E> {
-	private int capacity;
-	private double loadFactor;
-	private LinkedList<E> linkedListValues= new LinkedList<>();//maintains the insertion order
-	private HashSet<E> values = new HashSet();//entries are unique
+	private int capacity; 										// Max size of the HashSet
+	private double loadFactor; 									// The load factor indicates the percentage of the capacity at which the will double in size
+	private LinkedList<E> linkedListValues= new LinkedList<>();	//maintains the insertion order
+	private HashSet<E> hashSetValues = new HashSet();			//entries are unique
 	
 	
-	
+	//CONSTRUCTORS//
 	public MockLinkedHashSet() {
 		this.capacity = 16;
 		this.loadFactor = 0.75;
@@ -30,37 +30,36 @@ public class MockLinkedHashSet<E> extends HashSet<E> implements Set<E> {
 		this.capacity = 16;
 		this.loadFactor = loadFactor;
 	}
-
+	//END CONSTRUCTORS//
+	
+	
 	public void ourAdd(E e) {
-		boolean doesNotContain = values.add(e);
-		if(this.isAtCapacity() && doesNotContain){
-			this.sizeIncrease();
-		}
-		
+		boolean doesNotContain = hashSetValues.add(e); //returns true if the value is unique AND adds the value to the HashSet
 		if(doesNotContain) {
 			linkedListValues.add(e);
 		}
+		if(this.isAtCapacity() && doesNotContain){ 	 
+			this.sizeIncrease();
+		}
 	}
-	public void sizeIncrease() {
-		int newCap = capacity*2;
-		System.out.println(newCap);		
-		HashSet<E> store = new HashSet<>();
-		store.addAll(values);
-		values = null;
-		values = new HashSet<E>(newCap);
-		values.addAll(store);
-		capacity = newCap;		
-	}
-	
+	//checks if the hashSet meets the size increase threshold
 	public boolean isAtCapacity(){
-		if(values.size() >= capacity * loadFactor) {
+		if(hashSetValues.size() >= capacity * loadFactor) {
 			return true;
 		}
 		else
-			return false;
-						
+			return false;			
 	}	
-	
+	public void sizeIncrease() {
+		int newCap = capacity*2;
+		System.out.println(newCap);		//this is just so you can see the size increase of the HashSet during runtime
+		HashSet<E> store = new HashSet<>();
+		store.addAll(hashSetValues);
+		hashSetValues = null;
+		hashSetValues = new HashSet<E>(newCap);
+		hashSetValues.addAll(store);
+		capacity = newCap;		
+	}
 	public String toString() {
 		String string = "[";
 		for(int i=0;i<linkedListValues.size();i++) {

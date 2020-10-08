@@ -37,6 +37,8 @@ package com.inter.exceptions;
  * 			OutOfMemoryError
  * 			CompilationError
  * 			
+ *  Customs Exceptions are good for when you are creating libraries or when other exceptions are
+ *  		the exact right fit.
  * */
 
 import java.io.FileNotFoundException;
