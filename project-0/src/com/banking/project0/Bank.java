@@ -189,8 +189,14 @@ public class Bank {
 			}else {
 				System.out.println("Transfer amount");
 				int amount = scanner.nextInt();
-				//transfer desired amount to the account specified
-				System.out.println("Transfer Successful!");
+				if (amount < 0) {
+					System.out.println("You cannot transfer a negative amount of money");
+					//do not try to transfer the money
+					TransferRetry(scanner);
+				}else {
+					//transfer desired amount to the account specified
+					System.out.println("Transfer Successful!");					
+				}
 			}
 		}
 		static void TransferRetry(Scanner scanner) {
