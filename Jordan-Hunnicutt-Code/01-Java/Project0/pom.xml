@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.cars</groupId>
   <artifactId>Project0</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>1.0.0</version>
   <description>We have the cars for you!</description>
   
   
@@ -30,6 +30,15 @@
     	<scope>test</scope><!-- this tells maven what the dependency will be used for. We can only use junit jars in a test directory -->
 	</dependency>
   
+  	<!-- this is the dependency for Postgresql -->
+  	<!--  this dependency gives us the driver to connect with the database -->
+  	<dependency>
+		<groupId>org.postgresql</groupId>
+		<artifactId>postgresql</artifactId>
+		<version>42.2.8</version>
+	</dependency>
+  
+  
   </dependencies>
   
   <build>
@@ -41,7 +50,7 @@
           <archive>
             <manifest>
               <addClasspath>true</addClasspath>
-              <mainClass>com.cars.console.UI</mainClass>
+              <mainClass>com.cars.ui.UI</mainClass>
             </manifest>
           </archive>
         </configuration>

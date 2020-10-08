@@ -7,22 +7,30 @@ public class Car {
 
 	private String make;
 	private String model;
+	private String color;
 	private int year;
 	private int carId;
-	private List<Double> offerAmounts = new ArrayList<>();
-	private List<Integer> offerIds = new ArrayList<>(); //foreign key to user
-	private List<Double> paymentAmounts = new ArrayList<>();
+//	private List<Double> offerAmounts = new ArrayList<>();
+//	private List<Integer> offerIds = new ArrayList<>(); //foreign key to user
+//	private List<Double> paymentAmounts = new ArrayList<>();
+	
+	private int listPrice;
+	private double yearlyPayment;
+	private double monthlyPayment;
+	
 	
 	public Car() {
 		make = "Buick";
 		model = "Terraza";
+		color = "gold";
 		year = 2005;
 		carId = 0;
 	}
 	
-	public Car(String make, String model, int year) {
+	public Car(String make, String model, String color, int year) {
 		this.make = make;
 		this.model = model;
+		this.color = color;
 		setYear(year);
 		carId = 0;
 	}
@@ -42,7 +50,15 @@ public class Car {
 	public void setModel(String model) {
 		this.model = model;
 	}
-
+	
+	public String getColor() {
+		return color;
+	}
+	
+	public void setColor(String color) {
+		this.color = color;
+	}
+	
 	public int getYear() {
 		return year;
 	}
