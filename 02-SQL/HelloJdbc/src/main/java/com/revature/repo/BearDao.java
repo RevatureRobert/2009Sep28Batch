@@ -36,7 +36,7 @@ public class BearDao implements DaoContract<Bear, Integer> {
 			String sql = "select * from bear";
 			ResultSet rs = s.executeQuery(sql);
 			while (rs.next()) {
-				bears.add(new Bear(rs.getInt(1), rs.getString(2), rs.getBoolean(3), null));
+				bears.add(new Bear(rs.getInt(1), rs.getString(2), rs.getBoolean(3), cd.findById(rs.getString(4))));
 			}
 			rs.close();
 			s.close();
@@ -62,7 +62,7 @@ public class BearDao implements DaoContract<Bear, Integer> {
 			ps.setInt(1, i);
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
-				b = new Bear(rs.getInt(1), rs.getString(2), rs.getBoolean(3), null);
+				b = new Bear(rs.getInt(1), rs.getString(2), rs.getBoolean(3), cd.findById(rs.getString(4)));
 			}
 			rs.close();
 		} catch (SQLException e) {
