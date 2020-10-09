@@ -93,6 +93,9 @@ public class Bank {
 			if(password.equals(confirmPassword)) {
 				
 				UserAssign(scanner);
+			}else if(password == null || confirmPassword == null) {
+				System.out.println("You must enter a valid password");
+				RetryPassword(scanner);
 			}
 			else{
 				System.out.println("Passwords are not the same");
@@ -126,6 +129,24 @@ public class Bank {
 				System.out.println("Congratulations, you have created a customer account!");
 				CustomerInterface(scanner);
 			}
+			if(accountType == 2) {
+				System.out.println("Would you like to create an employee account?\n1. yes\n2. no");
+				int empAcc = scanner.nextInt();
+				if(empAcc == 1) {
+					//assign account to type employee
+					System.out.println("Congratulations, you have created an employee account!");
+					EmployeeInterface(scanner);					
+				}
+				else {
+					System.out.println("Please make a valid selection");
+					UserInterface(scanner);
+					
+				}
+			}
+			else {
+				System.out.println("Please make a valid selection");
+				UserInterface(scanner);
+			}
 		}
 		static void EmployeeInterface(Scanner scanner) {
 			System.out.println("What would you like to do?\n1. Check account requests\n2. View customer accounts\n3. View transaction logs");
@@ -143,6 +164,29 @@ public class Bank {
 				} else if(action1 == 2) {
 					System.out.println("Account Denied");
 					//remove account from requests
+				}
+				System.out.println("Enter 0 to exit");
+				int exit = scanner.nextInt();
+				if(exit == 0) {
+					EmployeeInterface(scanner);
+				}
+			}
+			else if(action == 2) {
+				System.out.println("Here are all customer accounts");
+				//show customer accounts
+				System.out.println("Enter 0 to exit");
+				int exit = scanner.nextInt();
+				if(exit == 0) {
+					EmployeeInterface(scanner);
+				}
+			}
+			else if(action == 3) {
+				System.out.println("Here are the transaction logs");
+				//insert transaction logs
+				System.out.println("Enter 0 to exit");
+				int exit = scanner.nextInt();
+				if(exit == 0) {
+					EmployeeInterface(scanner);
 				}
 			}
 		}
