@@ -4,9 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
-
 import com.dealership.controller.ManagerController;
 import com.dealership.model.Employee;
 import com.dealership.model.Manager;
@@ -14,7 +11,6 @@ import com.dealership.model.Offer;
 
 public class ManagerMenu {
 
-	private static Logger logger = LogManager.getLogger(ManagerMenu.class.getName());
 	private ManagerController mControl;
 	
 	public ManagerMenu() {
