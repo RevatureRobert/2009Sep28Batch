@@ -1,9 +1,5 @@
-package com.revature.config;
+package com.bankapp.config;
 
-//<<<<<<< HEAD
-//public class FileConnectionUtil {
-
-//=======
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.Connection;
@@ -11,8 +7,9 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
 
-public class FileConnectionUtil {
+import com.bankapp.config.FileConnectionUtil;
 
+public class FileConnectionUtil {
 	private String url;
 	private String username;
 	private String password;
@@ -46,5 +43,4 @@ public class FileConnectionUtil {
 
 	private FileConnectionUtil() {
 	}
-//>>>>>>> master
 }
