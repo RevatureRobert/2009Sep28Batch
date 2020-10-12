@@ -1,0 +1,103 @@
+<!-- What the browser need to know for what type of document it is-->
+<!DOCTYPE html>
+<html>
+    <!-- What the browser needs to know for the document & metadata-->
+    <head>
+        <title>This is our title</title>
+    </head>
+    <!--What is shown on the page-->
+    <body>
+        <!--Heading tags, h1 is the biggest going down to 6-->
+        <h1>
+            This is the first heading tag.
+        </h1>
+        <h2>this is the second</h2>
+        <h3>the third</h3>
+        <h4>and so on</h4>
+        <h5>and so on</h5>
+        <h6>and so on</h6>
+        <!--Paragaph tag-->
+        <p>Content</p>
+        <p>this is another paragraph</p>
+        <!--Inline and block elements
+            block elements: allocate the width of the page of the content
+                examples: p, h1-6, div, etc...
+            inline elements: allocate only enough space as is needed for the content
+                examples: span, textarea, b, i, etc...
+        -->
+        test
+        <span>This is a span</span>
+        <b>this is a bold tag</b>
+        <br><!-- this is a line break-->
+        <i>this is an itallic tag</i>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <!--tagname*number will auto-generate that many tags for you-->
+
+        <!--lists-->
+        <!--Bulited list-->
+        <ul title="This is a tooltip for the entire list.">This is the name of the list
+            <!--title is an attribute of ul. an attribute is a property that can change the behavior or appearance of an element-->
+            <li title="This is a tooltip for the list item">first bullet point</li>
+            <li>second bullet point</li>
+            <li>etc.</li>
+        </ul>
+        <ol>ordered list
+            <li>
+                a
+            </li>
+            <li>
+                b
+            </li>
+            <li>c</li>
+        </ol>
+        <dl> the dictionary list
+            <dt>arrdvark</dt>
+            <dd>an animal with more a's than k's</dd>
+        </dl>
+        <table>
+            <thead>
+                <tr>
+                    <th>name</th>
+                    <th>age</th>
+                    <th>phone#</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>sam</td>
+                    <td>23</td>
+                    <td>555-555-5555</td>
+                </tr>
+                <tr>
+                    <td>daniel</td>
+                    <td>32</td>
+                    <td>555-555-5555</td>
+                </tr>
+            </tbody>
+        </table>
+        <!--forms-->
+        <!--action tells the browser where to send the form data
+            method tells the browser how to send it (http method)
+        -->
+        <form action="some.url" method="POST" >
+            <!--Input fields are inline elements we reference them by 'name' on the server side to get their values-->
+            <input type="text" placeholder = "username" name = "username">
+            <input type="password" placeholder="password" name="password">
+            <input type="file" name="some file">
+
+        </form>
+        <!--different types of attributes
+            local
+                attributes that are only available to some elements:
+                    action, method, src, href, etc...
+            global
+                attributes that all elements can use
+                    id, class, style, title, etc...
+
+        -->
+    </body>
+</html>
