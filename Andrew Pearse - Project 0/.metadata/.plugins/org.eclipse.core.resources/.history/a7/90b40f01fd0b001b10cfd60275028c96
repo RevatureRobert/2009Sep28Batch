@@ -1,0 +1,18 @@
+package com.dealership.controller;
+
+import com.dealership.service.OfferService;
+
+public class OfferController {
+
+	OfferService os;
+	
+	public OfferController() {
+		this(new OfferService());
+	}
+	
+	public OfferController(OfferService os) {
+		this.os = os;
+	}
+	
+	
+}

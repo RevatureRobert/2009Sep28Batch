@@ -1,0 +1,202 @@
+package com.dealership.service;
+
+import com.dealership.controller.ControllerLayer;
+import com.dealership.models.Customer;
+import com.dealership.models.Employee;
+import com.dealership.models.SystemAdmin;
+import com.dealership.models.User;
+import com.dealership.repository.RepositoryLayer;
+import com.dealership.ui.DealershipUI;
+
+public class ServiceLayer {
+
+	public static void runProgram() {
+		int userChoice = -1;
+		
+		while (userChoice != 0) {
+			try {
+				
+				userChoice = ControllerLayer.getUserInput(null);
+				
+				switch (userChoice) {
+					case 0:
+						break;
+						
+					case 1:
+						//logs in an gives options based on what account has just been accessed
+						User currentUser = ControllerLayer.getLogInInformation();
+						
+						if ( validateUserInformation( currentUser ) != null ) {
+							
+							
+							if(currentUser instanceof SystemAdmin) {
+								
+								try {
+									SystemAdmin admin = (SystemAdmin) currentUser;
+									
+									while (userChoice != 0) {
+										userChoice = ControllerLayer.getUserInput(admin);
+										
+										switch (userChoice) {
+											case 0:
+												break;
+												
+											case 1:
+												
+											case 2:
+											case 3:
+											case 4:
+											default: 
+												throw new Exception("Invalid Choice");
+										}
+										
+										
+										
+										break;
+									}
+								}
+								catch (Exception e) {
+									System.out.println(e.getMessage());
+								}
+								
+							}
+							else if (currentUser instanceof Employee) {
+								
+								try {
+									Employee employee = (Employee) currentUser;
+									
+									while (userChoice != 0) {
+										userChoice = ControllerLayer.getUserInput(employee);
+										
+										switch (userChoice) {
+											case 0:
+												break;
+												
+											case 1:
+												
+											case 2:
+											case 3:
+											case 4:
+											default: 
+												throw new Exception("Invalid Choice");
+										}
+										
+										
+										
+										break;
+									}
+								}
+								catch (Exception e) {
+									System.out.println(e.getMessage());
+								}
+							}
+							else {
+								Customer customer = (Customer) currentUser;
+								
+								customerChoices(customer);
+							}
+							
+						}
+						else {
+							System.out.println("Not a valid user");
+							
+//							pause();
+						}
+						
+						
+						
+						
+						
+						break;
+						
+					case 2:
+						DealershipUI.createCustomerAccount();
+						//TODO: Finish implementation
+						break;
+						
+					case 3:
+//						DealershipUI.createEmployeeAccount();
+						DealershipUI.forgotPassword();
+						
+						//TODO: Finish or toss out
+						
+						break;
+
+					default:
+						throw new Exception("Invalid Choice");
+				}
+				
+//				if (userChoice == 0)
+//					break;
+//				else
+//					continue;
+				
+			} catch (Exception e) {
+				System.out.println(e.getMessage());
+				System.out.println("BUNGUS");
+				continue;
+			}
+		}
+	}
+	
+	
+	public static User validateUserInformation(User userInformation) {
+		return RepositoryLayer.returnUserInformation(userInformation.getUserName());
+	}	
+	
+	public static void employeeChoices(User employee) {
+		
+	}
+	
+	public static void customerChoices(Customer customer) {
+		try {
+			int userChoice = -1;
+			
+			while (userChoice != 0) {
+				userChoice = ControllerLayer.getUserInput(customer);
+				
+				switch (userChoice) {
+					case 0:
+						break;
+						
+					case 1:
+						ControllerLayer.viewCars( RepositoryLayer.getLotCars(false) );
+						break;
+						
+					case 2:
+						ControllerLayer.viewCars( RepositoryLayer.getLotCars(true) );
+
+					
+					
+					case 3:						
+						ControllerLayer.viewCars( RepositoryLayer.getOwnedCars(customer));
+						break;
+						
+						
+					case 4:
+					default: 
+						throw new Exception("Invalid Choice");
+				}
+				
+				
+				
+				break;
+			}
+		}
+		catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
+	
+	
+	
+	
+//	// tells the program to wait for 10 seconds before proceeding
+//	public static void pause() {
+//		try {
+//			Thread.sleep(10*1000);
+//		} catch (InterruptedException e1) {
+//			e1.printStackTrace();
+//		}
+//	}
+}

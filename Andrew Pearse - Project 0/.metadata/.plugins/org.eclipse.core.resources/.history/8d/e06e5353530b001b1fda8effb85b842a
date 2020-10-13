@@ -1,0 +1,24 @@
+package com.dealership.test;
+
+import static org.junit.Assert.fail;
+
+import org.junit.Before;
+import org.junit.Test;
+
+import com.dealership.repository.OfferDAO;
+
+public class OfferDAOTest {
+
+	OfferDAO od;
+	
+	@Before
+	public void setup() {
+		od = new OfferDAO();
+	}
+	
+	@Test
+	public void updateTest() {
+		fail("Not yet implemented");
+	}
+
+}

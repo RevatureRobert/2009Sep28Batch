@@ -1,0 +1,155 @@
+package com.dealership.repository;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.LinkedList;
+import java.util.List;
+
+import com.dealership.config.PlainTextConnectionUtil;
+import com.dealership.models.Car;
+import com.dealership.models.User;
+
+public class CarDAO implements DAOBase<Car, Integer> {
+
+	UserDAO ud;
+	
+	public CarDAO() {
+		ud = new UserDAO();
+	}
+	
+	@Override
+	public List<Car> findAll() {
+		List<Car> cars = new LinkedList<>();
+		
+		try(Connection conn = PlainTextConnectionUtil.getInstance().getConnection()){
+			String sql = "select * from \"Cars\"";
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			
+			while (rs.next()) {
+				cars.add(new Car(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), ud.findById(rs.getString(4)), rs.getBoolean(5)));
+			}
+			
+			rs.close();
+			ps.close();
+			
+		} catch (SQLException e) {
+//			e.printStackTrace();
+		}
+		
+		return cars;
+	}
+
+	@Override
+	public Car findById(Integer i) {
+		Car car = null;
+		
+		try (Connection conn = PlainTextConnectionUtil.getInstance().getConnection()){
+			String sql = "select * from \"Cars\" where cid = ?";
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, i);
+			ResultSet rs = ps.executeQuery();
+			
+			while (rs.next()) {
+				car = new Car(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), ud.findById(rs.getString(4)), rs.getBoolean(5));
+			}
+			
+			ps.close();
+			rs.close();
+			
+		} catch (SQLException e) {
+//			e.printStackTrace();
+		}
+
+		return car;
+	}
+
+	@Override
+	public Car update(Car t) {
+		try (Connection conn = PlainTextConnectionUtil.getInstance().getConnection()){
+			
+			//no owner, meaning car information is getting updated by employee
+			if (t.getOwner() == null) {
+				String sql = "update \"Car\" set make = ?"
+									  	  + "model = ?"
+									  	  + "price = ?"
+									  	  + "where cid = ?";
+			
+				PreparedStatement ps = conn.prepareStatement(sql);
+				ps.setString(1, t.getMake());
+				ps.setString(2, t.getModel());
+				ps.setInt(3, t.getPrice());
+				ps.setInt(4, t.getCarID());
+				ps.executeUpdate();
+			
+				t = findById(t.getCarID());
+			
+				ps.close();
+			}
+			else { //if owner, then car has been sold
+				String sql = "update \"Car\" set car_owner = ?"
+											  + "on_lot = false";
+				PreparedStatement ps = conn.prepareStatement(sql);
+				ps.setString(1, t.getOwner().getUserName());
+				ps.executeUpdate();
+				
+				t = findById(t.getCarID());
+				
+				ps.close();
+			}
+			
+			
+			
+		} catch (SQLException e) {
+//			e.printStackTrace();
+			return null;
+		}
+		
+		return t;
+	}
+
+	@Override
+	public Car create(Car t) {
+		try (Connection conn = PlainTextConnectionUtil.getInstance().getConnection()){
+			String sql = "insert into \"Car\" (make, model, price, on_lot) values (?,?,?,false)";
+			
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1, t.getMake());
+			ps.setString(2, t.getModel());
+			ps.setInt(3, t.getPrice());
+			
+			ps.executeUpdate();
+			
+			ps.close();
+		} catch (SQLException e) {
+//			e.printStackTrace();
+			return null;
+		}
+		
+		return t;
+	}
+
+	@Override
+	public int delete(Integer i) {
+		int updated = 0;
+		try (Connection conn = PlainTextConnectionUtil.getInstance().getConnection()){
+			String sql = "delete from \"Car\" where cid = ?";
+			
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, i);
+			
+			updated = ps.executeUpdate();
+			
+			ps.close();
+		} catch (SQLException e) {
+//			e.printStackTrace();
+			return 0;
+		}
+		
+		return updated;
+	}
+
+	
+}

@@ -1,0 +1,14 @@
+package com.dealership.test;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+public class OfferDAOTest {
+
+	@Test
+	public void test() {
+		fail("Not yet implemented");
+	}
+
+}

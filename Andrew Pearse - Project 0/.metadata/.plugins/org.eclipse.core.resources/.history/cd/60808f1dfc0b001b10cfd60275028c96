@@ -1,0 +1,274 @@
+package com.dealership.ui;
+
+import java.util.Scanner;
+
+import com.dealership.controller.CarController;
+import com.dealership.controller.UserController;
+import com.dealership.models.Car;
+import com.dealership.models.Offer;
+import com.dealership.models.User;
+
+
+public class DealershipUI {
+
+	private UserController userController;
+	private CarController carController;
+	
+	/**
+	 * creates a new controller object
+	 */
+	public DealershipUI() {
+		this(new UserController(), new CarController());
+	}
+	
+	/**
+	 * creates a new or existing controller object
+	 * @param controller references the controller
+	 */
+	public DealershipUI(UserController userController, CarController carController) {
+		super();
+		this.userController = userController;
+		this.carController = carController;
+	}
+	
+	/*
+	 * 
+	 * STARTING PROGRAM UI
+	 * 
+	 */
+	
+	/**
+	 * creates the main menu
+	 * @param scanner allows for user input
+	 */
+	public void startUp(Scanner scanner) {
+		System.out.println("\nHello and welcome to Rockford Automotives!\n");
+		System.out.println("0: Exit\n"
+						 + "1: Log In\n"
+						 + "2: Create Customer Account\n"
+						 + "3: Forgot Password\n");
+		
+		try {
+			int input = scanner.nextInt();
+			User user = null;
+			
+			switch(input) {
+			case 0:
+				System.out.println("\nGoodbye!");
+				System.exit(0);
+				
+			case 1:
+				user = userController.validateUser( logIn(scanner) );
+				
+				if ( user != null ) {
+					if (user.getType().equals("customer")) {
+						System.out.println("Welcome " + user.getFirstName() + " " + user.getLastName() + ", What Would You Like To Do?\n");
+						customerUIChoices(scanner, user);
+						
+					}
+					else if (user.getType().equals("employee")) {
+						
+					} //TODO: maybe add a manager type too
+					
+					
+					startUp(scanner);
+				}
+				else {
+					System.out.println("\nThis account does not exist or your password was incorrect, try again.");
+					startUp(scanner);
+				}
+
+			case 2:
+				if (userController.createCustomerAccount( createCustomerAccount(scanner) ) ) {
+					System.out.println("\nAccount Successfully Created! Log in to continue.");
+					startUp(scanner);
+				}
+				else {
+					System.out.println("\nAccount already exists with that username, either log in or choose a new username.");
+					startUp(scanner);
+				}
+				
+			case 3:
+				if (userController.changePassword(changePassword(scanner))) {
+					System.out.println("\nPassword successfully changed!");
+					startUp(scanner);
+				}
+				else {
+					System.out.println("\nAccount username is invalid.");
+					startUp(scanner);
+				}
+			default:
+				System.out.println("\nPlease enter a valid choice");
+				startUp(scanner);
+			}
+		} catch (IllegalArgumentException e) {
+			System.out.println("\nPlease input a number.");
+			startUp(scanner);
+		}
+	}
+	
+	/**
+	 * gathers the information needed to check if user is in the database
+	 * @param scanner reads in the username and password
+	 * @return returns a new user object to be checked against the database
+	 */
+	private User logIn(Scanner scanner){
+		System.out.print("\nUsername: ");
+		String userName = scanner.next();
+		System.out.print("Password: ");
+		String password = scanner.next();
+		System.out.println();
+		
+		return new User(userName, password, null, null, "");
+	}
+	
+	/**
+	 * gathers user's input to create a customer account, will fail if user already exists
+	 * @param scanner reads in user input
+	 */
+	public User createCustomerAccount(Scanner scanner) {
+		
+		System.out.print("\nEnter First Name: ");
+		String firstName = scanner.next();
+		System.out.print("Enter Last Name: ");
+		String lastName = scanner.next();
+		System.out.print("Enter Account Username: ");
+		String userName = scanner.next();
+		System.out.print("Enter Account Password: ");
+		String password = scanner.next();
+		
+		return new User(userName, password, firstName, lastName, "customer");
+	}
+	
+//	//returns employee object
+//	public static Employee createEmployeeAccount() {
+//		
+//		System.out.println("\nEnter Employee Username: ");
+//		String userName = scanner.next();
+//		System.out.println("Password: ");
+//		String password = scanner.next();
+//		
+//		return new Employee(userName, password);
+//	}
+	
+	/**
+	 * changes the password of the specified user account
+	 * @param scanner reads in user input
+	 * @return returns a new User object that only has the username and new password
+	 */
+	public User changePassword(Scanner scanner) {
+		System.out.println("Enter your username: ");
+		String username = scanner.next();
+		System.out.println("Enter your new password: ");
+		String password = scanner.next();
+		
+		return new User(username, password, null, null, null);
+	}
+	
+	
+	/*
+	 * 
+	 * CUSTOMER ACCOUNT UI
+	 * 
+	 */
+
+	public void customerUIChoices(Scanner scanner, User user) {
+		System.out.println("0: Go Back\n"
+						 + "1: View Cars on the Lot\n"
+						 + "2: Make Offer on a Car\n"
+						 + "3: View Owned Cars\n"
+						 + "4: View Payment Statement(s)\n");
+		
+		try {
+			int input = scanner.nextInt();
+			
+			switch(input) {
+			case 0:
+				return;
+			case 1:
+				for (Car c : carController.findAllCarsOnLot())
+					System.out.println(c);
+				
+				customerUIChoices(scanner, user);
+				break;
+			case 2:
+				
+				
+				customerUIChoices(scanner, user);
+				break;
+			case 3:
+				for (Car c : carController.findAllOwned(user.getUserName()))
+					System.out.println(c);
+				
+				customerUIChoices(scanner, user);
+				break;
+			case 4:
+				
+				customerUIChoices(scanner, user);
+				break;
+			default:
+				System.out.println("\nPlease enter a valid choice.\n");
+				customerUIChoices(scanner, user);
+			}
+			
+		} catch (IllegalArgumentException e) {
+			System.out.println("\nPlease enter a number.\n");
+			customerUIChoices(scanner, user);
+		}
+	}
+//	
+//	
+//	public void printCars(Car[] cars) {
+//		for (Car c : cars) {
+//			c.toString();
+//		}
+//	}
+//	
+//	public int makeOffer() {
+//
+//		System.out.print("Enter your offer amount: ");
+//		
+//		return input();
+//	}
+//	
+//	public void printStatement(CustomerStatement statement) {
+//		System.out.println("\nTotal Owed: " + statement.getTotal());
+//		System.out.println("Monthly Payments Left: " + statement.getMonthsLeft());
+//		System.out.println("Monthly Payment Amount: " + statement.calculateMontlyPayments());
+//	}
+//	
+//	
+//	/*
+//	 * 
+//	 * EMPLOYEE ACCOUNT UI
+//	 * 
+//	 */
+//	
+//	public int employeeUIChoices() {
+//		System.out.println("0: Go Back\n"
+//						 + "1: Add Car to the Lot\n"
+//						 + "2: Accept/Reject Customer Offers\n"
+//						 + "3: View All Payments\n"									//TODO: figure out what this means
+//						 + "4: Remove Car from the Lot\n");
+//		
+//		return input();
+//	}
+//	
+//	public Car enterCarInformation() {
+//		//TODO: implement
+//		return null;
+//	}
+//	
+//	public void editOffers() {
+//		//TODO: create a way to see all current offers and choose one
+//		//TODO: either accept or reject offer
+//	}
+//	
+//	public void printAllPayments() {
+//		//TODO: implement
+//	}
+//	
+//	public void chooseCarToRemove() {
+//		//TODO: implement
+//	}
+}

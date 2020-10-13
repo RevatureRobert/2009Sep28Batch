@@ -1,0 +1,38 @@
+package com.dealership;
+
+import java.util.Scanner;
+
+public class Driver {
+
+	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
+		
+		
+	}
+	
+	public static void mainMenu(Scanner scanner) {
+		System.out.println("Hello and welcome to Rockford Automotives!\n");
+		System.out.println("0: Exit\n"
+						 + "1: Log In\n"
+						 + "2: Create Customer Account\n"
+						 + "3: Forgot Password\n");
+		
+		try {
+			int input = scanner.nextInt();
+			
+			switch(input) {
+			case 0:
+				System.exit(0);
+			case 1:
+			case 2:
+			case 3:
+			default:
+				System.out.println("\nPlease enter a valid choice\n");
+				mainMenu(scanner);
+			}
+		} catch (IllegalArgumentException e) {
+			System.out.println("\nPlease input a number.\n");
+			mainMenu(scanner);
+		}
+	}
+}

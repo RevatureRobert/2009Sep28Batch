@@ -1,0 +1,9 @@
+INDEX VERSION 1.131+C:\Users\andre\Desktop\getrepo\Project 0 Repository\.metadata\.plugins\org.eclipse.jdt.core
+2069915230.index
+404154812.index
+1044303633.index
+2886758538.index
+3294559670.index
+3378434122.index
+3565843852.index
+4112365988.index

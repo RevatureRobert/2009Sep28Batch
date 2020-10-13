@@ -1,0 +1,102 @@
+package com.dealership.models;
+
+public class Offer {
+
+//	private int total;
+	private int offerID;
+	private int downPayment;
+	private int monthsLeft;
+	private boolean accepted;
+	private boolean rejected;
+	private User offerer;
+//	private int[] payPerMonth;
+//	private String[] datesPaid;
+
+	public Offer(int downPayement, int monthsLeft, boolean accepted, boolean rejected, User offerer) {
+		super();
+//		this.total = total;
+		this.monthsLeft = monthsLeft;
+		this.downPayment = downPayement;
+		this.accepted = false;
+		this.rejected = false;
+		this.setOfferer(null);
+//		this.payPerMonth = payPerMonth;
+//		this.datesPaid = datesPaid;
+	}
+	
+	/**
+	 * retrieves offer from the database
+	 * @param offerID
+	 * @param downPayment
+	 * @param monthsLeft
+	 * @param accepted
+	 * @param rejected
+	 * @param offerer
+	 */
+	public Offer(int offerID, int downPayment, int monthsLeft, boolean accepted, boolean rejected, User offerer) {
+		this.offerID = offerID;
+		this.downPayment = downPayment;
+		this.monthsLeft = monthsLeft;
+		this.accepted = accepted;
+		this.rejected = rejected;
+		this.offerer = offerer;
+	}
+	
+	public boolean isAccepted() {
+		return accepted;
+	}
+
+	public void setAccepted(boolean accepted) {
+		this.accepted = accepted;
+	}
+
+	public boolean isRejected() {
+		return rejected;
+	}
+
+	public void setRejected(boolean rejected) {
+		this.rejected = rejected;
+	}
+
+	public int getDownPayment() {
+		return downPayment;
+	}
+
+	public void setDownPayment(int downPayment) {
+		this.downPayment = downPayment;
+	}
+
+//	public int getTotal() {
+//		return total;
+//	}
+//
+//	public void setTotal(int total) {
+//		this.total = total;
+//	}
+
+	public int getMonthsLeft() {
+		return monthsLeft;
+	}
+	
+	public void setMonthsLeft(int monthsLeft) {
+		this.monthsLeft = monthsLeft;
+	}
+
+	public int getOfferID() {
+		return offerID;
+	}
+
+	public void setOfferID(int offerID) {
+		this.offerID = offerID;
+	}
+
+	public User getOfferer() {
+		return offerer;
+	}
+
+	public void setOfferer(User offerer) {
+		this.offerer = offerer;
+	}
+
+
+}

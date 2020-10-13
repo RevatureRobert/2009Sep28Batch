@@ -1,0 +1,17 @@
+package com.dealership.models;
+
+public class Employee extends User{
+
+//	private static int nextUsableEmployeeId = 100;
+
+	public Employee(String userName, String password) {
+		super(userName, password);
+		
+	}
+	
+//	public Employee(String userName, String password) {
+//		this.userName = userName;
+//		this.password = password;
+//		this.userId = "e" + nextUsableEmployeeId++;
+//	}
+}

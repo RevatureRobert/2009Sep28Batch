@@ -1,0 +1,161 @@
+package com.dealership.service;
+
+import com.dealership.controller.ControllerLayer;
+import com.dealership.models.Customer;
+import com.dealership.models.Employee;
+import com.dealership.models.User;
+import com.dealership.repository.RepositoryLayer;
+
+public class ServiceLayer {
+
+	public static void runProgram() {
+		int userChoice = -1;
+		
+		while (userChoice != 0) {
+			try {
+				
+				userChoice = ControllerLayer.getUserInput(null);
+				
+				switch (userChoice) {
+					case 0:
+						break;
+						
+					case 1:
+						//logs in an gives options based on what account has just been accessed
+						User currentUser = ControllerLayer.getLogInInformation();
+						
+						if ( validateUserInformation( currentUser ) != null ) {
+							
+							if (currentUser instanceof Employee) {
+								Employee employee = (Employee) currentUser;
+								
+								employeeChoices(employee);
+							}
+							else {
+								Customer customer = (Customer) currentUser;
+								
+								customerChoices(customer);
+							}
+							
+						}
+						else {
+							System.out.println("\nNot a valid user\n");
+							
+							pause();
+						}
+						
+						break;
+						
+					case 2:
+						RepositoryLayer.storeNewCustomerAccount(ControllerLayer.getNewCustomerAccount());
+						//TODO: Finish implementation
+						break;
+						
+					case 3:
+//						DealershipUI.forgotPassword();
+						//TODO: Finish or toss out
+						
+						break;
+
+					default:
+						throw new Exception("\nInvalid Choice\n");
+				}
+				
+			} catch (Exception e) {
+				System.out.println(e.getMessage());
+				pause();
+				
+				continue;
+			}
+		}
+	}
+	
+	
+	public static User validateUserInformation(User userInformation) {
+		return RepositoryLayer.returnUserInformation(userInformation.getUserName());
+	}	
+	
+	public static void employeeChoices(Employee employee) {
+		try {
+			int userChoice = -1;
+			
+			while (userChoice != 0) {
+				userChoice = ControllerLayer.getUserInput(employee);
+				
+				switch (userChoice) {
+					case 0:
+						break;
+						
+					case 1:
+						
+					case 2:
+					case 3:
+					case 4:
+					default: 
+						throw new Exception("\nInvalid Choice\n");
+				}
+				
+			}
+		}
+		catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
+		pause();
+	}
+	
+	public static void customerChoices(Customer customer) {
+		try {
+			int userChoice = -1;
+			
+			while (userChoice != 0) {
+				userChoice = ControllerLayer.getUserInput(customer);
+				
+				switch (userChoice) {
+					case 0:
+						break;
+						
+					case 1:
+						ControllerLayer.viewCars( RepositoryLayer.getLotCars(false) );
+						break;
+						
+					case 2:
+						ControllerLayer.viewCars( RepositoryLayer.getLotCars(true) );
+						break;
+					
+					
+					case 3:						
+						ControllerLayer.viewCars( RepositoryLayer.getOwnedCars(customer) );
+						break;
+						
+					case 4:
+						ControllerLayer.printStatement( RepositoryLayer.getCustomerRemainingPaymentsDue( customer.getUserName() ) );
+						break;
+						
+					default: 
+						throw new Exception("Invalid Choice\n");
+				}
+				
+				
+				
+			}
+		}
+		catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
+		pause();
+	}
+	
+	
+	
+	
+	// tells the program to wait for 10 seconds before proceeding
+	public static void pause() {
+		try {
+			Thread.sleep(2*1000);
+		} catch (InterruptedException e1) {
+			e1.printStackTrace();
+		}
+	}
+}

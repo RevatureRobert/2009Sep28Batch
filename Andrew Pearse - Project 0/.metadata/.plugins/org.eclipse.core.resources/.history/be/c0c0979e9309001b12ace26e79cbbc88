@@ -1,0 +1,15 @@
+package com.dealership;
+
+import java.util.Scanner;
+
+import com.dealership.ui.ui;
+
+public class Driver {
+
+	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
+		ui ui = new ui();
+		ui.startUp(scanner);
+	}
+	
+}

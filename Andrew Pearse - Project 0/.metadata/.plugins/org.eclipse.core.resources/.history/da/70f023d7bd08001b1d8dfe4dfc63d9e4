@@ -1,0 +1,111 @@
+package com.dealership.service;
+
+import com.dealership.controller.ControllerLayer;
+import com.dealership.models.Employee;
+import com.dealership.models.SystemAdmin;
+import com.dealership.models.User;
+import com.dealership.repository.RepositoryLayer;
+import com.dealership.ui.DealershipUI;
+
+public class ServiceLayer {
+
+	public static void runProgram() {
+		while (true) {
+			try {
+				
+				int userChoice = ControllerLayer.getUserInput();
+				
+				switch (userChoice) {
+					case 0:
+						break;
+						
+					case 1:
+						//logs in an gives options based on what account has just been accessed
+						User currentUser = ControllerLayer.getLogInInformation();
+						
+						if ( validateUserInformation( currentUser ) != null ) {
+							
+							//system admin is an employee, so they will have the same functionality plus more
+							if(currentUser instanceof Employee) {
+								
+							}
+							else if (currentUser instanceof SystemAdmin) {
+									
+							}
+							else {
+								
+							}
+							
+						}
+						else {
+							System.out.println("Not a valid user");
+							
+							pause();
+						}
+						
+						
+						
+						
+						
+						break;
+						
+					case 2:
+						DealershipUI.createCustomerAccount();
+						
+						break;
+						
+					case 3:
+//						DealershipUI.createEmployeeAccount();
+						DealershipUI.forgotPassword();
+						
+						break;
+
+					default:
+						throw new Exception("Invalid Choice");
+				}
+				
+				if (userChoice == 0)
+					break;
+				else
+					continue;
+				
+			} catch (Exception e) {
+				System.out.println(e.getMessage());
+				
+				// lets user see the message before it refreshes the screen
+				pause();
+				
+				continue;
+			}
+		}
+	}
+	
+	
+	public static User validateUserInformation(User userInformation) {
+		
+		User checkUser = RepositoryLayer.returnUserInformation(userInformation.getUserName());
+		
+		
+		
+		return checkUser;
+	}
+	
+	
+	
+	public static void employeeChoices(User employee) {
+		
+	}
+	
+	
+	
+	
+	
+	// tells the program to wait for 10 seconds before proceeding
+	public static void pause() {
+		try {
+			Thread.sleep(10*1000);
+		} catch (InterruptedException e1) {
+			e1.printStackTrace();
+		}
+	}
+}

@@ -1,0 +1,27 @@
+package com.dealership.controller;
+
+import java.util.List;
+
+import com.dealership.models.Offer;
+import com.dealership.service.OfferService;
+
+public class OfferController {
+
+	OfferService os;
+	
+	public OfferController() {
+		this(new OfferService());
+	}
+	
+	public OfferController(OfferService os) {
+		this.os = os;
+	}
+	
+	public Offer makeOffer(Offer offer) {
+		return os.makeOffer(offer);
+	}
+	
+	public List<Offer> viewAllPaymentsOnCars(String username){
+		return os.viewAllPaymentsOnCars(username);
+	}
+}

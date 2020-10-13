@@ -1,0 +1,55 @@
+package com.dealership.controller;
+
+import com.dealership.models.Car;
+import com.dealership.models.Customer;
+import com.dealership.models.Employee;
+import com.dealership.models.Statement;
+import com.dealership.models.User;
+import com.dealership.service.ServiceLayer;
+import com.dealership.ui.DealershipUI;
+
+/*
+ * GENERAL NOTES
+ * 
+ * will drive the whole project
+ * 
+ */
+
+public class ControllerLayer {
+
+	public static void main(String[] args) {
+		
+		ServiceLayer.runProgram();
+		
+		
+
+		
+		System.out.println("\nGoodbye!");
+
+	}
+	
+	public static User getLogInInformation() throws Exception {
+		return DealershipUI.logIn();
+	}
+	
+	public static int getUserInput(User user) throws Exception {
+		
+		if (user instanceof Customer)
+			return DealershipUI.customerUiChoices();
+		if (user instanceof Employee)
+			return -1;												//TODO: implement
+		if (user == null)
+			return DealershipUI.startUp();
+		
+		return -1;
+	}
+	
+	public static void viewCars(Car[] cars) {
+		DealershipUI.printCars(cars);
+	}
+	
+	public static void printStatement(Statement statement) {
+		DealershipUI.printStatement(statement);
+	}
+	
+}

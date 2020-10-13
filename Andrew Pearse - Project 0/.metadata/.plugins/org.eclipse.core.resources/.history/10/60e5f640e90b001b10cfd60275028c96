@@ -1,0 +1,192 @@
+package com.dealership.repository;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.LinkedList;
+import java.util.List;
+
+import com.dealership.config.PlainTextConnectionUtil;
+import com.dealership.models.Car;
+import com.dealership.models.Offer;
+
+public class OfferDAO implements DAOBase<Offer, Integer> {
+
+	private UserDAO ud;
+	private CarDAO cd;
+	private Car car;
+	
+	public OfferDAO() {
+		this(new UserDAO(), new CarDAO());
+	}
+	
+	public OfferDAO(UserDAO ud, CarDAO cd) {
+		this.ud = ud;
+		this.cd = cd;
+	}
+	
+	@Override
+	public List<Offer> findAll() {
+		List<Offer> offers = new LinkedList<>();
+		
+		try(Connection conn = PlainTextConnectionUtil.getInstance().getConnection()){
+			String sql = "select * from \"Offer\"";
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			
+			while (rs.next()) {
+				offers.add(new Offer(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getBoolean(4), rs.getBoolean(5), ud.findById(rs.getString(6))));
+			}
+			
+			rs.close();
+			ps.close();
+			
+		} catch (SQLException e) {
+//			e.printStackTrace();
+		}
+		
+		return offers;
+	}
+
+	@Override
+	public Offer findById(Integer i) {
+		Offer offer = null;
+		
+		try (Connection conn = PlainTextConnectionUtil.getInstance().getConnection()){
+			String sql = "select * from \"Offer\" where off_id = ?";
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, i);
+			ResultSet rs = ps.executeQuery();
+			
+			while (rs.next()) {
+				offer = new Offer(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getBoolean(4), rs.getBoolean(5), ud.findById(rs.getString(6)));
+			}
+			
+			ps.close();
+			rs.close();
+			
+		} catch (SQLException e) {
+//			e.printStackTrace();
+		}
+
+		return offer;
+	}
+
+	@Override
+	/**
+	 * if an offer is accepted, take the car off the lot and reject all other offers
+	 * else if an offer is rejected, set rejected to true
+	 */
+	public Offer update(Offer t) {
+		
+		if (t.isAccepted()) {
+			try (Connection conn = PlainTextConnectionUtil.getInstance().getConnection()){
+				
+				String sql = "update \"Offer\" set accepted = true "
+										  	    + "where off_id = ?";
+				
+				PreparedStatement ps = conn.prepareStatement(sql);
+				
+				ps.setInt(1, t.getOfferID());
+				ps.executeUpdate();
+				
+				//t = findById(t.getOfferID());
+				
+				sql = "select cid "
+				    + "from \"Offer\" inner join offers_made using(off_id) "
+				    + "where off_id = ?";
+				
+				ps = conn.prepareStatement(sql);
+				ps.setInt(1, t.getOfferID());
+				ResultSet rs = ps.executeQuery();
+				int cid = 0;
+				
+				while (rs.next()) {
+					cid = rs.getInt(1);
+				}
+				
+				sql = "select off_id "
+					+ "from \"Offer\" inner join offers_made using(off_id) "
+					+ "where accepted != true and cid = ?";
+
+				ps = conn.prepareStatement(sql);
+				ps.setInt(1, cid);
+				rs = ps.executeQuery();
+				
+				List<Integer> offersToReject = new LinkedList<>();
+				
+				while(rs.next()) {
+					offersToReject.add(rs.getInt(1));
+				}
+				
+				sql = "update \"Offer\" set rejected = true where off_id = ?";
+				ps = conn.prepareStatement(sql);
+				
+				while(!offersToReject.isEmpty()){
+					int nextOffer = offersToReject.remove(0);
+					ps.setInt(1, nextOffer);
+					ps.executeUpdate();
+				}
+				
+				sql = "update \"Cars\" set on_lot = false where cid = ?";
+				ps = conn.prepareStatement(sql);
+				ps.setInt(1, cid);
+				ps.executeUpdate();
+				
+				rs.close();
+				ps.close();
+				
+			} catch (SQLException e) {
+//				e.printStackTrace();
+				return null;
+			}
+			
+			return t;
+		}
+		else if (t.isRejected()) {
+			try (Connection conn = PlainTextConnectionUtil.getInstance().getConnection()) {
+				String sql = "update \"Offer\" set rejected = true where off_id = ?";
+				PreparedStatement ps = conn.prepareStatement(sql);
+				
+				ps.setInt(1, t.getOfferID());
+				ps.executeUpdate();
+				
+				ps.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+				return null;
+			}
+		}
+		
+		return null;
+	}
+
+	@Override
+	public Offer create(Offer t) {
+		try (Connection conn = PlainTextConnectionUtil.getInstance().getConnection()){
+			String sql = "insert into \"Offer\" (down_payment, months_left, accepted, rejected, user_name) "
+									 + "values (?,?,?,?,?)";
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, t.getDownPayment());
+			ps.setInt(2, t.getMonthsLeft());
+			ps.setBoolean(3, t.isAccepted());
+			ps.setBoolean(4, t.isRejected());
+			ps.setString(5, t.getOfferer().getUserName());
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+		
+		return null;
+	}
+
+	@Override
+	public int delete(Integer i) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	
+}

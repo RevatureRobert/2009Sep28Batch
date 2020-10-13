@@ -1,0 +1,17 @@
+package com.dealership.models;
+
+public class SystemAdmin extends Employee{
+
+	public SystemAdmin(String userName, String password) {
+		super(userName, password);
+		
+	}
+	
+//	public SystemAdmin() {
+//		userName = "root";
+//		password = "password";
+//		userId = "a100";
+//	}
+
+	
+}

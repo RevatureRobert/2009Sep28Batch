@@ -1,0 +1,161 @@
+2020-10-12 18:06:07 INFO  DealershipUI:76 - User was a Customer
+2020-10-12 18:06:08 INFO  DealershipUI:207 - User returned to main menu.
+2020-10-12 18:06:09 INFO  DealershipUI:67 - User terminated the program.
+2020-10-12 18:51:11 INFO  CarDAO:109 - create() successfully called
+2020-10-12 18:51:11 INFO  DealershipUI:102 - Customer account created successfully.
+2020-10-12 18:51:22 INFO  CarDAO:57 - findById() successfully called
+2020-10-12 18:51:22 INFO  CarDAO:83 - update() successfully called
+2020-10-12 18:51:22 INFO  DealershipUI:116 - Password was successfully changed.
+2020-10-12 18:51:32 INFO  CarDAO:57 - findById() successfully called
+2020-10-12 18:51:32 INFO  DealershipUI:76 - User was a Customer
+2020-10-12 18:51:42 INFO  DealershipUI:237 - User viewed cars they own
+2020-10-12 18:51:42 INFO  CarDAO:38 - findAll() succesfully called
+2020-10-12 18:51:42 INFO  CarDAO:92 - findAllOwned() successfully called
+2020-10-12 18:51:49 INFO  DealershipUI:210 - Printed cars on the lot.
+2020-10-12 18:51:49 INFO  CarDAO:63 - findAllOnLot() successfully called
+2020-10-12 18:51:56 INFO  DealershipUI:223 - User made an offer on a car.
+2020-10-12 18:51:57 INFO  CarDAO:63 - findAllOnLot() successfully called
+2020-10-12 18:52:33 INFO  CarDAO:300 - create() successfully called
+2020-10-12 18:52:38 INFO  DealershipUI:253 - User viewed all payments on cars.
+2020-10-12 18:52:38 INFO  CarDAO:62 - viewAllPaymentsOnCars() successfully called
+2020-10-12 18:52:41 INFO  DealershipUI:210 - Printed cars on the lot.
+2020-10-12 18:52:41 INFO  CarDAO:63 - findAllOnLot() successfully called
+2020-10-12 18:52:44 INFO  DealershipUI:207 - User returned to main menu.
+2020-10-12 18:52:51 INFO  CarDAO:57 - findById() successfully called
+2020-10-12 18:52:51 INFO  DealershipUI:83 - User was an Employee
+2020-10-12 18:53:02 INFO  DealershipUI:339 - User accepted/rejected customer offers.
+2020-10-12 18:53:02 INFO  CarDAO:63 - findAllOnLot() successfully called
+2020-10-12 18:53:07 INFO  CarDAO:91 - viewAllOffersOnACar() successfully called
+2020-10-12 18:53:41 INFO  CarDAO:175 - findById() successfully called
+2020-10-12 18:53:42 INFO  CarDAO:253 - update(accepted) successfully called
+2020-10-12 18:53:51 INFO  DealershipUI:370 - User viewed all payments by customers.
+2020-10-12 18:53:52 INFO  CarDAO:120 - getAllPayments() successfully called
+2020-10-12 18:53:52 INFO  CarDAO:57 - findById() successfully called
+2020-10-12 18:53:52 INFO  CarDAO:57 - findById() successfully called
+2020-10-12 18:53:52 INFO  CarDAO:57 - findById() successfully called
+2020-10-12 18:53:52 INFO  CarDAO:57 - findById() successfully called
+2020-10-12 18:54:03 INFO  DealershipUI:325 - User went back to the main menu.
+2020-10-12 18:54:10 INFO  CarDAO:57 - findById() successfully called
+2020-10-12 18:54:10 INFO  DealershipUI:76 - User was a Customer
+2020-10-12 18:54:13 INFO  DealershipUI:237 - User viewed cars they own
+2020-10-12 18:54:14 INFO  CarDAO:38 - findAll() succesfully called
+2020-10-12 18:54:14 INFO  CarDAO:92 - findAllOwned() successfully called
+2020-10-12 18:54:20 INFO  DealershipUI:253 - User viewed all payments on cars.
+2020-10-12 18:54:20 INFO  CarDAO:62 - viewAllPaymentsOnCars() successfully called
+2020-10-12 18:54:37 INFO  DealershipUI:207 - User returned to main menu.
+2020-10-12 18:54:37 INFO  DealershipUI:67 - User terminated the program.
+2020-10-13 14:31:04 INFO  CarDAO:57 - findById() successfully called
+2020-10-13 14:31:04 INFO  DealershipUI:83 - User was an Employee
+2020-10-13 14:31:15 INFO  DealershipUI:328 - User added a car to the lot.
+2020-10-13 14:31:39 INFO  CarDAO:57 - findById() successfully called
+2020-10-13 14:31:39 INFO  DealershipUI:83 - User was an Employee
+2020-10-13 14:31:40 INFO  DealershipUI:328 - User added a car to the lot.
+2020-10-13 14:31:59 INFO  CarDAO:182 - create() successfully called
+2020-10-13 14:32:03 INFO  DealershipUI:328 - User added a car to the lot.
+2020-10-13 14:32:21 INFO  CarDAO:182 - create() successfully called
+2020-10-13 14:32:23 INFO  DealershipUI:328 - User added a car to the lot.
+2020-10-13 14:32:41 INFO  CarDAO:182 - create() successfully called
+2020-10-13 14:32:44 INFO  DealershipUI:328 - User added a car to the lot.
+2020-10-13 14:33:04 INFO  CarDAO:182 - create() successfully called
+2020-10-13 14:33:09 INFO  DealershipUI:325 - User went back to the main menu.
+2020-10-13 14:33:15 INFO  CarDAO:57 - findById() successfully called
+2020-10-13 14:33:15 WARN  DealershipUI:94 - Account did not exist
+2020-10-13 14:33:23 INFO  CarDAO:57 - findById() successfully called
+2020-10-13 14:33:23 INFO  DealershipUI:76 - User was a Customer
+2020-10-13 14:33:34 INFO  DealershipUI:210 - Printed cars on the lot.
+2020-10-13 14:33:34 INFO  CarDAO:63 - findAllOnLot() successfully called
+2020-10-13 14:33:44 INFO  DealershipUI:223 - User made an offer on a car.
+2020-10-13 14:33:45 INFO  CarDAO:63 - findAllOnLot() successfully called
+2020-10-13 14:33:57 INFO  CarDAO:300 - create() successfully called
+2020-10-13 14:34:11 INFO  DealershipUI:237 - User viewed cars they own
+2020-10-13 14:34:11 INFO  CarDAO:38 - findAll() succesfully called
+2020-10-13 14:34:11 INFO  CarDAO:92 - findAllOwned() successfully called
+2020-10-13 14:34:14 INFO  DealershipUI:253 - User viewed all payments on cars.
+2020-10-13 14:34:14 INFO  CarDAO:62 - viewAllPaymentsOnCars() successfully called
+2020-10-13 14:34:33 INFO  DealershipUI:207 - User returned to main menu.
+2020-10-13 14:34:40 INFO  CarDAO:57 - findById() successfully called
+2020-10-13 14:34:40 WARN  DealershipUI:94 - Account did not exist
+2020-10-13 14:34:47 INFO  CarDAO:57 - findById() successfully called
+2020-10-13 14:34:47 INFO  DealershipUI:76 - User was a Customer
+2020-10-13 14:34:53 INFO  DealershipUI:223 - User made an offer on a car.
+2020-10-13 14:34:53 INFO  CarDAO:63 - findAllOnLot() successfully called
+2020-10-13 14:35:15 INFO  CarDAO:300 - create() successfully called
+2020-10-13 14:35:24 INFO  DealershipUI:207 - User returned to main menu.
+2020-10-13 14:35:30 INFO  CarDAO:57 - findById() successfully called
+2020-10-13 14:35:30 INFO  DealershipUI:76 - User was a Customer
+2020-10-13 14:35:34 INFO  DealershipUI:223 - User made an offer on a car.
+2020-10-13 14:35:34 INFO  CarDAO:63 - findAllOnLot() successfully called
+2020-10-13 14:36:00 INFO  CarDAO:300 - create() successfully called
+2020-10-13 14:36:02 ERROR DealershipUI:274 - Invalid input.
+java.util.InputMismatchException
+	at java.base/java.util.Scanner.throwFor(Scanner.java:939)
+	at java.base/java.util.Scanner.next(Scanner.java:1594)
+	at java.base/java.util.Scanner.nextInt(Scanner.java:2258)
+	at java.base/java.util.Scanner.nextInt(Scanner.java:2212)
+	at com.dealership.ui.DealershipUI.customerUIChoices(DealershipUI.java:201)
+	at com.dealership.ui.DealershipUI.customerUIChoices(DealershipUI.java:234)
+	at com.dealership.ui.DealershipUI.startUp(DealershipUI.java:79)
+	at com.dealership.ui.DealershipUI.startUp(DealershipUI.java:91)
+	at com.dealership.ui.DealershipUI.startUp(DealershipUI.java:97)
+	at com.dealership.ui.DealershipUI.startUp(DealershipUI.java:91)
+	at com.dealership.ui.DealershipUI.startUp(DealershipUI.java:97)
+	at com.dealership.ui.DealershipUI.startUp(DealershipUI.java:91)
+	at com.dealership.Driver.main(Driver.java:12)
+2020-10-13 14:36:06 ERROR DealershipUI:274 - Invalid input.
+java.util.InputMismatchException
+	at com.dealership.ui.DealershipUI.customerUIChoices(DealershipUI.java:270)
+	at com.dealership.ui.DealershipUI.customerUIChoices(DealershipUI.java:277)
+	at com.dealership.ui.DealershipUI.customerUIChoices(DealershipUI.java:234)
+	at com.dealership.ui.DealershipUI.startUp(DealershipUI.java:79)
+	at com.dealership.ui.DealershipUI.startUp(DealershipUI.java:91)
+	at com.dealership.ui.DealershipUI.startUp(DealershipUI.java:97)
+	at com.dealership.ui.DealershipUI.startUp(DealershipUI.java:91)
+	at com.dealership.ui.DealershipUI.startUp(DealershipUI.java:97)
+	at com.dealership.ui.DealershipUI.startUp(DealershipUI.java:91)
+	at com.dealership.Driver.main(Driver.java:12)
+2020-10-13 14:36:10 INFO  DealershipUI:207 - User returned to main menu.
+2020-10-13 14:36:12 ERROR DealershipUI:131 - Invalid input.
+java.util.InputMismatchException
+	at java.base/java.util.Scanner.throwFor(Scanner.java:939)
+	at java.base/java.util.Scanner.next(Scanner.java:1594)
+	at java.base/java.util.Scanner.nextInt(Scanner.java:2258)
+	at java.base/java.util.Scanner.nextInt(Scanner.java:2212)
+	at com.dealership.ui.DealershipUI.startUp(DealershipUI.java:60)
+	at com.dealership.ui.DealershipUI.startUp(DealershipUI.java:91)
+	at com.dealership.ui.DealershipUI.startUp(DealershipUI.java:91)
+	at com.dealership.ui.DealershipUI.startUp(DealershipUI.java:97)
+	at com.dealership.ui.DealershipUI.startUp(DealershipUI.java:91)
+	at com.dealership.ui.DealershipUI.startUp(DealershipUI.java:97)
+	at com.dealership.ui.DealershipUI.startUp(DealershipUI.java:91)
+	at com.dealership.Driver.main(Driver.java:12)
+2020-10-13 14:36:16 INFO  DealershipUI:67 - User terminated the program.
+2020-10-13 14:36:29 INFO  CarDAO:57 - findById() successfully called
+2020-10-13 14:36:29 INFO  DealershipUI:83 - User was an Employee
+2020-10-13 14:36:35 INFO  DealershipUI:339 - User accepted/rejected customer offers.
+2020-10-13 14:36:36 INFO  CarDAO:63 - findAllOnLot() successfully called
+2020-10-13 14:36:40 INFO  CarDAO:91 - viewAllOffersOnACar() successfully called
+2020-10-13 14:38:56 INFO  CarDAO:57 - findById() successfully called
+2020-10-13 14:38:56 INFO  DealershipUI:83 - User was an Employee
+2020-10-13 14:38:58 INFO  DealershipUI:339 - User accepted/rejected customer offers.
+2020-10-13 14:38:59 INFO  CarDAO:63 - findAllOnLot() successfully called
+2020-10-13 14:39:00 INFO  CarDAO:91 - viewAllOffersOnACar() successfully called
+2020-10-13 14:39:19 INFO  DealershipUI:325 - User went back to the main menu.
+2020-10-13 14:39:21 INFO  DealershipUI:67 - User terminated the program.
+2020-10-13 14:39:29 INFO  CarDAO:57 - findById() successfully called
+2020-10-13 14:39:29 WARN  DealershipUI:94 - Account did not exist
+2020-10-13 14:39:36 INFO  CarDAO:57 - findById() successfully called
+2020-10-13 14:39:36 WARN  DealershipUI:94 - Account did not exist
+2020-10-13 14:39:41 INFO  CarDAO:57 - findById() successfully called
+2020-10-13 14:39:41 INFO  DealershipUI:83 - User was an Employee
+2020-10-13 14:39:43 INFO  DealershipUI:339 - User accepted/rejected customer offers.
+2020-10-13 14:39:43 INFO  CarDAO:63 - findAllOnLot() successfully called
+2020-10-13 14:39:45 INFO  CarDAO:91 - viewAllOffersOnACar() successfully called
+2020-10-13 14:39:50 INFO  DealershipUI:377 - User viewed all payments by customers.
+2020-10-13 14:39:51 INFO  CarDAO:120 - getAllPayments() successfully called
+2020-10-13 14:39:51 INFO  CarDAO:57 - findById() successfully called
+2020-10-13 14:39:51 INFO  CarDAO:57 - findById() successfully called
+2020-10-13 14:39:51 INFO  CarDAO:57 - findById() successfully called
+2020-10-13 14:39:52 INFO  CarDAO:57 - findById() successfully called
+2020-10-13 14:40:16 INFO  DealershipUI:339 - User accepted/rejected customer offers.
+2020-10-13 14:40:22 INFO  CarDAO:63 - findAllOnLot() successfully called
+2020-10-13 14:40:29 INFO  CarDAO:91 - viewAllOffersOnACar() successfully called

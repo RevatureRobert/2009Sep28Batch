@@ -1,0 +1,64 @@
+package com.dealership.repository;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.LinkedList;
+import java.util.List;
+
+import com.dealership.config.PlainTextConnectionUtil;
+import com.dealership.models.Car;
+import com.dealership.models.User;
+
+public class CarDAO implements DAOBase<Car, Integer> {
+
+	@Override
+	public List<Car> findAll() {
+		List<Car> cars = new LinkedList<>();
+		
+		try(Connection conn = PlainTextConnectionUtil.getInstance().getConnection()){
+			String sql = "select * from \"Cars\"";
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			
+			while (rs.next()) {
+				cars.add(new Car(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5)));
+			}
+			
+			rs.close();
+			ps.close();
+			
+		} catch (SQLException e) {
+//			e.printStackTrace();
+		}
+		
+		return users;
+	}
+
+	@Override
+	public Car findById(Integer i) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Car update(Car t) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Car create(Car t) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int delete(Integer i) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	
+}

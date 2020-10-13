@@ -1,0 +1,56 @@
+package com.dealership.models;
+
+public class CustomerStatement {
+
+	private int total;
+	private int monthsLeft;
+	private int[] payPerMonth;
+	private String[] datesPaid;
+	
+	public CustomerStatement(int total, int monthsLeft, int[] payPerMonth, String[] datesPaid) {
+		super();
+		this.total = total;
+		this.monthsLeft = monthsLeft;
+		this.payPerMonth = payPerMonth;
+		this.datesPaid = datesPaid;
+	}
+
+
+	public int getTotal() {
+		return total;
+	}
+
+
+	public void setTotal(int total) {
+		this.total = total;
+	}
+
+
+	public int getMonthsLeft() {
+		return monthsLeft;
+	}
+
+
+	public int[] getPayPerMonth() {
+		return payPerMonth;
+	}
+
+
+	public void setPayPerMonth(int[] payPerMonth) {
+		this.payPerMonth = payPerMonth;
+	}
+
+
+	public String[] getDatesPaid() {
+		return datesPaid;
+	}
+
+
+	public void setDatesPaid(String[] datesPaid) {
+		this.datesPaid = datesPaid;
+	}
+	
+	public double calculateMontlyPayments() {
+		return Math.ceil((double) total / monthsLeft);
+	}
+}

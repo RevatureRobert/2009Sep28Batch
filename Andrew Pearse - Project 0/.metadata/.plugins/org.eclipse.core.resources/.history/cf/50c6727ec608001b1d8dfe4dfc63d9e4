@@ -1,0 +1,64 @@
+package com.dealership.models;
+
+public class Car {
+
+	private String make;
+	private String model;
+	private int year;
+	private int price;
+//	private int offer;
+
+	public Car(String make, String model, int price, int year/*, int offer*/) {
+		this.make = make;
+		this.model = model;
+		this.price = price;
+		this.year = year;
+//		this.offer = offer;
+	}
+
+	public String getMake() {
+		return make;
+	}
+
+	public void setMake(String make) {
+		this.make = make;
+	}
+
+	public String getModel() {
+		return model;
+	}
+
+	public void setModel(String model) {
+		this.model = model;
+	}
+
+	public int getPrice() {
+		return price;
+	}
+
+	public void setPrice(int price) {
+		this.price = price;
+	}
+	
+	public int getYear() {
+		return year;
+	}
+
+	public void setYear(int year) {
+		this.year = year;
+	}
+
+	@Override
+	public String toString() {
+		return year + make +  model + "\nprice=" + price + "\n";
+	}
+
+//	public int getOffer() {
+//		return offer;
+//	}
+//
+//	public void setOffer(int offer) {
+//		this.offer = offer;
+//	}
+	
+}

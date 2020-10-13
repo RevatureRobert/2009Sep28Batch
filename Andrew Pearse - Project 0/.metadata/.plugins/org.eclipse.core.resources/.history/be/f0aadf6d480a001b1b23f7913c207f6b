@@ -1,0 +1,59 @@
+package com.dealership.repository;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.LinkedList;
+import java.util.List;
+
+import com.dealership.config.PlainTextConnectionUtil;
+import com.dealership.models.User;
+
+public class UserDAO implements DAOBase<User, String>{
+
+	public List<User> findAll() {
+		List<User> users = new LinkedList<>();
+		
+		try(Connection conn = PlainTextConnectionUtil.getInstance().getConnection()){
+			String sql = "select * from \"User\"";
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			
+			while (rs.next()) {
+				users.add(new User(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5)));
+			}
+			
+			rs.close();
+			ps.close();
+			
+		} catch (SQLException e) {
+//			e.printStackTrace();
+			System.out.println("BREH");
+			return null;
+		}
+		
+		return users;
+	}
+
+	public User findById(String i) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public User update(User t) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public User create(User t) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public int delete(String i) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+}

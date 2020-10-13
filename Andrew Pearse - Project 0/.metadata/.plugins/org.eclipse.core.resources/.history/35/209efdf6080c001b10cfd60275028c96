@@ -1,0 +1,21 @@
+package com.dealership.service;
+
+import com.dealership.models.Offer;
+import com.dealership.repository.OfferDAO;
+
+public class OfferService {
+
+	OfferDAO od;
+	
+	public OfferService() {
+		this(new OfferDAO());
+	}
+	
+	public OfferService(OfferDAO od) {
+		this.od = od;
+	}
+	
+	public Offer makeOffer(Offer offer) {
+		return od.create(offer);
+	}
+}

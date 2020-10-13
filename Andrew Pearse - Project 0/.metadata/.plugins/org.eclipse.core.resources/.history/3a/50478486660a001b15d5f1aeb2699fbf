@@ -1,0 +1,60 @@
+package com.dealership.controller;
+
+import com.dealership.models.User;
+import com.dealership.service.UserService;
+
+public class UserController {
+
+	private UserService service;
+	
+	public UserController() {
+		this(new UserService());
+	}
+	
+	public UserController(UserService service) {
+		super();
+		this.service = service;
+	}
+	
+	public User validateUserInformation(User user) {
+		return ;
+	}
+	
+	public boolean createCustomerAccount(User customer) {
+		//TODO
+		return false;
+	}
+	
+//	public User getLogInInformation() throws Exception {
+//		return ui.logIn();
+//	}
+	
+//	public int getUserInput(User user) throws Exception {
+//		
+//		if (user instanceof Customer)
+//			return ui.customerUIChoices();
+//		if (user instanceof Employee)
+//			return ui.employeeUIChoices();
+//		if (user == null)
+//			return ui.startUp();
+//		
+//		return -1;
+//	}
+	
+//	public Customer getNewCustomerAccount() {
+//		return ui.createCustomerAccount();
+//	}
+	
+//	public int getOffer() {
+//		return ui.makeOffer();
+//	}
+//	
+//	public void viewCars(Car[] cars) {
+//		ui.printCars(cars);
+//	}
+//	
+//	public void printStatement(CustomerStatement statement) {
+//		ui.printStatement(statement);
+//	}
+	
+}

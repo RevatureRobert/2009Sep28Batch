@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="com.dealership.models.SystemAdmin"/>
+    <fullyQualifiedTypeName name="com.dealership.models.Statement"/>
+    <fullyQualifiedTypeName name="com.dealership.controller.ControllerLayer"/>
+    <fullyQualifiedTypeName name="com.dealership.ui.DealershipUI"/>
+    <fullyQualifiedTypeName name="com.dealership.service.ServiceLayer"/>
+    <fullyQualifiedTypeName name="com.dealership.repository.RepositoryLayer"/>
+    <fullyQualifiedTypeName name="com.dealership.service.UserService"/>
+    <fullyQualifiedTypeName name="com.dealership.repository.UserDAO"/>
+    <fullyQualifiedTypeName name="com.dealership.models.User"/>
+    <fullyQualifiedTypeName name="com.dealership.service.CarService"/>
+    <fullyQualifiedTypeName name="com.dealership.controller.CarController"/>
+    <fullyQualifiedTypeName name="java.sql.CallableStatement"/>
+    <fullyQualifiedTypeName name="com.dealership.service.OfferService"/>
+    <fullyQualifiedTypeName name="com.dealership.models.Offer"/>
+    <fullyQualifiedTypeName name="com.dealership.config.PlainTextConnectionUtil"/>
+    <fullyQualifiedTypeName name="java.lang.System"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="java.lang.IllegalAccessError"/>
+    <fullyQualifiedTypeName name="com.dealership.controller.OfferController"/>
+    <fullyQualifiedTypeName name="java.lang.IllegalArgumentException"/>
+    <fullyQualifiedTypeName name="java.sql.Connection"/>
+    <fullyQualifiedTypeName name="com.dealership.config.EnvironmentConnectionUtil"/>
+    <fullyQualifiedTypeName name="java.sql.SQLException"/>
+    <fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
+    <fullyQualifiedTypeName name="java.sql.ResultSet"/>
+    <fullyQualifiedTypeName name="java.util.InputMismatchException"/>
+    <fullyQualifiedTypeName name="org.apache.log4j.Logger"/>
+</qualifiedTypeNameHistroy>
