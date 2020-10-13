@@ -11,8 +11,8 @@ public class PlainTextConnectionUtil {
 		// default schema is public, this can be changed
 		private final String url = "jdbc:postgresql://postgresql-class.cks98gmxels6.us-west-1.rds.amazonaws.com"
 				+ ":5432/postgres?currentSchema=jdbc_schema";
-		private final String username = "jdbc_worker";
-		private final String password = "wasspord";
+		private final String username = "bank_user";
+		private final String password = "password";
 
 		// to make a singleton
 		private static PlainTextConnectionUtil instance;

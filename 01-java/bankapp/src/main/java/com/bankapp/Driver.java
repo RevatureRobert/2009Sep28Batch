@@ -37,16 +37,21 @@ public class Driver {
 		//pull user from database and show appropriate menu
 		UserAssign(scanner);
 	}
-	static void NewAccount(Scanner scanner){		//new account email, username, and password are stored into the database 
+	static String NewAccount(Scanner scanner){		//new account email, username, and password are stored into the database 
 		System.out.println("Email:");
 		String email = scanner.next();
-		System.out.println("Username:");
-		String username = scanner.next();
+		Username(scanner);
 		Password(scanner);
 		//store user in database
+		return email;
 		}
+	static String Username(Scanner scanner){
+		System.out.println("Username:");
+		String username = scanner.next();
+		return username;
+	}
 	
-	static void Password(Scanner scanner){		//scanner to assign the password to the account
+	static String Password(Scanner scanner){		//scanner to assign the password to the account
 		System.out.println("Passowrd:");
 		String password = scanner.next();
 		System.out.println("Confirm Password:");
@@ -62,21 +67,25 @@ public class Driver {
 			System.out.println("Passwords are not the same");
 			Password(scanner);
 		}
+		return password;
 	}
 	static void UserAssign(Scanner scanner) {
 		System.out.println("Are you a: \n1. user\n2. employee\n3. customer");
 		int role = scanner.nextInt();
 		if(role == 1) {
 			System.out.println("Role set to User");
-			System.out.println(um.UserMenu(scanner));
+			um.UserMenu(scanner);
+			UserAssign(scanner);
 			}
 		if (role == 2) {
-			System.out.println("Role set to Employee\n");
+			System.out.println("Role set to Employee");
 			System.out.println(em.EmployeeMenu(scanner));
+			UserAssign(scanner);
 		}
 		if (role == 3) {
 			System.out.println("Role set to Customer");
-			System.out.println(cm.CustomerMenu(scanner));
+			cm.CustomerMenu(scanner);
+			UserAssign(scanner);
 		}
 	}
 }

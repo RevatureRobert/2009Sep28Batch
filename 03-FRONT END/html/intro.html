@@ -1,0 +1,167 @@
+<!-- this is a comment in html-->
+<!--
+    
+    what is html
+        defines the structure for a web page 
+        the browser will interpret the html and display
+            it accordingly on the screen.
+        hypertext markup language
+        we will be using html5
+    in html we have tags
+        the tags are standardized by w3c
+            world wide web consortium
+            opening tag -------> <tagName>
+<!--            closing tag -------> </tagName>
+<!--            self closing tag --> <!--</tagName/> or just <tagName>-->
+                
+<!--    a few important tags in html that are needed by the browser 
+            doctype will tell the browser what type of document it is
+            html tag is the root tag of the document 
+            head tag provides metadata for the document
+-->
+
+<!--for the browser to know what type of document it is-->
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>this is our title</title>
+        <!--internal styling-->
+       <!-- <style>
+            h1{
+                color:red;
+                font-family: cursive;
+            }
+        </style> -->
+        <!--absolute path-->
+        <!--<link rel="stylesheet" href="" type="text/css"> -->
+        <!--relative path-->
+        <link rel="stylesheet" href="../css/index.css" type="text/css">
+    </head>
+    <!--what will be displayed-->
+    <body>
+        <!--heading tags, h1 is the bigest doing down to 6-->
+        <!--inline styling-->
+        <h1 style="color:red; font-family: cursive;">
+            this is the first heading tag
+        </h1>
+        <h1 class="odd">hey</h1>
+        <h2 id="evenId1">this is the second</h2>
+        <h3 class="odd">this is the third</h3>
+        <h4>this is the fourth</h4>
+        <h5 class="odd">this is the fifth</h5>
+        <h6>this is the sixth</h6>
+
+        <!--paragraph-->
+        <p>this is a paragraph</p>
+        <p>this is another paragraph</p>
+
+        <!--
+            inline and block elements
+                block elements allocate the width of the page for the content
+                    examples: p, h1-6, div, etc...
+                inline elements allocate only enough space as is needed for the content
+                    span, textarea, b, i, etc...
+        -->
+        <span>this is a span, we can edit the content as needed for styling</span>
+        <b>this is a bold tag</b>
+        <br> <!--this is a line break-->
+        <i>this is italicized</i>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <!--tagName*number will auto generate that many tags for you-->
+
+        <!--lists-->
+        <!--bulleted list (unordered)-->
+        <ul title="This is a tooltip for the entire list">
+            this is the name of the list
+            <li title="This is a tooltip for the list item">first bullet</li>
+            <li>second bullet</li>
+            <li>third bullet</li>
+        </ul>
+
+        <!--numbered list (ordered)-->
+        <ol>
+            the name of our list
+            <li>first</li>
+            <li>second</li>
+            <li>third</li>
+        </ol>
+        <!--the dictionary list-->
+        <dl>
+            <dt>aardvark</dt>
+            <dd>an animal with more a's than k's</dd>
+        </dl>
+        <!--
+            attributes
+                a property that can change the behavior or
+                    appearance of an element.
+        -->
+
+        <!--tables-->
+        <table>
+            <thread>
+            <tr>
+                <th>name</th>
+                <th>age</th>
+                <th>phone</th>
+            </tr>
+        </thread>
+        <tbody>
+            <td>anthony</td>
+            <td>44</td>
+            <td>555-555-5555</td>
+        </tbody>
+        <tbody>
+            <td>samantha</td>
+            <td>23</td>
+            <td>444-444-4444</td>
+        </tbody>
+        </table>
+
+        <!--forms-->
+        <!--action tells the browser where to send the form data
+            method tells the browser how to send it (http method)-->
+        <form action="some.url" method="POST">
+            <!--input fields are inline elements, we reference them
+                by name on the server side to get their values-->
+            <input type="text" placeholder="username" name="username">
+            <input type="password" placeholder="password" name="password">
+            <input type="file" name="somefile" />
+            <input type="date" name="date">
+            <select name="favorite places">
+                <option value="null">pick yoout favorite place</option>
+                <option value="tokyo">tokyo</option>
+            </select>
+        </form>
+
+        <!--
+            different types of attribues
+                local
+                    attributes that are only available to some elements
+                        action, method, src, href, etc...
+                global
+                    attributes that all elements can use
+                        id, class, style, title, etc...
+
+        -->
+
+        <!--linking pages-->
+        <a href="https://google.com">click here for a search engine</a>
+        <img src="https://i2.wp.com/sociallover.net/wp-content/uploads/2017/08/welcome-images-with-hd.jpg">
+        <img src="https://cdncontribute.geeksforgeeks.org/wp-content/uploads/box-model-1.png">
+
+        <!--
+            href ------------------ > resource
+            src < ------------------- resource
+        -->
+
+        <div>
+            <span>this is a span inside a div</span>
+        </div>
+        <span>this is a span outside of a div</span>
+    </body>
+</html>

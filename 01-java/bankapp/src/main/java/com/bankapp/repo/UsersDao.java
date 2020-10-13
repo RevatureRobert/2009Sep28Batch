@@ -6,9 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
+import com.bankapp.config.PlainTextConnectionUtil;
 import com.bankapp.model.Users;
-import com.revature.config.PlainTextConnectionUtil;
-import com.revature.model.Circus;
 
 public class UsersDao {
 	@Override
@@ -41,7 +40,7 @@ public class UsersDao {
 	}
 
 	@Override
-	public Users create(Circus t) {
+	public Users create(Users t) {
 		try(Connection conn = PlainTextConnectionUtil.getInstance().getConnection()){
 			String sql = "insert into users values (?,?,?)";
 			PreparedStatement ps = conn.prepareStatement(sql);

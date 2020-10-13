@@ -3,7 +3,7 @@ package com.bankapp.ui;
 import java.util.Scanner;
 
 public class CustomerMenu {
-	static void CustomerMenu(Scanner scanner) {
+	public String CustomerMenu(Scanner scanner) {
 		System.out.println("What would you like to do?\n1. Apply for a new bank account\n2. View account Balance\n3. View transfers\n4. Transfer");
 		int action1 = scanner.nextInt();
 		if(action1 == 1) {
