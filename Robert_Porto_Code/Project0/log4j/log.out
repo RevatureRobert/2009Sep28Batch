@@ -1,0 +1,95 @@
+Failed login attempt: Cannot invoke "com.project0.model.Customer.getName()" because "customer" is null
+Failed login attempt: Cannot invoke "com.project0.model.Employee.getName()" because "employee" is null
+Creating a new car..
+Failed customer login attempt: Cannot invoke "com.project0.model.Customer.getName()" because "customer" is null
+Creating a new car..
+car created1999 ToyotaCorola
+Error while creating bid: ERROR: permission denied for table bid
+Bid createdcom.project0.model.Bid@3527942a
+Failed customer login attempt: Cannot invoke "com.project0.model.Customer.getName()" because "customer" is null
+Error while creating bid: ERROR: insert or update on table "bid" violates foreign key constraint "bid_car_id_fkey"
+  Detail: Key (car_id)=(5) is not present in table "car".
+Error while creating bid: ERROR: insert or update on table "bid" violates foreign key constraint "bid_car_id_fkey"
+  Detail: Key (car_id)=(5) is not present in table "car".
+Error while creating bid: ERROR: insert or update on table "bid" violates foreign key constraint "bid_car_id_fkey"
+  Detail: Key (car_id)=(5) is not present in table "car".
+Error while creating bid: ERROR: insert or update on table "bid" violates foreign key constraint "bid_car_id_fkey"
+  Detail: Key (car_id)=(5) is not present in table "car".
+Error while creating bid: ERROR: insert or update on table "bid" violates foreign key constraint "bid_car_id_fkey"
+  Detail: Key (car_id)=(5) is not present in table "car".
+Error while creating bid: ERROR: insert or update on table "bid" violates foreign key constraint "bid_car_id_fkey"
+  Detail: Key (car_id)=(5) is not present in table "car".
+Error while creating bid: ERROR: insert or update on table "bid" violates foreign key constraint "bid_car_id_fkey"
+  Detail: Key (car_id)=(5) is not present in table "car".
+Error while creating bid: ERROR: insert or update on table "bid" violates foreign key constraint "bid_car_id_fkey"
+  Detail: Key (car_id)=(5) is not present in table "car".
+Error while creating bid: ERROR: insert or update on table "bid" violates foreign key constraint "bid_car_id_fkey"
+  Detail: Key (car_id)=(5) is not present in table "car".
+Error while creating bid: ERROR: permission denied for table bid
+Error while creating bid: ERROR: permission denied for sequence bid_id_seq
+Error while creating bid: ERROR: permission denied for sequence bid_id_seq
+Bid createdcom.project0.model.Bid@5d534f5d
+Bid createdcom.project0.model.Bid@f78a47e
+Bid createdcom.project0.model.Bid@f78a47e
+Failed customer login attempt: Cannot invoke "com.project0.model.Customer.getName()" because "customer" is null
+Bid createdcom.project0.model.Bid@f78a47e
+Bid createdcom.project0.model.Bid@f78a47e
+Bid createdcom.project0.model.Bid@3f6f6701
+Bid createdcom.project0.model.Bid@f78a47e
+Bid createdcom.project0.model.Bid@342c38f8
+Failed customer login attempt: Cannot invoke "com.project0.model.Customer.getName()" because "customer" is null
+Error while creating bid: ERROR: insert or update on table "bid" violates foreign key constraint "bid_car_id_fkey"
+  Detail: Key (car_id)=(15) is not present in table "car".
+Error while creating bid: ERROR: insert or update on table "bid" violates foreign key constraint "bid_car_id_fkey"
+  Detail: Key (car_id)=(15) is not present in table "car".
+Bid createdcom.project0.model.Bid@f78a47e
+Creating a new car..
+car created234 234234
+Creating a new car..
+car created1999 JujuShemp
+Creating a new car..
+car created123 123123
+Creating a new car..
+Creating a new car..
+Creating a new car..
+Creating a new car..
+Creating a new car..
+Creating a new car..
+Creating a new car..
+car created1991 poopdoodoo
+car created-1 Poopdoo
+car created-1 aasdfasdf
+Creating a new car..
+Creating a new car..
+car created1999 aaabbb
+car created0 aaabbb
+Creating a new car..
+Creating a new car..
+car created1999 aaabbb
+Failed employee login attempt: Cannot invoke "com.project0.model.Bid.getCarId()" because "b" is null
+Failed employee login attempt: Cannot invoke "com.project0.model.Bid.getCarId()" because "b" is null
+Bid createdcom.project0.model.Bid@644baf4a
+Bid createdcom.project0.model.Bid@644baf4a
+Creating a new car..
+car created2005 VolkswagonBeetle
+Bid createdcom.project0.model.Bid@7526515b
+Creating a new car..
+Creating a new car..
+car created1234 qqqaaa 100$
+Creating a new car..
+Creating a new car..
+car created5000 FordF150 0$
+Creating a new car..
+car created2000 fordtaurus 0$
+Creating a new car..
+car created1999 werrew 5000$
+Bid createdcom.project0.model.Bid@7d0b7e3c
+Bid createdcom.project0.model.Bid@15bb5034
+Creating a new car..
+car created2005 FordF150 1500$
+Creating a new car..
+car created2008 MazdaProtege 2000$
+Creating a new car..
+car created2020 Boeing747 1000000$
+Bid createdcom.project0.model.Bid@76a4ebf2
+Bid createdcom.project0.model.Bid@15bb5034
