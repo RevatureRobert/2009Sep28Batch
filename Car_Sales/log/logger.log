@@ -1,0 +1,6 @@
+2020-10-13 16:53:38,318  INFO [main] - com.carsales.controller.UserController.addUser 26 - New User Created: mattttt
+2020-10-13 16:54:55,845  INFO [main] - com.carsales.controller.UserController.addUser 26 - New User Created: 
+2020-10-13 18:08:36,518  INFO [main] - com.carsales.controller.UserController.addUser 26 - New User Created: Rian
+2020-10-13 18:12:23,281  INFO [main] - com.carsales.controller.UserController.addUser 26 - New User Created: Rian2
+2020-10-13 18:41:24,776  INFO [main] - com.carsales.controller.UserController.addUser 26 - New User Created: fake
+2020-10-13 18:45:16,274  INFO [main] - com.carsales.controller.UserController.addUser 26 - New User Created: matt
