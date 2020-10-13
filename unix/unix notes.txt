@@ -1,0 +1,44 @@
+cmod
+change file or directory permissions
+-R recursive (change the permissions on a directory and all its children
+0 = no permissions
+1 = read
+2 = write
+3 = read & write
+4 = execute
+5 = read & execute
+6 = write & execute
+7 = read, write & execute
+
+first number is for the user
+second number is for the group
+third number is for the system
+example: chmod 777 basic.sh -> gives all permissions to all users to basic.sh
+or: chmod u=rwx, go=r basic.sh -> user has read, write and execute; groups and others have read permissions
+
+ls
+lists the children
+
+cd
+change directory
+
+cat
+print the contents
+
+grep
+search for a pattern
+
+man
+print the manual for a command
+
+mkdir
+make a directory
+
+touch
+create a file
+
+vim or nano
+command line file editor
+
+echo
+repeat a line
