@@ -5,8 +5,10 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.ListIterator;
 import java.util.Map;
 import java.util.PriorityQueue;
 import java.util.Set;
@@ -32,7 +34,7 @@ import java.util.TreeSet;
  * 								^				  ^							^								^
  * 								|				  |							|								|
  * 					ArrayList(class)		HashSet(class)				PriorityQueue(class)			HashMap (class)
- * 					LinkedList(class)		TreeSet(class)				Dequeue(interface)				TreeMap(class)
+ * 					LinkedList(class)		TreeSet(class)				Deque(interface)				TreeMap(class)
  * 					Stack(class)
  * 
  * 
@@ -48,13 +50,14 @@ import java.util.TreeSet;
  * Sets don't keep the order and don't allow duplicates.
  * 		HashSet is ordered most efficiently
  * 		TreeSet is ordered using Comparable.  
- * Priority Q: LIFO: last in first out. 
+ * PriorityQueue: LIFO: last in first out. 
  * Dequeue: FIFO: First in First Out.
+ * 
  * 
  * Map's keys can be turned into a set. 
  * HashMap doesn't order the keys, but is faster O(1). 
  * TreeMap orders the keys in ascending order, but is a little slower O(Log(n))
- * 
+ * EnumMap
  * 
  */
 
@@ -87,7 +90,7 @@ public class CollectionsExample {
 	strings.add(0,"sofff");
 	System.out.println(strings);
 	System.out.println(strings.get(0));
-	strings.clear();
+//	strings.clear();
 	System.out.println(strings);
 	
 	//Sets
@@ -140,14 +143,14 @@ public class CollectionsExample {
 	
 	//TreeMap
 	//		Like TreeSet is going to organize the elements according to their natural sorting order
-	Map<String,String> dict = new TreeMap<>();
-	dict.put("hammer", "a blunt object");
-	dict.put("aardvark",  "an animal");
-	dict.put("car", "drives itself sometimes");
-	System.out.println(dict);
-	Set<String> keys = dict.keySet();
+	Map<String,String> dictionary = new TreeMap<>();
+	dictionary.put("hammer", "a blunt object");
+	dictionary.put("aardvark",  "an animal");
+	dictionary.put("car", "drives itself sometimes");
+	System.out.println(dictionary);
+	Set<String> keys = dictionary.keySet();
 	System.out.println(keys);
-	Collection<String> values = dict.values();
+	Collection<String> values = dictionary.values();
 	System.out.println(values);
 	System.out.println(values.getClass());
 	
@@ -161,11 +164,46 @@ public class CollectionsExample {
 	Collections.sort(students, new StudentNameComparator());
 	System.out.println(students);
 	
+	System.out.println("\n\n\nListIterator example\n");
+
 	
+	//Iterator
+	//ListIterator has a previous method, it is able to traverse the list back and forth
 	
+	ListIterator<String> stringIterator = strings.listIterator();
+//	System.out.println(stringIterator.next());
+//	System.out.println(stringIterator.next());
+//	System.out.println(stringIterator.previous());
+//	System.out.println(stringIterator.previous());
+//	System.out.println(stringIterator.hasNext());
+	
+	while(stringIterator.hasNext()) {
+		System.out.println(stringIterator.next());
 	}
 	
-
+	
+	//SetIterator
+	Iterator<String> setIterator = sortedStrings.iterator();
+	while(setIterator.hasNext()) {
+		System.out.println(setIterator.next());
+	}
+	
+	
+	
+	//Dictionary
+	
+	Iterator<String> dictionaryIterator = dictionary.keySet().iterator();
+	
+	while(dictionaryIterator.hasNext()) {
+		String key = dictionaryIterator.next();
+		System.out.println("the definition for " + key + " is " +dictionary.get(key));
+	}
+	
+	
+	
+	
+	
+	}//end main method
 	
 
 }

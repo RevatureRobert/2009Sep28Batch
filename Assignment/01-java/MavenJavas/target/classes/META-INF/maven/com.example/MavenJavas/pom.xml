@@ -9,14 +9,61 @@
   </properties>
   
   <dependencies>
-  <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
+  <!-- https://mvnrepository.com/artifact/junit/junit -->
+	<dependency>
+	    <groupId>junit</groupId>
+	    <artifactId>junit</artifactId>
+	    <version>4.13</version>
+	    <scope>test</scope>
+	</dependency>
+	
+	<!-- https://mvnrepository.com/artifact/org.mockito/mockito-core -->
 <dependency>
-    <groupId>com.fasterxml.jackson.core</groupId>
-    <artifactId>jackson-databind</artifactId>
-    <version>2.11.2</version>
+    <groupId>org.mockito</groupId>
+    <artifactId>mockito-core</artifactId>
+    <version>3.5.13</version>
+    <scope>test</scope>
 </dependency>
-  
+	
   
   </dependencies>
   
 </project>
+
+
+<!-- 
+	The pom.xml
+			pom stands for project object model
+				this is your configuration and overall outline for your project
+				you can add dependencies, variables, plugins and alter the lifecycle of the project
+				What is the lifecycle of a project(the maven lifecyle)
+				
+				these are commands, mvn validate, or mvn compile. 
+				for the default build commands, if you do one, it'll automatically
+				do the ones before it. ie, mvn test-compile, runs validate and compile. 
+				
+				clean gets rid of anything maven automatically makes for your like the target folder
+				
+				site creates documentation
+				
+				
+lifecycles					default(build)						clean							site
+phases							validate						clean							site
+								compile											
+								test-compile
+								test
+								package
+								install
+								deploy
+
+goals			individual goals inside of each phase, the phases are the large steps, and the goals are the small steps within the phase					
+
+
+
+purpose						build your application			clean the target folder			generate a documentation site
+															gets rid of compilations					
+
+
+
+		
+ -->
