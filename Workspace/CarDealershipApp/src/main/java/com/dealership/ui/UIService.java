@@ -24,8 +24,7 @@ public class UIService {
 	
 	public boolean rememberMe(User user, Scanner scan)
 	{
-		System.out.println("");
-		System.out.println("Remember you on this machine? [y/n]: ");
+		System.out.print("Remember you on this machine? [y/n]: ");
 		String answer = scan.next();
 		
 		if(answer.toLowerCase().equals("y"))
@@ -164,46 +163,56 @@ public class UIService {
 		{
 			Ownership own = oList.get(0);
 			if(own.getAmountRemaining() != 0.0)
-			
-			System.out.println("");
-			System.out.println("Mimnum payment allowed: $" + own.getMonthlyAmount());
-			
-			System.out.println("");
-			System.out.print("Enter amount: $");
-			
-			double cAmt = 0;
-			if(scan.hasNextDouble())
 			{
-				cAmt = scan.nextDouble();
-				
-				if(cAmt >= own.getMonthlyAmount())
+				Car car = cDAO.getCar(own.getCarId());
+				System.out.println("");
+				System.out.println("Car: " + car.getBrand() + " - " + car.getCarName() + ", " + car.getYear());
+				System.out.println("Mimnum payment allowed: $" + own.getMonthlyAmount());
+			
+				System.out.println("");
+				System.out.print("Enter amount: $");
+			
+				double cAmt = 0;
+				if(scan.hasNextDouble())
 				{
-					int carId = own.getCarId();
-					//make the payment
-					pDAO.addPayment(user.getUsername(), carId, own.getAmountRemaining()-cAmt, cAmt);
+					cAmt = scan.nextDouble();
+				
+					if(cAmt >= own.getMonthlyAmount())
+					{
+						int carId = own.getCarId();
+						//make the payment
+						pDAO.addPayment(user.getUsername(), carId, own.getAmountRemaining()-cAmt, cAmt);
 					
-					//then update the ownership with proper amount remaining
-					owDAO.updateOwnerhip(own.getAmountRemaining()-cAmt, own.getOwnId());
+						//then update the ownership with proper amount remaining
+						owDAO.updateOwnerhip(own.getAmountRemaining()-cAmt, own.getOwnId());
 					
-					System.out.println("");
-					System.out.println("Payment made!");
-					System.out.println("");
+						System.out.println("");
+						System.out.println("Payment made!");
+						System.out.println("");
+					}
+					else
+					{
+						System.out.println("ERROR: Payment must be larger than monthly amount.");
+					}
 				}
 				else
 				{
-					System.out.println("ERROR: Payment must be larger than monthly amount.");
+					System.out.println("ERROR: Please enter a valid price value.");
+					scan.nextLine();
+					return false;
 				}
 			}
 			else
 			{
-				System.out.println("ERROR: Please enter a valid price value.");
-				scan.nextLine();
-				return false;
+				System.out.println("ERROR: Your car is already paid off bubster.");
 			}
 		}
 		//if list.size() > 1 then ask for the id of the car they wish to pay for. After that, do the same 
 		// as mentioned above
-		
+		else if(oList.size() > 1)
+		{
+			System.out.println("TODO: let user choose which owned car to pay for.");
+		}
 		return true;
 	}
 	
@@ -339,7 +348,10 @@ public class UIService {
 			if(!c.isOwned())
 			{
 				System.out.println("ID: " + c.getId());
-				System.out.println("Stench Value: " + c.getSmellValue());
+				System.out.print("Stench Value: ");
+				for(int i = 0; i < c.getSmellValue(); i++)
+					System.out.print("[]");
+				System.out.print("\n");
 				System.out.println("Car: " + c.getBrand() + " - " + c.getCarName() + ", " + c.getYear());
 				System.out.println("Type: " + c.getType());
 				System.out.println("Color: " + c.getColor());
@@ -525,7 +537,10 @@ public class UIService {
 		for(Car c : carList)
 		{
 				System.out.println("ID: " + c.getId());
-				System.out.println("Stench Value: " + c.getSmellValue());
+				System.out.print("Stench Value: ");
+				for(int i = 0; i < c.getSmellValue(); i++)
+					System.out.print("[]");
+				System.out.print("\n");
 				System.out.println("Car: " + c.getBrand() + " - " + c.getCarName() + ", " + c.getYear());
 				System.out.println("Type: " + c.getType());
 				System.out.println("Color: " + c.getColor());

@@ -41,7 +41,7 @@ public class UI {
 		System.out.println("    /         \\     /       \\");
 		System.out.println("        ===============");
 		System.out.println("=======/_______|_______\\=========");
-		System.out.println(" Welcome To Mike\'s Stanky Cars!");
+		System.out.println(" Welcome To Dylan\'s Smelly Cars!");
 		System.out.println("=====0====================0======");
 		System.out.println("Please choose an option below:");
 		System.out.println("---------------------------------");

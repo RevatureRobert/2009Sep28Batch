@@ -22277,3 +22277,151 @@
 2020-10-14 00:05:45 INFO  DealershipDAO:85 - Connection successfulorg.postgresql.jdbc.PgConnection@4973813a
 2020-10-14 00:06:12 ERROR Runner:150 - incorrect input in the customer menu
 2020-10-14 00:06:59 ERROR Runner:150 - incorrect input in the customer menu
+2020-10-14 09:14:33 INFO  Service:88 - this username was extracted from the file: [gungy]
+2020-10-14 09:14:33 INFO  Service:89 - this password was extracted from the file: [wungy]
+2020-10-14 09:14:33 INFO  DealershipDAO:85 - Connection successfulorg.postgresql.jdbc.PgConnection@6e06451e
+2020-10-14 09:14:34 INFO  UserDAO:121 - username from db: gungy
+2020-10-14 09:14:34 INFO  UserDAO:122 - password from db: wungy
+2020-10-14 09:14:34 ERROR Service:97 - user from input file is not an active user
+2020-10-14 09:14:39 INFO  DealershipDAO:85 - Connection successfulorg.postgresql.jdbc.PgConnection@6b09bb57
+2020-10-14 09:14:39 INFO  UserDAO:76 - User Found!!
+2020-10-14 09:14:39 INFO  DealershipDAO:85 - Connection successfulorg.postgresql.jdbc.PgConnection@6536e911
+2020-10-14 09:14:39 INFO  UserDAO:121 - username from db: steve
+2020-10-14 09:14:39 INFO  UserDAO:122 - password from db: jobs
+2020-10-14 09:14:41 INFO  DealershipDAO:85 - Connection successfulorg.postgresql.jdbc.PgConnection@520a3426
+2020-10-14 09:14:41 INFO  UserDAO:193 - User's remember me boolean was updated successfully!
+2020-10-14 09:14:41 INFO  Service:48 - lastName.txt file found!
+2020-10-14 09:14:41 INFO  Service:58 - user steve passed into the lastUser.txt file
+2020-10-14 09:14:41 INFO  Runner:164 - Steven Joben just logged in
+2020-10-14 09:14:53 INFO  DealershipDAO:85 - Connection successfulorg.postgresql.jdbc.PgConnection@2b2948e2
+2020-10-14 09:14:53 INFO  UserDAO:76 - User Found!!
+2020-10-14 09:14:55 INFO  DealershipDAO:85 - Connection successfulorg.postgresql.jdbc.PgConnection@6ddf90b0
+2020-10-14 09:14:55 INFO  UserDAO:121 - username from db: steve
+2020-10-14 09:14:55 INFO  UserDAO:122 - password from db: jobs
+2020-10-14 09:14:56 INFO  DealershipDAO:85 - Connection successfulorg.postgresql.jdbc.PgConnection@57536d79
+2020-10-14 09:14:57 INFO  UserDAO:193 - User's remember me boolean was updated successfully!
+2020-10-14 09:14:57 INFO  Service:48 - lastName.txt file found!
+2020-10-14 09:14:57 INFO  Service:58 - user steve passed into the lastUser.txt file
+2020-10-14 09:14:57 INFO  Runner:164 - Steven Joben just logged in
+2020-10-14 09:15:19 INFO  DealershipDAO:85 - Connection successfulorg.postgresql.jdbc.PgConnection@3b0143d3
+2020-10-14 09:33:18 INFO  Service:88 - this username was extracted from the file: [steve]
+2020-10-14 09:33:18 INFO  Service:89 - this password was extracted from the file: [jobs]
+2020-10-14 09:33:19 INFO  DealershipDAO:85 - Connection successfulorg.postgresql.jdbc.PgConnection@6e06451e
+2020-10-14 09:33:19 INFO  UserDAO:121 - username from db: steve
+2020-10-14 09:33:19 INFO  UserDAO:122 - password from db: jobs
+2020-10-14 09:33:19 ERROR Service:97 - user from input file is not an active user
+2020-10-14 09:33:24 INFO  DealershipDAO:85 - Connection successfulorg.postgresql.jdbc.PgConnection@6b09bb57
+2020-10-14 09:33:24 ERROR UserDAO:87 - Username not detected in the database
+2020-10-14 09:33:30 INFO  DealershipDAO:85 - Connection successfulorg.postgresql.jdbc.PgConnection@6536e911
+2020-10-14 09:33:30 ERROR UserDAO:87 - Username not detected in the database
+2020-10-14 09:33:36 INFO  DealershipDAO:85 - Connection successfulorg.postgresql.jdbc.PgConnection@520a3426
+2020-10-14 09:33:36 INFO  UserDAO:47 - User Added Successfully!!
+2020-10-14 09:33:39 INFO  DealershipDAO:85 - Connection successfulorg.postgresql.jdbc.PgConnection@18eed359
+2020-10-14 09:33:39 INFO  UserDAO:76 - User Found!!
+2020-10-14 09:33:40 INFO  DealershipDAO:85 - Connection successfulorg.postgresql.jdbc.PgConnection@3e9b1010
+2020-10-14 09:33:40 INFO  UserDAO:121 - username from db: bo
+2020-10-14 09:33:40 INFO  UserDAO:122 - password from db: nana
+2020-10-14 09:33:44 INFO  DealershipDAO:85 - Connection successfulorg.postgresql.jdbc.PgConnection@6ddf90b0
+2020-10-14 09:33:44 INFO  UserDAO:193 - User's remember me boolean was updated successfully!
+2020-10-14 09:33:44 INFO  Service:48 - lastName.txt file found!
+2020-10-14 09:33:44 INFO  Service:58 - user bo passed into the lastUser.txt file
+2020-10-14 09:33:44 INFO  Runner:111 - Ba Nanza just logged in
+2020-10-14 09:33:49 INFO  DealershipDAO:85 - Connection successfulorg.postgresql.jdbc.PgConnection@3b0143d3
+2020-10-14 09:34:23 INFO  DealershipDAO:85 - Connection successfulorg.postgresql.jdbc.PgConnection@731a74c
+2020-10-14 09:34:42 INFO  DealershipDAO:85 - Connection successfulorg.postgresql.jdbc.PgConnection@369f73a2
+2020-10-14 09:34:42 INFO  CarDAO:105 - Car was found in database
+2020-10-14 09:34:50 INFO  DealershipDAO:85 - Connection successfulorg.postgresql.jdbc.PgConnection@1d16f93d
+2020-10-14 09:34:58 INFO  DealershipDAO:85 - Connection successfulorg.postgresql.jdbc.PgConnection@4f970963
+2020-10-14 09:35:07 INFO  DealershipDAO:85 - Connection successfulorg.postgresql.jdbc.PgConnection@7fac631b
+2020-10-14 09:35:07 INFO  UserDAO:76 - User Found!!
+2020-10-14 09:35:08 INFO  DealershipDAO:85 - Connection successfulorg.postgresql.jdbc.PgConnection@5b87ed94
+2020-10-14 09:35:08 INFO  UserDAO:121 - username from db: steve
+2020-10-14 09:35:08 INFO  UserDAO:122 - password from db: jobs
+2020-10-14 09:35:10 INFO  DealershipDAO:85 - Connection successfulorg.postgresql.jdbc.PgConnection@6e0e048a
+2020-10-14 09:35:10 INFO  UserDAO:193 - User's remember me boolean was updated successfully!
+2020-10-14 09:35:10 INFO  Service:48 - lastName.txt file found!
+2020-10-14 09:35:10 INFO  Service:58 - user steve passed into the lastUser.txt file
+2020-10-14 09:35:10 INFO  Runner:164 - Steven Joben just logged in
+2020-10-14 09:35:18 INFO  DealershipDAO:85 - Connection successfulorg.postgresql.jdbc.PgConnection@3dd4520b
+2020-10-14 09:35:18 INFO  DealershipDAO:85 - Connection successfulorg.postgresql.jdbc.PgConnection@610694f1
+2020-10-14 09:35:19 INFO  DealershipDAO:85 - Connection successfulorg.postgresql.jdbc.PgConnection@43814d18
+2020-10-14 09:35:19 INFO  DealershipDAO:85 - Connection successfulorg.postgresql.jdbc.PgConnection@5c5a1b69
+2020-10-14 09:35:19 INFO  DealershipDAO:85 - Connection successfulorg.postgresql.jdbc.PgConnection@3701eaf6
+2020-10-14 09:35:19 INFO  DealershipDAO:85 - Connection successfulorg.postgresql.jdbc.PgConnection@627551fb
+2020-10-14 09:35:20 INFO  DealershipDAO:85 - Connection successfulorg.postgresql.jdbc.PgConnection@2b552920
+2020-10-14 09:35:20 INFO  DealershipDAO:85 - Connection successfulorg.postgresql.jdbc.PgConnection@2758fe70
+2020-10-14 09:35:20 INFO  DealershipDAO:85 - Connection successfulorg.postgresql.jdbc.PgConnection@1f36e637
+2020-10-14 09:35:20 INFO  DealershipDAO:85 - Connection successfulorg.postgresql.jdbc.PgConnection@578486a3
+2020-10-14 09:35:21 INFO  DealershipDAO:85 - Connection successfulorg.postgresql.jdbc.PgConnection@551aa95a
+2020-10-14 09:35:21 INFO  DealershipDAO:85 - Connection successfulorg.postgresql.jdbc.PgConnection@35d176f7
+2020-10-14 09:35:21 INFO  DealershipDAO:85 - Connection successfulorg.postgresql.jdbc.PgConnection@1dfe2924
+2020-10-14 09:35:21 INFO  DealershipDAO:85 - Connection successfulorg.postgresql.jdbc.PgConnection@6ebc05a6
+2020-10-14 09:35:22 INFO  DealershipDAO:85 - Connection successfulorg.postgresql.jdbc.PgConnection@6e6c3152
+2020-10-14 09:35:22 INFO  DealershipDAO:85 - Connection successfulorg.postgresql.jdbc.PgConnection@50b494a6
+2020-10-14 09:35:22 INFO  DealershipDAO:85 - Connection successfulorg.postgresql.jdbc.PgConnection@3cef309d
+2020-10-14 09:35:59 INFO  DealershipDAO:85 - Connection successfulorg.postgresql.jdbc.PgConnection@32709393
+2020-10-14 09:35:59 INFO  DealershipDAO:85 - Connection successfulorg.postgresql.jdbc.PgConnection@3d99d22e
+2020-10-14 09:35:59 INFO  DealershipDAO:85 - Connection successfulorg.postgresql.jdbc.PgConnection@49fc609f
+2020-10-14 09:36:00 INFO  DealershipDAO:85 - Connection successfulorg.postgresql.jdbc.PgConnection@cd2dae5
+2020-10-14 09:36:00 INFO  DealershipDAO:85 - Connection successfulorg.postgresql.jdbc.PgConnection@3a883ce7
+2020-10-14 09:36:00 INFO  DealershipDAO:85 - Connection successfulorg.postgresql.jdbc.PgConnection@4973813a
+2020-10-14 09:36:01 INFO  DealershipDAO:85 - Connection successfulorg.postgresql.jdbc.PgConnection@6321e813
+2020-10-14 09:36:01 INFO  DealershipDAO:85 - Connection successfulorg.postgresql.jdbc.PgConnection@79be0360
+2020-10-14 09:36:01 INFO  DealershipDAO:85 - Connection successfulorg.postgresql.jdbc.PgConnection@22a67b4
+2020-10-14 09:36:01 INFO  DealershipDAO:85 - Connection successfulorg.postgresql.jdbc.PgConnection@57855c9a
+2020-10-14 09:36:02 INFO  DealershipDAO:85 - Connection successfulorg.postgresql.jdbc.PgConnection@3b084709
+2020-10-14 09:36:02 INFO  DealershipDAO:85 - Connection successfulorg.postgresql.jdbc.PgConnection@3224f60b
+2020-10-14 09:36:02 INFO  OfferDAO:265 - Offer Rejected Successfully!!
+2020-10-14 09:36:02 INFO  DealershipDAO:85 - Connection successfulorg.postgresql.jdbc.PgConnection@63e2203c
+2020-10-14 09:36:02 INFO  OfferDAO:265 - Offer Rejected Successfully!!
+2020-10-14 09:36:02 INFO  DealershipDAO:85 - Connection successfulorg.postgresql.jdbc.PgConnection@5a8806ef
+2020-10-14 09:36:03 INFO  DealershipDAO:85 - Connection successfulorg.postgresql.jdbc.PgConnection@5e853265
+2020-10-14 09:36:03 INFO  CarDAO:206 - Car Updated Successfully!!
+2020-10-14 09:36:50 INFO  DealershipDAO:85 - Connection successfulorg.postgresql.jdbc.PgConnection@67205a84
+2020-10-14 09:36:51 INFO  DealershipDAO:85 - Connection successfulorg.postgresql.jdbc.PgConnection@7d0587f1
+2020-10-14 09:36:51 INFO  DealershipDAO:85 - Connection successfulorg.postgresql.jdbc.PgConnection@5d76b067
+2020-10-14 09:36:51 INFO  DealershipDAO:85 - Connection successfulorg.postgresql.jdbc.PgConnection@2a17b7b6
+2020-10-14 09:36:52 INFO  DealershipDAO:85 - Connection successfulorg.postgresql.jdbc.PgConnection@4f063c0a
+2020-10-14 09:36:52 INFO  DealershipDAO:85 - Connection successfulorg.postgresql.jdbc.PgConnection@1e6d1014
+2020-10-14 09:36:52 INFO  DealershipDAO:85 - Connection successfulorg.postgresql.jdbc.PgConnection@76707e36
+2020-10-14 09:36:52 INFO  DealershipDAO:85 - Connection successfulorg.postgresql.jdbc.PgConnection@614ddd49
+2020-10-14 09:36:53 INFO  DealershipDAO:85 - Connection successfulorg.postgresql.jdbc.PgConnection@1f554b06
+2020-10-14 09:36:53 INFO  DealershipDAO:85 - Connection successfulorg.postgresql.jdbc.PgConnection@694e1548
+2020-10-14 09:36:53 INFO  DealershipDAO:85 - Connection successfulorg.postgresql.jdbc.PgConnection@1c3a4799
+2020-10-14 09:36:53 INFO  DealershipDAO:85 - Connection successfulorg.postgresql.jdbc.PgConnection@131276c2
+2020-10-14 09:36:54 INFO  DealershipDAO:85 - Connection successfulorg.postgresql.jdbc.PgConnection@26aa12dd
+2020-10-14 09:36:54 INFO  DealershipDAO:85 - Connection successfulorg.postgresql.jdbc.PgConnection@3fd7a715
+2020-10-14 09:36:54 INFO  DealershipDAO:85 - Connection successfulorg.postgresql.jdbc.PgConnection@711f39f9
+2020-10-14 09:36:54 INFO  DealershipDAO:85 - Connection successfulorg.postgresql.jdbc.PgConnection@71bbf57e
+2020-10-14 09:36:55 INFO  DealershipDAO:85 - Connection successfulorg.postgresql.jdbc.PgConnection@7f13d6e
+2020-10-14 09:37:16 INFO  DealershipDAO:85 - Connection successfulorg.postgresql.jdbc.PgConnection@51cdd8a
+2020-10-14 09:37:23 INFO  DealershipDAO:85 - Connection successfulorg.postgresql.jdbc.PgConnection@d44fc21
+2020-10-14 09:37:23 INFO  UserDAO:76 - User Found!!
+2020-10-14 09:37:25 INFO  DealershipDAO:85 - Connection successfulorg.postgresql.jdbc.PgConnection@23faf8f2
+2020-10-14 09:37:25 INFO  UserDAO:121 - username from db: bo
+2020-10-14 09:37:25 INFO  UserDAO:122 - password from db: nana
+2020-10-14 09:37:26 INFO  DealershipDAO:85 - Connection successfulorg.postgresql.jdbc.PgConnection@2d6eabae
+2020-10-14 09:37:26 INFO  UserDAO:193 - User's remember me boolean was updated successfully!
+2020-10-14 09:37:26 INFO  Service:48 - lastName.txt file found!
+2020-10-14 09:37:26 INFO  Service:58 - user bo passed into the lastUser.txt file
+2020-10-14 09:37:26 INFO  Runner:111 - Ba Nanza just logged in
+2020-10-14 09:38:07 INFO  DealershipDAO:85 - Connection successfulorg.postgresql.jdbc.PgConnection@4e7dc304
+2020-10-14 09:38:07 INFO  DealershipDAO:85 - Connection successfulorg.postgresql.jdbc.PgConnection@56aac163
+2020-10-14 09:38:23 INFO  DealershipDAO:85 - Connection successfulorg.postgresql.jdbc.PgConnection@1f7030a6
+2020-10-14 09:38:24 INFO  DealershipDAO:85 - Connection successfulorg.postgresql.jdbc.PgConnection@5a1c0542
+2020-10-14 09:38:24 INFO  OwnershipDAO:77 - Ownership Updated Successfully!!
+2020-10-14 09:38:26 INFO  DealershipDAO:85 - Connection successfulorg.postgresql.jdbc.PgConnection@396f6598
+2020-10-14 09:38:26 INFO  DealershipDAO:85 - Connection successfulorg.postgresql.jdbc.PgConnection@27a5f880
+2020-10-14 09:38:35 INFO  DealershipDAO:85 - Connection successfulorg.postgresql.jdbc.PgConnection@1d29cf23
+2020-10-14 09:38:35 INFO  DealershipDAO:85 - Connection successfulorg.postgresql.jdbc.PgConnection@5f282abb
+2020-10-14 09:39:07 INFO  DealershipDAO:85 - Connection successfulorg.postgresql.jdbc.PgConnection@167fdd33
+2020-10-14 09:39:07 INFO  UserDAO:76 - User Found!!
+2020-10-14 09:39:08 INFO  DealershipDAO:85 - Connection successfulorg.postgresql.jdbc.PgConnection@1e965684
+2020-10-14 09:39:08 INFO  UserDAO:121 - username from db: steve
+2020-10-14 09:39:08 INFO  UserDAO:122 - password from db: jobs
+2020-10-14 09:39:10 INFO  DealershipDAO:85 - Connection successfulorg.postgresql.jdbc.PgConnection@4d95d2a2
+2020-10-14 09:39:10 INFO  UserDAO:193 - User's remember me boolean was updated successfully!
+2020-10-14 09:39:10 INFO  Service:48 - lastName.txt file found!
+2020-10-14 09:39:10 INFO  Service:58 - user steve passed into the lastUser.txt file
+2020-10-14 09:39:10 INFO  Runner:164 - Steven Joben just logged in
+2020-10-14 09:39:13 INFO  DealershipDAO:85 - Connection successfulorg.postgresql.jdbc.PgConnection@53f65459
