@@ -25,15 +25,14 @@ public class PaymentDao {
 			add.setInt(3, pay.getUserid());
 			add.setString(4, pay.getUsername());
 			add.setInt(5, pay.getAmount());
-			if(!add.execute())
-				return 1;
+			add.execute();
 			
 			add.close();
 			conn.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return -1;
+		return 1;
 	}
 	
 	public List<Payment> getPaymentbvCar(int id)
@@ -85,17 +84,15 @@ public class PaymentDao {
 		{
 			PreparedStatement remo = conn.prepareStatement("delete from carlot_schema.payments_tab where payment_id = ?");
 			remo.setInt(1,id);
-			if(!remo.execute())
-			{
-				return 1;
-			}
+			remo.execute();
+				
 			
 			remo.close();
 			conn.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return -1;
+		return 1;
 		
 	}
 
