@@ -123,7 +123,7 @@ public class UserDAO {
 			}
 			else
 			{
-				System.out.println("ERROR: password incorrect");
+				logger.error("uh oh, password incorrect");
 				System.out.println();
 			}
 			

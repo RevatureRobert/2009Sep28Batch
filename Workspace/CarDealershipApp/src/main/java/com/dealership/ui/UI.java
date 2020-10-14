@@ -1,14 +1,11 @@
 
 package com.dealership.ui;
 
-import java.io.InputStream;
 import java.util.InputMismatchException;
-import java.util.List;
 import java.util.Scanner;
 
 import org.apache.log4j.Logger;
 
-import com.dealership.dataflow.Runner;
 import com.dealership.model.*;
 import com.dealership.repo.*;
 
@@ -74,18 +71,30 @@ public class UI {
 		boolean isUser = false;
 		User user = null;
 		
+		System.out.println("");
 		System.out.print("Enter your username: ");
 		String username = scan.next();
-		System.out.println("");
-		System.out.print("Enter your password: ");
-		String pass = scan.next();
-		System.out.println("");
+
 			
 		//check if the username and password line-up
 		isUser = uDAO.isUser(username);
 		
 		if(isUser)
+		{
+			System.out.println("");
+			System.out.print("Enter your password: ");
+			String pass = scan.next();
+			System.out.println("");
+			
 			user = uDAO.getUser(username, pass);
+		}
+			
+		
+		if(user == null)
+		{
+			System.out.println("ERROR: Invalid credentials.");
+			System.out.println("");
+		}	
 		
 		return user;
 			
@@ -95,14 +104,18 @@ public class UI {
 	
 	public boolean registerMenu(Scanner scan)
 	{
+		System.out.println("");
+		System.out.println("     Register Below");
+		System.out.println("Or type \"back\" to return");
+		System.out.println("-------------------------");
+		System.out.println("");
 		System.out.print("Register new username: ");
 		String user = scan.next();
 		System.out.println("");
 		
 		//if user is doesn't exist already, then the register process can continue
-		if(!uDAO.isUser(user))
+		if(!uDAO.isUser(user) && !user.toLowerCase().equals("back"))
 		{
-			System.out.println("");
 			System.out.print("Enter your new password: ");
 			String pass = scan.next();
 			System.out.println("");
@@ -115,24 +128,29 @@ public class UI {
 			String last = scan.next();
 			System.out.println("");
 			
-			System.out.println("Remember you on this machine? [y/n]: ");
-			String answer = scan.next();
+			User tempUser = new User(user, pass, first, last, false, false, false);
 			
-			if(answer.toLowerCase().equals("y"))
+			if(uDAO.addUser(tempUser))
 			{
-				User newUser = new User(user, pass, first, last, true, false, false);
-				uDAO.addUser(newUser);
+				System.out.println(first + " " + last + " added successfully!");
+				System.out.println("");
 			}
 			else
 			{
-				User newUser = new User(user, pass, first, last, false, false, false);
-				uDAO.addUser(newUser);
+				System.out.println("ERROR: Problem creating user.");
 			}
+		}
+		else if (user.toLowerCase().equals("back"))
+		{
+			System.out.println("Back to menu...");
+			System.out.println("");
 			
+			return false;
 		}
 		else
 		{
 			System.out.println("ERROR: That username already exists.");
+			return false;
 		}
 			
 		return true;
@@ -218,7 +236,7 @@ public class UI {
 			//customer make offer
 			else if(!user.isEmployee() && !user.isSystem() && input == 2)
 			{
-				serv.makeOffer(user.getUsername(),scan);
+				serv.makeOffer(user.getUsername(), scan);
 			}
 			//customer exit
 			else if(!user.isEmployee() && !user.isSystem() && input == 3)

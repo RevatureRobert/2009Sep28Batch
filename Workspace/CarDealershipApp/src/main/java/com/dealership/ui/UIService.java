@@ -153,7 +153,7 @@ public class UIService {
 		//get ownership list
 		List<Ownership> oList = owDAO.getOwnedCars(user.getUsername());
 		//if list.size() == 0 or null then print error message saying that they don't own any cars
-		if(oList.size() == 0 )
+		if(oList == null )
 		{
 			System.out.println("ERROR: You don't own any cars bubby");
 		}
@@ -237,6 +237,7 @@ public class UIService {
 				mAmount = o.getOfferAmount() / 72.00;
 				
 				owDAO.addOwnership(o.getUser().getUsername(), car.getId(), mAmount, o.getOfferAmount());
+				cDAO.setIsOwned(car.getId(), true);
 			}
 			else
 			{
@@ -370,8 +371,8 @@ public class UIService {
 				Car c = cDAO.getCar(p.getCarId());
 				
 				System.out.println("Car: " + c.getBrand() + " - " + c.getCarName() + ", " + c.getYear());
-				System.out.println("Payment Amount: " + p.getPayment());
-				System.out.println("Total Amount Remaining: " + p.getAmntRemain());
+				System.out.println("Payment Amount: $" + p.getPayment());
+				System.out.println("Total Amount Remaining: $" + p.getAmntRemain());
 				System.out.println("Date: " + p.getPayDate());
 				System.out.println("");
 			}
@@ -408,8 +409,8 @@ public class UIService {
 				System.out.println("Payment ID: " + p.getPayId());
 				System.out.println("User: " + p.getUsername());
 				System.out.println("Car: " + c.getBrand() + " - " + c.getCarName() + ", " + c.getYear());
-				System.out.println("Payment Amount: " + p.getPayment());
-				System.out.println("Total Amount Remaining: " + p.getAmntRemain());
+				System.out.println("Payment Amount: $" + p.getPayment());
+				System.out.println("Total Amount Remaining: $" + p.getAmntRemain());
 				System.out.println("Date: " + p.getPayDate());
 				System.out.println("");
 			}
@@ -582,11 +583,12 @@ public class UIService {
 			}
 			System.out.println("");
 			System.out.println("Congratz! Offer made.");
-			System.out.println("");
 			
 		}else
 		{
+			System.out.println("");
 			System.out.println("ERROR: Please enter a valid integer.");
+			System.out.println("");
 			scan.nextLine();
 			return false;
 		}

@@ -1,9 +1,7 @@
-import com.dealership.model.User;
+
 import com.dealership.repo.*;
 
-import static org.junit.Assert.assertNotNull;
-
-import java.sql.Connection;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -19,9 +17,8 @@ public class DAOTest {
 	}
 	
 	@Test
-	public void testGetUser()
+	public void testIsUser()
 	{
-		 User user = dao.getUser("gungy");
-		assertNotNull(user);
+		assertTrue(dao.isUser("gungy"));
 	}
 }

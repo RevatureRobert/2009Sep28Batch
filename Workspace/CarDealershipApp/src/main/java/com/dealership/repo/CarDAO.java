@@ -189,4 +189,31 @@ public class CarDAO {
 		
 		return car;
 	}
+	
+	public boolean setIsOwned(int carId, boolean bool)
+	{
+		try {
+			con = DealershipDAO.getInstance().getConnection();
+			String sql = "update cars set is_owned = ? where car_id = ?";
+			stmt = con.prepareStatement(sql);
+			
+			stmt.setBoolean(1, bool);
+			stmt.setInt(2, carId);
+			
+			// value to determine how many rows were changed
+			if (stmt.executeUpdate() != 0)
+			{
+				logger.info("Car Updated Successfully!!");
+				return true;
+			}
+			else
+				return false;
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		} finally {
+			DealershipDAO.getInstance().closeResources();
+		}
+	}
 }

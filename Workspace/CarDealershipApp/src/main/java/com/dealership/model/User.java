@@ -1,7 +1,5 @@
 package com.dealership.model;
 
-import java.util.List;
-
 public class User {
 
 	private String username;
@@ -35,6 +33,7 @@ public class User {
 		rememberMe = remember;
 		isEmployee = isE;
 		isSystem = isS;
+		
 	}
 	
 	public String getUsername() {

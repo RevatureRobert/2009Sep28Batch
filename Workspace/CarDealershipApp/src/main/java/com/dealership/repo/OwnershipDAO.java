@@ -24,13 +24,13 @@ public class OwnershipDAO {
 	// Ownership methods
 	//------------------------------------
 	
-	public boolean addOwnership(String username, int carId, double amount, double offer_amount)
+	public boolean addOwnership(String username, int carId, double mAmount, double offer_amount)
 	{
 		LocalDate date = LocalDate.now();
 		try {
 			con = DealershipDAO.getInstance().getConnection();
 			String sql = "insert into ownerships (username, car_id, purchase_date, monthly_amount, offer_amount, amount_remaining) values "
-					+ "( ?, ?, ?, ?, ? )"; // Were using a lot of ?'s here...
+					+ "( ?, ?, ?, ?, ?, ? )"; // Were using a lot of ?'s here...
 			stmt = con.prepareStatement(sql);
 			
 			
@@ -38,8 +38,9 @@ public class OwnershipDAO {
 			stmt.setString(1, username);
 			stmt.setInt(2, carId);
 			stmt.setDate(3, java.sql.Date.valueOf(date));
-			stmt.setDouble(4, amount);
-			stmt.setDouble(5, amount);
+			stmt.setDouble(4, mAmount);
+			stmt.setDouble(5, offer_amount);
+			stmt.setDouble(6, offer_amount);
 			
 			// If we were able to add our book to the DB, we want to return true. 
 			// This if statement both executes our query, and looks at the return 

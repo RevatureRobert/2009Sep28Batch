@@ -124,7 +124,7 @@ public class OfferDAO {
 		List<Offer> oList = new ArrayList<>();
 		try {
 			con = DealershipDAO.getInstance().getConnection();
-			String sql = "select * from offers where car_id = ?";
+			String sql = "select * from offers where car_id = ? order by offer_id desc";
 			stmt = con.prepareStatement(sql);
 			
 			stmt.setInt(1, carId);
@@ -161,7 +161,7 @@ public class OfferDAO {
 		List<Offer> oList = new ArrayList<>();
 		try {
 			con = DealershipDAO.getInstance().getConnection();
-			String sql = "select * from offers where username = ?";
+			String sql = "select * from offers where username = ? order by offer_id desc";
 			stmt = con.prepareStatement(sql);
 			
 			stmt.setString(1, username);

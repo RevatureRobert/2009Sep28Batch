@@ -2,14 +2,9 @@ package com.dealership.dataflow;
 
 import org.apache.log4j.Logger;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
-import org.apache.log4j.BasicConfigurator;
 import com.dealership.model.*;
-import com.dealership.repo.DealershipDAO;
-import com.dealership.ui.OfferUI;
 import com.dealership.ui.UI;
 import com.dealership.ui.UIService;
 /*
@@ -101,7 +96,8 @@ public class Runner {
 					{
 						user = ui.loginMenu(scan);
 						
-						uiServ.rememberMe(user, scan);
+						if(user != null)
+							uiServ.rememberMe(user, scan);
 					}
 					
 					//---------
