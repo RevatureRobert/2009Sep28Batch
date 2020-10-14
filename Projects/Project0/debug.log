@@ -19,3 +19,31 @@
 2020-10-14 01:57:46 INFO  class:49 - Going to retrieve cars on the lot
 2020-10-14 01:57:48 INFO  class:102 - Got the cars on the lot
 2020-10-14 01:57:49 INFO  class:104 - Got the active offers
+2020-10-14 10:01:48 INFO  dealershipDriver:34 - Attempted to log in using user|password : BigBoss|password
+2020-10-14 10:01:51 ERROR UserDao:57 - There was a sql exception:org.postgresql.util.PSQLException: ERROR: relation "users" does not exist
+  Position: 15
+2020-10-14 10:01:51 INFO  dealershipDriver:57 - Unsuccessful log-in
+2020-10-14 10:06:28 INFO  dealershipDriver:34 - Attempted to log in using user|password : BigBoss|password
+2020-10-14 10:06:32 INFO  dealershipDriver:48 - Successfully logged in as employee
+2020-10-14 10:06:39 INFO  class:49 - Going to retrieve cars on the lot
+2020-10-14 10:06:40 INFO  class:102 - Got the cars on the lot
+2020-10-14 10:06:42 INFO  class:104 - Got the active offers
+2020-10-14 10:07:18 INFO  class:54 - Getting payments
+2020-10-14 10:07:42 INFO  dealershipDriver:34 - Attempted to log in using user|password : jim|bob
+2020-10-14 10:07:43 INFO  dealershipDriver:39 - Successfully logged in as customer
+2020-10-14 10:07:47 INFO  class:62 - Getting cars on the lot
+2020-10-14 10:08:04 INFO  class:139 - Went to make an offer
+2020-10-14 10:08:26 INFO  class:179 - User made a completely new offer
+2020-10-14 10:08:33 INFO  class:139 - Went to make an offer
+2020-10-14 10:08:46 INFO  class:179 - User made a completely new offer
+2020-10-14 10:08:57 INFO  class:56 - Getting user cars
+2020-10-14 10:09:01 INFO  class:68 - Getting payments
+2020-10-14 10:09:14 INFO  dealershipDriver:34 - Attempted to log in using user|password : enoch|cho
+2020-10-14 10:09:16 INFO  UserDao:51 - username was incorrect
+2020-10-14 10:09:16 INFO  dealershipDriver:57 - Unsuccessful log-in
+2020-10-14 10:10:40 INFO  dealershipDriver:34 - Attempted to log in using user|password : enoch|cho
+2020-10-14 10:10:43 INFO  UserDao:51 - username was incorrect
+2020-10-14 10:10:43 INFO  dealershipDriver:57 - Unsuccessful log-in
+2020-10-14 10:12:31 INFO  dealershipDriver:34 - Attempted to log in using user|password : enoch|cho
+2020-10-14 10:12:33 INFO  UserDao:51 - username was incorrect
+2020-10-14 10:12:33 INFO  dealershipDriver:57 - Unsuccessful log-in

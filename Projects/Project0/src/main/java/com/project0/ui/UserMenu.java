@@ -66,6 +66,7 @@ public class UserMenu {
 						switch(x) {
 						case 1:
 							System.out.println("\n");
+							arr[0] ="back";
 							return arr;
 						case 2:
 							correct = true;

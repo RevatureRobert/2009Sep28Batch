@@ -4,8 +4,10 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+import org.apache.log4j.Logger;
+
 public class EnvironmentConnectionUtil {
-															//currentSchema is optional,, default is public
+	final static Logger log = Logger.getLogger("EnvironmentConnectionUtil");														//currentSchema is optional,, default is public
 	//url for jdbc -> jdbc:postgresql://endpoint:port/dbName?currentSchema=schema
 	private final String url=System.getenv("url");
 	private final String username =System.getenv("username");
