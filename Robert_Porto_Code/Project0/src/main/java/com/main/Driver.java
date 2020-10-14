@@ -4,7 +4,6 @@ import java.util.Scanner;
 
 import com.project0.ui.MainMenu;
 
-//asdf
 public class Driver {
 
 	public static void main(String[] args) {
