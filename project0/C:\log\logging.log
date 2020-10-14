@@ -1,0 +1,31 @@
+2020-10-12 21:57:41 INFO  CarDao:97	- Entering car creation method.
+2020-10-12 21:58:10 INFO  CarDao:137	- The update to add a car was successful
+2020-10-13 10:02:55 INFO  EmployeeDao:128	- Entering the validate login method.
+2020-10-13 10:02:57 INFO  EmployeeDao:144	- The employee successfully validated their credentials to access their account.
+2020-10-13 10:09:22 INFO  EmployeeDao:128	- Entering the validate login method.
+2020-10-13 10:09:24 INFO  EmployeeDao:144	- The employee successfully validated their credentials to access their account.
+2020-10-13 10:10:13 INFO  CustomerDao:122	- Entering the validation login method.
+2020-10-13 10:10:14 INFO  CustomerDao:139	- The customer was successfully able to validate thier login credentials.
+2020-10-13 10:10:34 INFO  CustomerDao:122	- Entering the validation login method.
+2020-10-13 10:10:34 INFO  CustomerDao:139	- The customer was successfully able to validate thier login credentials.
+2020-10-13 11:37:16 INFO  CustomerDao:122	- Entering the validation login method.
+2020-10-13 11:37:17 INFO  CustomerDao:139	- The customer was successfully able to validate thier login credentials.
+2020-10-13 11:37:30 INFO  CustomerDao:122	- Entering the validation login method.
+2020-10-13 11:37:31 INFO  CustomerDao:139	- The customer was successfully able to validate thier login credentials.
+2020-10-13 11:37:39 INFO  CustomerDao:153	- Entering the view cars on lot method.
+2020-10-13 11:37:39 INFO  CustomerDao:165	- The customer was successfully able to view the cars on the lot.
+2020-10-13 11:37:46 INFO  CustomerDao:223	- Entering the view debt balance method.
+2020-10-13 11:37:47 INFO  CustomerDao:239	- The customer was able to view his debt balance.
+2020-10-13 11:37:52 INFO  CarDao:199	- Entering the viewsCarsOwned method.
+2020-10-13 11:37:53 INFO  CarDao:214	- The customer was able to view their owned cars.
+2020-10-13 11:41:44 INFO  CustomerDao:122	- Entering the validation login method.
+2020-10-13 11:41:45 INFO  CustomerDao:139	- The customer was successfully able to validate thier login credentials.
+2020-10-13 11:41:57 INFO  CustomerDao:122	- Entering the validation login method.
+2020-10-13 11:41:57 INFO  CustomerDao:139	- The customer was successfully able to validate thier login credentials.
+2020-10-13 11:55:32 INFO  EmployeeDao:128	- Entering the validate login method.
+2020-10-13 11:55:33 INFO  EmployeeDao:144	- The employee successfully validated their credentials to access their account.
+2020-10-13 11:57:38 INFO  EmployeeDao:128	- Entering the validate login method.
+2020-10-13 12:00:17 INFO  EmployeeDao:128	- Entering the validate login method.
+2020-10-13 12:01:36 INFO  EmployeeDao:128	- Entering the validate login method.
+2020-10-13 12:03:08 INFO  EmployeeDao:128	- Entering the validate login method.
+2020-10-13 12:31:52 INFO  EmployeeDao:128	- Entering the validate login method.
