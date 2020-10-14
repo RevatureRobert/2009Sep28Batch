@@ -1,6 +1,7 @@
 package com.project0.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import com.project0.models.Car;
@@ -61,16 +62,16 @@ public class CustomerService {
 	}
 
 	public List<Car> getCarLot() {
-		List<Car> cars = new ArrayList<Car>();
-		ArrayList<Integer> ids = od.getCarIDs();
-		for(Integer x:ids) {
-			cars.add(card.findById(x));
-		}
-		return cars;
+		return card.getCarLot();
 	}
 	
-	public List<Payment> findMyPayments(int userID){
-		List<Payment> payments = pd.findByUser(userID);
+	public HashMap<Integer,Payment> findMyPayments(int userID){
+		List<Payment> paymentList = pd.findByUser(userID);
+		HashMap<Integer,Payment> payments = new HashMap<Integer,Payment>();
+		for(Payment x:paymentList) {
+			payments.put(x.getCarId(), x);
+		}
+		
 		return payments;
 	}
 
@@ -90,5 +91,23 @@ public class CustomerService {
 	
 	public void updateOffer(Offer offer) {
 		od.update(offer);
+	}
+
+	public HashMap<Integer, Offer> getMyOffers(int id) {
+		ArrayList<Offer> offers = od.getOffersbyId(id);
+		HashMap<Integer, Offer> myOffers = new HashMap<Integer,Offer>();
+		for(Offer x:offers) {
+			myOffers.put(x.getOfferID(), x);
+		}
+		return myOffers;
+	}
+
+	public ArrayList<Integer> getCarLotIDs() {
+		List<Car> cars = getCarLot();
+		ArrayList<Integer> ids = new ArrayList<Integer>();
+		for(Car x: cars) {
+			ids.add(x.getCarID());
+		}
+		return ids;
 	}
 }

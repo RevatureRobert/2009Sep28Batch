@@ -1,0 +1,79 @@
+/*
+    three types of styling
+        inline
+            <h1 style ="color:red">style</h1>
+            use the style attribute to style individual elements
+
+        internal
+            use a style block in the head of the html to style the entire document.
+
+        external
+            use a css file to add styling to html
+            use the link tag in the head of the document to add the css file. 
+
+        css syntax
+            selector{
+                property:value;
+            }
+
+        selectors:
+            tag selector
+            class selector
+            id selector
+
+        css specificity
+            from least to most specific:
+                tag selector
+                class selector
+                id selector
+                inline styling
+            but you can use the !important attribute to override specificity, but it's not recommended. 
+
+        css: Cascading Style Sheet    
+        
+
+        css box model
+            margin                  margin
+                border          border
+                    padding padding
+                        content
+                    padding padding
+                border          border
+            margin                  margin
+
+        css combinators
+            child selector: this just gets the direct children
+                selector > childSelector
+            descendent selector: this gets all the children, grandchildren
+                selector childSelector
+        
+*/
+/* tag selector */
+/* a comma lets you select multiple tags */
+h1,h4{
+    color:gray /*!important*/;
+    font-family:cursive;
+}
+
+/* class selector */
+.odd{
+    color:blue;
+}
+
+/*id selector*/
+#evenId1{
+    color:yellow;
+}
+/* child selector*/
+body > table{
+    margin:0,auto;
+}
+
+/* descendent selector */
+body span{
+    color: brown;
+}
+
+/* table{
+    margin:auto;
+} */

@@ -3,6 +3,8 @@ package com.project0;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import org.apache.log4j.Logger;
+
 import com.project0.ui.CustomerMenu;
 import com.project0.ui.EmployeeMenu;
 import com.project0.ui.UserMenu;
@@ -12,6 +14,7 @@ public class dealershipDriver {
 	private static UserMenu um = new UserMenu(in);
 	private static CustomerMenu cm;
 	private static EmployeeMenu em;
+	final static Logger log = Logger.getLogger(dealershipDriver.class);
 	
 	
 	public static void main(String[] args) {
@@ -69,6 +72,7 @@ public class dealershipDriver {
 					throw new InputMismatchException();
 				}
 			} catch(InputMismatchException e) {
+				log.error("Input error");
 				System.out.println("Invalid input. Please choose either 1,2, or 3");
 				in.nextLine(); //clears choice
 			}

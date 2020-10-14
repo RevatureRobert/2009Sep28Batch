@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import com.project0.config.EnvironmentConnectionUtil;
 import com.project0.models.Car;
 import com.project0.models.Customer;
@@ -14,6 +16,7 @@ import com.project0.models.Employee;
 import com.project0.models.User;
 
 public class CustomerDao implements DaoContract<Customer, Integer>{
+	final static Logger log = Logger.getLogger(UserDao.class);
 	
 	public CustomerDao() {
 		
@@ -33,7 +36,7 @@ public class CustomerDao implements DaoContract<Customer, Integer>{
 				customers.add(new Customer(id,username));
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			log.error("There was a sql exception:" + e);
 			e.printStackTrace();
 		}
 		return customers;
@@ -53,7 +56,7 @@ public class CustomerDao implements DaoContract<Customer, Integer>{
 				bob = new Customer(id,username);
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			log.error("There was a sql exception:" + e);
 			e.printStackTrace();
 		}
 		return bob;
@@ -73,6 +76,7 @@ public class CustomerDao implements DaoContract<Customer, Integer>{
 			ps.executeUpdate();
 			ps.close();
 		} catch (SQLException e) {
+			log.error("There was a sql exception:" + e);
 			e.printStackTrace();
 		}
 		return bob;
@@ -102,7 +106,7 @@ public class CustomerDao implements DaoContract<Customer, Integer>{
 			ps.close();
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			log.error("There was a sql exception:" + e);
 			e.printStackTrace();
 		}
 		bob = new Customer(userID, username);
@@ -119,6 +123,7 @@ public class CustomerDao implements DaoContract<Customer, Integer>{
 			result = ps.executeUpdate();
 			ps.close();
 		} catch (SQLException e) {
+			log.error("There was a sql exception:" + e);
 			e.printStackTrace();
 		}
 		return result;
@@ -135,7 +140,7 @@ public class CustomerDao implements DaoContract<Customer, Integer>{
 				id = rs.getInt(1);
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			log.error("There was a sql exception:" + e);
 			e.printStackTrace();
 		}
 		return id;

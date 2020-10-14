@@ -18,7 +18,7 @@ public class Payment {
 		this.monthsLeft = 63;
 		this.amountLeft = amountToPay;
 		this.original = amountToPay;
-		this.perMonth = amountToPay/63;
+		this.perMonth = (Math.ceil((amountToPay/63)*100))/100;
 	}
 	
 	public Payment(int userId, int carId, double amountToPay, int monthsLeft, double original, double perMonth) {
@@ -62,6 +62,7 @@ public class Payment {
 			this.monthsLeft -= months;
 			if(this.monthsLeft <= 0) {
 				this.monthsLeft = 0;
+				this.amountLeft = 0;
 				System.out.println("Congrats, this car is now paid off!");
 			} else {
 				System.out.println("The original amount was "+ NumberFormat.getCurrencyInstance().format(this.original) + ". You now have " + monthsLeft + " payments of " + NumberFormat.getCurrencyInstance().format(this.perMonth) + " left!");
@@ -72,9 +73,13 @@ public class Payment {
 	
 	@Override
 	public String toString() {
-		return "you have " + monthsLeft + " payments of " + NumberFormat.getCurrencyInstance().format(this.perMonth) + "  left. Your original loan amount was " + NumberFormat.getCurrencyInstance().format(this.original) + ".";
+		return "You have " + monthsLeft + " monthly payments of " + NumberFormat.getCurrencyInstance().format(this.perMonth) + " left. Your original loan amount was " + NumberFormat.getCurrencyInstance().format(this.original) + ".";
 	}
 	
+	public String forEmployee() {
+		return "There are " + monthsLeft + " monthly payments of " + NumberFormat.getCurrencyInstance().format(this.perMonth) + " left. The original loan amount was " + NumberFormat.getCurrencyInstance().format(this.original) + ".";
+
+	}
 
 
 }

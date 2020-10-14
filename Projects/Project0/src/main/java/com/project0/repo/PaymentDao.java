@@ -7,17 +7,20 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import com.project0.config.EnvironmentConnectionUtil;
 import com.project0.models.Customer;
 import com.project0.models.Payment;
 
 public class PaymentDao implements DaoContract<Payment,Integer>{
+	final static Logger log = Logger.getLogger(UserDao.class);
 
 	@Override
 	public List<Payment> findAll() {
 		List<Payment> payments = new ArrayList<Payment>();
 		try(Connection con = EnvironmentConnectionUtil.getInstance().getConnection()){
-			String sql = "select * from payments";
+			String sql = "select * from payments order by OwnerID asc;";
 			PreparedStatement ps = con.prepareStatement(sql);
 			ResultSet rs = ps.executeQuery();
 			while(rs.next()) {
@@ -33,7 +36,7 @@ public class PaymentDao implements DaoContract<Payment,Integer>{
 			ps.close();
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			log.error("There was a sql exception:" + e);
 			e.printStackTrace();
 		}
 		return payments;
@@ -59,7 +62,7 @@ public class PaymentDao implements DaoContract<Payment,Integer>{
 			rs.close();
 			ps.close();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			log.error("There was a sql exception:" + e);
 			e.printStackTrace();
 		}
 		return p;
@@ -86,7 +89,7 @@ public class PaymentDao implements DaoContract<Payment,Integer>{
 			ps.close();
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			log.error("There was a sql exception:" + e);
 			e.printStackTrace();
 		}
 		return p;
@@ -108,7 +111,7 @@ public class PaymentDao implements DaoContract<Payment,Integer>{
 			ps.close();
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			log.error("There was a sql exception:" + e);
 			e.printStackTrace();
 		}
 		return x;
@@ -125,7 +128,7 @@ public class PaymentDao implements DaoContract<Payment,Integer>{
 			result = ps.executeUpdate();
 			ps.close();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			log.error("There was a sql exception:" + e);
 			e.printStackTrace();
 		}
 		return result;
@@ -134,7 +137,7 @@ public class PaymentDao implements DaoContract<Payment,Integer>{
 	public List<Payment> findByUser(int userID) {
 		List<Payment> payments = new ArrayList<Payment>();
 		try(Connection con = EnvironmentConnectionUtil.getInstance().getConnection()){
-			String sql = "select * from payments where OwnerID= ?";
+			String sql = "select * from payments where OwnerID= ? and MonthsLeft != 0";
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setInt(1,userID);
 			ResultSet rs = ps.executeQuery();
@@ -151,7 +154,7 @@ public class PaymentDao implements DaoContract<Payment,Integer>{
 			ps.close();
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			log.error("There was a sql exception:" + e);
 			e.printStackTrace();
 		}
 		return payments;
@@ -168,7 +171,25 @@ public class PaymentDao implements DaoContract<Payment,Integer>{
 				carids.add(rs.getInt(1));
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			log.error("There was a sql exception:" + e);
+			e.printStackTrace();
+		}
+		
+		return carids;
+	}
+	
+	public ArrayList<Integer> getAllUserCars(){
+		ArrayList<Integer> carids = new ArrayList<Integer>();
+		try(Connection con = EnvironmentConnectionUtil.getInstance().getConnection()){
+			String sql = "select ownerid,CarID from payments;";
+			PreparedStatement ps = con.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()) {
+				carids.add(rs.getInt(1));
+				carids.add(rs.getInt(2));
+			}
+		} catch (SQLException e) {
+			log.error("There was a sql exception:" + e);
 			e.printStackTrace();
 		}
 		

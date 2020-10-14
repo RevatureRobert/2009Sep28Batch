@@ -7,11 +7,14 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import com.project0.config.EnvironmentConnectionUtil;
 import com.project0.enums.CarName;
 import com.project0.models.Car;
 
 public class CarDao implements DaoContract<Car,Integer>{
+	final static Logger log = Logger.getLogger(UserDao.class);
 
 	@Override
 	public List<Car> findAll() {
@@ -28,6 +31,7 @@ public class CarDao implements DaoContract<Car,Integer>{
 			rs.close();
 			ps.close();
 		} catch (SQLException e) {
+			log.error("There was a sql exception:" + e);
 			e.printStackTrace();
 		}
 		return cars;
@@ -49,6 +53,7 @@ public class CarDao implements DaoContract<Car,Integer>{
 			rs.close();
 			ps.close();
 		} catch (SQLException e) {
+			log.error("There was a sql exception:" + e);
 			e.printStackTrace();
 		}
 		return car;
@@ -69,7 +74,7 @@ public class CarDao implements DaoContract<Car,Integer>{
 			ps.executeUpdate();
 			ps.close();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			log.error("There was a sql exception:" + e);
 			e.printStackTrace();
 		}
 		return car;
@@ -81,7 +86,7 @@ public class CarDao implements DaoContract<Car,Integer>{
 		String carName = t.getName().toString();
 		int carID = 0;
 		try(Connection con = EnvironmentConnectionUtil.getInstance().getConnection()){
-			String sql = "insert into cars (CarName) values (?);";
+			String sql = "insert into cars (CarName,Sold) values (?,false);";
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, carName);
 			ps.executeUpdate();
@@ -96,7 +101,7 @@ public class CarDao implements DaoContract<Car,Integer>{
 			ps.close();
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			log.error("There was a sql exception:" + e);
 			e.printStackTrace();
 		}
 		car = new Car(t.getName(), carID);
@@ -113,31 +118,49 @@ public class CarDao implements DaoContract<Car,Integer>{
 			result = ps.executeUpdate();
 			ps.close();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			log.error("There was a sql exception:" + e);
 			e.printStackTrace();
 		}
 		return result;
 	}
 
-/*	public List<Car> findMine(int userID) {
-		List<Car> cars = new ArrayList<Car>();
+	public List<Car> getCarLot() {
+		ArrayList<Car> cars = new ArrayList<Car>();
 		try(Connection con = EnvironmentConnectionUtil.getInstance().getConnection()){
-			String sql = "select * from cars where userID = ?;";
+			String sql = "select * from cars where sold = false";
 			PreparedStatement ps = con.prepareStatement(sql);
-			ps.setInt(1, userID);
 			ResultSet rs = ps.executeQuery();
 			while(rs.next()) {
-				int carID = rs.getInt(1);
 				String carName = rs.getString(2);
+				int carID = rs.getInt(1);
 				cars.add(new Car(CarName.valueOf(carName), carID));
 			}
-			rs.close();
 			ps.close();
 		} catch (SQLException e) {
+			log.error("There was a sql exception:" + e);
 			e.printStackTrace();
 		}
 		return cars;
 	}
-*/	
+
+	public ArrayList<Car> getOwnedCars() {
+		ArrayList<Car> cars = new ArrayList<Car>();
+		try(Connection con = EnvironmentConnectionUtil.getInstance().getConnection()){
+			String sql = "select * from cars where sold = true";
+			PreparedStatement ps = con.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()) {
+				String carName = rs.getString(2);
+				int carID = rs.getInt(1);
+				cars.add(new Car(CarName.valueOf(carName), carID));
+			}
+			ps.close();
+		} catch (SQLException e) {
+			log.error("There was a sql exception:" + e);
+			e.printStackTrace();
+		}
+		return cars;
+	}
+
 
 }

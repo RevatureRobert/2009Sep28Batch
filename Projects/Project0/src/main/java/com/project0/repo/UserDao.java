@@ -7,12 +7,17 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import com.project0.config.EnvironmentConnectionUtil;
 import com.project0.models.Customer;
 import com.project0.models.Employee;
 import com.project0.models.User;
 
+import jdk.internal.org.jline.utils.Log;
+
 public class UserDao implements DaoContract<User,Integer>{
+	final static Logger log = Logger.getLogger(UserDao.class);
 	public UserDao() {
 		super();
 	}
@@ -37,16 +42,19 @@ public class UserDao implements DaoContract<User,Integer>{
 					} else {
 						rs.close();
 						ps.close();
+						log.info("password was incorrect");
 						//password is incorrect
 						return 2;
 					}
 				} else {
 					//no such username
+					log.info("username was incorrect");
 					rs.close();
 					ps.close();
 					return 2;
 				}
 			} catch(SQLException e) {
+				log.error("There was a sql exception:" + e);
 				e.printStackTrace();
 				return 2;
 			}
@@ -70,8 +78,10 @@ public class UserDao implements DaoContract<User,Integer>{
 			}
 			rs.close();
 			ps.close();
+			log.info("There was no matching username");
 			return false;
 		} catch(SQLException e) {
+			log.error("There was an sql exception:" + e);
 			e.printStackTrace();
 			return false;
 		}
@@ -88,6 +98,7 @@ public class UserDao implements DaoContract<User,Integer>{
 			ps.close();
 			return x;
 		} catch(SQLException e) {
+			log.error("There was an sql exception:" + e);
 			e.printStackTrace();
 			return 0;
 		}
@@ -115,7 +126,7 @@ public class UserDao implements DaoContract<User,Integer>{
 				}
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			log.error("There was an sql exception:" + e);
 			e.printStackTrace();
 		}
 		return users;
@@ -141,7 +152,7 @@ public class UserDao implements DaoContract<User,Integer>{
 				}
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			log.error("There was an sql exception:" + e);
 			e.printStackTrace();
 		}
 		return u;
@@ -155,7 +166,7 @@ public class UserDao implements DaoContract<User,Integer>{
 			
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			log.error("There was an sql exception:" + e);
 			e.printStackTrace();
 		}
 		return u;
@@ -179,7 +190,7 @@ public class UserDao implements DaoContract<User,Integer>{
 			x =  ps.executeUpdate();
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			log.error("There was an sql exception:" + e);
 			e.printStackTrace();
 		}
 		return x;

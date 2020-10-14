@@ -1,5 +1,7 @@
 package com.project0.enums;
 
+import java.util.HashMap;
+
 public enum CarName {
 	KiaSorento("Kia Sorento", 26690.00),
 	KiaForte("Kia Forte",17890.00),
@@ -7,7 +9,7 @@ public enum CarName {
 	KiaTelluride("Kia Telluride",31890.00),
 	KiaSedona("Kia Sedona",27600.00),
 	HyundaiElantra("Hyundai Elantra",19300.00),
-	HyundaiSonata("Hyundain Sonata", 22300.00),	
+	HyundaiSonata("Hyundai Sonata", 22300.00),	
 	HyundaiKona("Hyundai Kona", 20300.00),
 	HyundaiPalisade("Hyundai Palisade", 31975.00),
 	HyundaiVeloster("Hyundai Veloster", 18800.00),
@@ -37,6 +39,35 @@ public enum CarName {
 	public double getPrice() {
 		return price;
 	}
+	
+	public static HashMap<Integer,CarName> map() {
+		HashMap<Integer,CarName> map = new HashMap<Integer,CarName>();
+		CarName[] names = CarName.values();
+		for(int i = 1; i<=names.length;i++) {
+			map.put(i, names[i-1]);
+		}
+		return map;
+	}
+	
+	public static String printNames() {
+		String a ="";
+		CarName[] names = CarName.values();
+		for(int i = 1; i <= names.length;i++) {
+			if(i == names.length ) {
+				a = a+ i+". " + names[i-1].readable();
+			} else {
+				a = a+i+". " + names[i-1].readable();
+				if(i%5==0) {
+					a= a+"\n";
+				} else {
+					a = a+ ", ";
+				}
+			}
+		}
+		return a;
+	}
+	
+	
 	
 	
 	

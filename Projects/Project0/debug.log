@@ -1,0 +1,21 @@
+2020-10-14 01:09:30 INFO  dealershipDriver:22 - The scanner was created
+2020-10-14 01:44:16 INFO  dealershipDriver:34 - Attempted to log in using user|password : employee|employee
+2020-10-14 01:44:19 INFO  dealershipDriver:48 - Successfully logged in as employee
+2020-10-14 01:44:27 INFO  class:49 - Going to retrieve cars on the lot
+2020-10-14 01:44:28 INFO  class:127 - Got the cars on the lot
+2020-10-14 01:44:30 INFO  class:129 - Got the active offers
+2020-10-14 01:44:41 INFO  class:54 - Getting payments
+2020-10-14 01:48:38 INFO  dealershipDriver:34 - Attempted to log in using user|password : employee|employee
+2020-10-14 01:48:39 INFO  dealershipDriver:48 - Successfully logged in as employee
+2020-10-14 01:48:51 INFO  class:54 - Getting payments
+2020-10-14 01:56:03 INFO  dealershipDriver:34 - Attempted to log in using user|password : enoch|cho
+2020-10-14 01:56:03 INFO  dealershipDriver:39 - Successfully logged in as customer
+2020-10-14 01:57:03 INFO  dealershipDriver:34 - Attempted to log in using user|password : employee|employee
+2020-10-14 01:57:05 INFO  dealershipDriver:48 - Successfully logged in as employee
+2020-10-14 01:57:21 INFO  class:49 - Going to retrieve cars on the lot
+2020-10-14 01:57:23 INFO  class:102 - Got the cars on the lot
+2020-10-14 01:57:25 INFO  class:104 - Got the active offers
+2020-10-14 01:57:29 INFO  class:54 - Getting payments
+2020-10-14 01:57:46 INFO  class:49 - Going to retrieve cars on the lot
+2020-10-14 01:57:48 INFO  class:102 - Got the cars on the lot
+2020-10-14 01:57:49 INFO  class:104 - Got the active offers

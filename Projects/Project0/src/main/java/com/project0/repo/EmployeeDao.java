@@ -7,11 +7,14 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import com.project0.config.EnvironmentConnectionUtil;
 import com.project0.models.Customer;
 import com.project0.models.Employee;
 
 public class EmployeeDao implements DaoContract<Employee,Integer>{
+	final static Logger log = Logger.getLogger(UserDao.class);
 
 	@Override
 	public List<Employee> findAll() {
@@ -26,7 +29,7 @@ public class EmployeeDao implements DaoContract<Employee,Integer>{
 				employees.add(new Employee(id,username));
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			log.error("There was a sql exception:" + e);
 			e.printStackTrace();
 		}
 		return employees;
@@ -46,7 +49,7 @@ public class EmployeeDao implements DaoContract<Employee,Integer>{
 				bob = new Employee(id,username);
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			log.error("There was a sql exception:" + e);
 			e.printStackTrace();
 		}
 		return bob;
@@ -66,6 +69,7 @@ public class EmployeeDao implements DaoContract<Employee,Integer>{
 			ps.executeUpdate();
 			ps.close();
 		} catch (SQLException e) {
+			log.error("There was a sql exception:" + e);
 			e.printStackTrace();
 		}
 		return bob;
@@ -94,7 +98,7 @@ public class EmployeeDao implements DaoContract<Employee,Integer>{
 			ps.close();
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			log.error("There was a sql exception:" + e);
 			e.printStackTrace();
 		}
 		bob = new Employee(userID, username);
@@ -111,6 +115,7 @@ public class EmployeeDao implements DaoContract<Employee,Integer>{
 			result = ps.executeUpdate();
 			ps.close();
 		} catch (SQLException e) {
+			log.error("There was a sql exception:" + e);
 			e.printStackTrace();
 		}
 		return result;
@@ -127,7 +132,7 @@ public class EmployeeDao implements DaoContract<Employee,Integer>{
 				id = rs.getInt(1);
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			log.error("There was a sql exception:" + e);
 			e.printStackTrace();
 		}
 		return id;
