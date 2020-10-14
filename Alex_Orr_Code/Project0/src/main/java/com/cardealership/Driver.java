@@ -1,5 +1,4 @@
 package com.cardealership;
-
 import java.util.Scanner;
 import com.cardealership.ui.*;
 

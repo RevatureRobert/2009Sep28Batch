@@ -59,4 +59,10 @@ public class CustomerService {
 		}
 		return false;
 	}
+	public int getBalance(Customer t) {
+		return cd.getBalance(t);
+	}
+	public int makePayment(int amount, Customer t) {
+		return cd.makePayment(amount, t);
+	}
 }

@@ -42,13 +42,22 @@ public class CustomerMenu {
 			int back = scan.nextInt();
 			CustomerMenu(scan, t);
 		case 2:
-			System.out.println("You owe: $" + t.getBalance());
+			System.out.println("You owe: $" + cs.getBalance(t));
+			System.out.println("\nPlease enter 0 to go back to the customer menu:");
+			scan.nextInt();
 			CustomerMenu(scan,t);
 		case 3:
-			System.out.println("Your monthly payment is: $" + t.getMonthlyPayment());
+			
+			System.out.println("Your monthly payment is: $" + cs.getBalance(t)/12);
+			System.out.println("\nPlease enter 0 to go back to the customer menu:");
+			scan.nextInt();
 			CustomerMenu(scan,t);
 		case 4:
-
+			System.out.println("Please enter the amount you would like to pay:");
+			int amount = scan.nextInt();
+			System.out.println("Your new balance is: $" + cs.makePayment(amount, t));
+			System.out.println("\nPlease enter 0 to go back to the customer menu:");
+			scan.nextInt();
 		case 5:
 			List<Sold_Car> cars = cs.myCars(t.getUserId());
 			if(cars!=null) {
@@ -59,6 +68,8 @@ public class CustomerMenu {
 			else {
 				System.out.println("Seems you don't have any cars. You should conisder making an offer!");
 			}
+			System.out.println("\nPlease enter 0 to go back to the customer menu:");
+			scan.nextInt();
 			CustomerMenu(scan,t);
 		case 6:
 			System.out.println("Enter the id of the car you would like to make an offer on (-1 to go back):");

@@ -54,5 +54,10 @@ public class DealershipService {
 		}
 		return false;
 	}
+	public boolean acceptOffer(int carId, int userId) {
+		if(dd.acceptOffer(carId, userId))
+			return true;
+		return false;
+	}
 	
 }

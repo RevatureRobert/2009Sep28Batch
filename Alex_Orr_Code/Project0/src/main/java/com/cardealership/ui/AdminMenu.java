@@ -30,18 +30,17 @@ public class AdminMenu {
 	public void AdminMenu(Scanner scan, Admin t) {
 		System.out.println("Welcome to the Admin menu!");
 		System.out.println("Please select one of the following options:");
-		System.out.println("1: View Cars");
-		System.out.println("2: Add Car");
-		System.out.println("3: Remove Car");
-		System.out.println("4: Edit Existing Car");
-		System.out.println("5: View Employees");
-		System.out.println("6: Hire Employee");
-		System.out.println("7: Fire Employee");
-		System.out.println("8: View offers on a car");
-		System.out.println("9: Accept offer on a car");
-		System.out.println("10: Reject off on a car");
-		System.out.println("11: View all payments made");
-		System.out.println("12: Logout");
+		System.out.println("1:  View Cars");
+		System.out.println("2:  Add Car");
+		System.out.println("3:  Remove Car");
+		System.out.println("4:  Edit Existing Car");
+		System.out.println("5:  View Employees");
+		System.out.println("6:  Hire Employee");
+		System.out.println("7:  Fire Employee");
+		System.out.println("8:  View offers on a car");
+		System.out.println("9:  Accept offer on a car");
+		System.out.println("10: Reject offer on a car");
+		System.out.println("11: Logout");
 		
 		int input = scan.nextInt();
 		switch(input) {
@@ -163,6 +162,12 @@ public class AdminMenu {
 				System.out.println("Enter the userId of the offer you would like to accept:");
 				int acceptOfferUserId = scan.nextInt();
 				
+				if(ds.acceptOffer(acceptOfferCarId, acceptOfferUserId)) {
+					System.out.println("Offer Accepeted!");
+				}
+				else {
+					System.out.println("Offer not accepted.");
+				}
 				System.out.println("\nPlease enter 0 to go back to the previous menu.");
 				scan.next();
 				AdminMenu(scan,t);
@@ -173,16 +178,14 @@ public class AdminMenu {
 				int rejectOfferUserId = scan.nextInt();
 				
 				if(ds.rejectOffer(rejectOfferCarId, rejectOfferUserId)) {
-					System.out.println("Car delete successfully");
+					System.out.println("Offer deleted successfully");
 				}
 				else
 					System.out.println("Car was not successfully deleted. Please double check your inputs.");
 				System.out.println("\nPlease enter 0 to go back to the previous menu.");
 				scan.next();
 				AdminMenu(scan,t);
-				
 			case 11:
-			case 12:
 				System.out.println("Thanks for stopping by!");
 				System.exit(1);
 		}		

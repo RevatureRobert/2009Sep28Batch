@@ -1,0 +1,3 @@
+2020-10-13 20:22:47.883 [main] INFO  com.cardealership.repo.DealershipDaoTest - Car sold for 40000
+2020-10-13 20:23:17.305 [main] INFO  com.cardealership.repo.DealershipDaoTest - Car sold for 40000
+2020-10-13 20:24:40.236 [main] INFO  com.cardealership.repo.DealershipDao - Car sold for 1000

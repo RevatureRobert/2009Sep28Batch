@@ -7,6 +7,9 @@ import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.cardealership.config.PlainTextConnectionUtil;
 import com.cardealership.model.Admin;
 import com.cardealership.model.Customer;
@@ -14,7 +17,14 @@ import com.cardealership.model.Employee;
 import com.cardealership.model.Offers;
 import com.cardealership.model.Unsold_Car;
 
+import jdk.internal.org.jline.utils.Log;
+
+
 public class DealershipDao {
+	
+	static Logger logger = LogManager.getLogger(DealershipDao.class);
+
+	
 	public void viewLot(Admin t) {
 		try(Connection conn = PlainTextConnectionUtil.getInstance().getConnection()){
 			String sql = "Select * from unsold_car where dealership_id = ?";
@@ -143,9 +153,10 @@ public class DealershipDao {
 			sso.setInt(1, carId);
 			sso.setInt(2, userId);
 			ResultSet rsso = sso.executeQuery();
+			rsso.next();
 			
 			//move car to sold
-			String sqlUnsoldCar = "select * from unsold_car where car_id = ?";
+			String sqlUnsoldCar = "select * from unsold_car where unsold_car_id = ?";
 			PreparedStatement suc = conn.prepareStatement(sqlUnsoldCar);
 			suc.setInt(1, carId);
 			ResultSet rsuc = suc.executeQuery();
@@ -158,20 +169,39 @@ public class DealershipDao {
 			ssc.executeUpdate();
 			
 			//add balance to user
+			String selectCustomer = "select * from customer where user_id = ?";
+			PreparedStatement sc = conn.prepareStatement(selectCustomer);
+			sc.setInt(1, userId);
+			ResultSet rsc = sc.executeQuery();
+			rsc.next();
+			
 			String sqlUpdateUser = "update customer set customer_balance = ? where user_id = ?";
 			PreparedStatement suu = conn.prepareStatement(sqlUpdateUser);
-			suu.setInt(1, rsso.getInt(3));
+			suu.setInt(1, rsso.getInt(3) + rsc.getInt(3));
 			suu.setInt(2, userId);
 			suu.executeUpdate();
 			
 			//reject all offers and delete unsold_car
 			rejectOffers(carId);
-			String sqlDeleteUSC = "";
-			
+			String sqlDeleteUSC = "delete from unsold_car where unsold_car_id=?";
+			PreparedStatement sdusc = conn.prepareStatement(sqlDeleteUSC);
+			sdusc.setInt(1, carId);
+			sdusc.executeUpdate();
 			
 			//log4j
+			logger.info("Car sold for " + rsso.getInt(3));
+
+			//close resources
+			sso.close();
+			rsso.close();
+			suc.close();
+			rsuc.close();
+			ssc.close();
+			suu.close();
+			sdusc.close();
+			return true;
 		}catch(SQLException e) {
-			
+			e.printStackTrace();
 		}
 		return false;
 	}

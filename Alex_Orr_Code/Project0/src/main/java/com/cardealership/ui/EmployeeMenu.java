@@ -1,8 +1,10 @@
 package com.cardealership.ui;
 
+import java.util.List;
 import java.util.Scanner;
 
 import com.cardealership.model.Employee;
+import com.cardealership.model.Offers;
 import com.cardealership.service.DealershipService;
 
 public class EmployeeMenu {
@@ -24,8 +26,7 @@ public class EmployeeMenu {
 		System.out.println("5: View offers on a car");
 		System.out.println("6: Accept offer on a car");
 		System.out.println("7: Reject off on a car");
-		System.out.println("8: View all payments made");
-		System.out.println("9: Logout");
+		System.out.println("8: Logout");
 
 		int input = scan.nextInt();
 		switch(input) {
@@ -87,9 +88,50 @@ public class EmployeeMenu {
 				EmployeeMenu(scan, t);
 			}
 		case 5:
+			System.out.println("Enter the carId:");
+			int viewOffersCarId = scan.nextInt();
+			List<Offers> carOffers = ds.getOffers(viewOffersCarId);
+			System.out.println();
+			if(carOffers.size() == 0) {
+				System.out.println("No offers on this car!");
+			}
+			else
+				for(int i = 0; i<carOffers.size();i++) 
+					System.out.println(carOffers.get(i).toString());
+
+			System.out.println();
+			System.out.println("\nPlease enter 0 to go back to the previous menu.");
+			scan.next();
+			EmployeeMenu(scan,t);		
 		case 6:
+			System.out.println("Enter the carId:");
+			int acceptOfferCarId = scan.nextInt();
+			System.out.println("Enter the userId of the offer you would like to accept:");
+			int acceptOfferUserId = scan.nextInt();
+
+			if(ds.acceptOffer(acceptOfferCarId, acceptOfferUserId)) {
+				System.out.println("Offer Accepeted!");
+			}
+			else {
+				System.out.println("Offer not accepted.");
+			}
+			System.out.println("\nPlease enter 0 to go back to the previous menu.");
+			scan.next();
+			EmployeeMenu(scan,t);
 		case 7:
-		case 8:
+			System.out.println("Enter the carId:");
+			int rejectOfferCarId = scan.nextInt();
+			System.out.println("Enter the userId");
+			int rejectOfferUserId = scan.nextInt();
+
+			if(ds.rejectOffer(rejectOfferCarId, rejectOfferUserId)) {
+				System.out.println("Offer deleted successfully");
+			}
+			else
+				System.out.println("Car was not successfully deleted. Please double check your inputs.");
+			System.out.println("\nPlease enter 0 to go back to the previous menu.");
+			scan.next();
+			EmployeeMenu(scan,t);
 		case 9:
 			System.out.println("Thanks for stopping by!");
 			System.exit(1);

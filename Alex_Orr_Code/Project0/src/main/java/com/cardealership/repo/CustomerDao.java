@@ -14,6 +14,7 @@ import com.cardealership.config.PlainTextConnectionUtil;
 import com.cardealership.model.Customer;
 import com.cardealership.model.Offers;
 import com.cardealership.model.Sold_Car;
+import com.cardealership.model.User;
 import com.cardealership.model.Admin;
 import com.cardealership.model.UserType;
 
@@ -281,5 +282,42 @@ public class CustomerDao implements DaoContract<Customer, Integer> {
 			e.printStackTrace();
 		}
 		return false;
+	}
+	public int getBalance(Customer t) {
+		try(Connection conn = PlainTextConnectionUtil.getInstance().getConnection()){
+			String sql = "Select * from customer where user_id=?";
+			PreparedStatement s = conn.prepareStatement(sql);
+			s.setInt(1, t.getUserId());
+			ResultSet rs = s.executeQuery();
+			rs.next();
+			int bal = rs.getInt(3);
+
+			s.close();
+			rs.close();
+			return bal;
+		}catch(SQLException e) {
+			e.printStackTrace();
+			return 0;
+		}
+	}
+	public int makePayment(int amount, Customer t) {
+		try(Connection conn = PlainTextConnectionUtil.getInstance().getConnection()){
+			String sql = "Select * from customer where user_id = ?";
+			PreparedStatement s = conn.prepareStatement(sql);
+			s.setInt(1, t.getUserId());
+			ResultSet rs = s.executeQuery();
+			rs.next();
+			int bal = rs.getInt(3)-amount;
+			String sqlUpdate = "update customer set customer_balance = ?  where user_id = ?";
+			PreparedStatement su = conn.prepareStatement(sqlUpdate);
+			su.setInt(1, bal);
+			su.setInt(2, t.getUserId());
+			su.executeUpdate();
+			return bal;
+		} catch(SQLException e) {
+			e.printStackTrace();
+			return 0;
+		}
+		
 	}
 }
