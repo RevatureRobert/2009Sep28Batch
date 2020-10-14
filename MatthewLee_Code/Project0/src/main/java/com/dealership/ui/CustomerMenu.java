@@ -1,6 +1,7 @@
 package com.dealership.ui;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -173,10 +174,10 @@ public class CustomerMenu {
 		while (true) {
 			try {
 				System.out.print("Enter offer amount: ");
-				int amount = Integer.parseInt(scan.next());
+				int amount = scan.nextInt();
 				
 				System.out.print("Enter number of monthly payments: ");
-				int months = Integer.parseInt(scan.next());
+				int months = scan.nextInt();
 				
 				System.out.println(String.format("\nIf offer is accepted, you will pay "
 						+ "%d monthly payments of $%.2f.", months, (amount/ (double) months)));
@@ -187,7 +188,7 @@ public class CustomerMenu {
 				offer = new Offer(amount, months, customerId, carId);
 				break;
 				
-			} catch (NumberFormatException e) {
+			} catch (InputMismatchException e) {
 				displayInvalidInput();
 				continue;
 			}

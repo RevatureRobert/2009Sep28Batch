@@ -162,12 +162,12 @@ public class EmployeeMenu {
 					continue;
 				}
 
-				System.out.print("Mileage: ");
-				int mileage = scan.nextInt();
+				System.out.print("MPG: ");
+				int MPG = scan.nextInt();
 				System.out.print("Price: ");
 				int price = scan.nextInt();
 
-				car = new Car(make, model, year, mileage, price);
+				car = new Car(make, model, year, MPG, price);
 				break;
 
 			} catch (InputMismatchException e) {
@@ -241,12 +241,12 @@ public class EmployeeMenu {
 					continue;
 				}
 
-				System.out.print("Mileage: ");
-				int mileage = scan.nextInt();
+				System.out.print("MPG: ");
+				int MPG = scan.nextInt();
 				System.out.print("Price: ");
 				int price = scan.nextInt();
 
-				car = new Car(carId, make, model, year, mileage, price);
+				car = new Car(carId, make, model, year, MPG, price);
 				break;
 
 			} catch (InputMismatchException e) {
