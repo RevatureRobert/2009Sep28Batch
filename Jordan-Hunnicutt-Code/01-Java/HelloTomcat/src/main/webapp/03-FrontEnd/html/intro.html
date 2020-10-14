@@ -1,0 +1,184 @@
+<!-- this is a comment in html-->
+
+<!--
+
+    what is html?
+        defines the structure for a web page.
+        the browser will intrepret the html and display
+            it accordingly on the screen.
+        hypertext markup language
+        we will be using html5
+    in html we have tags
+        the tags are standardized by w3c
+            world wide web consortium
+            opening tag ------- > <tagName>
+            closing tag ------- > </tagName>
+            self closing tag      <tagName/> or just <tagName>
+
+    a few important tags in html are needed by the browser
+        doctype - tells the browser what kind of document it is
+        html tag is the root tag of the document (holds all other tags)
+        head tag provides metadata for the document
+        body tag provides content for the document
+-->
+<!-- tells browser what kind of document this is -->
+<!doctype html>
+<html lang="en-us">
+    <!-- what browser needs to know for document-->
+    <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+                integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+                crossorigin="anonymous">
+                <!-- the above link gives us the bootstrap framework -->
+                <!-- Bootstrap is a css framework that provides templating options and preformmatted 
+                     css with a grid sytem for responsive designs.-->
+        <title>Title of the tab</title>
+        <!-- internal styling -->
+        <!--<style>
+            h1{
+                color: green;
+                font-family: fantasy;
+            }
+        </style>-->
+        					<!-- because of how tomcat works, it searches from webapp folder. change href from ../css... to 03-FrontEnd/css... -->
+        <link rel="stylesheet" href="03-FrontEnd/css/index.css" type="text/css">
+        <!-- for href, we could use an absolute path "C:\Users\jdh6\...\index.css -->
+        <!-- however, it is much better to use a relative path.  ".." goes up one directory, "." stays in the same directory-->
+        <!-- every type of file has a mime type https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types, 
+            these tell the receiver how to construct/organize the file properly -->
+    </head>
+    <!-- what will be displayed -->
+    <body>
+    
+    	<a href="redirect">login</a>
+    
+    
+        <!-- heading tags, h1 is biggest, goes down to 6-->
+        <header>
+            <h1 style="color: green; font-family:fantasy;">This is a first heading tag</h1>
+            <h1 class="odd">This tag is green now</h1>
+            <h2 id="evenId1">This is a second</h2>
+            <h3 class="odd">This is a third</h3>
+            <h4>This is a fourth</h4>
+            <h5 class="odd">This is a fifth</h5>
+            <h6>This is a sixth</h6>
+        </header>
+        <!--paragraph-->
+        <main>
+            <p>This is a paragraph</p>
+            <p>This is another paragraph</p>
+
+            <!-- inline and block elements
+                block elements - allocate the width of the page for content
+                    examples: p, h1-6, div, etc
+                inline elements - allocate only enough space as is needed for content
+                    examples: span, textarea, b(bold), i(italics), etc
+            -->
+            <span>This is a span, we can edit the content as needed for styling</span>
+            <b>This is a bold tag</b>
+            <br><!-- this is a line break -->
+            <i>This is an italic tag</i>
+            <br> <!--tagName*number in vscode will auto generate that number of tags-->
+            <br>
+            <br>
+            <br>
+            <br>
+
+            <!-- lists -->
+            <!-- bulleted list (unordered)-->
+            <ul title="This is a tooltip for the entire list"> This is the 'name' of the list (except not really)
+                <li title="This is a tooltip for the list item">first bullet</li>
+                <li>second bullet</li>
+                <li>third bullet</li>
+            </ul>
+            <!-- numbered list (ordered) -->
+            <ol>
+                <li>first</li>
+                <li>second</li>
+                <li>third</li>
+            </ol>
+            <dl> <!-- dictionary list -->
+                <dt>aardvark</dt>
+                <dd>an animal with 3 a's</dd>
+            </dl>
+            <!-- attributes 
+                a property that can change the behavior or appearance of an element.
+            
+            -->
+
+            <!--tables-->
+            <table class="table table-dark">
+                <thead>
+                    <tr>
+                        <th>name</th>
+                        <th>age</th>
+                        <th>phone #</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>anthony</td>
+                        <td>44</td>
+                        <td>555-555-5555</td>
+                    </tr>
+                    <tr>
+                        <td>samantha</td>
+                        <td>23</td>
+                        <td>555-555-5555</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- forms -->
+            <!-- action tells the browser where to send form data
+                 methods tells the browser how to send it (http method) -->
+                 <!--get and post are most used methods by a wide margin -->
+            <form action="some.url" method="POST" enctype="multipart/form-data">  <!-- you can also have an encode type -->
+                <!-- input fields are inline elements, we reference them by name on the server side to get their values-->
+                <input type="text" placeholder="username" name="username" /><br>
+                <input type="password" placeholder="password" name="password" /><br>
+                <input type="file" name="someFile" /><br>
+                <input type="date" name="date" /><br>
+                <select name="favorite places">
+                    <option value="null">Pick your favorite place</option>
+                    <option value="tokyo">Tokyo</option>
+                    <option value="nyc">New York</option>
+                    <option value="vancouver">Vancouver</option>
+                </select><br>
+                <input type="submit" name="submit" value="Send to the server" />
+            </form>
+            <br>
+            <!--
+                different types of attributes
+                    local
+                        attributes that are only available to some elements
+                            action, method, src, href, etc
+                    global
+                        attributes that all elements can use
+                            id, class, style, title, etc
+            -->
+
+            <!-- linking pages -->
+            <a href="https://google.com">Click here for a search engine</a><br>
+            <img class="col-lg-2" src="https://vignette.wikia.nocookie.net/among-us-wiki/images/a/ab/Cyan.png/revision/latest/scale-to-width-down/340?cb=20200927084517"></img>
+            <img class="col-lg-9" src="https://media.geeksforgeeks.org/wp-content/uploads/box-model-1.png"></img>
+            <!-- href vs src
+                href brings browser to the resource
+                src brings the resource to the page 
+            -->
+
+            <div> <!-- will be used in 90% of componenets in react -->
+                <span>This is a span inside a div</span>
+            </div> <!-- div is a block element, span is inline -->
+            <span class="col-md-12 text-center">This is a span outside a div</span>
+
+            <!-- If ever need to look up more html tags, go to https://www.w3schools.com/TAGS/default.ASP -->
+
+        </main>
+        <footer>
+            <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+            <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+        </footer>
+    </body>
+</html>

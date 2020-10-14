@@ -1,0 +1,3 @@
+------sequences
+--a sequence will begin a sequence of numbers and keep track of the current value.
+----to use the values, we can use nextval('seq_name') to get a unique value.

@@ -1,0 +1,5 @@
+select * from "Track";
+
+----JOINS
+--joins will bring tables together at the columns.
+select * from "Track" join "Genre" on "Track"."GenreId" = "Genre"."GenreId";

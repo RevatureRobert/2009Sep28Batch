@@ -1,0 +1,12 @@
+--ddl
+--create database jdbc_db;
+
+create schema jdbc_db_schema;
+
+create user jdbc_db_user with password 'wasspord';
+
+grant all privileges on schema jdbc_db_schema to jdbc_db_user;
+grant all privileges on schema public to jdbc_db_user;
+
+select * from bear;
+select * from circus;

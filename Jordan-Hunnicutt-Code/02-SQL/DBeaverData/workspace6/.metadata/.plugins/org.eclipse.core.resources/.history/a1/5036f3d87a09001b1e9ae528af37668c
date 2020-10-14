@@ -1,0 +1,19 @@
+--ddl
+--create database jdbc_db;
+
+create schema jdbc_db_schema;
+
+create user jdbc_db_user with password 'wasspord';
+
+grant all privileges on schema jdbc_db_schema to jdbc_db_user;
+grant all privileges on schema public to jdbc_db_user;
+
+grant all on table jdbc_db_schema.bear to jdbc_db_user;
+grant all on table jdbc_db_schema.circus to jdbc_db_user;
+
+insert into circus values ('clowntown', 'john', true);
+insert into bear (color, has_fur, belongs_to) values ('purple', false, 'clowntown');
+insert into bear (color, has_fur, belongs_to) values ('plum crazy purple', false, null);
+
+select * from bear;
+select * from circus;

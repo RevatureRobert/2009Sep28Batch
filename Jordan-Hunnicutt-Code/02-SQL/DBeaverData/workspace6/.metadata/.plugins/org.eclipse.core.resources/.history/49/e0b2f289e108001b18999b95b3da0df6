@@ -1,0 +1,28 @@
+--PLSQL
+----PLSQL = procedural language sql (structured query language)
+------it is an extension to sql
+----PLPGSQL
+------procedural language postgresql
+----languages supported by psql for plsql
+------PLPGSQL
+------C
+------PERL
+------RUBY
+------R
+------PYTHON
+------and many more
+
+
+--functions
+----create [or replace] function [name] (params types) return [type] as [delimiter]
+--		begin
+--			[body]
+--		end
+----[delimiter] language plpgsql
+
+
+create or replace function sum(a integer, b integer)) return integer as '
+	begin
+		return a+b;
+	end
+' language plpgsql;

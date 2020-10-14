@@ -1,0 +1,13 @@
+--isolation levels
+
+--ACID, the i stands for isolation
+----isolated = transactions will not conflict with each other
+
+--						dirty read			Nonrepeatable Read				Phantom Read					Serialization Anomaly
+--read uncommitted			O						O							 O									 O
+--read committed			X						O							 O									 O
+--repeatable read			X						X							 O(not in postgres)					 O
+--serializable				X						X							 X									 X
+
+--note: postgresql does not allow read uncommitted as an isolation level, read committed is the minimum
+--note: postgres does not allow phantom reads in a repeatable read

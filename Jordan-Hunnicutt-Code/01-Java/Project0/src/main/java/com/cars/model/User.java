@@ -7,17 +7,23 @@ public class User {
 
 	private String username;
 	private String password;
-	private String userType;
+	private int userType;
 	private int userId;
-	private List<Car> ownedCars = new ArrayList<>();
 	
-	public User(String username, String password, String userType) {
+	public User( int userId, String username, String password, int userType) {
 		this.username = username;
 		this.password = password;
 		this.userType = userType;
-		userId = 0;
+		this.userId = userId;
 	}
 
+	public User(User user) {
+		this.username = user.getUsername();
+		this.password = user.getPassword();
+		this.userType = user.getUserType();
+		this.userId = user.getUserId();
+	}
+	
 	public String getUsername() {
 		return username;
 	}
@@ -34,11 +40,11 @@ public class User {
 		this.password = password;
 	}
 
-	public String getUserType() {
+	public int getUserType() {
 		return userType;
 	}
 
-	public void setUserType(String userType) {
+	public void setUserType(int userType) {
 		this.userType = userType;
 	}
 

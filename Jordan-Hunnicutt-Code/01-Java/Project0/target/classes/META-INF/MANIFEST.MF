@@ -3,6 +3,6 @@ Built-By: jdh6w
 Build-Jdk: 14.0.2
 Class-Path: log4j-core-2.13.3.jar log4j-api-2.13.3.jar postgresql-42.2.8
  .jar
-Main-Class: com.cars.ui.UI
+Main-Class: com.cars.Driver
 Created-By: Maven Integration for Eclipse
 

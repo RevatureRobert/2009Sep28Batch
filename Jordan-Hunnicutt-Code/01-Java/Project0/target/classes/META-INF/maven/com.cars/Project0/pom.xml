@@ -21,6 +21,11 @@
     	<artifactId>log4j-core</artifactId>
     	<version>2.13.3</version>
 	</dependency>
+	<dependency>
+    	<groupId>org.apache.logging.log4j</groupId>
+    	<artifactId>log4j-api</artifactId>
+    	<version>2.13.3</version>
+  </dependency>
   
     <!-- https://mvnrepository.com/artifact/junit/junit -->
 	<dependency>
@@ -50,11 +55,31 @@
           <archive>
             <manifest>
               <addClasspath>true</addClasspath>
-              <mainClass>com.cars.ui.UI</mainClass>
+              <mainClass>com.cars.Driver</mainClass>
             </manifest>
           </archive>
         </configuration>
       </plugin>
+      <plugin>
+                    <!-- pulled from https://stackoverflow.com/questions/21923586/maven-dependencies-not-being-compiled -->
+                    <!-- allows dependencies to be compiled as part of a jar -->
+                    <artifactId>maven-dependency-plugin</artifactId>
+                    <executions>
+                        <execution>
+                            <id>copy-dependencies</id>
+                            <phase>package</phase>
+                            <goals>
+                                <goal>copy-dependencies</goal>
+                            </goals>
+                            <configuration>
+                                <includeScope>runtime</includeScope>
+                                <outputDirectory>${project.build.directory}</outputDirectory>
+
+                                <excludeTransitive>false</excludeTransitive>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
     </plugins>
   </build>
   

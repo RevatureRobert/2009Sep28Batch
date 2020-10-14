@@ -1,0 +1,6 @@
+------TRIGGERS
+
+create table colors(
+	id integer primary key,
+	color text;
+)

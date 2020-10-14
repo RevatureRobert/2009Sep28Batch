@@ -1,0 +1,13 @@
+--PLSQL
+----PLSQL = procedural language sql (structured query language)
+------it is an extension to sql
+----PLPGSQL
+------procedural language postgresql
+----languages supported by psql for plsql
+------PLPGSQL
+------C
+------PERL
+------RUBY
+------R
+------PYTHON
+------and many more

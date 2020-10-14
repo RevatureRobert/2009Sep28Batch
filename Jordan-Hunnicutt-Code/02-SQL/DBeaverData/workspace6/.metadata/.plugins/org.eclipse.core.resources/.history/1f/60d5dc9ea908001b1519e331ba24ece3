@@ -1,0 +1,14 @@
+-------------NORMALIZATION
+--normalization is the way that we can organize our data to reduce redundancy and provide better optimization
+
+--normalization is made up by many normal forms
+----these are the forms for the tables
+
+--first normal form (1nf)
+----each row of data must have a unique identifier
+----each row must have atomic values (granularizing the data) (different from atomic in acid)
+--example:
+----a table with an address column
+------insert into address_table values ('555 55th street indianapolis, IN 44444');   <- bad
+----with first normal form:
+------insert into address (1, 555, '55th street', 'Indianapolis', 'IN', 44444); <- better

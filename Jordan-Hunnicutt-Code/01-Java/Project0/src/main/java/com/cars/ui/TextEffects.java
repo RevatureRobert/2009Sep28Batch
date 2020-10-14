@@ -11,8 +11,8 @@ public class TextEffects {
 	public static final String ANSI_BLACK = "\u001B[30m";
 	public static final String ANSI_RED = "\u001B[31m";
 	public static final String ANSI_GREEN = "\u001B[32m";
-	public static final String ANSI_YELLOW = "\u001B[33m";
-	public static final String ANSI_BLUE = "\u001B[34m";
+	public static final String ANSI_YELLOW = "\u001B[33m";  //NOTE!  YELLOW AND BLUE DO NOT CURRENTLY HAVE REVERSED VALUES
+	public static final String ANSI_BLUE = "\u001B[34m";    //THIS IS BECAUSE YOU CAN SEE YELLOW BETTER ON A BLACK BACKGROUND
 	public static final String ANSI_PURPLE = "\u001B[35m";
 	public static final String ANSI_CYAN = "\u001B[36m";
 	public static final String ANSI_WHITE = "\u001B[37m";	

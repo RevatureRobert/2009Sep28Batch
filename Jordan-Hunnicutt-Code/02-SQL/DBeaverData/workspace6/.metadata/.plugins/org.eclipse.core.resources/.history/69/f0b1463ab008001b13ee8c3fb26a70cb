@@ -1,0 +1,9 @@
+select * from "Track" where "GenreId" is null;
+
+----JOINS
+--joins will bring tables together at the columns.
+select * from "Track" join "Genre" on "Track"."GenreId" = "Genre"."GenreId";
+select "Track"."Name", "Genre"."Name" from "Track" join "Genre" on "Track"."GenreId" = "Genre"."GenreId";
+
+--different types of joins
+----inner join, outer join (left outer, right outer, full outer), self, cross, cartesian

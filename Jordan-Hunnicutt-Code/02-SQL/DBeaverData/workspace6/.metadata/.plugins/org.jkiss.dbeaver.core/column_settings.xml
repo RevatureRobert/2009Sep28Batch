@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<items>
+	<item id="DatabaseInstanceSelector">
+		<column name="Name" visible="true" order="0" width="87"/>
+		<column name="Description" visible="true" order="1" width="83"/>
+	</item>
+	<item id="NodeList/PostgreProcedureParameter">
+		<column name="Name" visible="true" order="0" width="47"/>
+		<column name="Parameter Type" visible="true" order="1" width="111"/>
+		<column name="Parameter Kind" visible="true" order="2" width="108"/>
+		<column name="Ordinal Position" visible="true" order="3" width="113"/>
+		<column name="Default" visible="true" order="4" width="55"/>
+	</item>
+	<item id="NodeList/PostgreTableColumn">
+		<column name="Column Name" visible="true" order="0" width="103"/>
+		<column name="#" visible="true" order="1" width="33"/>
+		<column name="Data type" visible="true" order="2" width="71"/>
+		<column name="Length" visible="true" order="3" width="53"/>
+		<column name="Precision" visible="true" order="4" width="67"/>
+		<column name="Scale" visible="true" order="5" width="41"/>
+		<column name="Identity" visible="true" order="6" width="58"/>
+		<column name="Collation" visible="true" order="7" width="66"/>
+		<column name="Not Null" visible="true" order="8" width="63"/>
+		<column name="Default" visible="true" order="9" width="55"/>
+		<column name="Comment" visible="true" order="10" width="73"/>
+	</item>
+	<item id="NodeList/PostgreTableConstraintColumn">
+		<column name="Attribute" visible="true" order="0" width="66"/>
+	</item>
+	<item id="NodeList/PostgreTableForeignKey">
+		<column name="Name" visible="true" order="0" width="100"/>
+		<column name="Owner" visible="true" order="1" width="100"/>
+		<column name="Type" visible="true" order="2" width="100"/>
+		<column name="Match Type" visible="true" order="5" width="100"/>
+		<column name="Delete Rule" visible="true" order="6" width="100"/>
+		<column name="Update Rule" visible="true" order="7" width="100"/>
+		<column name="Comment" visible="true" order="8" width="100"/>
+	</item>
+	<item id="NodeList/PostgreTableForeignKey/PostgreTableForeignKeyColumn"/>
+	<item id="NodeList/PostgreTableRegular">
+		<column name="Table Name" visible="true" order="0" width="102"/>
+		<column name="Object ID" visible="true" order="1" width="70"/>
+		<column name="Owner" visible="true" order="2" width="51"/>
+		<column name="Tablespace" visible="true" order="3" width="81"/>
+		<column name="Row Count Estimate" visible="true" order="4" width="141"/>
+		<column name="Partitions" visible="true" order="5" width="69"/>
+		<column name="Partition by" visible="true" order="6" width="83"/>
+		<column name="Extra Options" visible="true" order="7" width="96"/>
+		<column name="Comment" visible="true" order="8" width="73"/>
+	</item>
+	<item id="SchemaSelector">
+		<column name="Name" visible="true" order="0" width="155"/>
+		<column name="Comment" visible="true" order="1" width="134"/>
+	</item>
+</items>

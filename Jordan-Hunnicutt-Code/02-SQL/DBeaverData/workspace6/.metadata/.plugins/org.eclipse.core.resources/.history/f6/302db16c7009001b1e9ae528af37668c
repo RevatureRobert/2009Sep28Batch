@@ -1,0 +1,13 @@
+------sequences
+--a sequence will begin a sequence of numbers and keep track of the current value.
+----to use the values, we can use nextval('seq_name') to get a unique value.
+
+--behind the scenes, serial uses a sequence to increment
+--we can customize by starting with whatever number and changing it how we like
+create sequence seq5 start 5 increment by 5;
+
+select nextval('seq5');
+
+create sequence start6 start 6;
+
+select nextval('start6');

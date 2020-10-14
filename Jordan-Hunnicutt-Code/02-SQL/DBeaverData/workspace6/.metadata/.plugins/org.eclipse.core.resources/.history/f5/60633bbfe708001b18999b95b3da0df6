@@ -1,0 +1,27 @@
+------TRIGGERS
+drop table colors;
+create table colors(
+	id serial primary key,
+	color text
+);
+
+insert into colors (color) values ('red'),('blue'),('green'),('gray');
+select * from colors;
+
+--tg_op = trigger operation holds information about what is happening
+create or replace function no_more_blues()
+	returns trigger as $$
+		begin 
+			if(tg_op='insert') then 
+			--new is the new value inserted into the table
+				if(upper(new.color)='BLUE') then
+					return null;
+				end if;
+			end if;
+			if(upper(new.color)='BLUE') then
+				return old;
+			end if;
+		return new;
+		end
+	
+	$$ language plpgsql;

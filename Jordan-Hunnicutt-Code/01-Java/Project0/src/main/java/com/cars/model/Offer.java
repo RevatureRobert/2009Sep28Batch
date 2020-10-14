@@ -1,17 +1,20 @@
 package com.cars.model;
 
+import java.sql.Date;
+
 public class Offer {
 
-	private double amount;
-	private int offId;
+	private int amount;
 	private int carId;
 	private int userId;
+	private String status;
+	private Date addDate;
+	private Date appOrRejDate;
 	
-	
-	public double getAmount() {
+	public int getAmount() {
 		return amount;
 	}
-	public void setAmount(double amount) {
+	public void setAmount(int amount) {
 		this.amount = amount;
 	}
 	public int getCarId() {
@@ -25,22 +28,37 @@ public class Offer {
 	}
 	public void setUserId(int userId) {
 		this.userId = userId;
+	}	
+	public String getStatus() {
+		return status;
 	}
-	public double getOffId() {
-		return offId;
+	public void setStatus(String status) {
+		this.status = status;
 	}
-	public void setOffId(int offId) {
-		this.offId = offId;
+	public Date getAddDate() {
+		return addDate;
+	}
+	public void setAddDate(Date addDate) {
+		this.addDate = addDate;
+	}
+	public Date getAppOrRejDate() {
+		return appOrRejDate;
+	}
+	public void setAppOrRejDate(Date appOrRejDate) {
+		this.appOrRejDate = appOrRejDate;
 	}
 	
 	public Offer() {
 		super();
 	}
 	
-	public Offer(double amount, int carId, int userId) {
+	public Offer(int amount, int carId, int userId, String status, Date addDate, Date appOrRejDate) {
 		this.amount = amount;
 		this.carId = carId;
 		this.userId = userId;
+		this.status = status;
+		this.addDate = addDate;
+		this.appOrRejDate = appOrRejDate;
 	}
 	
 	

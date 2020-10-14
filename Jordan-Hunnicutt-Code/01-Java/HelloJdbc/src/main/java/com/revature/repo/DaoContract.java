@@ -36,7 +36,7 @@ public interface DaoContract<T, I> { //names can be ambiguous, but you want name
 	T create(T t);
 	/**
 	 * 
-	 * @param i the primmary key of the instance to be removed
+	 * @param i the primary key of the instance to be removed
 	 * @return how many were removed [0 if failure, 1 if success]
 	 */
 	int delete(I i);

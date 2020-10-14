@@ -1,0 +1,98 @@
+/*
+    three types of styling
+        inline
+            <h1 style="color:green;">style</h1>
+            use the style attribute to style individual elements
+        internal
+            use a style block in the html head, styles the entire document
+            used to style individual pages
+        external
+            use a css file to add styling to html
+            use the link tag in the head of the document to add the css file
+
+
+    css syntax
+        selector{
+            property: value;
+        }
+    
+    selectors
+        tag selector
+        class selector
+
+    css specificity (from least specific to most)
+        tag selector
+        class selector
+        id selector
+        inline styling <- this will take precedence over any other styling
+    
+    !important
+        not recommended due to overriding default behavior of css
+
+    css
+        cascading style sheet
+        called cascading because it goes down to all children
+
+    css box model
+        margin
+            border
+                padding
+                    content
+                padding
+            border
+        margin
+
+    css combinators
+        child selector
+            selector > childSelector
+        descendent selector
+            selector descendentSelector
+        , just uses the same css on a different tag
+            tags do not have to be related
+        
+*/
+
+/* tag selector */
+h1, h4{
+    color: blue /*!important*/;
+    /* by adding important, we can change the priority of a particular style choice.
+        it is not recommended to use important, because it overides default behavior */
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+/* class selector */
+.odd{
+    color: red;
+    text-decoration: underline;
+}
+
+/* id selector */
+#evenId1{
+    color: purple;
+    text-decoration: line-through;
+}
+
+div{
+    color: orange;
+    /* This is why css is cascading
+        every child inside of the div will be orange, 
+        even if they are inside other tags.
+        (as long as those tags don't have overriding css)*/
+}
+span{
+    color: green;
+}
+/* child selector */
+body > table{
+    margin: auto;
+}
+/*html{
+    color:grey;
+}*/
+/*table{
+    margin: auto;
+}*/
+/* descendent selector */
+body span {
+    color: brown;
+}

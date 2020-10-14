@@ -8,31 +8,29 @@ public class Car {
 	private String make;
 	private String model;
 	private String color;
-	private int year;
+	private int carYear;
 	private int carId;
-//	private List<Double> offerAmounts = new ArrayList<>();
-//	private List<Integer> offerIds = new ArrayList<>(); //foreign key to user
-//	private List<Double> paymentAmounts = new ArrayList<>();
-	
 	private int listPrice;
-	private double yearlyPayment;
-	private double monthlyPayment;
+	private int userId;
 	
 	
 	public Car() {
 		make = "Buick";
 		model = "Terraza";
 		color = "gold";
-		year = 2005;
+		carYear = 2005;
 		carId = 0;
+		listPrice = 2200;
 	}
 	
-	public Car(String make, String model, String color, int year) {
+	public Car(int carId, String make, String model, String color, int year, int listPrice, int userId) {
+		this.carId = carId;
 		this.make = make;
 		this.model = model;
 		this.color = color;
-		setYear(year);
-		carId = 0;
+		this.carYear = year;
+		this.listPrice = listPrice;
+		this.userId = userId;
 	}
 
 	public String getMake() {
@@ -60,7 +58,7 @@ public class Car {
 	}
 	
 	public int getYear() {
-		return year;
+		return carYear;
 	}
 
 	public void setYear(int year) {
@@ -68,7 +66,7 @@ public class Car {
 			System.out.println("Please type in a valid year. (After 1885)");
 			//according to Amazon Echo, the first "modern" motor car was invented in 1886
 		} else {
-			this.year = year;
+			this.carYear = year;
 		}
 		
 		
@@ -85,5 +83,23 @@ public class Car {
 			this.carId = carId;
 		}
 	}
+
+	public int getListPrice() {
+		return listPrice;
+	}
+
+	public void setListPrice(int listPrice) {
+		this.listPrice = listPrice;
+	}
+
+	public int getUserId() {
+		return userId;
+	}
+
+	public void setUserId(int userId) {
+		this.userId = userId;
+	}
+	
+	
 	
 }

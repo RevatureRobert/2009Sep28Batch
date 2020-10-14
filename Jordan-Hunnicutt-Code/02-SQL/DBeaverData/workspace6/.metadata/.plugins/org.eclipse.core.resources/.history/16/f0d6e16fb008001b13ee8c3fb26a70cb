@@ -1,0 +1,10 @@
+select * from "Track";
+select * from "Playlist";
+
+----JOINS
+--joins will bring tables together at the columns.
+select * from "Track" join "Genre" on "Track"."GenreId" = "Genre"."GenreId";
+select "Track"."Name", "Genre"."Name" from "Track" join "Genre" on "Track"."GenreId" = "Genre"."GenreId";
+
+--different types of joins
+----inner join, outer join (left outer, right outer, full outer), self, cross, cartesian

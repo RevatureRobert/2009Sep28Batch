@@ -1,0 +1,9 @@
+--isolation levels
+
+--ACID, the i stands for isolation
+----isolated = transactions will not conflict with each other
+
+--read uncommitted
+--read committed
+--repeatable read
+--serializable
