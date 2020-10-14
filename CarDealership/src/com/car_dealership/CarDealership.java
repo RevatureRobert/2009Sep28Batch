@@ -280,8 +280,8 @@ public class CarDealership {
 			password = scan.next();
 			
 		}
-		String ePassword = com.car_dealership.util.Util.encrypt(password);
-		cc.create(new Customer(0, username, ePassword));
+		//String ePassword = com.car_dealership.util.Util.encrypt(password);
+		cc.create(new Customer(0, username, password));
 	}
 
 	public void printListofOffers(List<Offer> o) {
