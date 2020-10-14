@@ -45,7 +45,7 @@ import java.util.TreeSet;
  * 	Stack																HashTable
  * 																		SortedSet
  * Stack is first in / last out (like a deck of cards)
- * TreeSet stores Comparable items and uses the items' compareTo method to 
+ * TreeSet stores Comparable items and uses the items' compareTo method to order elements
  * 
  */
 
