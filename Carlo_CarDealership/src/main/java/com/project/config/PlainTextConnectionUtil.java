@@ -6,8 +6,8 @@ import java.sql.SQLException;
 
 public class PlainTextConnectionUtil {
 	
-	private final String url = "jdbc:postgresql://carlo-db-instance.cfrkice9i0us.us-east-1.rds.amazonaws.com"
-			+ ":5432/myDatabase?currentSchema=carDealership";
+	private final String url = "jdbc:postgresql://databaseLocation"
+			+ ":5432/nameOfDB?currentSchema=scehmaName";
 	private final String username = "cardealer";
 	private final String password = "password";
 	
