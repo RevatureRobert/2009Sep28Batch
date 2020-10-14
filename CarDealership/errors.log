@@ -1,0 +1,31 @@
+2020-10-12 13:02:56 ERROR UserController:39 - Error creating user, likely duplicate
+2020-10-12 14:11:57 ERROR UserDAO:81 - Error creating user, likely duplicate
+2020-10-12 18:00:44 ERROR UserDAO:98 - Error creating employee, likely duplicate
+2020-10-12 18:09:50 ERROR UserDAO:98 - Error creating employee, likely duplicate
+2020-10-12 18:10:15 ERROR UserDAO:98 - Error creating employee, likely duplicate
+2020-10-12 18:19:06 ERROR UserDAO:98 - Error creating employee, likely duplicate
+2020-10-12 18:25:34 ERROR UserDAO:98 - Error creating employee, likely duplicate
+2020-10-12 18:48:31 ERROR UserDAO:81 - Error creating user, likely duplicate
+2020-10-12 18:53:57 ERROR UserDAO:81 - Error creating user, likely duplicate
+2020-10-12 18:54:07 ERROR UserDAO:81 - Error creating user, likely duplicate
+2020-10-12 19:06:05 ERROR CarDAO:124 - The only way you're seeing this is an error with the connection.
+2020-10-12 21:59:50 ERROR CarDAO:144 - Error while updating car
+2020-10-12 22:01:16 ERROR CarDAO:144 - Error while updating car
+2020-10-12 22:03:28 ERROR CarDAO:150 - Error while updating car
+2020-10-12 22:10:06 ERROR CarDAO:144 - Error while updating car
+2020-10-13 10:06:54 ERROR MoneyMenu:50 - Customer entered a string in a number field
+2020-10-13 10:07:00 ERROR MoneyMenu:50 - Customer entered a string in a number field
+2020-10-13 10:07:10 ERROR MoneyMenu:50 - Customer entered a string in a number field
+2020-10-13 10:07:18 ERROR MoneyMenu:50 - Customer entered a string in a number field
+2020-10-13 14:20:02 ERROR MoneyMenu:192 - Employee accepted an offer
+2020-10-13 15:43:41 ERROR MoneyMenu:194 - Employee accepted an offer
+2020-10-13 16:09:12 ERROR MoneyMenu:107 - Customer entered a string in a number field
+2020-10-13 16:10:18 ERROR MoneyMenu:107 - Customer entered a string in a number field
+2020-10-13 16:11:17 ERROR MoneyMenu:107 - Customer entered a string in a number field
+2020-10-13 16:14:44 ERROR MoneyDAO:120 - Error while making payment
+2020-10-13 16:15:01 ERROR MoneyDAO:120 - Error while making payment
+2020-10-13 16:15:41 ERROR MoneyDAO:121 - Error while making payment
+2020-10-13 16:16:11 ERROR MoneyDAO:121 - Error while making payment
+2020-10-13 16:17:35 ERROR MoneyMenu:122 - Customer entered a string in a number field
+2020-10-13 21:14:21 ERROR CarDAO:124 - The only way you're seeing this is an error with the connection.
+2020-10-13 21:15:59 ERROR CarDAO:108 - Error creating car, likely duplicate
