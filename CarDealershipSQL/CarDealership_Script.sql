@@ -68,11 +68,13 @@ truncate table customer cascade;
 truncate table vehicle cascade;
 
 insert into vehicle values ('00000', 'Ford', 'F150', 2020, 'TRUCK', 'WHITE', 18, 90, 300, false);
+insert into vehicle values ('00001', 'GMC', 'Siera', 2015, 'TRUCK', 'WHITE', 20, 95, 300, false);
+insert into vehicle values ('00001', 'Dodge', 'Ram 2500', 2005, 'TRUCK', 'BLUE', 17, 80, 250, false);
 insert into vehicle values ('00001', 'GMC', 'Siera', 2015, 'TRUCK', 'WHITE', 18, 90, 300, false);
-insert into employee (Username, Passkey) values ('Bob', 'Generic');
-insert into customer (username, passkey) values ('Jay', 'Generic');
-insert into customer (username, passkey) values ('John', 'Generic');
-insert into customer (username, passkey) values ('Janet', 'Generic');
+insert into employee (Username, Passkey) values ('Bob', 'Pass');
+insert into customer (username, passkey) values ('Jay', 'Pass');
+insert into customer (username, passkey) values ('John', 'Pass');
+insert into customer (username, passkey) values ('Janet', 'Pass');
 commit;
 
 select * from Customer;
