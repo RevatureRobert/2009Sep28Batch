@@ -1,0 +1,10 @@
+2020-10-14 02:23:05 DEBUG CarDealership:55 - This is debug : mkyong
+2020-10-14 02:23:05 INFO  CarDealership:59 - This is info : mkyong
+2020-10-14 02:23:05 WARN  CarDealership:62 - This is warn : mkyong
+2020-10-14 02:23:05 ERROR CarDealership:63 - This is error : mkyong
+2020-10-14 02:23:05 FATAL CarDealership:64 - This is fatal : mkyong
+2020-10-14 02:23:57 DEBUG CarDealership:55 - This is debug : mkyong
+2020-10-14 02:23:57 INFO  CarDealership:59 - This is info : mkyong
+2020-10-14 02:23:57 WARN  CarDealership:62 - This is warn : mkyong
+2020-10-14 02:23:57 ERROR CarDealership:63 - This is error : mkyong
+2020-10-14 02:23:57 FATAL CarDealership:64 - This is fatal : mkyong
