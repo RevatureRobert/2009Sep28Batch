@@ -101,3 +101,4 @@ Creating a new car..
 car created2020 Boeing747 1000000$
 Bid createdcom.project0.model.Bid@2ed2d9cb
 Bid createdcom.project0.model.Bid@593aaf41
+Failed customer login attempt: Cannot invoke "com.project0.model.Customer.getName()" because "customer" is null

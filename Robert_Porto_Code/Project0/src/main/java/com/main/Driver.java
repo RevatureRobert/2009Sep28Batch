@@ -10,7 +10,6 @@ public class Driver {
 		MainMenu mm = new MainMenu();
 		Scanner scan = new Scanner(System.in);
 		mm.mainMenu(scan);
-		System.out.println("asdf");
 
 	}
 
