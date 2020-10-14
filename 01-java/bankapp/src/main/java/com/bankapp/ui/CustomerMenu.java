@@ -34,8 +34,9 @@ public class CustomerMenu {
 			Transfer(scanner);
 			CustomerMenu(scanner);
 		}
+		return "troubleshooting";
 	}
-	static void Transfer(Scanner scanner) {
+	public String Transfer(Scanner scanner) {
 		System.out.println("Transfer information");
 		System.out.println("Transfer to:\n1. Checking\n2. Savings");
 		int transfer1 = scanner.nextInt();
@@ -56,5 +57,6 @@ public class CustomerMenu {
 				System.out.println("Transfer Successful!");					
 			}
 		}
+		return "troubleshooting";
 	}
 }

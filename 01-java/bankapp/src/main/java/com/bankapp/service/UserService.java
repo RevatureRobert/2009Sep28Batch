@@ -1,7 +1,10 @@
 package com.bankapp.service;
 
+import java.util.List;
+
 import com.bankapp.model.Users;
 import com.bankapp.repo.UsersDao;
+
 
 public class UserService {
 	private UsersDao ud;
@@ -15,6 +18,9 @@ public class UserService {
 		this.ud = ud;
 	}
 	
+	public List<Users> findAll(){
+		return ud.findAll();
+ 	}
 	public Users create(Users u) throws Exception {
 		Users result = ud.create(u);
 		if(result == null) {
@@ -22,4 +28,5 @@ public class UserService {
 		}
 		return result;
 	}
+	
 }

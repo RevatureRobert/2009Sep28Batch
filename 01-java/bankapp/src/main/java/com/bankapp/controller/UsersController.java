@@ -2,22 +2,30 @@ package com.bankapp.controller;
 
 import java.util.List;
 
-import com.revature.model.Bear;
-import com.revature.service.BearService;
+import com.bankapp.model.Users;
+import com.bankapp.service.UserService;
 
 public class UsersController {
-	private BearService bs;
+	private UserService us;
 
-	public BearController() {
-		this(new BearService());
+	public UsersController() {
+		this(new UserService());
 	}
 
-	public BearController(BearService bs) {
+	public UsersController(UserService us) {
 		super();
-		this.bs = bs;
+		this.us = us;
 	}
 
-	public List<Bear> findAll() {
-		return bs.findAll();
+	public List<Users> findAll() {
+		return us.findAll();
+	}
+	public String insert(Users c) {
+		try {
+			Users result = us.create(c);
+			return result.toString();
+		} catch (Exception e) {
+			return e.getMessage();
+		}
 	}
 }

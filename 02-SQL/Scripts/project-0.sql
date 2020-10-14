@@ -1,24 +1,20 @@
 create table users(
-username text primary key;
-user_password text not null;
-email text not null
+username text primary key,
+user_password text not null,
+email text not null,
+user_acc boolean default(true),
+emp_acc boolean default (false),
+cust_acc boolean default(false),
+has_checking boolean default (false),
+cheking_balance integer default (0.00),
+has_savings boolean default(false),
+savings_balance integer default(0.00)
 );
-create table user_type(
-belongs_to text references users (username);
-user_acc boolean default(true);
-emp_acc boolean not null;
-cust_acc boolean not null
-);
-create table account_type(
-belongs_to text references users (username);
-checking boolean not null;
-savings boolean not null
-);
-create table checking_balance(
-belongs_to text references users (username);
-balance integer default (0) not null
-);
-create table savings_balance(
-belongs_to text references users (username);
-balance integer default (0) not null
-);
+
+create user bank_user with password 'password';
+grant all privileges on schema bank_schema to bank_user;
+grant all privileges on schema public to bank_user;
+
+select * from users; 
+insert into users (username, user_password, email) values ('fdjasl', 'dsafdsa', 'drip');
+drop table users;
