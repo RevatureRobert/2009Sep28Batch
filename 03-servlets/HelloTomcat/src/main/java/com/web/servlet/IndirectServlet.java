@@ -57,6 +57,10 @@ public class IndirectServlet extends HttpServlet{
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		System.out.println(this.getServletConfig().getInitParameter("servlet"));
+		System.out.println(this.getServletName());
+		System.out.println(this.getServletContext().getInitParameter("application"));
+		
 		//redirect will change the url and send the user somewhere else
 //		resp.sendRedirect("03-Front End/html/intro.html");
 		// url stays the same, the server handles all information gathering
