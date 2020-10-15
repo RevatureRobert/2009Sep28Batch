@@ -1,5 +1,51 @@
-<<<<<<< HEAD
-2020-09-28 14:22:33,397 [Worker-2: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is not available. Remote download required.
-=======
 2020-09-28 14:22:25,812 [Worker-5: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
->>>>>>> master
+2020-10-15 10:21:49,208 [Worker-6: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
+2020-10-15 10:28:42,069 [Worker-11: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.maven.ide.eclipse.wtp.WarLifecycleMapping lifecycle mapping for MavenProject: com.web:HelloTomcat:0.0.1-SNAPSHOT @ C:\Users\0829j\my_git_repos\2009Sep28Batch\03-servlets\HelloTomcat\pom.xml.
+2020-10-15 10:28:45,937 [Worker-11: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-10-15 10:28:45,960 [Worker-11: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\0829j\my_git_repos\2009Sep28Batch\03-servlets\HelloTomcat\src\main\resources
+2020-10-15 10:28:45,964 [Worker-11: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-10-15 10:28:45,980 [Worker-11: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\0829j\my_git_repos\2009Sep28Batch\03-servlets\HelloTomcat\src\test\resources
+2020-10-15 10:40:38,023 [Worker-12: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-10-15 10:40:38,033 [Worker-12: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\0829j\my_git_repos\2009Sep28Batch\03-servlets\HelloTomcat\src\main\resources
+2020-10-15 10:40:38,035 [Worker-12: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-10-15 10:40:38,051 [Worker-12: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\0829j\my_git_repos\2009Sep28Batch\03-servlets\HelloTomcat\src\test\resources
+2020-10-15 10:40:40,117 [Worker-12: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-10-15 10:40:40,127 [Worker-12: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\0829j\my_git_repos\2009Sep28Batch\03-servlets\HelloTomcat\src\main\resources
+2020-10-15 10:40:40,129 [Worker-12: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-10-15 10:40:40,138 [Worker-12: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\0829j\my_git_repos\2009Sep28Batch\03-servlets\HelloTomcat\src\test\resources
+2020-10-15 11:25:49,816 [Worker-21: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-10-15 11:25:49,832 [Worker-21: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\0829j\my_git_repos\2009Sep28Batch\03-servlets\HelloTomcat\src\main\resources
+2020-10-15 11:25:49,836 [Worker-21: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-10-15 11:25:49,848 [Worker-21: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\0829j\my_git_repos\2009Sep28Batch\03-servlets\HelloTomcat\src\test\resources
+2020-10-15 11:26:08,727 [Worker-2: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2020-10-15 11:26:10,611 [Worker-7: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-10-15 11:26:10,638 [Worker-7: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\0829j\my_git_repos\2009Sep28Batch\03-servlets\HelloTomcat\src\main\resources
+2020-10-15 11:26:10,641 [Worker-7: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-10-15 11:26:10,660 [Worker-7: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\0829j\my_git_repos\2009Sep28Batch\03-servlets\HelloTomcat\src\test\resources
+2020-10-15 11:29:09,410 [Worker-1: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2020-10-15 11:29:15,078 [Worker-4: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-10-15 11:29:15,086 [Worker-4: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\0829j\my_git_repos\2009Sep28Batch\03-servlets\HelloTomcat\src\main\resources
+2020-10-15 11:29:15,088 [Worker-4: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-10-15 11:29:15,097 [Worker-4: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\0829j\my_git_repos\2009Sep28Batch\03-servlets\HelloTomcat\src\test\resources
+2020-10-15 11:55:05,182 [Worker-8: Creating project "HallowMonsters"] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.maven.ide.eclipse.wtp.WarLifecycleMapping lifecycle mapping for MavenProject: com.web:HallowMonsters:0.0.1-SNAPSHOT @ C:\Users\0829j\my_git_repos\2009Sep28Batch\HallowMonsters\pom.xml.
+2020-10-15 11:55:05,379 [Worker-8: Creating project "HallowMonsters"] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /HallowMonsters/src/main/java
+2020-10-15 11:55:05,380 [Worker-8: Creating project "HallowMonsters"] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /HallowMonsters/src/main/resources
+2020-10-15 11:55:05,381 [Worker-8: Creating project "HallowMonsters"] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /HallowMonsters/src/test/java
+2020-10-15 11:55:05,381 [Worker-8: Creating project "HallowMonsters"] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /HallowMonsters/src/test/resources
+2020-10-15 11:55:07,632 [Worker-11: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-10-15 11:55:07,648 [Worker-11: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-10-15 11:55:07,651 [Worker-11: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-10-15 11:55:07,663 [Worker-11: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-10-15 11:55:09,215 [Worker-13: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-10-15 11:55:09,227 [Worker-13: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-10-15 11:55:09,228 [Worker-13: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-10-15 11:55:09,245 [Worker-13: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-10-15 12:27:41,029 [Worker-18: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.maven.ide.eclipse.wtp.WarLifecycleMapping lifecycle mapping for MavenProject: com.web:HallowMonsters:0.0.1-SNAPSHOT @ C:\Users\0829j\my_git_repos\2009Sep28Batch\HallowsMonsters\pom.xml.
+2020-10-15 12:27:41,139 [Worker-18: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-10-15 12:27:41,148 [Worker-18: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-10-15 12:27:41,149 [Worker-18: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-10-15 12:27:41,156 [Worker-18: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-10-15 14:12:45,742 [Worker-23: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-10-15 14:12:45,771 [Worker-23: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\0829j\my_git_repos\2009Sep28Batch\03-servlets\HelloTomcat\src\main\resources
+2020-10-15 14:12:45,775 [Worker-23: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-10-15 14:12:45,817 [Worker-23: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\0829j\my_git_repos\2009Sep28Batch\03-servlets\HelloTomcat\src\test\resources
