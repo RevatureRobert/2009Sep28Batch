@@ -1,0 +1,221 @@
+<!-- this is a comment in html -->
+
+<!--
+
+  what is html?
+    defines the structure for a web page.
+    the browser will interpret the html and display
+      it accordingly on the screen.
+    hypertext markup language
+    we will be using html5
+  in html we have tags
+    the tags are standardized by w3c
+      world wide web consortium
+      opening tag ------- > <tagName>
+      closing tag ------- > </tagName>
+      self closing tag -- > <tagName/> or just <tagName>
+      
+  a few important tags in html that are needed by the browser
+        doctype will tell the browser what type of document it is
+        html tag is the root tag of the document
+        head tag provides metadata for the document
+        body tag provides the content for the document
+-->
+
+<!--for the browser to know what type of document it is-->
+<!DOCTYPE html>
+
+<html>
+  <!--what the browser needs to know for the document-->
+  <head>
+    <!--
+      bootstrap is a css framework that provides templating
+        options and preformatted css with a grid system
+        for responsive designs.
+    -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
+    <title>this is our title</title>
+    <!--internal styling-->
+    <!-- <style>
+      h1 {
+        color: red;
+        font-family: cursive;
+      }
+    </style> -->
+    <!--absolute path-->
+    <!-- <link
+      rel="stylesheet"
+      href="C:\Users\Revature\Desktop\gitrepos\2009Sep28Batch\03-Front End\css\index.css"
+      type="text/css"
+    /> -->
+    <!--relative path-->
+    <link rel="stylesheet" href="03-Front End/css/index.css" type="text/css" />
+  </head>
+  <!--what will be displayed-->
+  <body>
+  
+  <a href="redirect">login</a>
+  
+  
+    <!--heading tags, h1 is the biggest going down to 6-->
+    <!--inline styling-->
+    <h1 style="color: red; font-family: cursive">
+      this is the first heading tag
+    </h1>
+    <h1 class="odd">hey</h1>
+    <h2 id="evenId1">this is the second</h2>
+    <h3 class="odd">this is the third</h3>
+    <h4>this is the fourth</h4>
+    <h5 class="odd">this is the fifth</h5>
+    <h6>this is the sixth</h6>
+
+    <!--paragraph-->
+    <p>this is a paragraph</p>
+    <p>this is another paragraph</p>
+
+    <!--
+      inline and block elements
+        block elements allocate the width of the page for the content
+          examples: p, h1-6, div, etc...
+        inline elements allocate only enough space as is needed for the content
+          span, textarea, b, i, etc...
+    -->
+
+    <span>this is a span, we can edit the content as needed for styling</span>
+    <b>this is a bold tag</b>
+    <br /><!--this is a line break-->
+    <i>this is italicized</i>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <!--tagName*number will auto generate that many tags for you-->
+
+    <!--lists-->
+    <!--bulleted list (unordered)-->
+    <ul title="this is a tooltip for the entire list">
+      this is the name of the list
+      <li title="this is a tooltip for the list item">first bullet</li>
+      <li>second bulllet</li>
+      <li>third bullet</li>
+    </ul>
+
+    <!--numbered list (ordered)-->
+    <ol>
+      the name of our list
+      <li>first</li>
+      <li>second</li>
+      <li>third</li>
+    </ol>
+    <!--the dictionary list (made for terms and definitions)-->
+    <dl>
+      the dictionary list
+      <dt>aardvark</dt>
+      <dd>an animal with more a's than k's</dd>
+    </dl>
+    <!--
+      attributes
+        a property that can change the behavior or 
+          appearance of an element.
+    -->
+
+    <!--tables-->
+    <table class="table table-dark">
+      <!--table head-->
+      <thead>
+        <!--table row-->
+        <tr>
+          <!--table header-->
+          <th>name</th>
+          <th>age</th>
+          <th>phone #</th>
+        </tr>
+      </thead>
+      <!--table body-->
+      <tbody>
+        <tr>
+          <!--table data-->
+          <td>anthony</td>
+          <td>44</td>
+          <td>555-555-5555</td>
+        </tr>
+        <tr>
+          <td>samantha</td>
+          <td>23</td>
+          <td>555-555-5555</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!--forms-->
+    <!--action tells the browser where to send the form data
+        method tells the browser how to send it (http method)-->
+    <form action="some.url" method="POST">
+      <!--input fields are inline elements, we reference them
+            by name on the server side to get their values-->
+      <input type="text" placeholder="username" name="username" />
+      <input type="password" placeholder="password" name="password" />
+      <input type="file" name="some file" />
+      <input type="date" name="date" />
+      <select name="favorite places">
+        <option value="null">pick your favorite place</option>
+        <option value="tokyo">tokyo</option>
+      </select>
+    </form>
+
+    <!--
+      different types of attributes
+        local
+          attributes that are only available to some elements
+            action, method, src, href, etc...
+        global
+          attributes that all elements can use
+            id, class, style, title, etc...
+    -->
+
+    <!--linking pages-->
+    <a href="https://google.com">click here for a search engine</a>
+    <div>
+      <img
+        class="col-md-2"
+        src="data:image/jpeg;base64,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"
+      />
+      <img
+        class="col-md-10"
+        src="https://media.geeksforgeeks.org/wp-content/uploads/box-model-1.png"
+        alt="box model"
+      />
+    </div>
+    <!--
+      href ------------------- > resource
+      src  < ------------------- resource
+    -->
+
+    <div>
+      <span>this is a span inside a div</span>
+    </div>
+    <span>this is a span outside a div</span>
+
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+      integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+      integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
