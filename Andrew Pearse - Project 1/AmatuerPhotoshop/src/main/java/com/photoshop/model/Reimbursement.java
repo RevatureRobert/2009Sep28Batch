@@ -4,7 +4,7 @@ import java.sql.Timestamp;
 
 public class Reimbursement {
 
-	private int id;
+	private Integer id;
 	private float amount;
 	private Timestamp dateSubmitted;
 	private Timestamp dateResolved;
@@ -16,7 +16,7 @@ public class Reimbursement {
 	private ReimbursementStatus status;
 	private ReimbursementType type;
 
-	public Reimbursement(int id, float amount, Timestamp dateSubmitted, Timestamp dateResolved, String description,
+	public Reimbursement(Integer id, float amount, Timestamp dateSubmitted, Timestamp dateResolved, String description,
 			String receipt, User author, User resolver, ReimbursementStatus status, ReimbursementType type) {
 		super();
 		this.id = id;
@@ -31,11 +31,11 @@ public class Reimbursement {
 		this.type = type;
 	}
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

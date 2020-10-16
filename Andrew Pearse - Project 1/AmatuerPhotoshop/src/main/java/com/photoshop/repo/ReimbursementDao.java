@@ -37,8 +37,8 @@ public class ReimbursementDao implements DaoContract<Reimbursement, Integer> {
 				reimbursements.add(new Reimbursement(rs.getInt("id"), rs.getFloat("amount"), rs.getTimestamp("submitted"), rs.getTimestamp("resolved"), 
 										rs.getString("description"), rs.getString("receipt"), 
 										ud.findById(rs.getInt("author")), ud.findById(rs.getInt("resolver")), 
-										new ReimbursementStatus(0, rs.getString("status")), 
-										new ReimbursementType(0, rs.getString("type"))));
+										new ReimbursementStatus(rs.getInt("status_id"), rs.getString("status")), 
+										new ReimbursementType(rs.getInt("type_id"), rs.getString("type"))));
 			}
 			
 			
@@ -79,7 +79,7 @@ public class ReimbursementDao implements DaoContract<Reimbursement, Integer> {
 	@Override
 	public int create(Reimbursement t) {
 		String sql = "insert into ers_reimbursement (reimb_amount, reimb_submitted, reimb_resolved, "
-				+ "reimb_description, reimb_receipt, reimb_author, reimb_resolver, reimb_status_id, reimb_type_id) values (?,?,?,?,?,?,?,?,?)"; 
+				+ "reimb_description, reimb_receipt, reimb_author, reimb_status_id, reimb_type_id) values (?,?,?,?,?,?,?,?)"; 
 		int updated = 0;
 		try (Connection conn = ConnectionUtil.getInstance().getConnection()){
 			PreparedStatement ps = conn.prepareStatement(sql);
@@ -89,9 +89,8 @@ public class ReimbursementDao implements DaoContract<Reimbursement, Integer> {
 			ps.setString(4, t.getDescription());
 			ps.setString(5, t.getReceipt());
 			ps.setInt(6, t.getAuthor().getId());
-			ps.setInt(7, t.getResolver().getId());
-			ps.setInt(8, t.getStatus().getId());
-			ps.setInt(9, t.getType().getId());
+			ps.setInt(7, t.getStatus().getId());
+			ps.setInt(8, t.getType().getId());
 			
 			updated = ps.executeUpdate();
 			

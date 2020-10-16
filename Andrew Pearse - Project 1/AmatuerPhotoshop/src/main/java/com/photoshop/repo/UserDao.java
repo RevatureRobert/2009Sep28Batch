@@ -51,7 +51,7 @@ public class UserDao implements DaoContract<User, Integer> {
 			
 			while(rs.next()) {
 				user = new User(rs.getInt("id"), rs.getString("username"), rs.getString("password"), rs.getString("first_name"), 
-									rs.getString("last_name"), rs.getString("email"), new UserRole(0, rs.getString("role")));
+									rs.getString("last_name"), rs.getString("email"), new UserRole(rs.getInt("role_id"), rs.getString("role")));
 			}
 			
 			ps.close();
@@ -76,7 +76,6 @@ public class UserDao implements DaoContract<User, Integer> {
 			ps.setString(4, t.getLastName());
 			ps.setString(5, t.getEmail());
 			ps.setInt(6, t.getRole().getId());
-			ps.setInt(7, t.getId());
 			
 			updated = ps.executeUpdate();
 			
@@ -90,13 +89,13 @@ public class UserDao implements DaoContract<User, Integer> {
 
 	@Override
 	public int update(User t) {
-		String sql = "update ers_users set ers_username = ? "
-										+ "ers_password = ? "
-										+ "user_first_name = ? "
-										+ "user_last_name = ? "
-										+ "user_email = ? "
+		String sql = "update ers_users set ers_username = ?,"
+										+ "ers_password = ?,"
+										+ "user_first_name = ?,"
+										+ "user_last_name = ?,"
+										+ "user_email = ?,"
 										+ "user_role_id = ? "
-									 + "where ers_users_id = ? ";
+									 + "where ers_users_id = ?";
 		int updated = 0;
 		try (Connection conn = ConnectionUtil.getInstance().getConnection()){
 			PreparedStatement ps = conn.prepareStatement(sql);
