@@ -1,0 +1,132 @@
+<!-- this is a comment in html -->
+
+<!--
+  what is html?
+    defines the structure for a web page.
+    the browser will interpret the html and display
+      it accordingly on the screen.
+    hypertext markup language
+    we will be using html5
+  in html we have tags
+    the tags are standardized by w3c
+      world wide web consortium
+      opening tag ------- > <tagName>
+      closing tag ------- > </tagName>
+      self closing tag -- > <tagName/> or just <tagName>
+      
+  a few important tags in html that are needed by the browser
+        doctype will tell the browser what type of document it is
+        html tag is the root tag of the document
+        head tag provides metadata for the document
+        body tag provides the content for the document
+-->
+
+<!--for the browser to know what type of document it is-->
+<!DOCTYPE html>
+
+<html>
+  <!--what the browser needs to know for the document-->
+  <head>
+    <title>this is our title</title>
+    
+    <link rel="stylesheet" href="/css/text.css" type="text.css" />
+  </head>
+  <!--what will be displayed-->
+  <body>
+  	<a href="redirect">login</a>
+  
+    <!--heading tags, h1 is the biggest going down to 6-->
+    <h1>this is the first heading tag</h1>
+    <h2>this is the second</h2>
+    <h3>this is the third</h3>
+    <h4>this is the fourth</h4>
+    <h5>this is the fifth</h5>
+    <h6>this is the sixth</h6>
+
+    <!--paragraph-->
+    <p>this is a paragraph</p>
+    <p>this is another paragraph</p>
+
+    <!--
+      inline and block elements
+        block elements allocate the width of the page for the content
+          examples: p, h1-6, div, etc...
+        inline elements allocate only enough space as is needed for the content
+          span, textarea, b, i, etc...
+    -->
+
+    <span>this is a span, we can edit the content as needed for styling</span>
+    <b>this is a bold tag</b>
+    <br /><!--this is a line break-->
+    <i>this is italicized</i>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <!--tagName*number will auto generate that many tags for you-->
+
+    <!--lists-->
+    <!--bulleted list (unordered)-->
+    <ul title="this is a tooltip for the entire list">
+      this is the name of the list
+      <li title="this is a tooltip for the list item">first bullet</li>
+      <li>second bulllet</li>
+      <li>third bullet</li>
+    </ul>
+
+    <!--numbered list (ordered)-->
+    <ol>
+      the name of our list
+      <li>first</li>
+      <li>second</li>
+      <li>third</li>
+    </ol>
+    <!--the dictionary list (made for terms and definitions)-->
+    <dl>
+      the dictionary list
+      <dt>aardvark</dt>
+      <dd>an animal with more a's than k's</dd>
+    </dl>
+    <!--
+      attributes
+        a property that can change the behavior or 
+          appearance of an element.
+    -->
+
+    <!--tables-->
+    <table>
+      <!--table head-->
+      <thead>
+        <!--table row-->
+        <tr>
+          <!--table header-->
+          <th>name</th>
+          <th>age</th>
+          <th>phone #</th>
+        </tr>
+      </thead>
+      <!--table body-->
+      <tbody>
+        <tr>
+          <!--table data-->
+          <td>anthony</td>
+          <td>44</td>
+          <td>555-555-5555</td>
+        </tr>
+        <tr>
+          <td>samantha</td>
+          <td>23</td>
+          <td>555-555-5555</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!--forms-->
+    <form>
+      <input type="text" placeholder="username" name="username" />
+      <input type="password" placeholder="password" name="password" />
+      <input type="file" name="some file" />
+    </form>
+  </body>
+</html>

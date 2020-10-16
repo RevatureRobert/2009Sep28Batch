@@ -1,0 +1,109 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>firstMavenPackage</groupId> <!--  -->
+  <artifactId>MavenJava</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <description>this is the introduction to maven for sep 2009</description>
+
+<!-- pom.xml is a dependencies file 
+ dependencies will go into the target folder 
+ The Maven Central Repository has all the jars that are handed into Maven 
+ Maven will look into the .m2 folder before it looks toward the Central Repository 
+There's a group id (com.google.auth) and a version id 
+"target" folder is where jars will appear from YOUR project -->
+  
+  <properties>
+  	<maven.compiler.target>1.8</maven.compiler.target>
+  	<maven.compiler.source>1.8</maven.compiler.source>
+  </properties>
+  
+  <!--
+  <build>
+  	<plugins>
+  		<plugin>
+  			
+  		</plugin>
+  	</plugins>
+  </build>
+  -->
+  
+  <dependencies>
+  
+  	<!-- https://mvnrepository.com/artifact/junit/junit -->
+  	<dependency>
+	  	<groupId>junit</groupId>
+	  	<artifactId>junit</artifactId>
+	  	<version>4.13</version>
+	  	<scope>test</scope> <!-- Says what directory the dependency will be available from -->
+ 	</dependency>
+ 	
+ 	<!-- https://mvnrepository.com/artifact/org.mockito/mockito-core -->
+	<dependency>
+	    <groupId>org.mockito</groupId>
+	    <artifactId>mockito-core</artifactId>
+	    <version>3.5.13</version>
+	    <scope>test</scope>
+	</dependency>
+	 	
+  
+  <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
+<!-- 
+	<dependency>
+		<groupId>com.fasterxml.jackson.core</groupId>
+	    <artifactId>jackson-databind</artifactId>
+	    <version>2.11.2</version>
+	</dependency>
+-->
+  
+  </dependencies>
+</project>
+
+<!--
+
+POM
+	pom.xml
+	The project object model
+	This is your configuration and overall outline for your project.
+	You can add dependencies, variables, plugins, and alter the project life cycle.
+
+The Maven life cycle
+
+lifecycles	->		default (build)					clean					site
+phases		->			validate					clean					site
+						compile					
+						test-compile			
+						test					
+						package					
+						install					
+						deploy					
+
+					Builds application		Cleans target folder	generates documentation site
+
+In CLI, Maven commands must be executed from the pom.xml directory
+		mvn validate
+			validates source code
+		mvn compile
+			validates and also runs all compilation operations into the target folder
+		mvn clean
+			gets rid of the target folder
+		mvn test-compile
+			runs compile and also any test classes
+		mvn test
+			runs test files
+		mvn clean install
+			gets rid of everything in the <groupId>-tagged folder
+		mvn site
+			requires plugin
+			creates a single html site for your project
+
+Tends to check for changes; you typically want to use clean then rebuild
+
+
+
+Build goals
+	Individual goals inside of each phase.
+	The phases are large steps, and goals are the small steps within each phase.
+
+Maven will be the standard project type from now on
+	All necessary jars should be: https://mvnrepository.com/artifact/junit/junit
+-->
