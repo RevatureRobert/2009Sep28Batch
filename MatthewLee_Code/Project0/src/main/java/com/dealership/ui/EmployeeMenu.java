@@ -24,12 +24,7 @@ public class EmployeeMenu {
 	}
 
 	public Employee login(Scanner scan) {
-		String title = "Employee Login";
-		int padding = ((32 - title.length()) / 2) + title.length();
-
-		System.out.println("\n\n--------------------------------");
-		System.out.println(String.format("%" + padding + "s", title));
-		System.out.println("--------------------------------");
+		displayTitle("Employee Login");
 
 		System.out.print("Enter username: ");
 		String username = scan.next();
@@ -40,14 +35,8 @@ public class EmployeeMenu {
 	}
 
 	public void displayEmployeeMenu(Scanner scan) {
-		String title = "Employee Menu";
-		int padding = ((32 - title.length()) / 2) + title.length();
-		System.out.println("\n");
-
 		while (true) {
-			System.out.println("--------------------------------");
-			System.out.println(String.format("%" + padding + "s", title));
-			System.out.println("--------------------------------");
+			displayTitle("Employee Menu");
 
 			System.out.println("1. View cars");
 			System.out.println("2. View offers");
@@ -77,14 +66,8 @@ public class EmployeeMenu {
 		List<Car> cars = empControl.viewCars();
 		List<Integer> carIds = new ArrayList<>();
 
-		String title = "Car Lot";
-		int padding = ((32 - title.length()) / 2) + title.length();
-		System.out.println("\n");
-
 		while (true) {
-			System.out.println("--------------------------------");
-			System.out.println(String.format("%" + padding + "s", title));
-			System.out.println("--------------------------------");
+			displayTitle("Car Lot");
 
 			if (cars.size() == 0) {
 				System.out.println("\n\n* We are currently out of cars! *");
@@ -139,14 +122,8 @@ public class EmployeeMenu {
 	private int addCar(Scanner scan) {
 		Car car = null;
 
-		String title = "Add Car";
-		int padding = ((32 - title.length()) / 2) + title.length();
-		System.out.println("\n");
-
 		while (true) {
-			System.out.println("--------------------------------");
-			System.out.println(String.format("%" + padding + "s", title));
-			System.out.println("--------------------------------");
+			displayTitle("Add Car");
 
 			System.out.println("Enter car info.");
 			System.out.print("Make: ");
@@ -162,12 +139,12 @@ public class EmployeeMenu {
 					continue;
 				}
 
-				System.out.print("MPG: ");
-				int MPG = scan.nextInt();
+				System.out.print("Mileage: ");
+				int mileage = scan.nextInt();
 				System.out.print("Price: ");
 				int price = scan.nextInt();
 
-				car = new Car(make, model, year, MPG, price);
+				car = new Car(make, model, year, mileage, price);
 				break;
 
 			} catch (InputMismatchException e) {
@@ -189,14 +166,9 @@ public class EmployeeMenu {
 		int carId = 0;
 		Car car = null;
 
-		String title = "Edit Car";
-		int padding = ((32 - title.length()) / 2) + title.length();
-		System.out.println("\n");
-
 		while (true) {
-			System.out.println("--------------------------------");
-			System.out.println(String.format("%" + padding + "s", title));
-			System.out.println("--------------------------------");
+			displayTitle("Edit Car");
+
 
 			for (Car c : cars) {
 				System.out.println(c);
@@ -241,12 +213,12 @@ public class EmployeeMenu {
 					continue;
 				}
 
-				System.out.print("MPG: ");
-				int MPG = scan.nextInt();
+				System.out.print("Mileage: ");
+				int mileage = scan.nextInt();
 				System.out.print("Price: ");
 				int price = scan.nextInt();
 
-				car = new Car(carId, make, model, year, MPG, price);
+				car = new Car(carId, make, model, year, mileage, price);
 				break;
 
 			} catch (InputMismatchException e) {
@@ -267,14 +239,8 @@ public class EmployeeMenu {
 		
 		int carId = 0;
 
-		String title = "Remove Car";
-		int padding = ((32 - title.length()) / 2) + title.length();
-		System.out.println("\n");
-
 		while (true) {
-			System.out.println("--------------------------------");
-			System.out.println(String.format("%" + padding + "s", title));
-			System.out.println("--------------------------------");
+			displayTitle("Remove Car");
 
 			for (Car c : cars) {
 				System.out.println(c);
@@ -315,14 +281,8 @@ public class EmployeeMenu {
 		}
 		List<Integer> offerIds = new ArrayList<>();
 
-		String title = "Offers";
-		int padding = ((32 - title.length()) / 2) + title.length();
-		System.out.println("\n");
-
 		while (true) {
-			System.out.println("--------------------------------");
-			System.out.println(String.format("%" + padding + "s", title));
-			System.out.println("--------------------------------");
+			displayTitle("Offers");
 
 			for (Offer o : offers) {
 				System.out.println(o);
@@ -365,13 +325,9 @@ public class EmployeeMenu {
 		} else {
 			title = "Reject Offer";
 		}
-		int padding = ((32 - title.length()) / 2) + title.length();
-		System.out.println("\n");
 
 		while (true) {
-			System.out.println("--------------------------------");
-			System.out.println(String.format("%" + padding + "s", title));
-			System.out.println("--------------------------------");
+			displayTitle(title);
 
 			for (Offer o : offers) {
 				System.out.println(o);
@@ -416,13 +372,7 @@ public class EmployeeMenu {
 			return;
 		}
 
-		String title = "Payments";
-		int padding = ((32 - title.length()) / 2) + title.length();
-		System.out.println("\n");
-
-		System.out.println("--------------------------------");
-		System.out.println(String.format("%" + padding + "s", title));
-		System.out.println("--------------------------------");
+		displayTitle("Payments");
 
 		for (Payment p : payments) {
 			System.out.println(p);
@@ -435,6 +385,14 @@ public class EmployeeMenu {
 
 	private void displayInvalidInput() {
 		System.out.println("\n\n******** Invalid input! ********");
+	}
+	
+	private void displayTitle(String title) {
+		int padding = ((32 - title.length()) / 2) + title.length();
+
+		System.out.println("\n\n--------------------------------");
+		System.out.println(String.format("%" + padding + "s", title));
+		System.out.println("--------------------------------");
 	}
 
 }

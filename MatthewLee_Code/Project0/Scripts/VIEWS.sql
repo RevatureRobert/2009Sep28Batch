@@ -8,5 +8,3 @@ group by p.customer_id, p.car_id
 order by p.customer_id, p.car_id;
 
 select * from payments_with_offer;
-
-select * from payment;

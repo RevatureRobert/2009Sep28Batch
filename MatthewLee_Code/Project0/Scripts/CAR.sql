@@ -19,3 +19,4 @@ insert into car values (default, default, 'Kia', 'Rio', 2020, 33, 16815);
 insert into car values (default, default, 'Chevrolet', 'Sonic', 2020, 26, 19495);
 
 select * from car;
+update car set customer_id = -1 where car_id = 1;

@@ -7,7 +7,7 @@ public class Customer {
 	public Customer(int id) {
 		this.id = id;
 	}
-	
+
 	public int getId() {
 		return id;
 	}

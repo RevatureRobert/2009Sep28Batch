@@ -18,12 +18,7 @@ private ManagerDaoImpl md;
 	
 	@Test
 	public void validLoginTest() {
-		assertTrue(md.login("manager", "project0") != null);
-	}
-	
-	@Test
-	public void invalidLoginTest() {
-		assertTrue(md.login("abcd", "abcd") == null);
+		assertTrue(md.login("manager", "project0").getId() == 1);
 	}
 	
 	@Test

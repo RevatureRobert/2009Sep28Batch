@@ -11,3 +11,7 @@ create or replace procedure accept_offer(offer_offer_id int) language plpgsql as
 		insert into payment values (default, 0, offer_customer_id, offer_car_id);
 	end
 $$;
+
+select * from offer;
+call accept_offer(1);
+update offer set accepted = 0 where offer_id = 1;

@@ -6,6 +6,6 @@ create table manager (
 	password text not null
 );
 
-insert into manager (username, password) values ('manager', 'manager');
+insert into manager (username, password) values ('manager', 'project0');
 
 select * from manager;

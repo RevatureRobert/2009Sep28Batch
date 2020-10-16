@@ -25,14 +25,10 @@ public class Driver {
 	
 	public static void displayMainMenu (Scanner scan) {
 		logger.info("Entering dealership");
-		System.out.println("\nWelcome to Matthew's Dealership!\n");
-		String title = "Main Menu";
-		int padding = ( (32 - title.length()) / 2) + title.length();
+		System.out.println("\nWelcome to Matthew's Dealership!");
 
 		while (true) {
-			System.out.println("--------------------------------");
-			System.out.println(String.format("%" + padding + "s", title));
-			System.out.println("--------------------------------");
+			displayTitle("Main Menu");
 
 			System.out.println("1. Manager Login");
 			System.out.println("2. Employee Login");
@@ -96,6 +92,14 @@ public class Driver {
 	private static void displayExit() {
 		System.out.println("\n\n--------------------------------");
 		System.out.print("Thank you for visiting! Goodbye!");
+	}
+	
+	private static void displayTitle(String title) {
+		int padding = ((32 - title.length()) / 2) + title.length();
+
+		System.out.println("\n--------------------------------");
+		System.out.println(String.format("%" + padding + "s", title));
+		System.out.println("--------------------------------");
 	}
 	
 }

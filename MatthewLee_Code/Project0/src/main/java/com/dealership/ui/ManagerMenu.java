@@ -11,6 +11,7 @@ import com.dealership.model.Offer;
 
 public class ManagerMenu {
 
+	private static EmployeeMenu em = new EmployeeMenu();
 	private ManagerController mControl;
 	
 	public ManagerMenu() {
@@ -22,12 +23,7 @@ public class ManagerMenu {
 	}
 
 	public Manager login(Scanner scan) {
-		String title = "Manager Login";
-		int padding = ((32 - title.length()) / 2) + title.length();
-
-		System.out.println("\n\n--------------------------------");
-		System.out.println(String.format("%" + padding + "s", title));
-		System.out.println("--------------------------------");
+		displayTitle("Manager Login");
 
 		System.out.print("Enter username: ");
 		String username = scan.next();
@@ -38,19 +34,14 @@ public class ManagerMenu {
 	}
 	
 	public void displayManagerMenu(Scanner scan) {
-		String title = "Manager Menu";
-		int padding = ((32 - title.length()) / 2) + title.length();
-		System.out.println("\n");
-
 		while (true) {
-			System.out.println("--------------------------------");
-			System.out.println(String.format("%" + padding + "s", title));
-			System.out.println("--------------------------------");
+			displayTitle("Manager Menu");
 
 			System.out.println("1. Create employee account");
 			System.out.println("2. View employees");
 			System.out.println("3. View sales history");
-			System.out.println("4. Exit");
+			System.out.println("4. Employee Menu");
+			System.out.println("5. Exit");
 			System.out.print("Enter option number: ");
 
 			switch (scan.next()) {
@@ -68,6 +59,10 @@ public class ManagerMenu {
 				viewSalesHistory(scan);
 				break;
 			case "4":
+				em.displayEmployeeMenu(scan);
+				System.out.println("\n");
+				break;
+			case "5":
 				return;
 			default:
 				displayInvalidInput();
@@ -76,12 +71,7 @@ public class ManagerMenu {
 	}
 	
 	private int createEmployeeAccount(Scanner scan) {
-		String title = "Make Employee Account";
-		int padding = ((32 - title.length()) / 2) + title.length();
-
-		System.out.println("\n\n--------------------------------");
-		System.out.println(String.format("%" + padding + "s", title));
-		System.out.println("--------------------------------");
+		displayTitle("Make Employee Account");
 
 		System.out.print("Enter username: ");
 		String username = scan.next();
@@ -94,14 +84,8 @@ public class ManagerMenu {
 	private void viewEmployees(Scanner scan) {
 		List<Employee> employees = mControl.viewEmployees();
 
-		String title = "Employees";
-		int padding = ((32 - title.length()) / 2) + title.length();
-		System.out.println("\n");
-
 		while (true) {
-			System.out.println("--------------------------------");
-			System.out.println(String.format("%" + padding + "s", title));
-			System.out.println("--------------------------------");
+			displayTitle("Employees");
 
 			if (employees.size() == 0) {
 				System.out.println("\n\n*** There are no employees! ***");
@@ -138,14 +122,8 @@ public class ManagerMenu {
 		List<Integer> employeeIds = new ArrayList<>();
 		int employeeId = 0;
 
-		String title = "Fire Employee";
-		int padding = ((32 - title.length()) / 2) + title.length();
-		System.out.println("\n");
-
 		while (true) {
-			System.out.println("--------------------------------");
-			System.out.println(String.format("%" + padding + "s", title));
-			System.out.println("--------------------------------");
+			displayTitle("Fire Employee");
 
 			for (Employee e : employees) {
 				System.out.println(e);
@@ -182,13 +160,7 @@ public class ManagerMenu {
 	private void viewSalesHistory(Scanner scan) {
 		List<Offer> offers = mControl.viewSalesHistory();
 		
-		String title = "Sales History";
-		int padding = ((32 - title.length()) / 2) + title.length();
-		System.out.println("\n");
-
-		System.out.println("--------------------------------");
-		System.out.println(String.format("%" + padding + "s", title));
-		System.out.println("--------------------------------");
+		displayTitle("Sales History");
 
 		if (offers.size() == 0) {
 			System.out.println("\n\n** There is no sale history! **");
@@ -206,6 +178,13 @@ public class ManagerMenu {
 
 	private void displayInvalidInput() {
 		System.out.println("\n\n******** Invalid input! ********");
+	}
+	
+	private void displayTitle(String title) {		int padding = ((32 - title.length()) / 2) + title.length();
+
+		System.out.println("\n\n--------------------------------");
+		System.out.println(String.format("%" + padding + "s", title));
+		System.out.println("--------------------------------");
 	}
 	
 }

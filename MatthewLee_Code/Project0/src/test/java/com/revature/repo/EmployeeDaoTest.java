@@ -19,7 +19,7 @@ public class EmployeeDaoTest {
 	
 	@Test
 	public void validLoginTest() {
-		assertTrue(ed.login("employee", "project0") != null);
+		assertTrue(ed.login("employee", "project0").getId() == 1);
 	}
 	
 	@Test
@@ -32,23 +32,23 @@ public class EmployeeDaoTest {
 		assertTrue(ed.viewCars().size() > 0);
 	}
 	
-	@Test
-	public void addCarTest() {
-		assertTrue(ed.addCar(new Car("junit", "juint", 2000, 10, 10000)) == 1);
-	}	
-	
-	@Test
-	public void editCarTest() {
-		assertTrue(ed.editCar(new Car(3, "junit", "junit", 2000, 10, 11000)) == 1);
-	}
-	
-	@Test
-	public void removeCarTest() {
-		int intial = ed.viewCars().size();
-		ed.removeCar(5);
-		int end = ed.viewCars().size();
-		assertTrue(intial == (end + 1));
-	}
+//	@Test
+//	public void validAddCarTest() {
+//		assertTrue(ed.addCar(new Car("junit", "juint", 2000, 10, 10000)) == 1);
+//	}	
+//	
+//	@Test
+//	public void editCarTest() {
+//		assertTrue(ed.editCar(new Car("junit", "junit", 2000, 10, 11000)) == 1);
+//	}
+//	
+//	@Test
+//	public void removeCarTest() {
+//		int intial = ed.viewCars().size();
+//		ed.removeCar(5);
+//		int end = ed.viewCars().size();
+//		assertTrue(intial == (end + 1));
+//	}
 	
 	@Test
 	public void viewOffersTest() {
@@ -66,7 +66,7 @@ public class EmployeeDaoTest {
 	@Test
 	public void invalidRejectOfferTest() {
 		int intial = ed.viewOffers().size();
-		ed.rejectOffer(10);
+		ed.rejectOffer(-1);
 		int end = ed.viewOffers().size();
 		assertTrue(intial == end);
 	}

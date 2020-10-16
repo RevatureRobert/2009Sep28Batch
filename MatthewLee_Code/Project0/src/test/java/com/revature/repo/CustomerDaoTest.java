@@ -6,7 +6,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.dealership.model.Offer;
-import com.dealership.model.Payment;
 import com.dealership.repo.CustomerDaoImpl;
 
 public class CustomerDaoTest {
@@ -25,7 +24,7 @@ public class CustomerDaoTest {
 	
 	@Test
 	public void loginTest() {
-		assertTrue(cd.login("junit", "junit") != null);
+		assertTrue(cd.login("matthewlee", "abcd") != null);
 	}
 	
 	@Test
@@ -35,7 +34,7 @@ public class CustomerDaoTest {
 	
 	@Test
 	public void makeOfferTest() {
-		assertTrue(cd.makeOffer(new Offer(30000, 60, 1, 3)) == 1);
+		assertTrue(cd.makeOffer(new Offer(21000, 65, 3, 3)) == 1);
 	}
 	
 	@Test
@@ -46,11 +45,6 @@ public class CustomerDaoTest {
 	@Test
 	public void viewPaymentsTest() {
 		assertTrue(cd.viewPayments(1).size() > 0);
-	}
-	
-	@Test
-	public void makePaymentTest() {
-		assertTrue(cd.makePayment(new Payment(1, 1, 300)) == 1);
 	}
 	
 }
