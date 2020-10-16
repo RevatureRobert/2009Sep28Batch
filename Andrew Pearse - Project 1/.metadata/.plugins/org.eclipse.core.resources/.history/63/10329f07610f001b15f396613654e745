@@ -1,0 +1,29 @@
+package com.photoshop.repotest;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
+import org.junit.Before;
+import org.junit.Test;
+
+import com.photoshop.repo.UserDao;
+
+public class UserDaoTest {
+
+	private UserDao ud;
+	
+	@Before
+	public void startup() {
+		ud = new UserDao();
+	}
+	
+	@Test
+	public void findAllTestIsNotEmpty() {
+		assertTrue(!ud.findAll().isEmpty());
+	}
+	
+	@Test
+	public void findAllTestHasNumberOfEntries() {
+		assertEquals(2, ud.findAll().size());
+	}
+}

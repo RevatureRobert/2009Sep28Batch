@@ -1,0 +1,5 @@
+package com.photoshop.model;
+
+public class ReimbursementStatus {
+
+}

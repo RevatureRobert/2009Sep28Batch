@@ -1,0 +1,103 @@
+package com.photoshop.model;
+
+import java.sql.Timestamp;
+
+public class Reimbursement {
+
+	private int id;
+	private float amount;
+	private Timestamp dateSubmitted;
+	private Timestamp dateResolved;
+	private String description;
+	private User author;
+	private User resolver;
+	private String status;
+	private String type;
+
+	public Reimbursement(int id, float amount, Timestamp dateSubmitted, Timestamp dateResolved, String description,
+			User author, User resolver, String status, String type) {
+		super();
+		this.id = id;
+		this.amount = amount;
+		this.dateSubmitted = dateSubmitted;
+		this.dateResolved = dateResolved;
+		this.description = description;
+		this.author = author;
+		this.resolver = resolver;
+		this.status = status;
+		this.type = type;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public float getAmount() {
+		return amount;
+	}
+
+	public void setAmount(float amount) {
+		this.amount = amount;
+	}
+
+	public Timestamp getDateSubmitted() {
+		return dateSubmitted;
+	}
+
+	public void setDateSubmitted(Timestamp dateSubmitted) {
+		this.dateSubmitted = dateSubmitted;
+	}
+
+	public Timestamp getDateResolved() {
+		return dateResolved;
+	}
+
+	public void setDateResolved(Timestamp dateResolved) {
+		this.dateResolved = dateResolved;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public User getAuthor() {
+		return author;
+	}
+
+	public void setAuthor(User author) {
+		this.author = author;
+	}
+
+	public User getResolver() {
+		return resolver;
+	}
+
+	public void setResolver(User resolver) {
+		this.resolver = resolver;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+}
