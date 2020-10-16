@@ -1,0 +1,6 @@
+hey there
+this is the vim editor
+I will put you into insert mode
+esc key will take you out of it
+:q is quit when you are outside the insert mode                                                                           :w is write when you are outside insert mode. this is how we save the file                                                :wq is write and quit. it is a shortcut for the top two 
+:q! means that you want to quit and cancel the changes
