@@ -27,4 +27,9 @@ public class ReimbursementStatus {
 		this.status = status;
 	}
 
+	@Override
+	public String toString() {
+		return "ReimbursementStatus [id=" + id + ", status=" + status + "]";
+	}
+
 }

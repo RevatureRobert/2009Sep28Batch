@@ -1,0 +1,15 @@
+
+‰	java:S135O"YReduce the total number of break and continue statements in this loop to use at most one.(›™›»úÿÿÿÿHÈRMINORZ
+CODE_SMELL
+W
+java:S1168F"+Return an empty collection instead of null.(¥¹ïHËRMAJORZ
+CODE_SMELL
+W
+java:S1168-"+Return an empty collection instead of null.(¥¹ïHÊRMAJORZ
+CODE_SMELL
+Œ
+java:S1192+"XDefine a constant instead of duplicating this literal "Database access denied." 6 times.(õ¨É¶üÿÿÿÿHÇRCRITICALZ
+CODE_SMELL
+q
+java:S1124"EReorder the modifiers to comply with the Java Language Specification.(ºÏ„ÂHÉRMINORZ
+CODE_SMELL

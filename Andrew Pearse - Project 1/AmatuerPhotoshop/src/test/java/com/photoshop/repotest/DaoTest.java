@@ -43,21 +43,15 @@ public class DaoTest {
 		assertNotNull(ud.findById(2));
 	}
 	
-	@Test
-	public void findByIdUserEqualsMyUsername() {
-		assertEquals("arpearse", ud.findById(2).getUsername());
-	}
+//	@Test
+//	public void findByIdUserEqualsMyUsername() {
+//		assertEquals("arpearse", ud.findById(2).getUsername());
+//	}
 	
-	//These two tests were only designed to be ran once
-//	@Test
-//	public void createUserEqualsOne() {
-//		assertEquals(1, ud.create(new User(0, "sbeve", "123", "Steve", "FromMinecraft", "steve_fromminecraft@mojang.com", new UserRole(1, ""))));
-//	}
-//	
-//	@Test
-//	public void createUserEqualsZero() {
-//		assertEquals(0, ud.create(new User(0, "sbeve", "123", "Steve", "FromMinecraft", "steve_fromminecraft@mojang.com", new UserRole(1, ""))));
-//	}
+	@Test
+	public void createUserEqualsZero() {
+		assertEquals(0, ud.create(new User(0, "sbeve", "123", "Steve", "FromMinecraft", "steve_fromminecraft@mojang.com", new UserRole(1, ""))));
+	}
 	
 	@Test
 	public void updateIncorrectUserReturnsZero() {
@@ -70,49 +64,46 @@ public class DaoTest {
 	}
 	
 //	@Test
-//	public void findAllTestReimbursementIsNotEmpty() {
-//		assertTrue(!rd.findAll().isEmpty());
-//	}
-//	
-//	@Test
-//	public void findAllTestReimbursementHasNumberOfEntries() {
-//		assertEquals(1, ud.findAll().size());
-//	}
-//
-//	@Test
-//	public void findByIdReimbursementNotNull() {
-//		assertNotNull(ud.findById(2));
-//	}
-//	
-//	@Test
-//	public void findByIdReimbursementEqualsMyAuthor() {
-//		assertEquals("arpearse", ud.findById(2).getUsername());
+//	public void verifyUserInformation() {
+//		User user = ud.findById(2);
+//		user.setPassword("password");
+//		assertTrue(ud.verifyUser(user));
 //	}
 	
-	//These two tests were only designed to be ran once
+	@Test
+	public void findAllTestReimbursementIsNotEmpty() {
+		assertTrue(!rd.findAll().isEmpty());
+	}
+	
+	@Test
+	public void findAllTestReimbursementHasNumberOfEntries() {
+		assertEquals(1, rd.findAll().size());
+	}
+
+	@Test
+	public void findByIdReimbursementNotNull() {
+		assertNotNull(rd.findById(4));
+	}
+	
+	@Test
+	public void findByIdReimbursementEqualsMyAuthor() {
+		assertEquals(2, rd.findById(4).getAuthor().getId());
+	}
+	
 //	@Test
-//	public void createUserEqualsOne() {
-//		assertEquals(1, rd.create(new Reimbursement(0, 300f, new Timestamp(System.currentTimeMillis()), null, "Photoshop bill", 
+//	public void createReimbursementEqualsZero() {
+//		assertEquals(0, rd.create(new Reimbursement(0, 300f, new Timestamp(System.currentTimeMillis()), null, "Photoshop bill", 
 //									"https://project1receipts.s3.us-east-2.amazonaws.com/ARP+Photoshop+Bill.png", 
 //									new User(2, null, null, null, null, null, null), null, new ReimbursementStatus(1, null), 
 //									new ReimbursementType(4, null))));
 //	}
 	
 	@Test
-	public void createUserEqualsZero() {
-		assertEquals(0, rd.create(new Reimbursement(0, 300f, new Timestamp(System.currentTimeMillis()), null, "Photoshop bill", 
-									"https://project1receipts.s3.us-east-2.amazonaws.com/ARP+Photoshop+Bill.png", 
-									new User(2, null, null, null, null, null, null), null, new ReimbursementStatus(1, null), 
-									new ReimbursementType(4, null))));
+	public void updateIncorrectReimbursementReturnsZero() {
+		Reimbursement r = rd.findById(4);
+		r.setId(0);
+		r.setResolver(ud.findById(2));
+		assertEquals(0, rd.update(r));
 	}
 	
-//	@Test
-//	public void updateIncorrectReimbursementReturnsZero() {
-//		assertEquals(0, ud.update(new User(0, null, null, null, null, null, new UserRole(0, null))));
-//	}
-//	
-//	@Test
-//	public void updateCorrectReimbursementReturnsOne() {
-//		assertEquals(1, ud.update(ud.findById(2)));
-//	}
 }

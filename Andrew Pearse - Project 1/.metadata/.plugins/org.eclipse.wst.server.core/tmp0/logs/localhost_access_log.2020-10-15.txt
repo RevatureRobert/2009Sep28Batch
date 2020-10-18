@@ -1,2 +1,0 @@
-127.0.0.1 - - [15/Oct/2020:22:45:59 -0500] "GET / HTTP/1.1" 404 751
-0:0:0:0:0:0:0:1 - - [15/Oct/2020:22:45:59 -0500] "GET /AmatuerPhotoshop/WEB-INF/classes/com/photoshop/util/ConnectionUtil.java HTTP/1.1" 404 682

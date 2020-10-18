@@ -27,4 +27,9 @@ public class ReimbursementType {
 		this.type = type;
 	}
 
+	@Override
+	public String toString() {
+		return "ReimbursementType [id=" + id + ", type=" + type + "]";
+	}
+
 }

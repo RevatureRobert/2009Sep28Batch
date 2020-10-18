@@ -63,9 +63,9 @@ public class ReimbursementDao implements DaoContract<Reimbursement, Integer> {
 				reimbursement = new Reimbursement(rs.getInt("id"), rs.getFloat("amount"), rs.getTimestamp("submitted"), rs.getTimestamp("resolved"), 
 									rs.getString("description"), rs.getString("receipt"), 
 									ud.findById(rs.getInt("author")), ud.findById(rs.getInt("resolver")), 
-									new ReimbursementStatus(0, rs.getString("status")), 
-									new ReimbursementType(0, rs.getString("type")));
-				}
+									new ReimbursementStatus(rs.getInt("status_id"), rs.getString("status")), 
+									new ReimbursementType(rs.getInt("type_id"), rs.getString("type")));
+			}
 			
 			ps.close();
 			rs.close();
@@ -104,19 +104,19 @@ public class ReimbursementDao implements DaoContract<Reimbursement, Integer> {
 
 	@Override
 	public int update(Reimbursement t) {
-		String sql = "update ers_reimbursement set reimb_amount = ? "
-												+ "reimb_submitted = ? "
-												+ "reimb_resolved = ? "
-												+ "reimb_description = ? "
-												+ "reimb_receipt = ? "
-												+ "reimb_author = ? "
-												+ "reimb_resolver = ? "
-												+ "reimb_status_id = ? "
+		String sql = "update ers_reimbursement set reimb_amount = ?, "
+												+ "reimb_submitted = ?, "
+												+ "reimb_resolved = ?, "
+												+ "reimb_description = ?, "
+												+ "reimb_receipt = ?, "
+												+ "reimb_author = ?, "
+												+ "reimb_resolver = ?, "
+												+ "reimb_status_id = ?, "
 												+ "reimb_type_id = ? "
 											 + "where reimb_id = ?";
 		int updated = 0;
 		try (Connection conn = ConnectionUtil.getInstance().getConnection()){
-		PreparedStatement ps = conn.prepareStatement(sql);
+			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setFloat(1, t.getAmount());
 			ps.setTimestamp(2, t.getDateSubmitted());
 			ps.setTimestamp(3, t.getDateResolved());
@@ -138,4 +138,28 @@ public class ReimbursementDao implements DaoContract<Reimbursement, Integer> {
 		return updated;
 	}
 
+	public List<Reimbursement> findAllByUser(int i) {
+		List<Reimbursement> reimbursements = new LinkedList<>();
+		String sql = "select * from get_all_reimbursements where author = ?";
+		
+		try (Connection conn = ConnectionUtil.getInstance().getConnection() ){
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, i);
+			ResultSet rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				reimbursements.add(new Reimbursement(rs.getInt("id"), rs.getFloat("amount"), rs.getTimestamp("submitted"), rs.getTimestamp("resolved"), 
+										rs.getString("description"), rs.getString("receipt"), 
+										ud.findById(rs.getInt("author")), ud.findById(rs.getInt("resolver")), 
+										new ReimbursementStatus(rs.getInt("status_id"), rs.getString("status")), 
+										new ReimbursementType(rs.getInt("type_id"), rs.getString("type"))));
+			}
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return reimbursements;
+	}
 }

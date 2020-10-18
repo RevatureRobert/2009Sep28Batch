@@ -4,19 +4,19 @@ import java.sql.Timestamp;
 
 public class Reimbursement {
 
-	private Integer id;
+	private int id;
 	private float amount;
 	private Timestamp dateSubmitted;
 	private Timestamp dateResolved;
 	private String description;
-	//TODO: figure out how to hold a byte stream for images
+	// TODO: figure out how to hold a byte stream for images
 	private String receipt;
 	private User author;
 	private User resolver;
 	private ReimbursementStatus status;
 	private ReimbursementType type;
 
-	public Reimbursement(Integer id, float amount, Timestamp dateSubmitted, Timestamp dateResolved, String description,
+	public Reimbursement(int id, float amount, Timestamp dateSubmitted, Timestamp dateResolved, String description,
 			String receipt, User author, User resolver, ReimbursementStatus status, ReimbursementType type) {
 		super();
 		this.id = id;
@@ -31,11 +31,11 @@ public class Reimbursement {
 		this.type = type;
 	}
 
-	public Integer getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -110,7 +110,12 @@ public class Reimbursement {
 	public void setReceipt(String receipt) {
 		this.receipt = receipt;
 	}
-	
-	
+
+	@Override
+	public String toString() {
+		return "Reimbursement [id=" + id + ", amount=" + amount + ", dateSubmitted=" + dateSubmitted + ", dateResolved="
+				+ dateResolved + ", description=" + description + ", receipt=" + receipt + ", author=" + author
+				+ ", resolver=" + resolver + ", status=" + status + ", type=" + type + "]";
+	}
 
 }
