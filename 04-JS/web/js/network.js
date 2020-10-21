@@ -40,8 +40,14 @@ function ajaxGetRequest(url, expression, method = "get") {
   xhr.send();
 }
 
-function fetchGetRequest(url, expression) {
+function fetchGetRequest(url) {
   return fetch(url)
     .then((response) => response.json())
     .then((result) => result);
+}
+
+async function asyncFetch(url, expression) {
+  const response = await fetch(url);
+  const json = await response.json();
+  expression(json);
 }

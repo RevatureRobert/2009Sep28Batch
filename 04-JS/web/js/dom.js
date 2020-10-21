@@ -81,10 +81,13 @@ function renderTable(monsters) {
 //   "get"
 // );
 
-fetch("http://localhost:8080/HallowsMonsters/all.json", {
-  body: JSON.stringify(mockedMonsters),
-  method: "post",
-  mode: "no-cors",
-})
-  .then((r) => r.json())
-  .then(renderTable);
+// fetch("http://localhost:8080/HallowsMonsters/all.json", {
+//   body: JSON.stringify(mockedMonsters),
+//   method: "post",
+//   mode: "no-cors",
+//   headers: {
+//     origin:'localhost'
+//   }
+// })
+//   .then((r) => r.json())
+//   .then(mockedMonsters.push);
