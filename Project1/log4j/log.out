@@ -1,0 +1,2 @@
+SQL exception for User.findAll: The url cannot be null
+SQL exception for User.findById: The url cannot be null
