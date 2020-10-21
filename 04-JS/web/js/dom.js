@@ -33,37 +33,61 @@ document.body.append(para); //append and appendChild are different in a few ways
 const mockedMonsters = [
   {
     name: "demi",
-    type: "werewolf",
-    furry: "true",
-    paws: "true",
+    type: {
+      type: "werewolf",
+      furry: "true",
+      paws: "true",
+    },
   },
   {
     name: "casper",
-    type: "ghost",
-    furry: "false",
-    paws: "false",
+    type: {
+      type: "ghost",
+      furry: "false",
+      paws: "false",
+    },
   },
   {
     name: "revawolf",
-    type: "werewolf",
-    furry: "true",
-    paws: "true",
+    type: {
+      type: "werewolf",
+      furry: "true",
+      paws: "true",
+    },
   },
 ];
-
-for (const monster of mockedMonsters) {
-  const tr = document.createElement("tr");
-  const nameTd = document.createElement("td");
-  const typeTD = document.createElement("td");
-  const furryTd = document.createElement("td");
-  const pawsTd = document.createElement("td");
-  nameTd.innerText = monster.name;
-  typeTD.innerText = monster.type;
-  furryTd.innerText = monster.furry;
-  pawsTd.innerText = monster.paws;
-  tr.append(nameTd, typeTD, furryTd, pawsTd);
-  // tr.append(typeTD);
-  // tr.append(furryTd);
-  // tr.append(pawsTd);
-  document.getElementById("hallowsTableBody").append(tr);
+function renderTable(monsters) {
+  for (const monster of monsters) {
+    const tr = document.createElement("tr");
+    const nameTd = document.createElement("td");
+    const typeTD = document.createElement("td");
+    const furryTd = document.createElement("td");
+    const pawsTd = document.createElement("td");
+    nameTd.innerText = monster.name;
+    typeTD.innerText = monster.type.type;
+    furryTd.innerText = monster.type.furry;
+    pawsTd.innerText = monster.type.paws;
+    tr.append(nameTd, typeTD, furryTd, pawsTd);
+    // tr.append(typeTD);
+    // tr.append(furryTd);
+    // tr.append(pawsTd);
+    document.getElementById("hallowsTableBody").append(tr);
+  }
 }
+// renderTable(mockedMonsters);
+// ajaxGetRequest(
+//   "http://localhost:8080/HallowsMonsters/all.json",
+//   renderTable,
+//   "get"
+// );
+
+// fetch("http://localhost:8080/HallowsMonsters/all.json", {
+//   body: JSON.stringify(mockedMonsters),
+//   method: "post",
+//   mode: "no-cors",
+//   headers: {
+//     origin:'localhost'
+//   }
+// })
+//   .then((r) => r.json())
+//   .then(mockedMonsters.push);
