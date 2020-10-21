@@ -11,6 +11,7 @@ public class CustomThread extends Thread{
 		this.setPriority(5);
 		for(int i =0; i<40; i++) {
 			System.out.println(this.getName());
+			System.out.println(this.getState());
 		}
 	
 	}

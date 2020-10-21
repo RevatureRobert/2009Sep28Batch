@@ -2,7 +2,7 @@ package com.inter.threads;
 /*
  * Threads
  * 
- * 		A thread is a subprocess away from the noraml execution flow.
+ * 		A thread is a subprocess away from the normal execution flow.
  * 
  * 		A thread will get its own stack, but shares the same heap with 	
  * 			all other threads. This is also known as multithreading.
