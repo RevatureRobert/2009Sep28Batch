@@ -1,6 +1,7 @@
 package com.web.servlet;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import com.web.controller.MonsterController;
 
@@ -13,6 +14,12 @@ public class RequestForwarder {
 			return new MonsterController().login(req);
 		default: 
 			return "html/landing.html";
+		}
+	}
+	
+	public void data(HttpServletRequest req, HttpServletResponse res) {
+		switch(req.getRequestURI()) {
+			
 		}
 	}
 }

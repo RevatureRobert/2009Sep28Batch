@@ -58,7 +58,7 @@ public class MonsterDao implements DaoContract<Monster, Integer> {
 
 	@Override
 	public Monster findByName(String name) {
-		Monster m = null;
+		Monster m = new Monster();
 		String sql = "select * from complete_monsters where name=?";
 		try(Connection conn = ConnectionUtil.getInstance().getConnection()){
 			PreparedStatement ps = conn.prepareStatement(sql);
