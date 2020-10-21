@@ -1,0 +1,11 @@
+INFO  10/17/2020 21:17:26 [Driver]  - Entering dealership
+INFO  10/17/2020 21:17:45 [ManagerDaoImpl]  - Manager Login - Username: manager
+INFO  10/17/2020 21:18:01 [ManagerDaoImpl]  - Creating employee account, username: a
+INFO  10/17/2020 21:18:03 [ManagerDaoImpl]  - Viewing employees
+INFO  10/17/2020 21:18:10 [ManagerDaoImpl]  - Firing employee
+INFO  10/17/2020 21:18:13 [ManagerDaoImpl]  - Viewing employees
+INFO  10/17/2020 21:18:19 [Driver]  - Logging out
+
+INFO  10/17/2020 21:18:21 [Driver]  - Entering dealership
+INFO  10/17/2020 21:18:31 [EmployeeDaoImpl]  - Employee Login - Username: employee
+INFO  10/17/2020 21:18:34 [EmployeeDaoImpl]  - Viewing cars
