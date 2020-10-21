@@ -8,7 +8,6 @@ import java.sql.Statement;
 import java.util.LinkedList;
 import java.util.List;
 
-import com.revature.config.EnvironmentConnectionUtil;
 import com.revature.config.PlainTextConnectionUtil;
 import com.revature.model.Bear;
 
@@ -30,7 +29,7 @@ public class BearDao implements DaoContract<Bear, Integer>{
 	@Override
 	public List<Bear> findAll() {
 		List<Bear> bears = new LinkedList<>();
-		try(Connection conn = EnvironmentConnectionUtil.getInstance().getConnection()){
+		try(Connection conn = PlainTextConnectionUtil.getInstance().getConnection()){
 			Statement s = conn.createStatement();
 			String sql = "select * from bear";
 			ResultSet rs = s.executeQuery(sql);

@@ -3,12 +3,11 @@ package com.revature;
 import java.util.Scanner;
 
 import com.revature.ui.BearMenu;
-import com.revature.ui.CircusMenu;
 
 public class Driver {
 	
 	private static BearMenu bm = new BearMenu();
-	private static CircusMenu cm = new CircusMenu();
+//	private static CircusMenu cm = new CircusMenu();
 	
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
@@ -28,7 +27,7 @@ public class Driver {
 			mainMenu(scan);
 			break;
 		case 2:
-			System.out.println(cm.circusMenu(scan));
+			//System.out.println(cm.circusMenu(scan));
 			mainMenu(scan);
 			break;
 		case 0:
