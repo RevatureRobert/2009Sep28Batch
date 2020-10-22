@@ -1,0 +1,8 @@
+{
+    "compilerOptions": {
+        "target": "esnext",
+        "outDir": "src/js"
+    },
+    "include": ["src/ts/*"], //takes a string array of all the files you want in your compilation
+    
+}
