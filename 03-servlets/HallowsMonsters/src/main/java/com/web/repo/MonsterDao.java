@@ -12,6 +12,8 @@ import com.web.model.MonsterType;
 import com.web.util.ConnectionUtil;
 
 public class MonsterDao implements DaoContract<Monster, Integer> {
+	
+	
 
 	@Override
 	public List<Monster> findAll() {
