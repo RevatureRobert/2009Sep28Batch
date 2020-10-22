@@ -23,7 +23,7 @@ public class MonsterController {
 	public String login(HttpServletRequest req) {
 		String monsterName = req.getParameter("name");
 		Monster m = ms.findByName(monsterName);
-		if(Optional.of(m).isPresent()) {
+		if(m != null) {
 			return "html/monster.html";
 		} else {
 			return "html/landing.html";
