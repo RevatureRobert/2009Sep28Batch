@@ -35,6 +35,7 @@ public class SaveController {
 			int monResult = ms.save(m);
 			res.getWriter().println("the monster is added");
 		} catch (IOException e) {
+			e.printStackTrace();
 			res.getWriter().println("something went wrong");
 		}
 	}

@@ -61,6 +61,7 @@ public class MonsterTypeDao implements DaoContract<MonsterType, Integer> {
 			ps.setString(1, name);
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
+				System.out.println("in the name while");
 				mt.setId(rs.getInt(1));
 				mt.setType(rs.getString(2));
 				mt.setFurry(rs.getBoolean("fur"));
