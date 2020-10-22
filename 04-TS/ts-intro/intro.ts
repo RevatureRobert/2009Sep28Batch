@@ -34,6 +34,8 @@ datatypes of typescript
     object, array, enum, void ,never, tuple
 */
 
+//access modifiers and classes in Popcorn.ts
+
 //typescript will infer the types
 let s1 = "stringy";
 // s1 = 7;
