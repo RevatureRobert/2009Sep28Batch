@@ -1,0 +1,29 @@
+[
+  {
+    "id": 1,
+    "name": "Squibby",
+    "stats": {
+      "species": "seal",
+      "position": "goalie",
+      "rep points": 20
+    }
+  },
+  {
+    "id": 2,
+    "name": "Lippy",
+    "stats": {
+      "species": "red-lipped batfish",
+      "position": "flipper",
+      "rep points": 15
+    }
+  },
+  {
+    "id": 3,
+    "name": "Vlad",
+    "stats": {
+      "species": "vampire squid",
+      "position": "forward",
+      "rep points": 85
+    }
+  }
+]
