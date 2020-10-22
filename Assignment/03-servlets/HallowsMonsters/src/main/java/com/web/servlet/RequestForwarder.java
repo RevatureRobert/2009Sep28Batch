@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.web.controller.ImageController;
 import com.web.controller.MonsterController;
 import com.web.controller.MonsterDataController;
+import com.web.controller.SaveController;
 
 public class RequestForwarder {
 
@@ -46,10 +47,16 @@ public class RequestForwarder {
 		} 
 	}//end of routes method
 	
-	public void data(HttpServletRequest req, HttpServletResponse resp) {
+	
+	//this is for the 
+	public void data(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 		switch(req.getRequestURI()) {
 		case "/HallowsMonsters/all.json":
 			new MonsterDataController().sendAllData(resp);
+			break;
+		case "/HallowsMonsters/monster.json":
+			new SaveController().save(req,resp);
+			break;
 		}
 	}
-}
+}//

@@ -21,7 +21,11 @@ public class MonsterDao implements DaoContract<Monster,Integer>{
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ResultSet rs = ps.executeQuery();
 			while(rs.next()) {
-				monsters.add(new Monster(0,rs.getString("name"), new MonsterType(rs.getString("mtype"), rs.getBoolean("fur"), rs.getBoolean("paws"))));
+				MonsterType mt = new MonsterType();
+				mt.setType(rs.getString("mtype"));
+				mt.setFurry(rs.getBoolean("fur"));
+				mt.setPaws(rs.getBoolean("paws"));
+				monsters.add(new Monster(0,rs.getString("name"), mt));
 			}
 			rs.close();
 			ps.close();
@@ -46,8 +50,19 @@ public class MonsterDao implements DaoContract<Monster,Integer>{
 
 	@Override
 	public int create(Monster t) {
-		// TODO Auto-generated method stub
-		return 0;
+		int x = 0;
+		try(Connection con = ConnectionUtil.getInstance().getConnection()){
+			String sql = "insert into monster (name, monster_type) values (?,?)";
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1, t.getName());
+			ps.setInt(2, new MonsterTypeDao().findByName(t.getType().getType()).getId());
+			x = ps.executeUpdate();
+			ps.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return x;
 	}
 
 	@Override
@@ -65,7 +80,11 @@ public class MonsterDao implements DaoContract<Monster,Integer>{
 			ps.setString(1, name);
 			ResultSet rs = ps.executeQuery();
 			if(rs.next()) {
-				m = new Monster(0,rs.getString("name"), new MonsterType(rs.getString("mtype"), rs.getBoolean("fur"), rs.getBoolean("paws")));
+				MonsterType mt = new MonsterType();
+				mt.setType(rs.getString("mtype"));
+				mt.setFurry(rs.getBoolean("fur"));
+				mt.setPaws(rs.getBoolean("paws"));
+				m = new Monster(0,rs.getString("name"), mt);
 			}
 			rs.close();
 			ps.close();

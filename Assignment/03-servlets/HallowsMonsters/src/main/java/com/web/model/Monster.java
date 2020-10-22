@@ -12,6 +12,10 @@ public class Monster {
 		this.name = name;
 		this.type = type;
 	}
+	
+	public Monster() {
+		super();
+	}
 	public int getId() {
 		return id;
 	}

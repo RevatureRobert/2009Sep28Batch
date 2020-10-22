@@ -267,3 +267,60 @@ const betterStringy = `or we can use backticks and it will allow us to go to dif
     //         || is known as the default operator. if the first value is false, the second value will be called. 
     //         && is known as the guard operator. It returns whatever made it stop. 
 
+// !operators
+//    !short circuiting
+//      !default operator
+/* 
+true || true
+true
+true || false
+true
+true || 0
+true
+false || 0
+0
+'' || 'go home kid'
+"go home kid"
+function hey(){
+    console.log('this has ran');
+    
+    return true;
+}
+undefined
+true || hey()
+true
+11 || hey()
+11
+0 || hey()
+VM541:2 this has ran
+true
+undefined || 0
+0
+undefined || 0 || ''
+""
+undefined || 1 || ''
+1
+*/
+
+//    !guard operator
+/* 
+true && false
+false
+true && 0
+0
+true && 11
+11
+false && 11
+false
+0 && 11
+0
+false && hey()
+false
+2 && hey()
+VM541:2 this has ran
+true
+Boolean(0||7)
+true
+!!(0||11)
+true
+*/

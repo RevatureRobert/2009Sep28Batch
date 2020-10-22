@@ -1,18 +1,32 @@
 package com.web.model;
 
 public class MonsterType {
+		private int id;
 		private String type;
 		private boolean furry;
 		private boolean paws;
 		
 		
-		public MonsterType(String type, boolean furry, boolean paws) {
+		public MonsterType(int id, String type, boolean furry, boolean paws) {
 			super();
+			this.id = id;
 			this.type = type;
 			this.furry = furry;
 			this.paws = paws;
 		}
 		
+		public int getId() {
+			return id;
+		}
+
+		public void setId(int id) {
+			this.id = id;
+		}
+
+		public MonsterType() {
+			super();
+		}
+
 		public String getType() {
 			return type;
 		}
