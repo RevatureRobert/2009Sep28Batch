@@ -20,7 +20,14 @@ public class ThreadExample {
 		
 		Thread t3 = new Thread(new CustomRunnable());
 		t3.start();
+		Thread t4 = new Thread(() -> System.out.println("instance of an anonymouse inner class implementing the runnable interface"));
+		t4.start();
 		
+		Runnable r = () -> {};
+	}
+	
+	static int run(Runnable r) {
+		return 7;
 	}
 
 }

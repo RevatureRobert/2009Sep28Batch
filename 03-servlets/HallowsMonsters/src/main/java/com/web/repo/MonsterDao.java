@@ -46,8 +46,18 @@ public class MonsterDao implements DaoContract<Monster, Integer> {
 
 	@Override
 	public int create(Monster t) {
-		// TODO Auto-generated method stub
-		return 0;
+		int result = 0;
+		try(Connection conn = ConnectionUtil.getInstance().getConnection()){
+			String sql = "insert into monster (name, monster_type) values (?,?)";
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1, t.getName());
+			ps.setInt(2, new MonsterTypeDao().findByName(t.getType().getType()).getId());
+			result = ps.executeUpdate();
+			ps.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return result;
 	}
 
 	@Override
@@ -58,7 +68,7 @@ public class MonsterDao implements DaoContract<Monster, Integer> {
 
 	@Override
 	public Monster findByName(String name) {
-		Monster m = null;
+		Monster m = new Monster();
 		String sql = "select * from complete_monsters where name=?";
 		try(Connection conn = ConnectionUtil.getInstance().getConnection()){
 			PreparedStatement ps = conn.prepareStatement(sql);

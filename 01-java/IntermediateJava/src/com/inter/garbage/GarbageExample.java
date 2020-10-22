@@ -30,17 +30,17 @@ public class GarbageExample {
 //		o2 = null;			// object is now eligible for garbage collection
 //		System.gc();       	// This will request the gc, but it does not determine when it will run
 		
-		RandomObject r1 = new RandomObject();
-		RandomObject r2 = new RandomObject();
-		RandomObject r3 = new RandomObject();
+		RandomObject r1 = new RandomObject(); //01
+		RandomObject r2 = new RandomObject(); //02
+		RandomObject r3 = new RandomObject(); //03
 		RandomObject r4 = r1;
 		RandomObject r5 = r3;
-		r2 = r3;
+		r2 = r3;   //02 is eligible
 		r3 = null;
-//		r1 = null;
-//		r2 = null;
-//		r4 = null;
-//		r5 = null;
+		r1 = null;
+		r2 = null;
+		r4 = null; //01 is elgible
+		r5 = null; //03 is eligible
 		System.gc();						// cannot force gc, but can request it
 		Thread.sleep(500);
 		
