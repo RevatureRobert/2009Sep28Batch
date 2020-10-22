@@ -12,18 +12,16 @@ import com.web.model.MonsterType;
 import com.web.util.ConnectionUtil;
 
 public class MonsterDao implements DaoContract<Monster, Integer> {
-	
-	
 
 	@Override
 	public List<Monster> findAll() {
 		List<Monster> monsters = new LinkedList<>();
 		String sql = "select * from complete_monsters";
-		try(Connection conn = ConnectionUtil.getInstance().getConnection()){
+		try (Connection conn = ConnectionUtil.getInstance().getConnection()) {
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ResultSet rs = ps.executeQuery();
-			while(rs.next()) {
-				monsters.add(new Monster(0, rs.getString("name"), 
+			while (rs.next()) {
+				monsters.add(new Monster(0, rs.getString("name"),
 						new MonsterType(rs.getString("mtype"), rs.getBoolean("fur"), rs.getBoolean("paws"))));
 			}
 			rs.close();
@@ -48,8 +46,19 @@ public class MonsterDao implements DaoContract<Monster, Integer> {
 
 	@Override
 	public int create(Monster t) {
-		// TODO Auto-generated method stub
-		return 0;
+		int result = 0;
+		try (Connection conn = ConnectionUtil.getInstance().getConnection()) {
+			String sql = "insert into monster (name, monster_type) values (?,?)";
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1, t.getName());
+			ps.setInt(2, new MonsterTypeDao().findByName(t.getType().getType()).getId());
+			result = ps.executeUpdate();
+			ps.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return result;
 	}
 
 	@Override
@@ -62,12 +71,12 @@ public class MonsterDao implements DaoContract<Monster, Integer> {
 	public Monster findByName(String name) {
 		Monster m = new Monster();
 		String sql = "select * from complete_monsters where name=?";
-		try(Connection conn = ConnectionUtil.getInstance().getConnection()){
+		try (Connection conn = ConnectionUtil.getInstance().getConnection()) {
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setString(1, name);
 			ResultSet rs = ps.executeQuery();
 			rs.next();
-			m = new Monster(0, rs.getString(1), 
+			m = new Monster(0, rs.getString(1),
 					new MonsterType(rs.getString("mtype"), rs.getBoolean("fur"), rs.getBoolean("paws")));
 		} catch (SQLException e) {
 			e.printStackTrace();

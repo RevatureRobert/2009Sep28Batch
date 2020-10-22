@@ -18,12 +18,17 @@ public class MonsterService {
 	public MonsterService() {
 		this(new MonsterDao());
 	}
-	
+
 	public Monster findByName(String name) {
 		return mdao.findByName(name);
 	}
-	
-	public List<Monster> findAll(){
+
+	public List<Monster> findAll() {
 		return mdao.findAll();
+	}
+
+	public int save(Monster t) {
+		return mdao.create(t);
+
 	}
 }

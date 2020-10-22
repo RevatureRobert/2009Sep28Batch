@@ -75,11 +75,11 @@ function renderTable(monsters) {
   }
 }
 // renderTable(mockedMonsters);
-// ajaxGetRequest(
-//   "http://localhost:8080/HallowsMonsters/all.json",
-//   renderTable,
-//   "get"
-// );
+ajaxGetRequest(
+  "http://localhost:8080/HallowsMonsters/all.json",
+  renderTable,
+  "get"
+);
 
 // fetch("http://localhost:8080/HallowsMonsters/all.json", {
 //   body: JSON.stringify(mockedMonsters),
