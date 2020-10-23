@@ -26,30 +26,24 @@ public class LoginController {
 		}
 			else 
 			{
-				
-				//login validation
+				int ret=-1;	
 				String username=request.getParameter("username");
 				String password=request.getParameter("password");
-				int ret=-1;	
-				
-				
+					
 				UserDAOim  ud= new UserDAOim();	
 				ret= ud.LoginUser(username, password);
-				  
-				
+				  	
 				//login found
-				  if (ret>0) {
-					  //curent user
-					 			 						   
-					   HttpSession session=request.getSession();
+				  if (ret>0)
+				  {
+					  				   
+					  HttpSession session=request.getSession();
 
 					  session.setAttribute("username", username);
 					  session.setAttribute("user_role_id", ret);
 					  session.setAttribute("feed1","Welcome "+username);
 
-					 
-					  response.setStatus(300);
-					  
+					  response.setStatus(300);					  
 					  response.sendRedirect("http://localhost:8080/Reimbursment/api/home");
 				  }
 
