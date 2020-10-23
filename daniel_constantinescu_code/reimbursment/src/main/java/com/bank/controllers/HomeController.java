@@ -36,20 +36,19 @@ public class HomeController {
 		
 		if(request.getSession(false)==null) {
 			response.setStatus(403);
-			response.sendRedirect("http://localhost:8080/Reimbursment/api");
-		}else
-		
-		{
-	
+			response.sendRedirect("http://localhost:8080/Reimbursment/api");}
+		else  {
+			int role=(int)request.getSession().getAttribute("user_role_id");
 			
-			//int role=(int)request.getSession().getAttribute("role");
+			System.out.println(role);
 			
-			response.sendRedirect("http://localhost:8080/Reimbursment/index.html");		
+			if (role==1)
+				response.sendRedirect("http://localhost:8080/Reimbursment/employee.html");		
+			else if (role==2)
+				response.sendRedirect("http://localhost:8080/Reimbursment/managers.html");	
 		}
 	}
-
-	
-	}
+}
 
 
 

@@ -60,7 +60,8 @@ function validate()
 </script>
 </head>
 <body>
-<br><br>
+
+<label style="color:red">Invalid parameters , email or username already exist</label>
 <div class="container border bg-light">
   <h4>CUSTOMER REGISTRATION</h4><br>
   <form action="/Reimbursment/api/home/register" method="post" name="RegForm11" class="needs-validation">
@@ -75,6 +76,9 @@ function validate()
      <input type="text" name="username" class="form-control" required>
      <label>Password :</label>
      <input type="password" name="password" class="form-control" required>
+     
+</div>
+  </div>
    <input type="submit" value="Submit"  class="btn btn-primary">
    
  </div>

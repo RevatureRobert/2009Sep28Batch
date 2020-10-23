@@ -48,8 +48,10 @@ public class UserDAOim implements UserDAO{
 	@Override
 	public int LoginUser(String username, String password) {
 		int id=-1 ;
+		int user_role_id=-1;
+		
 		Connection conn = ConnectionFactory.getConnection();
-		String sql="select u.ers_users_id ers_user_id from  reimbursement.vw_users u where u.ers_username=(?) and u.ers_password=(?) ";
+		String sql="select u.ers_users_id, ers_user_role_id from  reimbursement.vw_users u where u.ers_username=(?) and u.ers_password=(?) ";
 		try {
 		PreparedStatement ps=conn.prepareStatement(sql);
 		ps.setString(1, username);
@@ -59,13 +61,13 @@ public class UserDAOim implements UserDAO{
 		
 		while(rs.next()){
 			id=rs.getInt(1);
-			
+			user_role_id=rs.getInt(2);
 		}
 		
 		}catch(SQLException e){
 			e.printStackTrace();
 		}
-		return id ;
+		return user_role_id ;
 	}
 
 
@@ -75,10 +77,11 @@ public class UserDAOim implements UserDAO{
 	@Override
 	public int findUserbyUsername(String s) {
 		int user_id=-1;
+		
 	
 		Connection conn = ConnectionFactory.getConnection();
 		
-		String sql="select u.ers_users_id ers_user_id from  reimbursement.vw_users u where u.ers_username=(?)";
+		String sql="select u.ers_users_id, u.ers_user_role_id from  reimbursement.vw_users u where u.ers_username=(?)";
 		
 		try {
 		PreparedStatement ps=conn.prepareStatement(sql);

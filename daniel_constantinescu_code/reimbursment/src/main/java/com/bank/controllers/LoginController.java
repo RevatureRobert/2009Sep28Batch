@@ -44,7 +44,7 @@ public class LoginController {
 					   HttpSession session=request.getSession();
 
 					  session.setAttribute("username", username);
-					  session.setAttribute("user_id", ret);
+					  session.setAttribute("user_role_id", ret);
 					  session.setAttribute("feed1","Welcome "+username);
 
 					 

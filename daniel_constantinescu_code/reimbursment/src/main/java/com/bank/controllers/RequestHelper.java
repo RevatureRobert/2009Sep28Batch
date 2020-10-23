@@ -27,32 +27,22 @@ public class RequestHelper {
 			System.out.println("i'm in requesthelper at /api/home/failed/login");
 			HomeController.getFailedLoginPage(request,response);
 			break;
-	
-	
 		
 		case "/Reimbursment/api/home/register":
-		RegisterController.RegisterUser(request,response);
-		System.out.println("i'm in requesthelper at /api/home/register");
-		break;
+			System.out.println("i'm in requesthelper at /api/home/register");
+			RegisterController.RegisterUser(request,response);
+			break;
 		
-
+		case "/Reimbursment/api/home":
+			HomeController.getHomePage(request,response);
+			break;
 		
-		
-	case "/Reimbursment/api/home":
-		 HomeController.getHomePage(request,response);
-		 break;
-	
-	default:
-		HomeController.getLoginPage(request,response);
+		default:
+			HomeController.getLoginPage(request,response);
 		break;
 	}
-	
-	
-	}
-
-	
-		
-	}
+  }
+}
 
 	
 
