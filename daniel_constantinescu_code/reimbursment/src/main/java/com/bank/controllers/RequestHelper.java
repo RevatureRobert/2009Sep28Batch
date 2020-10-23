@@ -14,7 +14,8 @@ public class RequestHelper {
 	String s= request.getRequestURI();
 	
 	switch(s) { 
-		case "/Reimbursment/api/login":
+		
+	case "/Reimbursment/api/login":
 			System.out.println("i'm in requesthelper at /api/login");
 			LoginController.login(request,response);
 			break;
@@ -39,7 +40,7 @@ public class RequestHelper {
 		
 		default:
 			HomeController.getLoginPage(request,response);
-		break;
+			break;
 	}
   }
 }
