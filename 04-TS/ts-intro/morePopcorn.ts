@@ -1,6 +1,8 @@
-import { Popcorn } from "./Popcorn";
+// import { Popcorn } from "./Popcorn";    //named import
+// import { Popcorn as Corn} from './Popcorn'; //alias import
+import corn from "./Popcorn"; //default import (give it any name)
 
-const kelseyPopcorn = new Popcorn();
+const kelseyPopcorn = new corn(null, null, null, null);
 
 kelseyPopcorn.toppings.strange.push(["hot sauce", 3.4]);
 kelseyPopcorn.toppings.cheese.push(["parmesan", 4.2]);
