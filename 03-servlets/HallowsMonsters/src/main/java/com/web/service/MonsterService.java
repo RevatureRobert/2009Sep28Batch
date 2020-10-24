@@ -26,4 +26,8 @@ public class MonsterService {
 	public List<Monster> findAll(){
 		return mdao.findAll();
 	}
+	
+	public int save(Monster t) {
+		return mdao.create(t);
+	}
 }
