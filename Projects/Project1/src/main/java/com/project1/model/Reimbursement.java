@@ -4,6 +4,13 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.sql.Timestamp;
 
+/*
+ * You can create Timestamp with Timestamp.from(Instant.now());
+ * InputStream is converted to byte[] with inputstream.readAllBytes() method. 
+ * You can convert a file into a inputstream by uploading as a FileItem and using the 
+ * FileItem.getInputStream() method. 
+ * - using an inputstream allows us to avoid using File, which requires the file to be stored on the disk. 
+ */
 public class Reimbursement {
 	private int id;
 	private double amount;
@@ -31,6 +38,7 @@ public class Reimbursement {
 		this.type = type;
 	}
 	
+	//use this for creating reimbursements that have just been submitted
 	public Reimbursement (int id, double amount, Timestamp submitTime, String description, InputStream receipt, User author, ReimbursementStatus status, ReimbursementType type) {
 		this(id, amount, submitTime, null, description, receipt, author, null, status, type);
 	}

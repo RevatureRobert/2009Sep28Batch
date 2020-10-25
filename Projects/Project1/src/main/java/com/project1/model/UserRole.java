@@ -3,6 +3,8 @@ package com.project1.model;
 public class UserRole {
 	private int role;
 	
+	//1 is financial manager
+	//2 is employee
 	public UserRole(int role) {
 		if(validate(role)) {
 			this.role = role;			
@@ -28,9 +30,9 @@ public class UserRole {
 	public String toString() {
 		switch(role) {
 		case 1:
-			return "Lodging";
+			return "Financial Manager";
 		case 2:
-			return "Travel";
+			return "Employee";
 		default:
 			return "Something is wrong with the role";
 		}
