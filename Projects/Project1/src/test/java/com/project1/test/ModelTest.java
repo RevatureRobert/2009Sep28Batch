@@ -29,7 +29,7 @@ public class ModelTest {
 		status = new ReimbursementStatus(1);
 		type = new ReimbursementType(3);
 		Timestamp ts = Timestamp.from(Instant.now());
-		reimb = new Reimbursement(1, 100, ts, "milk and cookies", user, status, type);
+		reimb = new Reimbursement(1, 100, ts, "milk and cookies",null, user, status, type);
 				
 	}
 

@@ -1,5 +1,6 @@
 package com.project1.model;
 
+import java.io.InputStream;
 import java.io.OutputStream;
 import java.sql.Timestamp;
 
@@ -9,7 +10,7 @@ public class Reimbursement {
 	private Timestamp submitTime;
 	private Timestamp resolveTime;
 	private String description;
-	private OutputStream receipt;
+	private InputStream receipt;
 	private User author;
 	private User resolver;
 	private ReimbursementStatus status;
@@ -17,7 +18,7 @@ public class Reimbursement {
 	
 	
 	public Reimbursement(int id, double amount, Timestamp submitTime, Timestamp resolveTime, String description,
-			OutputStream receipt, User author, User resolver, ReimbursementStatus status, ReimbursementType type) {
+			InputStream receipt, User author, User resolver, ReimbursementStatus status, ReimbursementType type) {
 		this.id = id;
 		this.amount = amount;
 		this.submitTime = submitTime;
@@ -30,8 +31,12 @@ public class Reimbursement {
 		this.type = type;
 	}
 	
-	public Reimbursement (int id, double amount, Timestamp submitTime, String description, User author, ReimbursementStatus status, ReimbursementType type) {
-		this(id, amount, submitTime, null, description, null, author, null, status, type);
+	public Reimbursement (int id, double amount, Timestamp submitTime, String description, InputStream receipt, User author, ReimbursementStatus status, ReimbursementType type) {
+		this(id, amount, submitTime, null, description, receipt, author, null, status, type);
+	}
+
+	public int getId() {
+		return id;
 	}
 
 	public double getAmount() {
@@ -50,7 +55,7 @@ public class Reimbursement {
 		return description;
 	}
 
-	public OutputStream getReceipt() {
+	public InputStream getReceipt() {
 		return receipt;
 	}
 
@@ -86,7 +91,7 @@ public class Reimbursement {
 		this.description = description;
 	}
 
-	public void setReceipt(OutputStream receipt) {
+	public void setReceipt(InputStream receipt) {
 		this.receipt = receipt;
 	}
 

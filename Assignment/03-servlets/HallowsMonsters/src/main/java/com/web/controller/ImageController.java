@@ -67,6 +67,8 @@ public class ImageController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		File file = new File("C:\\Users\\enocho\\Desktop\\Revature Project\\2009Sep28Batch\\Assignment\\03-servlets\\HallowsMonsters\\src\\main\\webapp\\html\\img.jpg");
+		file.deleteOnExit();
 		
 	}
 
@@ -78,6 +80,7 @@ public class ImageController {
 			List<FileItem> fi = sf.parseRequest(req);
 			for(FileItem item : fi) {
 				item.write(file);
+				//item.getInputStream();
 			}
 		x = is.insert(file);
 			file.delete();
