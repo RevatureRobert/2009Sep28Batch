@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href= "bcf.css">
+	<link rel="stylesheet" type="text/js" href= "bcf.js">
+<script>
+function goBack() {
+  window.history.back();
+}
+$(document).on('keydown', 'input[pattern]', function(e){
+	  var input = $(this);
+	  var oldVal = input.val();
+	  var regex = new RegExp(input.attr('pattern'), 'g');
+
+	  setTimeout(function(){
+	    var newVal = input.val();
+	    if(!regex.test(newVal)){
+	      input.val(oldVal); 
+	    }
+	  }, 0);
+	});
+parseFloat($(this).val()).toFixed(2)
+</script>
+</head>
+
+<body>
+<form class="form" action="http://localhost:8080/ExpenseReimbursementApplication/AddNewReimbServlet" method="POST">
+	<div>
+		 <input type="button" value="Go back!" onclick="history.back()">
+		
+	</div>
+  <div class="form__title">Add Reimbursement</div>
+  <div class="form__item">
+    <label for="givennames" class="form__label">Username</label>
+    <input type="text" class="form__input" name="usrname" id="givennames" placeholder="Enter your username">
+    <span class="form__error">A sample error message</span>
+  </div>
+  <div class="form__item">
+    <label for="numusers" class="form__label">Reimbursement Type</label>
+	<select class="form__input" name="type">
+    	<option  value="1">LODGING</option>
+		<option value="2">TRAVEL</option>
+		<option value="3">FOOD</option>
+		<option value="4">OTHER</option>
+    <span class="form__error">A sample error message</span>
+	</select>
+  </div>
+  <div class="form__item">
+    <label for="expirydate" class="form__label">Reimbursement Amount</label>
+  <!--  <input type="number" step=".01" class="form__input form__input--small" name="amt"  placeholder="Enter the amount">-->
+    <input  class="form__input form__input--small" name="amt"  placeholder="Enter the amount" pattern="^\d*(\.\d{0,2})?$" />
+  </div>
+  <div class="form__item">
+    <label for="message" class="form__label">Reimbursement Description</label>
+    <textarea maxlength="500" class="form__input" name="message" id="message" placeholder="Enter a brief description of your expense."></textarea>
+    <span class="form__error">A sample error message</span>
+  </div>
+  <div class="form__item">
+    <button class="form__btn" type="submit">Submit for Approval</button>
+  </div>
+</form>
+</body>
+</html>

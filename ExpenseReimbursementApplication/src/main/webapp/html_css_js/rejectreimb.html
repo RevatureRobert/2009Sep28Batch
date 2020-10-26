@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href= "bcf.css">
+	<link rel="stylesheet" type="text/js" href= "bcf.js">
+<script>
+function goBack() {
+  window.history.back();
+}
+$(document).on('keydown', 'input[pattern]', function(e){
+	  var input = $(this);
+	  var oldVal = input.val();
+	  var regex = new RegExp(input.attr('pattern'), 'g');
+
+	  setTimeout(function(){
+	    var newVal = input.val();
+	    if(!regex.test(newVal)){
+	      input.val(oldVal); 
+	    }
+	  }, 0);
+	});
+parseFloat($(this).val()).toFixed(2)
+</script>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<form class="form" action="http://localhost:8080/ExpenseReimbursementApplication/RejectedReimbursementServlet" method="POST">
+	<div>
+		 <input type="button" value="Go back!" onclick="history.back()">
+		
+	</div>
+  <div class="form__title">Verify your username and enter the ID of the reimbursement you would like to reject below.</div>
+  <div class="form__item">
+    <label for="givennames" class="form__label">Enter Your Username</label>
+    <input type="text" class="form__input" name="fmusername" id="givennames" placeholder="Enter your username">
+    <span class="form__error">A sample error message</span>
+  </div>
+  <div class="form__item">
+    <label for="givennames" class="form__label">Reimbursement ID</label>
+    <input type="text" class="form__input" name="reimb" id="givennames" placeholder="Enter reimbursement ID">
+    <span class="form__error">A sample error message</span>
+  </div>
+
+  <div class="form__item">
+    <button class="form__btn" type="submit">Submit</button>
+  </div>
+</form>
+</body>
+</html>
