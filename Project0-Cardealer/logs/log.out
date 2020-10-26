@@ -919,3 +919,33 @@ DEBUG	2020-10-13 22:50:39,824	13326	com.cardealer.console.ConsoleVisualizer	[mai
 DEBUG	2020-10-13 22:50:40,219	13721	com.cardealer.console.ConsoleVisualizer	[main]	Remote connection successful.
 INFO	2020-10-13 22:50:40,256	13758	com.cardealer.console.ConsoleVisualizer	[main]	promotedrental
 INFO	2020-10-13 22:50:44,461	17963	com.cardealer.console.ConsoleVisualizer	[main]	Application Closing
+<<<<<<< Updated upstream
+=======
+INFO	2020-10-13 23:20:20,519	1	com.cardealer.console.ConsoleVisualizer	[main]	Application Started
+INFO	2020-10-13 23:20:39,737	19219	com.cardealer.console.ConsoleVisualizer	[main]	Application Closing
+INFO	2020-10-14 10:07:25,027	0	com.cardealer.console.ConsoleVisualizer	[main]	Application Started
+INFO	2020-10-14 10:07:39,535	14508	com.cardealer.console.ConsoleVisualizer	[main]	Application Closing
+INFO	2020-10-14 11:23:53,015	0	com.cardealer.console.ConsoleVisualizer	[main]	Application Started
+INFO	2020-10-14 11:24:18,181	25166	com.cardealer.console.ConsoleVisualizer	[main]	Account created with username: cust1
+INFO	2020-10-14 11:24:30,221	37206	com.cardealer.console.ConsoleVisualizer	[main]	Logged into cust1
+INFO	2020-10-14 11:25:03,726	70711	com.cardealer.console.ConsoleVisualizer	[main]	Offer created for: cust1
+INFO	2020-10-14 11:25:18,280	85265	com.cardealer.console.ConsoleVisualizer	[main]	Offer created for: cust1
+INFO	2020-10-14 11:25:21,305	88290	com.cardealer.console.ConsoleVisualizer	[main]	Application Closing
+INFO	2020-10-14 11:25:23,872	0	com.cardealer.console.ConsoleVisualizer	[main]	Application Started
+INFO	2020-10-14 11:25:31,177	7305	com.cardealer.console.ConsoleVisualizer	[main]	Logged into colin
+INFO	2020-10-14 11:25:51,888	28016	com.cardealer.console.ConsoleVisualizer	[main]	set 1 to owned
+INFO	2020-10-14 11:25:52,352	28480	com.cardealer.console.ConsoleVisualizer	[main]	Car: 1is now owned by cust1
+INFO	2020-10-14 11:26:34,501	70629	com.cardealer.console.ConsoleVisualizer	[main]	Car added to lot
+INFO	2020-10-14 11:26:55,675	91803	com.cardealer.console.ConsoleVisualizer	[main]	Car with ID: 18 updated
+INFO	2020-10-14 11:27:23,321	119449	com.cardealer.console.ConsoleVisualizer	[main]	Application Closing
+INFO	2020-10-14 11:27:26,102	0	com.cardealer.console.ConsoleVisualizer	[main]	Application Started
+INFO	2020-10-14 11:27:31,189	5087	com.cardealer.console.ConsoleVisualizer	[main]	Logged into cust1
+INFO	2020-10-14 11:27:53,977	27875	com.cardealer.console.ConsoleVisualizer	[main]	Payment made
+INFO	2020-10-14 11:28:00,673	34571	com.cardealer.console.ConsoleVisualizer	[main]	Application Closing
+INFO	2020-10-14 11:28:03,993	0	com.cardealer.console.ConsoleVisualizer	[main]	Application Started
+INFO	2020-10-14 11:28:09,020	5027	com.cardealer.console.ConsoleVisualizer	[main]	Logged into colin
+INFO	2020-10-14 11:28:13,805	9812	com.cardealer.console.ConsoleVisualizer	[main]	Demoted cust1
+INFO	2020-10-14 11:28:22,070	18077	com.cardealer.console.ConsoleVisualizer	[main]	promotedcust1
+INFO	2020-10-26 16:38:00,343	0	com.cardealer.console.ConsoleVisualizer	[main]	Application Started
+INFO	2020-10-26 16:38:07,437	7094	com.cardealer.console.ConsoleVisualizer	[main]	Logged into colin
+>>>>>>> Stashed changes

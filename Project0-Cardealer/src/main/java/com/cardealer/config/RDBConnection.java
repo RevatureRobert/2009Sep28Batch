@@ -8,7 +8,11 @@ import org.apache.log4j.Logger;
 
 public class RDBConnection {
 	//Database statics
+<<<<<<< Updated upstream
 		private final static String RDS_HOSTNAME = "jdbc:postgresql://cardealer.cdzcuikxvam1.us-east-2.rds.amazonaws.com:5432/postgres?currentSchema=cardealer";
+=======
+		private final static String RDS_HOSTNAME = "jdbc:postgresql://revaturedb.cdzcuikxvam1.us-east-2.rds.amazonaws.com:5432/postgres?currentSchema=cardealer";
+>>>>>>> Stashed changes
 		private final static String RDS_PORT = "5432";
 		private final static String RDS_DB_NAME = "postgres";
 		private final static String RDS_USERNAME = "cardealer";
