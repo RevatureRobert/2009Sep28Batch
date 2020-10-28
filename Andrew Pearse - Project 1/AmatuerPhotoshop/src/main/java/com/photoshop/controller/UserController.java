@@ -1,16 +1,13 @@
 package com.photoshop.controller;
 
 import java.io.IOException;
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.photoshop.model.ReimbursementStatus;
 import com.photoshop.model.User;
 import com.photoshop.service.UserService;
 import com.photoshop.util.SessionController;

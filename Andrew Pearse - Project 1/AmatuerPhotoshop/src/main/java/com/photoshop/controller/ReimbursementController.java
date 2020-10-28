@@ -3,17 +3,14 @@ package com.photoshop.controller;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.photoshop.model.Reimbursement;
 import com.photoshop.model.ReimbursementStatus;
-import com.photoshop.model.ReimbursementType;
 import com.photoshop.service.ReimbursementService;
 import com.photoshop.util.SessionController;
 
@@ -32,7 +29,7 @@ public class ReimbursementController {
 		this(new ReimbursementService(), new SessionController());
 	}
 	
-	public void sendAllPendingReimbursements(HttpServletResponse res) {
+	public boolean sendAllPendingReimbursements(HttpServletResponse res) {
 		res.setContentType("text/json");
 		List<Reimbursement> reimbursements = rs.findAllPending();
 		
@@ -40,10 +37,13 @@ public class ReimbursementController {
 			res.getWriter().println(new ObjectMapper().writeValueAsString(reimbursements));
 		} catch (IOException e) {
 			e.printStackTrace();
+			return false;
 		}
+		
+		return true;
 	}
 	
-	public void sendUserReimbursementRequests(HttpServletRequest req, HttpServletResponse res) {
+	public boolean sendUserReimbursementRequests(HttpServletRequest req, HttpServletResponse res) {
 		int id = sc.getSessionUser(req).getId();
 		res.setContentType("text/json");
 		List<Reimbursement> reimbursements = rs.findAllByUser(id);
@@ -52,10 +52,13 @@ public class ReimbursementController {
 			res.getWriter().println(new ObjectMapper().writeValueAsString(reimbursements));
 		} catch (IOException e) {
 			e.printStackTrace();
+			return false;
 		}
+		
+		return true;
 	}
 	
-	public void createNewReimbursement(HttpServletRequest req) {
+	public boolean createNewReimbursement(HttpServletRequest req) {
 		Reimbursement reimb = null;
 		try {
 			JsonNode jsonNode = new ObjectMapper().readTree(req.getInputStream());
@@ -64,9 +67,11 @@ public class ReimbursementController {
 
 			rs.request(reimb);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+			return false;
 		}
+		
+		return true;
 	}
 	
 	public int cancelReimbursement(HttpServletRequest req) {
@@ -80,7 +85,7 @@ public class ReimbursementController {
 		return -1;
 	}
 	
-	public void rejectReimbursement(HttpServletRequest req, HttpServletResponse res) {
+	public boolean rejectReimbursement(HttpServletRequest req, HttpServletResponse res) {
 		Reimbursement reimb = null;
 		try {
 			JsonNode jNode = new ObjectMapper().readTree(req.getInputStream());
@@ -92,10 +97,13 @@ public class ReimbursementController {
 			rs.updateRequest(reimb);
 		} catch (IOException e) {
 			e.printStackTrace();
+			return false;
 		}
+		
+		return true;
 	}
 	
-	public void acceptReimbursement(HttpServletRequest req, HttpServletResponse res) {
+	public boolean acceptReimbursement(HttpServletRequest req, HttpServletResponse res) {
 		Reimbursement reimb = null;
 		try {
 			JsonNode jNode = new ObjectMapper().readTree(req.getInputStream());
@@ -107,10 +115,13 @@ public class ReimbursementController {
 			rs.updateRequest(reimb);
 		} catch (IOException e) {
 			e.printStackTrace();
+			return false;
 		}
+		
+		return true;
 	}
 	
-	public void sortByEmployee(HttpServletRequest req, HttpServletResponse res) {
+	public boolean sortByEmployee(HttpServletRequest req, HttpServletResponse res) {
 		List<Reimbursement> reimbursements = null;
 		res.setContentType("text/json");
 		try {
@@ -126,6 +137,9 @@ public class ReimbursementController {
 			res.getWriter().println(new ObjectMapper().writeValueAsString(reimbursements));
 		} catch (IOException e) {
 			e.printStackTrace();
+			return false;
 		}
+		
+		return true;
 	}
 }

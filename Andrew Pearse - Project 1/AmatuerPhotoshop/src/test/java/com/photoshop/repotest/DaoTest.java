@@ -1,23 +1,19 @@
 package com.photoshop.repotest;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
-
-import java.sql.SQLException;
-import java.sql.Timestamp;
 
 import org.junit.Before;
 import org.junit.Test;
 
 import com.photoshop.model.Reimbursement;
-import com.photoshop.model.ReimbursementStatus;
-import com.photoshop.model.ReimbursementType;
 import com.photoshop.model.User;
 import com.photoshop.model.UserRole;
 import com.photoshop.repo.ReimbursementDao;
 import com.photoshop.repo.UserDao;
-import com.photoshop.util.ConnectionUtil;
+
 
 public class DaoTest {
 
@@ -35,11 +31,6 @@ public class DaoTest {
 		assertTrue(!ud.findAll().isEmpty());
 	}
 	
-	@Test
-	public void findAllTestUserHasNumberOfEntries() {
-		assertEquals(3, ud.findAll().size());
-	}
-
 	@Test
 	public void findByIdUserNotNull() {
 		assertNotNull(ud.findById(2));
@@ -61,48 +52,18 @@ public class DaoTest {
 	}
 	
 	@Test
-	public void updateCorrectUserReturnsOne() {
-		assertEquals(1, ud.update(ud.findById(2)));
+	public void testVerifyUser() {
+		assertTrue(ud.verifyUser("andrew.roy.pearse@gmail.com", "password"));
 	}
-	
-//	@Test
-//	public void verifyUserInformation() {
-//		User user = ud.findById(2);
-//		user.setPassword("password");
-//		assertTrue(ud.verifyUser(user));
-//	}
 	
 	@Test
 	public void findAllTestReimbursementIsNotEmpty() {
 		assertTrue(!rd.findAll().isEmpty());
 	}
-	
-	@Test
-	public void findAllTestReimbursementHasNumberOfEntries() {
-		assertEquals(1, rd.findAll().size());
-	}
 
 	@Test
 	public void findByIdReimbursementNotNull() {
 		assertNotNull(rd.findById(4));
-	}
-	
-	@Test
-	public void findByIdReimbursementEqualsMyAuthor() {
-		assertEquals(2, rd.findById(4).getAuthor().getId());
-	}
-	
-	@Test
-	public void createReimbursementEqualsZero() {
-		assertEquals(0, rd.create(new Reimbursement(0, 300f, new Timestamp(System.currentTimeMillis()), null, "Photoshop bill",  
-									new User(2, null, null, null, null, null, null), null, new ReimbursementStatus(1, null), 
-									new ReimbursementType(4, null))));
-		
-		try {
-			ConnectionUtil.getInstance().getConnection().rollback();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
 	}
 	
 	@Test
@@ -113,4 +74,8 @@ public class DaoTest {
 		assertEquals(0, rd.update(r));
 	}
 	
+	@Test
+	public void testFindAllByUser() {
+		assertNotEquals(0, rd.findAllByUser(2));
+	}
 }

@@ -13,6 +13,7 @@
 				<version>0.7.7.201606060606</version>
 				<executions>
 					<execution>
+						<id>default-prepare-agent</id>
 						<goals>
 							<goal>prepare-agent</goal>
 						</goals>
@@ -33,7 +34,6 @@
 			</plugin>
 		</plugins>
 	</build>
-  
   
   <properties>
   	<maven.compiler.source>1.8</maven.compiler.source>
@@ -76,6 +76,14 @@
 	    <artifactId>jackson-databind</artifactId>
 	    <version>2.11.2</version>
 	</dependency>
+	
+	<!-- https://mvnrepository.com/artifact/org.jacoco/jacoco-maven-plugin -->
+	<dependency>
+	    <groupId>org.jacoco</groupId>
+	    <artifactId>jacoco-maven-plugin</artifactId>
+	    <version>0.8.6</version>
+	</dependency>
+	
 	
   </dependencies>
 </project>

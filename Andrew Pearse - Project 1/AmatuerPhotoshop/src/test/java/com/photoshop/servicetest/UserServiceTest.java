@@ -1,12 +1,13 @@
 package com.photoshop.servicetest;
 
-import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import com.photoshop.model.User;
 import com.photoshop.service.UserService;
 
 public class UserServiceTest {
@@ -24,7 +25,22 @@ public class UserServiceTest {
 	}
 	
 	@Test
-	public void testVerifyUserNotInTable() {
-		assertFalse(us.verifyUser("andrew.roy.pearse@gmail.com", "not my password"));
+	public void testFindAll() {
+		assertNotEquals(0, us.findAll().size());
+	}
+	
+	@Test
+	public void testFindById() {
+		assertNotNull(us.findById(2));
+	}
+	
+	@Test
+	public void testFindByEmail() {
+		assertNotNull(us.findByEmail("andrew.roy.pearse@gmail.com"));
+	}
+	
+	@Test
+	public void testUpdateUserInformation() {
+		assertEquals(1, us.updateUserInformation(us.findByEmail("andrew.roy.pearse@gmail.com")));
 	}
 }

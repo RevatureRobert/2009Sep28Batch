@@ -8,8 +8,6 @@ import java.sql.Timestamp;
 import java.util.LinkedList;
 import java.util.List;
 
-import org.apache.tomcat.dbcp.dbcp2.SwallowedExceptionLogger;
-
 import com.photoshop.model.Reimbursement;
 import com.photoshop.model.ReimbursementStatus;
 import com.photoshop.model.ReimbursementType;
