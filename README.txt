@@ -1,3 +1,5 @@
-Please go into \src\main\java\com\project\config\PlainTextConnectionUtil and edit the URL String to match your database!
+Project 1 repo:
+https://github.com/CarloAnselmo/reimbursement
 
-Additionally, run the attached SQL script to populate the DB
+Project 1 link:
+Coming soon
