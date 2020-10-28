@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
+import java.sql.SQLException;
 import java.sql.Timestamp;
 
 import org.junit.Before;
@@ -16,6 +17,7 @@ import com.photoshop.model.User;
 import com.photoshop.model.UserRole;
 import com.photoshop.repo.ReimbursementDao;
 import com.photoshop.repo.UserDao;
+import com.photoshop.util.ConnectionUtil;
 
 public class DaoTest {
 
@@ -43,10 +45,10 @@ public class DaoTest {
 		assertNotNull(ud.findById(2));
 	}
 	
-//	@Test
-//	public void findByIdUserEqualsMyUsername() {
-//		assertEquals("arpearse", ud.findById(2).getUsername());
-//	}
+	@Test
+	public void findByIdUserEqualsMyUsername() {
+		assertEquals("arpearse", ud.findByEmail("andrew.roy.pearse@gmail.com").getUsername());
+	}
 	
 	@Test
 	public void createUserEqualsZero() {
@@ -90,13 +92,18 @@ public class DaoTest {
 		assertEquals(2, rd.findById(4).getAuthor().getId());
 	}
 	
-//	@Test
-//	public void createReimbursementEqualsZero() {
-//		assertEquals(0, rd.create(new Reimbursement(0, 300f, new Timestamp(System.currentTimeMillis()), null, "Photoshop bill", 
-//									"https://project1receipts.s3.us-east-2.amazonaws.com/ARP+Photoshop+Bill.png", 
-//									new User(2, null, null, null, null, null, null), null, new ReimbursementStatus(1, null), 
-//									new ReimbursementType(4, null))));
-//	}
+	@Test
+	public void createReimbursementEqualsZero() {
+		assertEquals(0, rd.create(new Reimbursement(0, 300f, new Timestamp(System.currentTimeMillis()), null, "Photoshop bill",  
+									new User(2, null, null, null, null, null, null), null, new ReimbursementStatus(1, null), 
+									new ReimbursementType(4, null))));
+		
+		try {
+			ConnectionUtil.getInstance().getConnection().rollback();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 	
 	@Test
 	public void updateIncorrectReimbursementReturnsZero() {

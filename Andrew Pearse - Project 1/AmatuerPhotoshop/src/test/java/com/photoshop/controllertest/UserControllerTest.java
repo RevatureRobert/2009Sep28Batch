@@ -24,8 +24,8 @@ public class UserControllerTest {
 	public void testVerifyUserWithEmployee() {
 		HttpServletRequest req = mock(HttpServletRequest.class);
 		//employee
-		when(req.getAttribute("inputEmail")).thenReturn("andrew.roy.pearse@gmail.com");
-		when(req.getAttribute("inputPassword")).thenReturn("password");
+		when(req.getParameter("email")).thenReturn("andrew.roy.pearse@gmail.com");
+		when(req.getParameter("password")).thenReturn("password");
 		
 		assertEquals("html/employee.html", uc.verifyUser(req));
 		
@@ -34,8 +34,8 @@ public class UserControllerTest {
 	@Test
 	public void testVerifyUserWithFinanceManager() {
 		HttpServletRequest req = mock(HttpServletRequest.class);
-		when(req.getAttribute("inputEmail")).thenReturn("jlawn@gmail.com");
-		when(req.getAttribute("inputPassword")).thenReturn("longgone");
+		when(req.getParameter("email")).thenReturn("jlawn@gmail.com");
+		when(req.getParameter("password")).thenReturn("longgone");
 		
 		assertEquals("html/finance manager.html", uc.verifyUser(req));
 	}
@@ -43,8 +43,8 @@ public class UserControllerTest {
 	@Test
 	public void testVerifyInvalidUser() {
 		HttpServletRequest req = mock(HttpServletRequest.class);
-		when(req.getAttribute("inputEmail")).thenReturn("andrew.roy.pearse@gmail.com");
-		when(req.getAttribute("inputPassword")).thenReturn("bad password");
+		when(req.getParameter("email")).thenReturn("andrew.roy.pearse@gmail.com");
+		when(req.getParameter("password")).thenReturn("bad password");
 		
 		assertEquals("html/login.html", uc.verifyUser(req));
 	}

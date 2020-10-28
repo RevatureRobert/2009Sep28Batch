@@ -6,7 +6,7 @@ import javax.servlet.http.HttpSession;
 import com.photoshop.model.User;
 
 public class SessionController {
-
+	
 	public void setSessionUser(HttpServletRequest req, User user) {
 		HttpSession session = req.getSession();
 		session.setAttribute("user", user);

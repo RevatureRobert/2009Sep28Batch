@@ -4,8 +4,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.LinkedList;
 import java.util.List;
+
+import org.apache.tomcat.dbcp.dbcp2.SwallowedExceptionLogger;
 
 import com.photoshop.model.Reimbursement;
 import com.photoshop.model.ReimbursementStatus;
@@ -34,13 +37,11 @@ public class ReimbursementDao implements DaoContract<Reimbursement, Integer> {
 			ResultSet rs = ps.executeQuery();
 			
 			while(rs.next()) {
-				reimbursements.add(new Reimbursement(rs.getInt("id"), rs.getFloat("amount"), rs.getTimestamp("submitted"), rs.getTimestamp("resolved"), 
-										rs.getString("description"), rs.getString("receipt"), 
+				reimbursements.add(new Reimbursement(rs.getInt("id"), rs.getFloat("amount"), rs.getTimestamp("submitted"), rs.getTimestamp("resolved"), rs.getString("description"), 
 										ud.findById(rs.getInt("author")), ud.findById(rs.getInt("resolver")), 
 										new ReimbursementStatus(rs.getInt("status_id"), rs.getString("status")), 
 										new ReimbursementType(rs.getInt("type_id"), rs.getString("type"))));
 			}
-			
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -60,8 +61,7 @@ public class ReimbursementDao implements DaoContract<Reimbursement, Integer> {
 			ResultSet rs = ps.executeQuery();
 			
 			while(rs.next()) {
-				reimbursement = new Reimbursement(rs.getInt("id"), rs.getFloat("amount"), rs.getTimestamp("submitted"), rs.getTimestamp("resolved"), 
-									rs.getString("description"), rs.getString("receipt"), 
+				reimbursement = new Reimbursement(rs.getInt("id"), rs.getFloat("amount"), rs.getTimestamp("submitted"), rs.getTimestamp("resolved"), rs.getString("description"), 
 									ud.findById(rs.getInt("author")), ud.findById(rs.getInt("resolver")), 
 									new ReimbursementStatus(rs.getInt("status_id"), rs.getString("status")), 
 									new ReimbursementType(rs.getInt("type_id"), rs.getString("type")));
@@ -79,18 +79,22 @@ public class ReimbursementDao implements DaoContract<Reimbursement, Integer> {
 	@Override
 	public int create(Reimbursement t) {
 		String sql = "insert into ers_reimbursement (reimb_amount, reimb_submitted, reimb_resolved, "
-				+ "reimb_description, reimb_receipt, reimb_author, reimb_status_id, reimb_type_id) values (?,?,?,?,?,?,?,?)"; 
+				+ "reimb_description, reimb_author, reimb_status_id, reimb_type_id) values (?,?,?,?,?,?,?)"; 
 		int updated = 0;
 		try (Connection conn = ConnectionUtil.getInstance().getConnection()){
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setFloat(1, t.getAmount());
-			ps.setTimestamp(2, t.getDateSubmitted());
-			ps.setTimestamp(3, t.getDateResolved());
+			ps.setTimestamp(2, Timestamp.valueOf(t.getDateSubmitted()));
+			
+			if (t.getDateResolved() != null)
+				ps.setTimestamp(3, Timestamp.valueOf(t.getDateResolved()));
+			else
+				ps.setTimestamp(3, null);
+			
 			ps.setString(4, t.getDescription());
-			ps.setString(5, t.getReceipt());
-			ps.setInt(6, t.getAuthor().getId());
-			ps.setInt(7, t.getStatus().getId());
-			ps.setInt(8, t.getType().getId());
+			ps.setInt(5, t.getAuthor().getId());
+			ps.setInt(6, t.getStatus().getId());
+			ps.setInt(7, t.getType().getId());
 			
 			updated = ps.executeUpdate();
 			
@@ -107,8 +111,7 @@ public class ReimbursementDao implements DaoContract<Reimbursement, Integer> {
 		String sql = "update ers_reimbursement set reimb_amount = ?, "
 												+ "reimb_submitted = ?, "
 												+ "reimb_resolved = ?, "
-												+ "reimb_description = ?, "
-												+ "reimb_receipt = ?, "
+												+ "reimb_description = ?,"
 												+ "reimb_author = ?, "
 												+ "reimb_resolver = ?, "
 												+ "reimb_status_id = ?, "
@@ -118,15 +121,19 @@ public class ReimbursementDao implements DaoContract<Reimbursement, Integer> {
 		try (Connection conn = ConnectionUtil.getInstance().getConnection()){
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setFloat(1, t.getAmount());
-			ps.setTimestamp(2, t.getDateSubmitted());
-			ps.setTimestamp(3, t.getDateResolved());
+			ps.setTimestamp(2, Timestamp.valueOf(t.getDateSubmitted()));
+			
+			if (t.getDateResolved() != null)
+				ps.setTimestamp(3, Timestamp.valueOf(t.getDateResolved()));
+			else
+				ps.setTimestamp(3, null);
+			
 			ps.setString(4, t.getDescription());
-			ps.setString(5, t.getReceipt());
-			ps.setInt(6, t.getAuthor().getId());
-			ps.setInt(7, t.getResolver().getId());
-			ps.setInt(8, t.getStatus().getId());
-			ps.setInt(9, t.getType().getId());
-			ps.setInt(10, t.getId());
+			ps.setInt(5, t.getAuthor().getId());
+			ps.setInt(6, t.getResolver().getId());
+			ps.setInt(7, t.getStatus().getId());
+			ps.setInt(8, t.getType().getId());
+			ps.setInt(9, t.getId());
 			
 			updated = ps.executeUpdate();
 		
@@ -148,8 +155,7 @@ public class ReimbursementDao implements DaoContract<Reimbursement, Integer> {
 			ResultSet rs = ps.executeQuery();
 			
 			while(rs.next()) {
-				reimbursements.add(new Reimbursement(rs.getInt("id"), rs.getFloat("amount"), rs.getTimestamp("submitted"), rs.getTimestamp("resolved"), 
-										rs.getString("description"), rs.getString("receipt"), 
+				reimbursements.add(new Reimbursement(rs.getInt("id"), rs.getFloat("amount"), rs.getTimestamp("submitted"), rs.getTimestamp("resolved"), rs.getString("description"), 
 										ud.findById(rs.getInt("author")), ud.findById(rs.getInt("resolver")), 
 										new ReimbursementStatus(rs.getInt("status_id"), rs.getString("status")), 
 										new ReimbursementType(rs.getInt("type_id"), rs.getString("type"))));
@@ -160,6 +166,28 @@ public class ReimbursementDao implements DaoContract<Reimbursement, Integer> {
 			e.printStackTrace();
 		}
 		
+		reimbursements.sort( (r1, r2) -> r1.getStatus().getStatus().compareTo(r2.getStatus().getStatus()) );
+		
 		return reimbursements;
 	}
+
+	@Override
+	public int delete(Integer i) {
+		int updated = 0;
+		
+		try(Connection conn = ConnectionUtil.getInstance().getConnection()){
+			String sql = "delete from ers_reimbursement where reimb_id = ?";
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, i);
+			
+			updated = ps.executeUpdate();
+			
+			ps.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return updated;
+	}
+	
 }

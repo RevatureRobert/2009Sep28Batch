@@ -8,4 +8,5 @@ public interface DaoContract<T,I> {
 	T findById(I i);
 	int create(T t);
 	int update(T t);
+	int delete(I i);
 }

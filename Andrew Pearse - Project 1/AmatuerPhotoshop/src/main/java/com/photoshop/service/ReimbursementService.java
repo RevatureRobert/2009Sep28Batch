@@ -1,6 +1,7 @@
 package com.photoshop.service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import com.photoshop.model.Reimbursement;
 import com.photoshop.repo.ReimbursementDao;
@@ -21,6 +22,14 @@ public class ReimbursementService {
 		return rd.findAll();
 	}
 	
+	public List<Reimbursement> findAllPending() {
+		return rd.findAll().stream().filter(r -> r.getStatus().getStatus().equals("PENDING")).collect(Collectors.toList());
+	}
+	
+	public List<Reimbursement> sortByEmployee(int id){
+		return findAllPending().stream().filter(r -> r.getAuthor().getId() == id).collect(Collectors.toList());
+	}
+	
 	public Reimbursement findById(int i) {
 		return rd.findById(i);
 	}
@@ -35,5 +44,9 @@ public class ReimbursementService {
 	
 	public List<Reimbursement> findAllByUser(int i){
 		return rd.findAllByUser(i);
+	}
+	
+	public int delete(int i) {
+		return rd.delete(i);
 	}
 }

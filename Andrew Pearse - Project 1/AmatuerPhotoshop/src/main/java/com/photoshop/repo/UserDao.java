@@ -29,8 +29,8 @@ public class UserDao implements DaoContract<User, Integer> {
 			ResultSet rs = ps.executeQuery();
 			
 			while(rs.next()) {
-				users.add(new User(rs.getInt("id"), rs.getString("username"), rs.getString("password"), rs.getString("first_name"), 
-										rs.getString("last_name"), rs.getString("email"), new UserRole(0, rs.getString("role"))));
+				users.add(new User(rs.getInt("id"), rs.getString("username"), null, rs.getString("first_name"), 
+										rs.getString("last_name"), rs.getString("email"), new UserRole(rs.getInt("role_id"), rs.getString("role"))));
 			}
 			
 			
@@ -161,5 +161,11 @@ public class UserDao implements DaoContract<User, Integer> {
 		}
 		
 		return user;
+	}
+
+	@Override
+	public int delete(Integer i) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 }

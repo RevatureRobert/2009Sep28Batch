@@ -12,32 +12,29 @@
         <title>Login</title>
     </head>
 
-    <body style="background-color: aquamarine">
+    <body style="background-color: lightgrey">
 
         <h1 class="display-1">
-            <div class="text-center" style="background-color: lightseagreen;">
+            <div class="text-center" style="color: white; background-color: darkslateblue; height: 250px">
                 Amateur<br>Photoshop
             </div>
         </h1>
 
         <br><br><br><br>
 
+		
         <div>
-            <form action="login.page" method="post" class="w-25 p-3, mx-auto" style="background-color: greenyellow;">
+            <form action="login.page" method="post" class="w-25 p-3 mx-auto" style="background-color: teal;">
                 <div class="form-group">
                     <label for="inputEmail">Email Address</label>
-                    <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp">
+                    <input type="email" class="form-control" id="inputEmail" name="email" aria-describedby="emailHelp">
                 </div>
                 <div class="form-group">
                     <label for="inputPassword">Password</label>
-                    <input type="password" class="form-control" id="inputPassword">
-                </div>
-                <div class="form-group form-check, text-center">
-                    <input type="checkbox" class="form-check-input" id="rememberMe">
-                    <label class="form-check-label" for="rememberMe">Remember Me</label>
+                    <input type="password" class="form-control" id="inputPassword" name = "password">
                 </div>
                 <div class="text-center">
-                    <button type="submit" class="btn btn-primary">Log In</button>
+                    <button type="submit" class="btn btn-dark">Log In</button>
                 </div>
             </form>
         </div>

@@ -1,30 +1,43 @@
 package com.photoshop.model;
 
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 public class Reimbursement {
 
 	private int id;
 	private float amount;
-	private Timestamp dateSubmitted;
-	private Timestamp dateResolved;
+	private LocalDateTime dateSubmitted;
+	private LocalDateTime dateResolved;
 	private String description;
-	// TODO: figure out how to hold a byte stream for images
-	private String receipt;
 	private User author;
 	private User resolver;
 	private ReimbursementStatus status;
 	private ReimbursementType type;
 
+	public Reimbursement() {
+	}
+	
+	public Reimbursement(float amount, String description, int typeId) {
+		this(0, amount, Timestamp.valueOf(LocalDateTime.now()), 
+				null, description, null, null, 
+				new ReimbursementStatus(1, null), 
+				new ReimbursementType(typeId, null));
+	}
+	
 	public Reimbursement(int id, float amount, Timestamp dateSubmitted, Timestamp dateResolved, String description,
-			String receipt, User author, User resolver, ReimbursementStatus status, ReimbursementType type) {
+			User author, User resolver, ReimbursementStatus status, ReimbursementType type) {
 		super();
 		this.id = id;
 		this.amount = amount;
-		this.dateSubmitted = dateSubmitted;
-		this.dateResolved = dateResolved;
+		this.dateSubmitted = dateSubmitted.toLocalDateTime();
+		
+		if (dateResolved == null)
+			this.dateResolved = null;
+		else
+			this.dateResolved = dateResolved.toLocalDateTime();
+		
 		this.description = description;
-		this.receipt = receipt;
 		this.author = author;
 		this.resolver = resolver;
 		this.status = status;
@@ -47,19 +60,19 @@ public class Reimbursement {
 		this.amount = amount;
 	}
 
-	public Timestamp getDateSubmitted() {
+	public LocalDateTime getDateSubmitted() {
 		return dateSubmitted;
 	}
 
-	public void setDateSubmitted(Timestamp dateSubmitted) {
+	public void setDateSubmitted(LocalDateTime dateSubmitted) {
 		this.dateSubmitted = dateSubmitted;
 	}
 
-	public Timestamp getDateResolved() {
+	public LocalDateTime getDateResolved() {
 		return dateResolved;
 	}
 
-	public void setDateResolved(Timestamp dateResolved) {
+	public void setDateResolved(LocalDateTime dateResolved) {
 		this.dateResolved = dateResolved;
 	}
 
@@ -103,18 +116,10 @@ public class Reimbursement {
 		this.type = type;
 	}
 
-	public String getReceipt() {
-		return receipt;
-	}
-
-	public void setReceipt(String receipt) {
-		this.receipt = receipt;
-	}
-
 	@Override
 	public String toString() {
 		return "Reimbursement [id=" + id + ", amount=" + amount + ", dateSubmitted=" + dateSubmitted + ", dateResolved="
-				+ dateResolved + ", description=" + description + ", receipt=" + receipt + ", author=" + author
+				+ dateResolved + ", description=" + description + ", author=" + author
 				+ ", resolver=" + resolver + ", status=" + status + ", type=" + type + "]";
 	}
 
