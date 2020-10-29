@@ -11,28 +11,8 @@ import { axiosInstance } from "../../util/axiosConfig";
 interface IProps {}
 
 export const PokeInfo: React.FC<IProps> = (props: IProps) => {
-  const [pokes, setPokes] = useState<
-    { id: number; name: string; type: string; sprite: string }[]
-  >([]);
-
   const addPoke = async (eve: SyntheticEvent<HTMLFormElement>) => {
     eve.preventDefault();
-    const pid = +eve.currentTarget["pId"].value;
-    // const {id, name, type} =
-    const response = await axiosInstance.get("" + pid);
-    console.log(response.data);
-    const { id, name } = response.data;
-    const type = response.data.types[0].type.name;
-    const sprite = response.data.sprites.front_default;
-    setPokes([
-      ...pokes,
-      {
-        id,
-        name,
-        type,
-        sprite,
-      },
-    ]);
   };
 
   return (
