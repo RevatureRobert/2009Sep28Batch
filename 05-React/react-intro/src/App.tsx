@@ -4,6 +4,7 @@ import { ClassLifecycleExample } from "./components/class/lifecycle/ClassLifecyc
 import { ClassPropsExample } from "./components/class/props/ClassPropsExample";
 import { ClassStateExample } from "./components/class/state/ClassStateExample";
 import { FunctionClicker } from "./components/function/clicker/FunctionClicker";
+import { Hooks } from "./components/function/hooks/Hooks";
 import { FunctionPropsExample } from "./components/function/props/FunctionPropsExample";
 /**
  * This is the starting point of your development, here we will
@@ -25,6 +26,7 @@ class App extends React.Component<any, any> {
         <FunctionPropsExample name="new hero" value="new zero" />
         <ClassStateExample name="class state name" />
         <ClassLifecycleExample />
+        <Hooks />
       </div>
     );
   }
