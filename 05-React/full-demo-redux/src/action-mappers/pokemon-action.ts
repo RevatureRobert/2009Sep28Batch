@@ -6,7 +6,7 @@ export const pokemonTypes = {
   UNSUCCESSFUL_POKEMON_ADDITION: "POKEMON_UNSUCCESSFULLY_ADDED",
 };
 
-export const getPokemon = (id: number) => async (dispatch: any) => {
+export const addPokemon = (id: number) => async (dispatch: any) => {
   if (id > 893 || id < 1) {
     dispatch({
       type: pokemonTypes.UNSUCCESSFUL_POKEMON_ADDITION,
