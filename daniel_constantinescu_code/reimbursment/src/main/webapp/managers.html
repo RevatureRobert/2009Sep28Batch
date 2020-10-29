@@ -1,14 +1,127 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <title>Reimbursment Portal</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="./CSS/style.css">
 </head>
 <body>
-    <div>
-        Managers page!
+
+<div class="container">
+  <h2 style="color:Blue">REIMBURSMENT PORTAL</h2><br>
+  <ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
+    <li><a data-toggle="tab" href="#menu1">Submit</a></li>
+	<li><a data-toggle="tab" href="#menu3">History & Approval</a></li>
+	<li><a href="/Reimbursment/api/logout">Logout</a></li>
+  </ul>
+
+  <div class="tab-content">
+    <div id="home" class="tab-pane fade in active">
+      
+      <hr>
+      <h3>User profile</h3>
+      <input type="text" id="ifullName" style="border-radius: 15px; width:40%; background-color:AliceBlue;padding:10px"></input> 
+      <hr>
+      <input type="text" id="iuserName" style="border-radius: 15px; width:40%; background-color:AliceBlue;padding:10px"></input> 
+      <hr>
+      <input type="text" id="ifirstName" style="border-radius: 15px; width:40%; background-color:AliceBlue;padding:10px"></input> 
+      <hr>
+      <input type="text" id="ilastName" style="border-radius: 15px; width:40%; background-color:AliceBlue;padding:10px"></input> 
+      <hr>
+		<input type="text" id="iemail" style="border-radius: 15px; width:40%; background-color:AliceBlue;padding:10px"></input> 
+	
+      <hr>
     </div>
- <script src="./JS/managers.js"   ></script>
+    <div id="menu1" class="tab-pane fade">
+      <h3>Reimbursement submit page</h3>
+            <form  id="insertreimbursement" name="insertreimbursment"  action="/Reimbursment/api/home/insert_reimbursement" method="post">
+             <br>
+            <fieldset>
+            <legend></legend>
+             <label for="dt">Current datetime</label><br>
+              <input style="border-radius: 15px; width:40%; background-color:AliceBlue;padding:10px" type="text" id="dt" name="dt" readonly />
+              <hr>
+              <label for="reimb_type">Reimbursement type:</label><br>
+             <select style="border-radius: 15px; width:20%; background-color:AliceBlue;padding:10px" id="reimbtypeid" name="reimbtypeid">
+             <option value="1">Lodging</option>
+             <option value="2">Travel</option>
+             <option value="3">Food</option>
+             <option value="4">Other</option>
+             </select>
+             <hr>
+             <label for="reimb_amount">Reimbursment amount:</label> <br>
+             <input style="border-radius: 15px; width:20%; background-color:AliceBlue;padding:10px" type="number" id="reimb_amount" name="reimb_amount" min="1" max="1000" required><br>
+             <hr>
+              <label for="reimb_status">Reimbursement status</label><br>
+              <select style="border-radius: 15px; width:20%; background-color:AliceBlue;padding:10px" id="reimbstatusid" name="reimbstatusid" >
+              <option  value="1">pending</option>
+              </select>
+              <hr>
+
+             <label for "reimb_description>Reimbursement description</label><br>
+             <textarea style="border-radius: 15px; width:40%; background-color:AliceBlue;padding:10px" name="reimb_description" id="reimb_description" rows="4" cols="45" required>
+             </textarea><br>
+             <hr>
+             <input style="border-radius: 15px; width:10%; background-color:AliceBlue;padding:10px"" type="submit" value="submit"><br>
+            </fieldset>
+           </form>
+    </div>
+    <div id="menu2" class="tab-pane fade">
+      <h3>Aproval page</h3>
+      <hr>
+    </div>
+    <div id="menu3" class="tab-pane fade">
+      <h3>Reimbursement history</h3>
+      <hr>
+      <label>FilterByStatus:</label>
+          <select style="border-radius: 15px; width:20%; background-color:AliceBlue;padding:10px"" id="status" name="status"  onchange=" getByStatus(this.value);" required>
+        
+     	 <option  value="10">All</option>	 
+      	 <option  value="3">Approved</option>
+     	 <option  value="2">Denied</option>
+     	 <option  value="1">Pending</option>
+      </select>
+      <hr>
+       <table  style="border-radius: 15px; background-color:AliceBlue;padding:10px" class="table">
+      		<thead class="thead-dark">
+        		<tr>
+         			 <th scope="col">Id</th>
+          			<th scope="col">Amount</th>
+					<th scope="col">Submitted</th>
+					<th scope="col">Resolved</th>
+					<th scope="col">Author</th>
+					<th scope="col">Resolver</th>
+					<th scope="col">Description</th>
+					<th scope="col">Status</th>	
+        		</tr>
+     		 </thead>
+      		<tbody id="ReimbursmentTableBody"></tbody>
+      </table><br>
+      
+      <div>
+      <form action="/Reimbursment/api/data/updateReimbursment" method="post">
+      <h3>Reimbursement Approval</h3>
+      <hr>
+      <label for="reimb_id">Select Id:</label>
+      <input style="border-radius: 15px; width:20%; background-color:AliceBlue;padding:10px" type="number" name="reimb_id"  placeholder="id"  required>
+      <label for="status">Select status</label>
+      <select style="border-radius: 15px; width:20%; background-color:AliceBlue;padding:10px" id="reimb_status" name="reimb_status_id"  required>
+      	 <option  value="3">Approved</option>
+     	 <option  value="2">Denied</option>
+      </select><br><br>
+      	<button style="border-radius: 15px; width:10%; background-color:AliceBlue;padding:10px" type="submit">Update</button>
+      	<hr>
+      </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="./JS/managers.js"></script>
 </body>
 </html>
