@@ -1,0 +1,19 @@
+Creating a react project
+npx create-react-app <filename> --template typescript
+
+package.json contains the information about the project. 
+react and react-dom are the libraries for working with React api. 
+react-dom lets us use react in the browser
+react-scripts help run projects like on a development server
+@types/jest, @types/node, @types/react, @types/react-dom: different repositories that tell the project how to run the javascript
+- the @types repo specifies these things. 
+
+you have one html file in your entire application, within the root element
+
+we start developing within app.tsx
+app.css is just css, use it in app.tsx with import app.css
+
+npm run start //to start your application
+-starts a node server, bundle it up, and make it available
+- the default port of a react application is 3000, so localhost:3000
+
