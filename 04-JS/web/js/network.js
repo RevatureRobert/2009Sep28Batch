@@ -4,9 +4,6 @@
       Asynchronous Javascript and XML
 */
 
-<<<<<<< HEAD
-function ajaxGetRequest(url, expression) {}
-=======
 function ajaxGetRequest(url, expression, method = "get") {
   //step 1
   const xhr = new XMLHttpRequest();
@@ -54,4 +51,3 @@ async function asyncFetch(url, expression) {
   const json = await response.json();
   expression(json);
 }
->>>>>>> 9817e6de7e2134815e8fe60def4e77a53b01725c

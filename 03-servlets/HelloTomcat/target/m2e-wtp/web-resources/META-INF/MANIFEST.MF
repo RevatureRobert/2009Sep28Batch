@@ -1,13 +1,5 @@
 Manifest-Version: 1.0
-<<<<<<< HEAD
 Built-By: Robert
 Build-Jdk: 14.0.2
-||||||| 9817e6de
-Built-By: Revature
-Build-Jdk: 1.8.0_211
-=======
-Built-By: Revature
-Build-Jdk: 14.0.2
->>>>>>> f5375e524bd08f805bbf220fc4b31375b18d8cdf
 Created-By: Maven Integration for Eclipse
 
