@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Reimbursement.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Reimbursement</a> &gt; <a href="index.source.html" class="el_package">com.reimbursement.model</a> &gt; <span class="el_source">Reimbursement.java</span></div><h1>Reimbursement.java</h1><pre class="source lang-java linenums">package com.reimbursement.model;
+
+import java.math.BigDecimal;
+import java.sql.Timestamp;
+import java.util.Arrays;
+
+public class Reimbursement {
+	
+	private int reimbursementId;
+	private BigDecimal reimbursementAmount;
+	private Timestamp submittedTime;
+	private Timestamp resolvedTime;
+	private String description;
+	private byte[]receipt;
+	private int authorId;
+	private int resolverId;
+	private int statusId;
+	private int typeId;
+	
+<span class="fc" id="L20">	public Reimbursement() {}</span>
+	public Reimbursement(int reimbursementId, BigDecimal reimbursementAmount, Timestamp submittedTime,
+			Timestamp resolvedTime, String description, byte[] receipt, int authorId, int resolverId, int statusId,
+			int typeId) {
+<span class="fc" id="L24">		super();</span>
+<span class="fc" id="L25">		this.reimbursementId = reimbursementId;</span>
+<span class="fc" id="L26">		this.reimbursementAmount = reimbursementAmount;</span>
+<span class="fc" id="L27">		this.submittedTime = submittedTime;</span>
+<span class="fc" id="L28">		this.resolvedTime = resolvedTime;</span>
+<span class="fc" id="L29">		this.description = description;</span>
+<span class="fc" id="L30">		this.receipt = receipt;</span>
+<span class="fc" id="L31">		this.authorId = authorId;</span>
+<span class="fc" id="L32">		this.resolverId = resolverId;</span>
+<span class="fc" id="L33">		this.statusId = statusId;</span>
+<span class="fc" id="L34">		this.typeId = typeId;</span>
+<span class="fc" id="L35">	}</span>
+	public Reimbursement(int reimbursementId, BigDecimal reimbursementAmount, Timestamp submittedTime,
+			Timestamp resolvedTime, String description, int authorId, int resolverId, int statusId, int typeId) {
+<span class="nc" id="L38">		super();</span>
+<span class="nc" id="L39">		this.reimbursementId = reimbursementId;</span>
+<span class="nc" id="L40">		this.reimbursementAmount = reimbursementAmount;</span>
+<span class="nc" id="L41">		this.submittedTime = submittedTime;</span>
+<span class="nc" id="L42">		this.resolvedTime = resolvedTime;</span>
+<span class="nc" id="L43">		this.description = description;</span>
+<span class="nc" id="L44">		this.authorId = authorId;</span>
+<span class="nc" id="L45">		this.resolverId = resolverId;</span>
+<span class="nc" id="L46">		this.statusId = statusId;</span>
+<span class="nc" id="L47">		this.typeId = typeId;</span>
+<span class="nc" id="L48">	}</span>
+
+	public int getReimbursementId() {
+<span class="fc" id="L51">		return reimbursementId;</span>
+	}
+
+	public void setReimbursementId(int reimbursementId) {
+<span class="fc" id="L55">		this.reimbursementId = reimbursementId;</span>
+<span class="fc" id="L56">	}</span>
+
+	public BigDecimal getReimbursementAmount() {
+<span class="fc" id="L59">		return reimbursementAmount;</span>
+	}
+
+	public void setReimbursementAmount(BigDecimal reimbursementAmount) {
+<span class="fc" id="L63">		this.reimbursementAmount = reimbursementAmount;</span>
+<span class="fc" id="L64">	}</span>
+
+	public Timestamp getSubmittedTime() {
+<span class="fc" id="L67">		return submittedTime;</span>
+	}
+
+	public void setSubmittedTime(Timestamp submittedTime) {
+<span class="fc" id="L71">		this.submittedTime = submittedTime;</span>
+<span class="fc" id="L72">	}</span>
+
+	public Timestamp getResolvedTime() {
+<span class="fc" id="L75">		return resolvedTime;</span>
+	}
+
+	public void setResolvedTime(Timestamp resolvedTime) {
+<span class="nc" id="L79">		this.resolvedTime = resolvedTime;</span>
+<span class="nc" id="L80">	}</span>
+
+	public String getDescription() {
+<span class="fc" id="L83">		return description;</span>
+	}
+
+	public void setDescription(String description) {
+<span class="fc" id="L87">		this.description = description;</span>
+<span class="fc" id="L88">	}</span>
+
+	public byte[] getReceipt() {
+<span class="fc" id="L91">		return receipt;</span>
+	}
+
+	public void setReceipt(byte[] receipt) {
+<span class="fc" id="L95">		this.receipt = receipt;</span>
+<span class="fc" id="L96">	}</span>
+
+	public int getAuthorId() {
+<span class="fc" id="L99">		return authorId;</span>
+	}
+
+	public void setAuthorId(int authorId) {
+<span class="fc" id="L103">		this.authorId = authorId;</span>
+<span class="fc" id="L104">	}</span>
+
+	public int getResolverId() {
+<span class="fc" id="L107">		return resolverId;</span>
+	}
+
+	public void setResolverId(int resolverId) {
+<span class="nc" id="L111">		this.resolverId = resolverId;</span>
+<span class="nc" id="L112">	}</span>
+
+	public int getStatusId() {
+<span class="fc" id="L115">		return statusId;</span>
+	}
+
+	public void setStatusId(int statusId) {
+<span class="fc" id="L119">		this.statusId = statusId;</span>
+<span class="fc" id="L120">	}</span>
+
+	public int getTypeId() {
+<span class="fc" id="L123">		return typeId;</span>
+	}
+
+	public void setTypeId(int typeId) {
+<span class="fc" id="L127">		this.typeId = typeId;</span>
+<span class="fc" id="L128">	}</span>
+
+	@Override
+	public String toString() {
+<span class="nc" id="L132">		return &quot;Reimbursement [reimbursementId=&quot; + reimbursementId + &quot;, reimbursementAmount=&quot; + reimbursementAmount</span>
+				+ &quot;, submittedTime=&quot; + submittedTime + &quot;, resolvedTime=&quot; + resolvedTime + &quot;, description=&quot; + description
+<span class="nc" id="L134">				+ &quot;, receipt=&quot; + Arrays.toString(receipt) + &quot;, authorId=&quot; + authorId + &quot;, resolverId=&quot; + resolverId</span>
+				+ &quot;, statusId=&quot; + statusId + &quot;, typeId=&quot; + typeId + &quot;]&quot;;
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.1.201803210924</span></div></body></html>

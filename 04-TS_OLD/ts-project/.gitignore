@@ -1,0 +1,2 @@
+**/node_modules/**
+# the ** make it more explicit that this is a directory

@@ -4,12 +4,15 @@ public class Monster {
 	private int id;
 	private String name;
 	private MonsterType type;
+	
+	public Monster() {super();}
 	public Monster(int id, String name, MonsterType type) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.type = type;
 	}
+	
 	public int getId() {
 		return id;
 	}
@@ -27,5 +30,10 @@ public class Monster {
 	}
 	public void setType(MonsterType type) {
 		this.type = type;
+	}
+	
+	@Override
+	public String toString() {
+		return "Monster [id=" + id + ", name=" + name + ", type=" + type + "]";
 	}
 }

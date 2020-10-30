@@ -1,0 +1,8 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "outDir": "src/js/",
+    "experimentalDecorators": true
+  },
+  "include": ["src/ts/*"]
+}

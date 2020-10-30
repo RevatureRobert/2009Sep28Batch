@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>DBConnector.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Reimbursement</a> &gt; <a href="index.source.html" class="el_package">com.reimbursement.util</a> &gt; <span class="el_source">DBConnector.java</span></div><h1>DBConnector.java</h1><pre class="source lang-java linenums">package com.reimbursement.util;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
+public class DBConnector {
+
+	private String username;
+	private String password;
+	private String url;
+	
+	private static DBConnector instance;
+	
+	{
+		try {
+<span class="fc" id="L17">			Class.forName(&quot;org.postgresql.Driver&quot;); // driver check</span>
+<span class="nc" id="L18">		} catch (ClassNotFoundException e) {</span>
+<span class="nc" id="L19">			e.printStackTrace();</span>
+<span class="fc" id="L20">		}</span>
+	}
+	
+<span class="fc" id="L23">	private DBConnector(String username, String password, String url) {</span>
+<span class="fc" id="L24">		this.username = username;</span>
+<span class="fc" id="L25">		this.password = password;</span>
+<span class="fc" id="L26">		this.url = url;</span>
+<span class="fc" id="L27">	}</span>
+
+	public static DBConnector getInstance() {
+<span class="fc bfc" id="L30" title="All 2 branches covered.">		if(instance == null) {</span>
+			/*
+			try {
+				Properties p = new Properties();
+				p.load(new FileInputStream(&quot;src/main/resources/dbconnector.properties&quot;));
+				
+				instance = new DBConnector(
+					p.getProperty(&quot;username&quot;),
+					p.getProperty(&quot;password&quot;),
+					p.getProperty(&quot;url&quot;)
+				);
+			} catch(IOException e) {
+				e.printStackTrace();
+				System.out.println(&quot;dbconnector.properties file not found!\nCheck src/main/resources/ \n&quot;);
+			}
+			*/
+<span class="fc" id="L46">			instance = new DBConnector(</span>
+				&quot;reimb_client&quot;, &quot;password&quot;,
+				&quot;jdbc:postgresql://database-1.c2fwjr2ekpz7.us-east-1.rds.amazonaws.com:5432/postgres?currentSchema=reimbursement_schema&quot;);
+		}
+		
+<span class="fc" id="L51">		return instance;</span>
+	}
+	
+	
+	
+	
+	public Connection getConnection() throws SQLException{
+<span class="fc" id="L58">		return DriverManager.getConnection(url, username, password);</span>
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.1.201803210924</span></div></body></html>

@@ -1,0 +1,24 @@
+html, body{
+	height: 100%;
+	width: 100%;
+	margin: 0;
+}
+
+main{
+	background-color: tan;
+	min-height: 80vh;
+	align-items: center;
+}
+
+footer{
+	min-height: 300px;
+}
+
+.vertical-marginal{
+	background-color: #884400;
+	color: white;
+}
+
+.form-item{
+	margin: 5px;
+}

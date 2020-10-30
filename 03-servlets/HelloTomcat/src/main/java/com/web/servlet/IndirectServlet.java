@@ -45,6 +45,8 @@ import javax.servlet.http.HttpServletResponse;
  * 		get = read
  * 		post = create
  * 		put = update
+ * 		delete = delete
+ * 		patch = update
  * 	
  * 	head = getting headers
  * 	options = when working with cores, send an options request to make sure
@@ -70,21 +72,21 @@ public class IndirectServlet extends HttpServlet {
 		
 		
 		
-		// url stays the same, tells the browser what to handle instead of telling it where to go
+		// url stays the same, server handles all the information gathering;
+		//		gives the browser data to handle instead of telling it where to go
 		req.getRequestDispatcher("03-Front End/html/login.html").forward(req, resp);
 	}
 	
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// The input string is the "name" attribute of the html form, the output is the input selection.
+		// The input string is the "name" attribute of the html form,
+		//		the output is the value put in by the user of the html form.
 		String username = req.getParameter("username");
 		String password = req.getParameter("password");
 		
-		if(username.contentEquals("john")) {
-			if(password.equals("pass"))
-				req.getRequestDispatcher("03-Front End/html/success.html").forward(req,  resp);
-		}
+		if(username.contentEquals("john") && password.equals("pass"))
+			req.getRequestDispatcher("03-Front End/html/success.html").forward(req,  resp);
 		else
 			req.getRequestDispatcher("03-Front End/html/intro.html").forward(req,  resp);
 	}

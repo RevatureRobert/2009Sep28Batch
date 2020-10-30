@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<meta charset="ISO-8859-1">
+		<title>WHM Reimbursement Portal</title>
+		
+		
+		
+		
+		
+		<link rel="stylesheet" href="frontend/css/whm-common.css" type="text/css" />
+		<link rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+			integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
+			crossorigin="anonymous" />
+	</head>
+	<body>
+		<header class="navbar navbar-dark bd-navbar justify-content-between vertical-marginal">
+			<div class="col-2 navbar-brand">
+				<img src="frontend/img/monster-logo.png" width=30px height=30px alt="logo" />
+				<span>
+					We Hunt Monsters!
+				</span>
+			</div>
+			<div class="col-6" style="text-align: right">
+				Logged in as <span id="logged-in-user"></span>
+				<br />
+				<button onClick="logout()" type="button" class="btn btn-warning" style="height: 1.5em; padding: 0">Log Out</button>
+			</div>
+		</header>
+		
+		<!-- main content of the page goes here -->
+		<main class="d-flex justify-content-center">
+			<table class="table">
+				<thead class="thead-dark">
+					<tr id="table-head">
+						
+					</tr>
+				</thead>
+				<tbody id="table-body">
+					
+					<tr id="record-creator" style="text-align: right">
+						<td colspan="7">
+							<label for="amt">Amount to Reimburse: $</label>
+							<input type="number" id="new-amount" name="amt" min="0" step="0.01" />
+							
+							<label for="reimb-type-selector">Reimbursement type: </label>
+							<select name="reimb-type-selector" id="new-type">
+								<option value="training">Training</option>
+								<option value="travel">Travel</option>
+								<option value="supplies">Supplies</option>
+								<option value="safety">Safety</option>
+								<option value="other">Other</option>
+							</select>
+
+							<input type="text" id="new-description" placeholder="description" maxlength="200" />
+
+							<button onClick="addNewRecord()" type="button" class="btn btn-primary" >New Reimbursement</button>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</main>
+		<!-- end main content -->
+		
+		<footer class="vertical-marginal">
+			
+		</footer>
+		
+		
+		
+		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+			integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+			crossorigin="anonymous"></script>
+		<script
+			src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+			integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+			crossorigin="anonymous"></script>
+		<script>
+			let isManager = false;
+
+			function logout(){
+				location.replace("login.page");
+			}
+			function populateLoggedInUser(userDTO){
+				document.getElementById("logged-in-user").innerHTML = userDTO.name;
+				isManager = (userDTO.roleId == 1);
+
+				asyncFetch(
+					(window.location.pathname + "/records.json"),
+					populateTable
+				);
+			}
+
+
+
+
+
+			function populateTable(records) {
+				const tHeads = document.getElementById("table-head");
+				
+				let headsArr = [
+					document.createElement("th"),
+					document.createElement("th"),
+					document.createElement("th"),
+					document.createElement("th"),
+					document.createElement("th"),
+					document.createElement("th"),
+					document.createElement("th")
+				];
+				if(isManager){
+					headsArr = [
+						document.createElement("th"),
+						document.createElement("th"),
+						document.createElement("th"),
+						document.createElement("th"),
+						document.createElement("th"),
+						document.createElement("th"),
+						document.createElement("th"),
+						document.createElement("th"),
+						document.createElement("th"),
+						document.createElement("th")
+					];
+					headsArr[7].innerHTML = "Requestor";
+					headsArr[8].innerHTML = "Resolver";
+					headsArr[9].innerHTML = "Actions";
+				}
+				headsArr[0].innerHTML = "ID";
+				headsArr[1].innerHTML = "Amount";
+				headsArr[2].innerHTML = "Status";
+				headsArr[3].innerHTML = "Submitted";
+				headsArr[4].innerHTML = "Resolved";
+				headsArr[5].innerHTML = "Type";
+				headsArr[6].innerHTML = "Description";
+
+				for(const tableHeaderColumn of headsArr){
+					tableHeaderColumn.scope = "col";
+					tHeads.append(tableHeaderColumn);
+				}
+
+				const tableBody = document.getElementById("table-body");
+				let i = 0;
+				for (const reimb of records) {
+					i++;
+
+					const fullRecord = document.createElement("tr");
+					fullRecord.id = "row-number-" + i;
+					
+					let bodyArr = [
+						document.createElement("td"),
+						document.createElement("td"),
+						document.createElement("td"),
+						document.createElement("td"),
+						document.createElement("td"),
+						document.createElement("td"),
+						document.createElement("td")
+					];
+					if(isManager){
+						bodyArr = [
+							document.createElement("td"),
+							document.createElement("td"),
+							document.createElement("td"),
+							document.createElement("td"),
+							document.createElement("td"),
+							document.createElement("td"),
+							document.createElement("td"),
+							document.createElement("td"),
+							document.createElement("td"),
+							document.createElement("td")
+						];
+						bodyArr[7].innerText = reimb.requestor;
+						bodyArr[8].innerText = reimb.resolver;
+						bodyArr[8].id = "reimb-resolver-at-row-" + i;
+
+						if(reimb.status == "PENDING"){
+							/*
+							const approveButton = document.createElement("button");
+							const denyButton = document.createElement("button");
+
+							approveButton.className = "btn btn-success";
+							denyButton.className = "btn btn-danger";
+
+							approveButton.type = "button";
+							denyButton.type = "button";
+
+							approveButton.innerHTML = "APPROVE";
+							denyButton.innerHTML = "DENY";
+
+							approveButton.onclick = approve(i);
+							denyButton.onclick = deny(i);
+
+							bodyArr[9].append(approveButton, denyButton);*/
+
+							// The above code was not properly adding the "onclick" functionality;
+							//	bruteforced by setting the parent element's innerHTML instead
+							bodyArr[9].innerHTML =
+								`<button class="btn btn-success" type="button" onClick="approve(${i})">APPROVE</button>
+								<button class="btn btn-danger" type="button" onClick="deny(${i})">DENY</button>`
+						} else{
+							bodyArr[9].innerHTML = "RESOLVED";
+						}
+						bodyArr[9].id = "reimb-actions-at-row-" + i;
+					}
+
+					bodyArr[0].innerHTML = reimb.id;
+					bodyArr[0].id = "reimb-id-at-row-" + i;
+					bodyArr[1].innerHTML = "$" + reimb.amount;
+					bodyArr[2].innerHTML = reimb.status;
+					bodyArr[2].id = "reimb-status-at-row-" + i;
+					bodyArr[3].innerHTML = reimb.submitted;
+					bodyArr[4].innerHTML = reimb.resolved;
+					bodyArr[4].id = "reimb-resolution-time-at-row-" + i;
+					bodyArr[5].innerHTML = reimb.type;
+					bodyArr[6].innerHTML = reimb.description;
+
+					for(const field of bodyArr){
+						fullRecord.append(field);
+					}
+					tableBody.prepend(fullRecord);
+				};
+
+				if(isManager){
+					document.getElementById("record-creator").remove();
+				}
+			};
+
+
+
+
+
+			async function addNewRecord(){
+				const record = {
+					id: 0,
+					amount: Number.parseFloat(document.getElementById("new-amount").value).toFixed(2),
+					submitted: null,
+					resolved: 'UNRESOLVED',
+					description: document.getElementById("new-description").value,
+					receipt: null,
+					requestor: null,
+					resolver: null,
+					status: 'PENDING',
+					type: document.getElementById("new-type").value
+				};
+				if(record.amount == "" || record.amount == 0 || record.amount < 0)
+					return;
+
+				document.getElementById("new-amount").value = "";
+				document.getElementById("new-description").value = "";
+				document.getElementById("new-type").value = "0";
+
+				const response = await fetch( (window.location.pathname + "/record.json"), {
+					method: 'post',
+					body:	JSON.stringify(record)
+				});
+				const trueRecord = await response.json();
+
+				let bodyArr = [
+					document.createElement("td"),
+					document.createElement("td"),
+					document.createElement("td"),
+					document.createElement("td"),
+					document.createElement("td"),
+					document.createElement("td"),
+					document.createElement("td")
+				];
+				if(isManager){
+					bodyArr = [
+						document.createElement("td"),
+						document.createElement("td"),
+						document.createElement("td"),
+						document.createElement("td"),
+						document.createElement("td"),
+						document.createElement("td"),
+						document.createElement("td"),
+						document.createElement("td"),
+						document.createElement("td"),
+						document.createElement("td")
+					];
+					bodyArr[7].innerText = trueRecord.requestor;
+					bodyArr[8].innerText = trueRecord.resolver;
+					bodyArr[9].innerHTML = "Actions";
+				}
+
+				bodyArr[0].innerHTML = trueRecord.id;
+				bodyArr[1].innerHTML = trueRecord.amount;
+				bodyArr[2].innerHTML = trueRecord.status;
+				bodyArr[3].innerHTML = trueRecord.submitted;
+				bodyArr[4].innerHTML = trueRecord.resolved;
+				bodyArr[5].innerHTML = trueRecord.type;
+				bodyArr[6].innerHTML = trueRecord.description;
+
+				const recordEntry = document.createElement("tr");
+				for(const field of bodyArr){
+					recordEntry.append(field);
+				}
+				document.getElementById("table-body").prepend(recordEntry);
+			};
+
+
+
+
+
+			async function approve(index){
+				console.log("Accept row " + index);
+				
+				document.getElementById("reimb-actions-at-row-" + index).innerHTML = "RESOLVED";
+				document.getElementById("reimb-status-at-row-" + index).innerHTML = "APPROVED";
+				
+				const reimbId = document.getElementById("reimb-id-at-row-" + index).innerHTML;
+
+				console.log("Accepted reimbursement number " + reimbId);
+
+				const response = await fetch( (window.location.pathname + "/approve.json"), {
+					method: 'post',
+					body:	reimbId
+				});
+
+				console.log("Successfully approved. " + response);
+
+				const updatedRecord = await response.json();
+
+				document.getElementById("reimb-resolution-time-at-row-" + index).innerHTML = updatedRecord.resolved;
+				document.getElementById("reimb-resolver-at-row-" + index).innerHTML = updatedRecord.resolver;
+			}
+			async function deny(index){
+				console.log("Deny row " + index);
+
+				document.getElementById("reimb-actions-at-row-" + index).innerHTML = "RESOLVED";
+				document.getElementById("reimb-status-at-row-" + index).innerHTML = "REJECTED";
+				
+				const reimbId = document.getElementById("reimb-id-at-row-" + index).innerHTML;
+
+				console.log("Denied reimbursement number " + reimbId);
+
+				const response = await fetch( (window.location.pathname + "/deny.json"), {
+					method: 'post',
+					body:	reimbId
+				});
+
+				console.log("Successfully denied. " + response);
+
+				const updatedRecord = await response.json();
+
+				document.getElementById("reimb-resolution-time-at-row-" + index).innerHTML = updatedRecord.resolved;
+				document.getElementById("reimb-resolver-at-row-" + index).innerHTML = updatedRecord.resolver;
+			}
+
+
+
+
+
+			async function asyncFetch(url, expression){
+				const response = await fetch(url);
+				const json = await response.json();
+				expression(json);
+			};
+
+			// Initial execution
+			asyncFetch(
+				(window.location.pathname + "/user.json"),
+				populateLoggedInUser
+			);
+		</script>
+	</body>
+</html>

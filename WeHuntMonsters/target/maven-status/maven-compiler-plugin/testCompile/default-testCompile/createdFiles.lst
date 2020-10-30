@@ -1,0 +1,10 @@
+com\reimbursement\backend\UserRoleDaoTester.class
+com\reimbursement\midend\RecordServiceTester.class
+com\reimbursement\backend\RecordDaoTester.class
+com\reimbursement\backend\ReimbursementTypeDaoTester.class
+com\reimbursement\backend\ConnectorTester.class
+com\reimbursement\backend\ReimbursementStatusDaoTester.class
+com\reimbursement\midend\ReimbursementServiceTester.class
+com\reimbursement\backend\UserDaoTester.class
+com\reimbursement\backend\ReimbursementDaoTester.class
+com\reimbursement\midend\UserServiceTester.class

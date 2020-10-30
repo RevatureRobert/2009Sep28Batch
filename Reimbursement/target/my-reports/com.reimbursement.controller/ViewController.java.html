@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ViewController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Reimbursement</a> &gt; <a href="index.source.html" class="el_package">com.reimbursement.controller</a> &gt; <span class="el_source">ViewController.java</span></div><h1>ViewController.java</h1><pre class="source lang-java linenums">package com.reimbursement.controller;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import com.reimbursement.service.UserService;
+
+public class ViewController {
+	private UserService usersvc;
+	
+	public ViewController(UserService usersvc) {
+<span class="nc" id="L12">		super();</span>
+<span class="nc" id="L13">		this.usersvc = usersvc;</span>
+<span class="nc" id="L14">	}</span>
+	public ViewController() {
+<span class="nc" id="L16">		this(new UserService());</span>
+<span class="nc" id="L17">	}</span>
+
+
+
+	public String attemptLogin(HttpServletRequest req) {
+<span class="nc" id="L22">		HttpSession session = req.getSession();</span>
+<span class="nc" id="L23">		session.setAttribute(&quot;user&quot;, null);</span>
+		
+<span class="nc bnc" id="L25" title="All 2 branches missed.">		if(session.getAttribute(&quot;warning-message&quot;) == null) {</span>
+//			System.out.println(&quot;It's null!&quot;);
+<span class="nc" id="L27">			session.setAttribute(&quot;warning-message&quot;, &quot;&quot;);</span>
+<span class="nc" id="L28">			return &quot;frontend/html/index.html&quot;;</span>
+		}
+		
+<span class="nc" id="L31">		String username = req.getParameter(&quot;input-username&quot;);</span>
+<span class="nc" id="L32">		String password = req.getParameter(&quot;input-password&quot;);</span>
+		
+<span class="nc bnc" id="L34" title="All 2 branches missed.">		if(username == null) {</span>
+//			System.out.println(&quot;Username's null!&quot;);
+<span class="nc" id="L36">			session.setAttribute(&quot;warning-message&quot;, &quot;Username not entered!&quot;);</span>
+<span class="nc" id="L37">			return &quot;frontend/html/index.html&quot;;</span>
+<span class="nc bnc" id="L38" title="All 2 branches missed.">		} else if(password == null) {</span>
+//			System.out.println(&quot;Password's null!&quot;);
+<span class="nc" id="L40">			session.setAttribute(&quot;warning-message&quot;, &quot;Password not entered!&quot;);</span>
+<span class="nc" id="L41">			return &quot;frontend/html/index.html&quot;;</span>
+		}
+		
+		
+<span class="nc" id="L45">		String validationCode = usersvc.verifyLoginCredentials(username.toLowerCase(), password);</span>
+//		System.out.println(validationCode);
+		
+<span class="nc bnc" id="L48" title="All 2 branches missed.">		if(validationCode.equalsIgnoreCase(&quot;invalid username&quot;)) {</span>
+//			System.out.println(validationCode);
+<span class="nc" id="L50">			session.setAttribute(&quot;warning-message&quot;, &quot;Username doesn't exist!&quot;);</span>
+<span class="nc" id="L51">			return &quot;frontend/html/index.html&quot;;</span>
+<span class="nc bnc" id="L52" title="All 2 branches missed.">		}else if(validationCode.equalsIgnoreCase(&quot;invalid password&quot;)) {</span>
+//			System.out.println(validationCode);
+<span class="nc" id="L54">			session.setAttribute(&quot;warning-message&quot;, &quot;Password is wrong!&quot;);</span>
+<span class="nc" id="L55">			return &quot;frontend/html/index.html&quot;;</span>
+<span class="nc bnc" id="L56" title="All 2 branches missed.">		}else if(validationCode.equalsIgnoreCase(&quot;valid&quot;)) {</span>
+//			System.out.println(validationCode);
+<span class="nc" id="L58">			session.setAttribute(&quot;warning-message&quot;, &quot;&quot;);</span>
+<span class="nc" id="L59">			session.setAttribute(&quot;user&quot;, usersvc.login(username));</span>
+<span class="nc" id="L60">			return &quot;LOGIN&quot;;</span>
+		}
+		
+<span class="nc" id="L63">		return &quot;frontend/html/index.html&quot;;</span>
+	}
+	
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.1.201803210924</span></div></body></html>

@@ -11,30 +11,18 @@ import javax.servlet.http.HttpServletResponse;
  * Servlet implementation class ViewServlet
  */
 
-@WebServlet(name = "ViewServlet", urlPatterns = {"/*.page"}, loadOnStartup = 0)
+@WebServlet(name = "views", urlPatterns = {"*.page"})
 public class ViewServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public ViewServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+    
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher(new RequestForwarder().routes(request)).forward(request, response);
+		request.getRequestDispatcher(new RequestForwarder().routes(request))
+			.forward(request, response);
 	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher(new RequestForwarder().routes(request)).forward(request, response);
+		request.getRequestDispatcher(new RequestForwarder().routes(request))
+			.forward(request, response);
 	}
-
 }

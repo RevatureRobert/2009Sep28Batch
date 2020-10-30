@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+        <title>This page is for events</title>
+        <meta name='viewport' content='width=device-width, initial-scale=1' />
+        <link
+            rel="stylesheet"
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+            crossorigin="anonymous"
+        />
+        <script src='../js/network.js'></script>
+        <script src='../js/events.js'></script>
+<!--
+        <script type="module" crossorigin="anonymous" src='../js/events.js'></script>
+-->
+        <script>
+            /*
+            const eve = require('../js/events.cjs');
+
+            eve.hey();
+            */
+
+            console.log('inside the html!');
+
+            function clicked(){
+                console.log('clicked');
+            }
+        </script>
+    </head>
+
+    <!-- event types are global attributes in html -->
+    <body onclick="printTheEventObject(event)">
+        <button>this is a button</button>
+
+        <input
+            value="username"
+            type="submit"
+            onclick="this.value=prompt('enter username')"
+        />
+
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">name</th>
+                    <th scope="col">type</th>
+                    <th scope="col">furry</th>
+                    <th scope="col">paws</th>
+                </tr>
+            </thead>
+            <tbody id="hallowsTableBody">
+                <!-- populated by dom.js JavaScript -->
+            </tbody>
+        </table>
+
+        <!-- defer attribute will defer the loading of the script until the dom has rendered;
+            the script only loads values that have already been read above the script tag -->
+        <script defer src='../js/dom.js'></script>
+    </body>
+</html>

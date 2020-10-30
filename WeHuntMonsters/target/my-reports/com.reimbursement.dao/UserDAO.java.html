@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>UserDAO.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">WeHuntMonsters</a> &gt; <a href="index.source.html" class="el_package">com.reimbursement.dao</a> &gt; <span class="el_source">UserDAO.java</span></div><h1>UserDAO.java</h1><pre class="source lang-java linenums">package com.reimbursement.dao;
+
+import java.sql.CallableStatement;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Types;
+import java.util.LinkedList;
+import java.util.List;
+
+import com.reimbursement.model.User;
+import com.reimbursement.util.DBConnector;
+
+<span class="nc" id="L15">public class UserDAO implements DBAccessor&lt;User, Integer&gt; {</span>
+
+	@Override
+	public int create(User data) {
+<span class="nc" id="L19">		int result = 0;</span>
+		
+<span class="nc bnc" id="L21" title="All 2 branches missed.">		try(Connection conn = DBConnector.getInstance().getConnection()){</span>
+<span class="nc" id="L22">			String sql = &quot;INSERT INTO reimbursement_schema.ers_users&quot;</span>
+					+ &quot; (ers_username, ers_password, user_first_name, user_last_name, user_email, user_role_id)&quot;
+					+ &quot; VALUES&quot;
+					+ &quot; (?, ?, ?, ?, ?, ?)&quot;;
+			
+<span class="nc" id="L27">			PreparedStatement ps = conn.prepareStatement(sql);</span>
+<span class="nc" id="L28">			ps.setString(1, data.getUsername());</span>
+<span class="nc" id="L29">			ps.setString(2, data.getPassword());</span>
+<span class="nc" id="L30">			ps.setString(3, data.getFirstName());</span>
+<span class="nc" id="L31">			ps.setString(4, data.getLastName());</span>
+<span class="nc" id="L32">			ps.setString(5, data.getEmail());</span>
+<span class="nc" id="L33">			ps.setInt(6, data.getRoleId());</span>
+			
+<span class="nc" id="L35">			result = ps.executeUpdate();</span>
+<span class="nc" id="L36">			ps.close();</span>
+<span class="nc bnc" id="L37" title="All 2 branches missed.">		} catch(SQLException e) {</span>
+<span class="nc" id="L38">			e.printStackTrace();</span>
+<span class="nc" id="L39">		}</span>
+		
+<span class="nc" id="L41">		return result;</span>
+	}
+
+	@Override
+	public List&lt;User&gt; findAll() {
+<span class="nc" id="L46">		List&lt;User&gt; users = new LinkedList&lt;&gt;();</span>
+<span class="nc" id="L47">		String sql = &quot;SELECT * FROM reimbursement_schema.ers_users&quot;;</span>
+		
+<span class="nc bnc" id="L49" title="All 2 branches missed.">		try(Connection conn = DBConnector.getInstance().getConnection()){</span>
+<span class="nc" id="L50">			PreparedStatement ps = conn.prepareStatement(sql);</span>
+			
+<span class="nc" id="L52">			ResultSet rs = ps.executeQuery();</span>
+			
+<span class="nc bnc" id="L54" title="All 2 branches missed.">			while(rs.next()) {</span>
+<span class="nc" id="L55">				users.add(new User(</span>
+<span class="nc" id="L56">					rs.getInt(&quot;ers_users_id&quot;), rs.getString(&quot;ers_username&quot;), rs.getString(&quot;ers_password&quot;),</span>
+<span class="nc" id="L57">					rs.getString(&quot;user_first_name&quot;), rs.getString(&quot;user_last_name&quot;), rs.getString(&quot;user_email&quot;),</span>
+<span class="nc" id="L58">					rs.getInt(&quot;user_role_id&quot;)));</span>
+			}
+			
+<span class="nc" id="L61">			rs.close();</span>
+<span class="nc" id="L62">			ps.close();</span>
+<span class="nc bnc" id="L63" title="All 2 branches missed.">		} catch(SQLException e) {</span>
+<span class="nc" id="L64">			e.printStackTrace();</span>
+<span class="nc" id="L65">		}</span>
+<span class="nc" id="L66">		return users;</span>
+	}
+
+	@Override
+	public User findById(Integer id) {
+<span class="nc" id="L71">		User user = new User();</span>
+<span class="nc" id="L72">		String sql = &quot;SELECT * FROM reimbursement_schema.ers_users WHERE ers_users_id = ?&quot;;</span>
+		
+<span class="nc bnc" id="L74" title="All 2 branches missed.">		try(Connection conn = DBConnector.getInstance().getConnection()){</span>
+<span class="nc" id="L75">			PreparedStatement ps = conn.prepareStatement(sql);</span>
+			
+<span class="nc" id="L77">			ps.setInt(1, id);</span>
+			
+<span class="nc" id="L79">			ResultSet rs = ps.executeQuery();</span>
+			
+<span class="nc bnc" id="L81" title="All 2 branches missed.">			if(rs.next())</span>
+<span class="nc" id="L82">				user = new User(</span>
+<span class="nc" id="L83">						rs.getInt(&quot;ers_users_id&quot;), rs.getString(&quot;ers_username&quot;), rs.getString(&quot;ers_password&quot;),</span>
+<span class="nc" id="L84">						rs.getString(&quot;user_first_name&quot;), rs.getString(&quot;user_last_name&quot;), rs.getString(&quot;user_email&quot;),</span>
+<span class="nc" id="L85">						rs.getInt(&quot;user_role_id&quot;));</span>
+			
+<span class="nc" id="L87">			rs.close();</span>
+<span class="nc" id="L88">			ps.close();</span>
+<span class="nc bnc" id="L89" title="All 2 branches missed.">		} catch(SQLException e) {</span>
+<span class="nc" id="L90">			e.printStackTrace();</span>
+<span class="nc" id="L91">		}</span>
+		
+<span class="nc" id="L93">		return user;</span>
+	}
+
+	@Override
+	public User findByUserInput(String input) {
+<span class="nc" id="L98">		User user = new User();</span>
+<span class="nc" id="L99">		String sql = &quot;SELECT * FROM reimbursement_schema.ers_users WHERE ers_username = ?&quot;; // INPUT IS USERNAME</span>
+		
+<span class="nc bnc" id="L101" title="All 2 branches missed.">		try(Connection conn = DBConnector.getInstance().getConnection()){</span>
+<span class="nc" id="L102">			PreparedStatement ps = conn.prepareStatement(sql);</span>
+			
+<span class="nc" id="L104">			ps.setString(1, input);</span>
+			
+<span class="nc" id="L106">			ResultSet rs = ps.executeQuery();</span>
+			
+<span class="nc bnc" id="L108" title="All 2 branches missed.">			if(rs.next())</span>
+<span class="nc" id="L109">				user = new User(</span>
+<span class="nc" id="L110">						rs.getInt(&quot;ers_users_id&quot;), rs.getString(&quot;ers_username&quot;), rs.getString(&quot;ers_password&quot;),</span>
+<span class="nc" id="L111">						rs.getString(&quot;user_first_name&quot;), rs.getString(&quot;user_last_name&quot;), rs.getString(&quot;user_email&quot;),</span>
+<span class="nc" id="L112">						rs.getInt(&quot;user_role_id&quot;));</span>
+			
+<span class="nc" id="L114">			rs.close();</span>
+<span class="nc" id="L115">			ps.close();</span>
+<span class="nc bnc" id="L116" title="All 2 branches missed.">		} catch(SQLException e) {</span>
+<span class="nc" id="L117">			e.printStackTrace();</span>
+<span class="nc" id="L118">		}</span>
+		
+<span class="nc" id="L120">		return user;</span>
+	}
+
+	@Override
+	public String recordStateOf(User data) { // CHECKS USERNAME &amp; PASSWORD
+<span class="nc" id="L125">		String recordState = &quot;INVALID USERNAME&quot;;</span>
+		
+<span class="nc bnc" id="L127" title="All 4 branches missed.">		if(data.getUsername() == null || data.getPassword() == null) {</span>
+<span class="nc" id="L128">			return recordState;</span>
+		}
+		
+<span class="nc" id="L131">		String sql = &quot;{? = CALL reimbursement_schema.validation_code_of(?, ?)}&quot;;</span>
+		
+<span class="nc bnc" id="L133" title="All 2 branches missed.">		try(Connection conn = DBConnector.getInstance().getConnection()){</span>
+<span class="nc" id="L134">			CallableStatement cs = conn.prepareCall(sql);</span>
+			
+<span class="nc" id="L136">			cs.registerOutParameter(1, Types.INTEGER);</span>
+<span class="nc" id="L137">			cs.setString(2, data.getUsername());</span>
+<span class="nc" id="L138">			cs.setString(3, data.getPassword());</span>
+			
+<span class="nc" id="L140">			cs.execute();</span>
+			
+<span class="nc" id="L142">			int validationCode = cs.getInt(1);</span>
+			
+<span class="nc bnc" id="L144" title="All 4 branches missed.">			switch(validationCode) {</span>
+			case 0:
+<span class="nc" id="L146">				recordState = &quot;INVALID USERNAME&quot;;</span>
+<span class="nc" id="L147">				break;</span>
+			case 1:
+<span class="nc" id="L149">				recordState = &quot;INVALID PASSWORD&quot;;</span>
+<span class="nc" id="L150">				break;</span>
+			case 2:
+<span class="nc" id="L152">				recordState = &quot;VALID&quot;;</span>
+			}
+			
+<span class="nc" id="L155">			cs.close();</span>
+<span class="nc bnc" id="L156" title="All 2 branches missed.">		} catch(SQLException e) {</span>
+<span class="nc" id="L157">			e.printStackTrace();</span>
+<span class="nc" id="L158">		}</span>
+		
+<span class="nc" id="L160">		return recordState;</span>
+	}
+
+	@Override
+	public int updateById(User data) {
+<span class="nc" id="L165">		int result = 0;</span>
+		
+<span class="nc bnc" id="L167" title="All 2 branches missed.">		try(Connection conn = DBConnector.getInstance().getConnection()){</span>
+<span class="nc" id="L168">			String sql = &quot;UPDATE reimbursement_schema.ers_users SET&quot;</span>
+					+ &quot; ers_username = ?, ers_password = ?,&quot;
+					+ &quot; user_first_name = ?, user_last_name = ?,&quot;
+					+ &quot; user_email = ?, user_role_id = ?&quot;
+					+ &quot; WHERE&quot;
+					+ &quot; ers_users_id = ?&quot;;
+			
+<span class="nc" id="L175">			PreparedStatement ps = conn.prepareStatement(sql);</span>
+<span class="nc" id="L176">			ps.setString(1, data.getUsername());</span>
+<span class="nc" id="L177">			ps.setString(2, data.getPassword());</span>
+<span class="nc" id="L178">			ps.setString(3, data.getFirstName());</span>
+<span class="nc" id="L179">			ps.setString(4, data.getLastName());</span>
+<span class="nc" id="L180">			ps.setString(5, data.getEmail());</span>
+<span class="nc" id="L181">			ps.setInt(6, data.getRoleId());</span>
+			
+<span class="nc" id="L183">			result = ps.executeUpdate();</span>
+<span class="nc" id="L184">			ps.close();</span>
+<span class="nc bnc" id="L185" title="All 2 branches missed.">		} catch(SQLException e) {</span>
+<span class="nc" id="L186">			e.printStackTrace();</span>
+<span class="nc" id="L187">		}</span>
+		
+<span class="nc" id="L189">		return result;</span>
+	}
+
+	@Override
+	public int deleteById(Integer id) {
+<span class="nc" id="L194">		int result = 0;</span>
+		
+<span class="nc bnc" id="L196" title="All 2 branches missed.">		try(Connection conn = DBConnector.getInstance().getConnection()){</span>
+<span class="nc" id="L197">			String sql = &quot;DELETE FROM reimbursement_schema.ers_users WHERE ers_users_id = ?&quot;;</span>
+			
+<span class="nc" id="L199">			PreparedStatement ps = conn.prepareStatement(sql);</span>
+<span class="nc" id="L200">			ps.setInt(1, id);</span>
+			
+<span class="nc" id="L202">			result = ps.executeUpdate();</span>
+<span class="nc" id="L203">			ps.close();</span>
+<span class="nc bnc" id="L204" title="All 2 branches missed.">		} catch(SQLException e) {</span>
+<span class="nc" id="L205">			e.printStackTrace();</span>
+<span class="nc" id="L206">		}</span>
+		
+<span class="nc" id="L208">		return result;</span>
+	}
+
+	@Override
+	public List&lt;User&gt; filterByItem(Object filterKey) {
+<span class="nc" id="L213">		List&lt;User&gt; filteredUsers = new LinkedList&lt;&gt;();</span>
+		
+<span class="nc" id="L215">		return filteredUsers;</span>
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.1.201803210924</span></div></body></html>

@@ -55,7 +55,10 @@ import javax.servlet.http.HttpServletResponse;
  * https://19yw4b240vb03ws8qm25h366-wpengine.netdna-ssl.com/wp-content/uploads/The-Richardson-Maturity-Model-Nordic-APIs.png
  */
 
-@WebServlet(name = "direct", urlPatterns = {"/direct"}, loadOnStartup = 0)
+@WebServlet(name = "direct", urlPatterns = {"/direct"}, /*
+						*	load on startup will determine servlet
+						*	initialization behavior; >=0 eager, <0 lazy
+		 				*/ loadOnStartup = 0)
 public class DirectServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

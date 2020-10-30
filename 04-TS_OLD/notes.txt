@@ -1,0 +1,7 @@
+WEB SERVICES
+    We don't necessarily have to keep track of information that isn't always ours...
+        (i.e., the reimbursement system doesn't need the set of all employees in the franchise)
+    We're making an application for ginv users the best price for travel arrangements
+        Are we really going to keep a database of all plane tickets & hotel prices?
+        We just use the airports' & hotels' endpoints to get their info to the user
+    

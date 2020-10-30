@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>UserRoleDAO.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">WeHuntMonsters</a> &gt; <a href="index.source.html" class="el_package">com.reimbursement.dao</a> &gt; <span class="el_source">UserRoleDAO.java</span></div><h1>UserRoleDAO.java</h1><pre class="source lang-java linenums">package com.reimbursement.dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.LinkedList;
+import java.util.List;
+
+import com.reimbursement.model.UserRole;
+import com.reimbursement.util.DBConnector;
+
+<span class="nc" id="L13">public class UserRoleDAO implements DBAccessor&lt;UserRole, Integer&gt; {</span>
+	
+	@Override
+	public int create(UserRole data) {
+<span class="nc" id="L17">		int result = 0;</span>
+		
+<span class="nc bnc" id="L19" title="All 2 branches missed.">		try(Connection conn = DBConnector.getInstance().getConnection()){</span>
+<span class="nc" id="L20">			String sql = &quot;INSERT INTO reimbursement_schema.ers_user_roles&quot;</span>
+					+ &quot; (ers_user_role_id, user_role)&quot;
+					+ &quot; VALUES&quot;
+					+ &quot; (?, ?)&quot;;
+			
+<span class="nc" id="L25">			PreparedStatement ps = conn.prepareStatement(sql);</span>
+			
+<span class="nc" id="L27">			ps.setInt(1, data.getRoleId());</span>
+<span class="nc" id="L28">			ps.setString(2, data.getRole());</span>
+			
+<span class="nc" id="L30">			result = ps.executeUpdate();</span>
+<span class="nc" id="L31">			ps.close();</span>
+<span class="nc bnc" id="L32" title="All 2 branches missed.">		} catch(SQLException e) {</span>
+<span class="nc" id="L33">			e.printStackTrace();</span>
+<span class="nc" id="L34">		}</span>
+		
+<span class="nc" id="L36">		return result;</span>
+	}
+
+	@Override
+	public List&lt;UserRole&gt; findAll() {
+<span class="nc" id="L41">		List&lt;UserRole&gt; UserRolees = new LinkedList&lt;&gt;();</span>
+<span class="nc" id="L42">		String sql = &quot;SELECT * FROM reimbursement_schema.ers_user_roles&quot;;</span>
+		
+<span class="nc bnc" id="L44" title="All 2 branches missed.">		try(Connection conn = DBConnector.getInstance().getConnection()){</span>
+<span class="nc" id="L45">			PreparedStatement ps = conn.prepareStatement(sql);</span>
+			
+<span class="nc" id="L47">			ResultSet rs = ps.executeQuery();</span>
+			
+<span class="nc bnc" id="L49" title="All 2 branches missed.">			while(rs.next()) {</span>
+<span class="nc" id="L50">				UserRolees.add(new UserRole(</span>
+<span class="nc" id="L51">					rs.getInt(&quot;ers_user_role_id&quot;), rs.getString(&quot;user_role&quot;)));</span>
+			}
+			
+<span class="nc" id="L54">			rs.close();</span>
+<span class="nc" id="L55">			ps.close();</span>
+<span class="nc bnc" id="L56" title="All 2 branches missed.">		} catch(SQLException e) {</span>
+<span class="nc" id="L57">			e.printStackTrace();</span>
+<span class="nc" id="L58">		}</span>
+<span class="nc" id="L59">		return UserRolees;</span>
+	}
+
+	@Override
+	public UserRole findById(Integer id) {
+<span class="nc" id="L64">		UserRole status = new UserRole();</span>
+<span class="nc" id="L65">		String sql = &quot;SELECT * FROM reimbursement_schema.ers_user_roles WHERE ers_user_role_id = ?&quot;;</span>
+		
+<span class="nc bnc" id="L67" title="All 2 branches missed.">		try(Connection conn = DBConnector.getInstance().getConnection()){</span>
+<span class="nc" id="L68">			PreparedStatement ps = conn.prepareStatement(sql);</span>
+			
+<span class="nc" id="L70">			ps.setInt(1, id);</span>
+			
+<span class="nc" id="L72">			ResultSet rs = ps.executeQuery();</span>
+			
+<span class="nc bnc" id="L74" title="All 2 branches missed.">			if(rs.next())</span>
+<span class="nc" id="L75">				status = new UserRole(</span>
+<span class="nc" id="L76">						rs.getInt(&quot;ers_user_role_id&quot;), rs.getString(&quot;user_role&quot;));</span>
+			
+<span class="nc" id="L78">			rs.close();</span>
+<span class="nc" id="L79">			ps.close();</span>
+<span class="nc bnc" id="L80" title="All 2 branches missed.">		} catch(SQLException e) {</span>
+<span class="nc" id="L81">			e.printStackTrace();</span>
+<span class="nc" id="L82">		}</span>
+		
+<span class="nc" id="L84">		return status;</span>
+	}
+
+	@Override
+	public UserRole findByUserInput(String input) {
+<span class="nc" id="L89">		UserRole status = new UserRole();</span>
+<span class="nc" id="L90">		String sql = &quot;SELECT * FROM reimbursement_schema.ers_user_roles WHERE user_role = ?&quot;; // INPUT IS ROLE NAME</span>
+		
+<span class="nc bnc" id="L92" title="All 2 branches missed.">		try(Connection conn = DBConnector.getInstance().getConnection()){</span>
+<span class="nc" id="L93">			PreparedStatement ps = conn.prepareStatement(sql);</span>
+			
+<span class="nc" id="L95">			ps.setString(1, input);</span>
+			
+<span class="nc" id="L97">			ResultSet rs = ps.executeQuery();</span>
+			
+<span class="nc bnc" id="L99" title="All 2 branches missed.">			if(rs.next())</span>
+<span class="nc" id="L100">				status = new UserRole(</span>
+<span class="nc" id="L101">						rs.getInt(&quot;ers_user_role_id&quot;), rs.getString(&quot;user_role&quot;));</span>
+			
+<span class="nc" id="L103">			rs.close();</span>
+<span class="nc" id="L104">			ps.close();</span>
+<span class="nc bnc" id="L105" title="All 2 branches missed.">		} catch(SQLException e) {</span>
+<span class="nc" id="L106">			e.printStackTrace();</span>
+<span class="nc" id="L107">		}</span>
+		
+<span class="nc" id="L109">		return status;</span>
+	}
+
+	@Override
+	public String recordStateOf(UserRole data) {
+<span class="nc" id="L114">		String recordState = &quot;INVALID RECORD&quot;;</span>
+		
+<span class="nc bnc" id="L116" title="All 2 branches missed.">		if(data.getRole() == null) {</span>
+<span class="nc" id="L117">			return recordState;</span>
+		}
+		
+<span class="nc" id="L120">		String sql = &quot;SELECT * FROM reimbursement_schema.ers_user_roles WHERE ers_user_role_id = ? and user_role = ?&quot;;</span>
+		
+<span class="nc bnc" id="L122" title="All 2 branches missed.">		try(Connection conn = DBConnector.getInstance().getConnection()){</span>
+<span class="nc" id="L123">			PreparedStatement ps = conn.prepareStatement(sql);</span>
+			
+<span class="nc" id="L125">			ps.setInt(1, data.getRoleId());</span>
+<span class="nc" id="L126">			ps.setString(2, data.getRole());</span>
+			
+<span class="nc" id="L128">			ResultSet rs = ps.executeQuery();</span>
+			
+<span class="nc bnc" id="L130" title="All 2 branches missed.">			if(rs.next())</span>
+<span class="nc" id="L131">				recordState = &quot;VALID RECORD&quot;;</span>
+			
+<span class="nc" id="L133">			rs.close();</span>
+<span class="nc" id="L134">			ps.close();</span>
+<span class="nc bnc" id="L135" title="All 2 branches missed.">		} catch(SQLException e) {</span>
+<span class="nc" id="L136">			e.printStackTrace();</span>
+<span class="nc" id="L137">		}</span>
+		
+<span class="nc" id="L139">		return recordState;</span>
+	}
+
+	@Override
+	public int updateById(UserRole data) {
+<span class="nc" id="L144">		int result = 0;</span>
+		
+<span class="nc bnc" id="L146" title="All 2 branches missed.">		try(Connection conn = DBConnector.getInstance().getConnection()){</span>
+<span class="nc" id="L147">			String sql = &quot;UPDATE reimbursement_schema.ers_user_roles&quot;</span>
+					+ &quot; SET user_role = ? WHERE ers_user_role_id = ?&quot;;
+			
+<span class="nc" id="L150">			PreparedStatement ps = conn.prepareStatement(sql);</span>
+			
+<span class="nc" id="L152">			ps.setString(1, data.getRole());</span>
+<span class="nc" id="L153">			ps.setInt(2, data.getRoleId());</span>
+			
+<span class="nc" id="L155">			result = ps.executeUpdate();</span>
+<span class="nc" id="L156">			ps.close();</span>
+<span class="nc bnc" id="L157" title="All 2 branches missed.">		} catch(SQLException e) {</span>
+<span class="nc" id="L158">			e.printStackTrace();</span>
+<span class="nc" id="L159">		}</span>
+		
+<span class="nc" id="L161">		return result;</span>
+	}
+
+	@Override
+	public int deleteById(Integer id) {
+<span class="nc" id="L166">		int result = 0;</span>
+		
+<span class="nc bnc" id="L168" title="All 2 branches missed.">		try(Connection conn = DBConnector.getInstance().getConnection()){</span>
+<span class="nc" id="L169">			String sql = &quot;DELETE FROM reimbursement_schema.ers_user_roles WHERE ers_user_role_id = ?&quot;;</span>
+			
+<span class="nc" id="L171">			PreparedStatement ps = conn.prepareStatement(sql);</span>
+<span class="nc" id="L172">			ps.setInt(1, id);</span>
+			
+<span class="nc" id="L174">			result = ps.executeUpdate();</span>
+<span class="nc" id="L175">			ps.close();</span>
+<span class="nc bnc" id="L176" title="All 2 branches missed.">		} catch(SQLException e) {</span>
+<span class="nc" id="L177">			e.printStackTrace();</span>
+<span class="nc" id="L178">		}</span>
+		
+<span class="nc" id="L180">		return result;</span>
+	}
+
+	@Override
+	public List&lt;UserRole&gt; filterByItem(Object filterKey) {
+<span class="nc" id="L185">		List&lt;UserRole&gt; filteredUserRoles = new LinkedList&lt;&gt;();</span>
+		
+<span class="nc" id="L187">		return filteredUserRoles;</span>
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.1.201803210924</span></div></body></html>

@@ -1,3 +1,111 @@
-h1{
+/*
+	three types of css styling
+		inline
+			<h1 style="color: red">styled text</h1>
+			use the style attribute to style
+				individual elements
+		internal
+			use a style block in the head of the html
+				to style the entire document.
+		external
+			use a css file to add styling to html.
+			use the link tag in the head of the document
+				to add the css file.
+		
+		css syntax
+			selector{
+				property: value;
+			}
+		
+		selectors
+			tag selector
+				h1 { }
+			class selector
+				.someClass { }
+			id selector
+				#someId { }
+		
+		css specificity / precedence
+			tag selector - LOWER PRIORITY
+			class selector
+			id selector
+			inline styling - HIGHER PRIORITY
+		
+		!important
+			can be added after a property to give this
+				property value the highest priority
+			not recommended due to overriding default behavior
+				of css; could be frustrating for future devs
+		
+		css
+			cascading style sheet
+			all stylings cascade to descendant elements unless
+				they're overridden or are local attributes
+		
+		css box model
+			margin
+				border
+					padding
+						content
+					padding
+				border
+			margin
+		
+		css combinators
+			descendant selector
+				h1 span { }
+				selects all spans that are between
+					<h1></h1> tags
+			child selector
+				h1 > span { }
+				selects only spans that are direct
+					children of h1 elements
+			multiple tag selector
+				h1, h4
+				selects both h1 and h4 elements
+*/
+h1, h4 {
+	color: gray /* !important */;
+	font-family: cursive;
+}
+
+
+/* class selector */
+.odd {
+	color: blue;
+}
+
+/* id selector */
+
+#evenId1 {
+	color: orange;
+}
+
+
+div {
+	color: green;
+}
+span {
 	color: red;
+}
+
+/* child selector */
+body > table {
+	margin: auto;
+}
+/*
+html {
+	color: yellow;
+}
+*/
+
+/*
+table {
+	margin: auto;
+}
+*/
+
+/* descendant selector */
+body span {
+	color: brown;
 }

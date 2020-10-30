@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+  <display-name>Reimbursement Portal</display-name>
+  <welcome-file-list>
+    <welcome-file>frontend/html/index.html</welcome-file>
+  </welcome-file-list>
+  <!-- 
+  <servlet>
+    <description></description>
+    <display-name>WebpageServlet</display-name>
+    <servlet-name>WebpageServlet</servlet-name>
+    <servlet-class>com.reimbursement.WebpageServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>WebpageServlet</servlet-name>
+    <url-pattern>/WebpageServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DataServlet</display-name>
+    <servlet-name>DataServlet</servlet-name>
+    <servlet-class>com.reimbursement.servlets.DataServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DataServlet</servlet-name>
+    <url-pattern>/DataServlet</url-pattern>
+  </servlet-mapping>
+   -->
+</web-app>

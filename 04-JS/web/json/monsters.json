@@ -1,0 +1,56 @@
+[
+    {
+      "id": 0,
+      "name": "scruffs mcguffs",
+      "type": {
+        "type": "werewolf",
+        "furry": true,
+        "paws": true
+      }
+    },
+    {
+      "id": 0,
+      "name": "guzzmer",
+      "type": {
+        "type": "swamp thing",
+        "furry": false,
+        "paws": true
+      }
+    },
+    {
+      "id": 0,
+      "name": "grendel",
+      "type": {
+        "type": "goblin",
+        "furry": false,
+        "paws": false
+      }
+    },
+    {
+      "id": 0,
+      "name": "dracula",
+      "type": {
+        "type": "vampire",
+        "furry": false,
+        "paws": false
+      }
+    },
+    {
+      "id": 0,
+      "name": "voldemort",
+      "type": {
+        "type": "vampire",
+        "furry": false,
+        "paws": false
+      }
+    },
+    {
+      "id": 0,
+      "name": "paul",
+      "type": {
+        "type": "alien",
+        "furry": false,
+        "paws": false
+      }
+    }
+  ]

@@ -1,0 +1,8 @@
+{
+    "compilerOptions": {
+        "target": "esnext",// directories to write to
+        "outDir": "src/js/",
+        "experimentalDecorators": true
+    },
+    "include": ["src/ts/*"] //all files to read from
+}

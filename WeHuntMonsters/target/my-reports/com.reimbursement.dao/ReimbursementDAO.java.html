@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ReimbursementDAO.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">WeHuntMonsters</a> &gt; <a href="index.source.html" class="el_package">com.reimbursement.dao</a> &gt; <span class="el_source">ReimbursementDAO.java</span></div><h1>ReimbursementDAO.java</h1><pre class="source lang-java linenums">package com.reimbursement.dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.LinkedList;
+import java.util.List;
+
+import com.reimbursement.model.Reimbursement;
+import com.reimbursement.model.User;
+import com.reimbursement.util.DBConnector;
+
+<span class="nc" id="L14">public class ReimbursementDAO implements DBAccessor&lt;Reimbursement, Integer&gt; {</span>
+
+	@Override
+	public int create(Reimbursement data) {
+<span class="nc" id="L18">		int result = 0;</span>
+		
+<span class="nc bnc" id="L20" title="All 2 branches missed.">		try(Connection conn = DBConnector.getInstance().getConnection()){</span>
+<span class="nc" id="L21">			String sql = &quot;INSERT INTO reimbursement_schema.ers_reimbursement&quot;</span>
+					+ &quot; (reimb_amount, reimb_submitted, reimb_description, reimb_receipt,&quot;
+					+ &quot; reimb_author, reimb_resolver, reimb_status_id, reimb_type_id)&quot;
+					+ &quot; VALUES&quot;
+					+ &quot; (?, ?, ?, ?, ?, ?, ?, ?)&quot;;
+			
+<span class="nc" id="L27">			PreparedStatement ps = conn.prepareStatement(sql);</span>
+			
+<span class="nc" id="L29">			ps.setBigDecimal(1, data.getReimbursementAmount());</span>
+<span class="nc" id="L30">			ps.setTimestamp(2, data.getSubmittedTime());</span>
+//			ps.setTimestamp(3, data.getResolvedTime()); // won't know at the time of creation
+<span class="nc" id="L32">			ps.setString(3, data.getDescription());</span>
+<span class="nc" id="L33">			ps.setBytes(4, data.getReceipt());</span>
+<span class="nc" id="L34">			ps.setInt(5, data.getAuthorId());</span>
+<span class="nc" id="L35">			ps.setInt(6, 0); // resolver ID is initially 0</span>
+<span class="nc" id="L36">			ps.setInt(7, data.getStatusId());</span>
+<span class="nc" id="L37">			ps.setInt(8, data.getTypeId());</span>
+			
+<span class="nc" id="L39">			result = ps.executeUpdate();</span>
+<span class="nc" id="L40">			ps.close();</span>
+<span class="nc bnc" id="L41" title="All 2 branches missed.">		} catch(SQLException e) {</span>
+<span class="nc" id="L42">			e.printStackTrace();</span>
+<span class="nc" id="L43">		}</span>
+		
+<span class="nc" id="L45">		return result;</span>
+	}
+
+	@Override
+	public List&lt;Reimbursement&gt; findAll() {
+<span class="nc" id="L50">		List&lt;Reimbursement&gt; reimbursements = new LinkedList&lt;&gt;();</span>
+<span class="nc" id="L51">		String sql = &quot;SELECT * FROM reimbursement_schema.ers_reimbursement&quot;;</span>
+		
+<span class="nc bnc" id="L53" title="All 2 branches missed.">		try(Connection conn = DBConnector.getInstance().getConnection()){</span>
+<span class="nc" id="L54">			PreparedStatement ps = conn.prepareStatement(sql);</span>
+			
+<span class="nc" id="L56">			ResultSet rs = ps.executeQuery();</span>
+			
+<span class="nc bnc" id="L58" title="All 2 branches missed.">			while(rs.next()) {</span>
+<span class="nc" id="L59">				reimbursements.add(new Reimbursement(</span>
+<span class="nc" id="L60">					rs.getInt(&quot;reimb_id&quot;), rs.getBigDecimal(&quot;reimb_amount&quot;),</span>
+<span class="nc" id="L61">					rs.getTimestamp(&quot;reimb_submitted&quot;), rs.getTimestamp(&quot;reimb_resolved&quot;),</span>
+<span class="nc" id="L62">					rs.getString(&quot;reimb_description&quot;), rs.getBytes(&quot;reimb_receipt&quot;),</span>
+<span class="nc" id="L63">					rs.getInt(&quot;reimb_author&quot;), rs.getInt(&quot;reimb_resolver&quot;),</span>
+<span class="nc" id="L64">					rs.getInt(&quot;reimb_status_id&quot;), rs.getInt(&quot;reimb_type_id&quot;)));</span>
+			}
+			
+<span class="nc" id="L67">			rs.close();</span>
+<span class="nc" id="L68">			ps.close();</span>
+<span class="nc bnc" id="L69" title="All 2 branches missed.">		} catch(SQLException e) {</span>
+<span class="nc" id="L70">			e.printStackTrace();</span>
+<span class="nc" id="L71">		}</span>
+<span class="nc" id="L72">		return reimbursements;</span>
+	}
+
+	@Override
+	public Reimbursement findById(Integer id) {
+<span class="nc" id="L77">		Reimbursement reimbursement = new Reimbursement();</span>
+<span class="nc" id="L78">		String sql = &quot;SELECT * FROM reimbursement_schema.ers_reimbursement WHERE reimb_id = ?&quot;;</span>
+		
+<span class="nc bnc" id="L80" title="All 2 branches missed.">		try(Connection conn = DBConnector.getInstance().getConnection()){</span>
+<span class="nc" id="L81">			PreparedStatement ps = conn.prepareStatement(sql);</span>
+			
+<span class="nc" id="L83">			ps.setInt(1, id);</span>
+			
+<span class="nc" id="L85">			ResultSet rs = ps.executeQuery();</span>
+			
+<span class="nc bnc" id="L87" title="All 2 branches missed.">			if(rs.next())</span>
+<span class="nc" id="L88">				reimbursement = new Reimbursement(</span>
+<span class="nc" id="L89">						rs.getInt(&quot;reimb_id&quot;), rs.getBigDecimal(&quot;reimb_amount&quot;),</span>
+<span class="nc" id="L90">						rs.getTimestamp(&quot;reimb_submitted&quot;), rs.getTimestamp(&quot;reimb_resolved&quot;),</span>
+<span class="nc" id="L91">						rs.getString(&quot;reimb_description&quot;), rs.getBytes(&quot;reimb_receipt&quot;),</span>
+<span class="nc" id="L92">						rs.getInt(&quot;reimb_author&quot;), rs.getInt(&quot;reimb_resolver&quot;),</span>
+<span class="nc" id="L93">						rs.getInt(&quot;reimb_status_id&quot;), rs.getInt(&quot;reimb_type_id&quot;));</span>
+			
+<span class="nc" id="L95">			rs.close();</span>
+<span class="nc" id="L96">			ps.close();</span>
+<span class="nc bnc" id="L97" title="All 2 branches missed.">		} catch(SQLException e) {</span>
+<span class="nc" id="L98">			e.printStackTrace();</span>
+<span class="nc" id="L99">		}</span>
+		
+<span class="nc" id="L101">		return reimbursement;</span>
+	}
+
+	@Override
+	public Reimbursement findByUserInput(String input) {
+<span class="nc" id="L106">		Reimbursement Reimbursement = new Reimbursement();</span>
+<span class="nc" id="L107">		String sql = &quot;SELECT * FROM reimbursement_schema.ers_reimbursement WHERE reimb_description = ?&quot;; // INPUT IS DESCRIPTION</span>
+		
+<span class="nc bnc" id="L109" title="All 2 branches missed.">		try(Connection conn = DBConnector.getInstance().getConnection()){</span>
+<span class="nc" id="L110">			PreparedStatement ps = conn.prepareStatement(sql);</span>
+			
+<span class="nc" id="L112">			ps.setString(1, input);</span>
+			
+<span class="nc" id="L114">			ResultSet rs = ps.executeQuery();</span>
+			
+<span class="nc bnc" id="L116" title="All 2 branches missed.">			if(rs.next())</span>
+<span class="nc" id="L117">				Reimbursement = new Reimbursement(</span>
+<span class="nc" id="L118">						rs.getInt(&quot;reimb_id&quot;), rs.getBigDecimal(&quot;reimb_amount&quot;),</span>
+<span class="nc" id="L119">						rs.getTimestamp(&quot;reimb_submitted&quot;), rs.getTimestamp(&quot;reimb_resolved&quot;),</span>
+<span class="nc" id="L120">						rs.getString(&quot;reimb_description&quot;), rs.getBytes(&quot;reimb_receipt&quot;),</span>
+<span class="nc" id="L121">						rs.getInt(&quot;reimb_author&quot;), rs.getInt(&quot;reimb_resolver&quot;),</span>
+<span class="nc" id="L122">						rs.getInt(&quot;reimb_status_id&quot;), rs.getInt(&quot;reimb_type_id&quot;));</span>
+			
+<span class="nc" id="L124">			rs.close();</span>
+<span class="nc" id="L125">			ps.close();</span>
+<span class="nc bnc" id="L126" title="All 2 branches missed.">		} catch(SQLException e) {</span>
+<span class="nc" id="L127">			e.printStackTrace();</span>
+<span class="nc" id="L128">		}</span>
+		
+<span class="nc" id="L130">		return Reimbursement;</span>
+	}
+
+	@Override
+	public String recordStateOf(Reimbursement data) { // ONLY CHECKS EXISTENCE
+<span class="nc" id="L135">		String recordState = &quot;INVALID RECORD&quot;;</span>
+		
+<span class="nc bnc" id="L137" title="All 2 branches missed.">		if(data.getReimbursementId() == 0) {</span>
+<span class="nc" id="L138">			return recordState;</span>
+		}
+		
+<span class="nc" id="L141">		String sql = &quot;SELECT * FROM reimbursement_schema.ers_reimbursement WHERE reimb_id = ?&quot;;</span>
+		
+<span class="nc bnc" id="L143" title="All 2 branches missed.">		try(Connection conn = DBConnector.getInstance().getConnection()){</span>
+<span class="nc" id="L144">			PreparedStatement ps = conn.prepareStatement(sql);</span>
+			
+<span class="nc" id="L146">			ps.setInt(1, data.getReimbursementId());</span>
+			
+<span class="nc" id="L148">			ResultSet rs = ps.executeQuery();</span>
+			
+<span class="nc bnc" id="L150" title="All 2 branches missed.">			if(rs.next())</span>
+<span class="nc" id="L151">				recordState = &quot;VALID RECORD&quot;;</span>
+			
+<span class="nc" id="L153">			rs.close();</span>
+<span class="nc" id="L154">			ps.close();</span>
+<span class="nc bnc" id="L155" title="All 2 branches missed.">		} catch(SQLException e) {</span>
+<span class="nc" id="L156">			e.printStackTrace();</span>
+<span class="nc" id="L157">		}</span>
+		
+<span class="nc" id="L159">		return recordState;</span>
+	}
+
+	@Override
+	public int updateById(Reimbursement data) {
+<span class="nc" id="L164">		int result = 0;</span>
+		
+<span class="nc bnc" id="L166" title="All 2 branches missed.">		try(Connection conn = DBConnector.getInstance().getConnection()){</span>
+<span class="nc" id="L167">			String sql = &quot;UPDATE reimbursement_schema.ers_reimbursement SET&quot;</span>
+					+ &quot; reimb_amount = ?, reimb_submitted = ?, reimb_resolved = ?,&quot;
+					+ &quot; reimb_description = ?, reimb_receipt = ?,&quot;
+					+ &quot; reimb_author = ?, reimb_resolver = ?,&quot;
+					+ &quot; reimb_status_id = ?, reimb_type_id = ?&quot;
+					+ &quot; WHERE&quot;
+					+ &quot; reimb_id = ?&quot;;
+			
+<span class="nc" id="L175">			PreparedStatement ps = conn.prepareStatement(sql);</span>
+			
+<span class="nc" id="L177">			ps.setBigDecimal(1, data.getReimbursementAmount());</span>
+<span class="nc" id="L178">			ps.setTimestamp(2, data.getSubmittedTime());</span>
+<span class="nc" id="L179">			ps.setTimestamp(3, data.getResolvedTime());</span>
+<span class="nc" id="L180">			ps.setString(4, data.getDescription());</span>
+<span class="nc" id="L181">			ps.setBytes(5, data.getReceipt());</span>
+<span class="nc" id="L182">			ps.setInt(6, data.getAuthorId());</span>
+<span class="nc" id="L183">			ps.setInt(7, data.getResolverId());</span>
+<span class="nc" id="L184">			ps.setInt(8, data.getStatusId());</span>
+<span class="nc" id="L185">			ps.setInt(9, data.getTypeId());</span>
+			
+<span class="nc" id="L187">			ps.setInt(10, data.getReimbursementId());</span>
+			
+<span class="nc" id="L189">			result = ps.executeUpdate();</span>
+<span class="nc" id="L190">			ps.close();</span>
+<span class="nc bnc" id="L191" title="All 2 branches missed.">		} catch(SQLException e) {</span>
+<span class="nc" id="L192">			e.printStackTrace();</span>
+<span class="nc" id="L193">		}</span>
+		
+<span class="nc" id="L195">		return result;</span>
+	}
+
+	@Override
+	public int deleteById(Integer id) {
+<span class="nc" id="L200">		int result = 0;</span>
+		
+<span class="nc bnc" id="L202" title="All 2 branches missed.">		try(Connection conn = DBConnector.getInstance().getConnection()){</span>
+<span class="nc" id="L203">			String sql = &quot;DELETE FROM reimbursement_schema.ers_reimbursement WHERE reimb_id = ?&quot;;</span>
+			
+<span class="nc" id="L205">			PreparedStatement ps = conn.prepareStatement(sql);</span>
+<span class="nc" id="L206">			ps.setInt(1, id);</span>
+			
+<span class="nc" id="L208">			result = ps.executeUpdate();</span>
+<span class="nc" id="L209">			ps.close();</span>
+<span class="nc bnc" id="L210" title="All 2 branches missed.">		} catch(SQLException e) {</span>
+<span class="nc" id="L211">			e.printStackTrace();</span>
+<span class="nc" id="L212">		}</span>
+		
+<span class="nc" id="L214">		return result;</span>
+	}
+
+	@Override
+	public List&lt;Reimbursement&gt; filterByItem(Object filterKey) {
+<span class="nc" id="L219">		List&lt;Reimbursement&gt; filteredReimbursements = new LinkedList&lt;&gt;();</span>
+		
+<span class="nc bnc" id="L221" title="All 2 branches missed.">		if(filterKey instanceof User) { // filters by users</span>
+<span class="nc" id="L222">			User userObject = (User)filterKey;</span>
+			
+<span class="nc bnc" id="L224" title="All 2 branches missed.">			try(Connection conn = DBConnector.getInstance().getConnection()){</span>
+<span class="nc" id="L225">				PreparedStatement ps = conn.prepareStatement(</span>
+						&quot;SELECT * FROM reimbursement_schema.ers_reimbursement WHERE reimb_author = ?&quot;);
+				
+<span class="nc" id="L228">				ps.setInt(1, userObject.getUserId());</span>
+				
+<span class="nc" id="L230">				ResultSet rs = ps.executeQuery();</span>
+				
+<span class="nc bnc" id="L232" title="All 2 branches missed.">				while(rs.next()) {</span>
+<span class="nc" id="L233">					filteredReimbursements.add(new Reimbursement(</span>
+<span class="nc" id="L234">						rs.getInt(&quot;reimb_id&quot;), rs.getBigDecimal(&quot;reimb_amount&quot;),</span>
+<span class="nc" id="L235">						rs.getTimestamp(&quot;reimb_submitted&quot;), rs.getTimestamp(&quot;reimb_resolved&quot;),</span>
+<span class="nc" id="L236">						rs.getString(&quot;reimb_description&quot;), rs.getBytes(&quot;reimb_receipt&quot;),</span>
+<span class="nc" id="L237">						rs.getInt(&quot;reimb_author&quot;), rs.getInt(&quot;reimb_resolver&quot;),</span>
+<span class="nc" id="L238">						rs.getInt(&quot;reimb_status_id&quot;), rs.getInt(&quot;reimb_type_id&quot;)));</span>
+				}
+				
+<span class="nc" id="L241">				rs.close();</span>
+<span class="nc" id="L242">				ps.close();</span>
+<span class="nc bnc" id="L243" title="All 2 branches missed.">			} catch(SQLException e) {</span>
+<span class="nc" id="L244">				e.printStackTrace();</span>
+<span class="nc" id="L245">			}</span>
+		}
+<span class="nc" id="L247">		return filteredReimbursements;</span>
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.1.201803210924</span></div></body></html>
