@@ -172,6 +172,10 @@ const arr = ["alligator", 9, false, undefined, null, Symbol(),NaN];
 //     console.log(i);
 // }
 
+array.forEach(element => {
+    
+});
+
 //classes
 
 //prior to 2015

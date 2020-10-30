@@ -3,12 +3,14 @@
 function sum(a, b, c, d, e, f) {
     return a + b + c + d + e + f;
   }
-  
   // undefined
+
   sum(1, 2, 3, 4, 5, 6);
   // 21
+
   sum(1, 2, 3);
   // NaN
+
   sum = (a, b, c, d, e, f) => {
     console.log(a, b, c, d, e, f);
     return a + b + c + d + e + f;
@@ -17,6 +19,7 @@ function sum(a, b, c, d, e, f) {
   //     console.log(a,b,c,d,e,f);
   //     return a+b+c+d+e+f;
   // }
+  
   sum(1, 2, 3);
   // VM4207:2 1 2 3 undefined undefined undefined
   // NaN

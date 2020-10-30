@@ -21,6 +21,7 @@ function renderTable(monsters) {
 async function asyncFetch(url, expression){
   const response = await fetch(url);
   const json = await response.json();
+  console.log(json);
   expression(json);
 }
 

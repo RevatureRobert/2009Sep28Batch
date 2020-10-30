@@ -11,7 +11,7 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.catalina.valves.rewrite.Resolver;
+import org.apache.commons.io.IOUtils;
 
 import com.project1.config.EnvironmentConnectionUtil;
 import com.project1.model.Reimbursement;
@@ -119,7 +119,7 @@ public class ReimbursementDao implements DaoContract<Reimbursement, Integer>{
 				ps.setTimestamp(2, t.getSubmitTime());
 				ps.setTimestamp(3, t.getResolveTime());
 				ps.setString(4,t.getDescription());
-				ps.setBytes(5, t.getReceipt().readAllBytes());
+				ps.setBytes(5, IOUtils.toByteArray(t.getReceipt()));
 				ps.setInt(6,t.getAuthor().getUserId());
 				ps.setInt(7, t.getResolver().getUserId());
 				ps.setInt(8, t.getStatus().getStatusId());
@@ -142,7 +142,7 @@ public class ReimbursementDao implements DaoContract<Reimbursement, Integer>{
 				ps.setTimestamp(3, t.getResolveTime());
 				ps.setString(4,t.getDescription());
 				if(t.getReceipt() != null) {
-					ps.setBytes(5, t.getReceipt().readAllBytes());	
+					ps.setBytes(5, IOUtils.toByteArray(t.getReceipt()));	
 				} else {
 					ps.setBytes(5, null);
 				}
@@ -179,7 +179,7 @@ public class ReimbursementDao implements DaoContract<Reimbursement, Integer>{
 			ps.setTimestamp(3, t.getResolveTime());
 			ps.setString(4,t.getDescription());
 			if(t.getReceipt() != null) {
-				ps.setBytes(5, t.getReceipt().readAllBytes());	
+				ps.setBytes(5, IOUtils.toByteArray(t.getReceipt()));	
 			} else {
 				ps.setBytes(5, null);
 			}
