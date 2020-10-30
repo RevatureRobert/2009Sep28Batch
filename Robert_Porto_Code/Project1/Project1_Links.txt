@@ -1,5 +1,13 @@
 repo:
 https://github.com/robbiesoho/project1
 
+manager:
+username: robert
+password: pass
+
+regular user
+username: Spartacus
+password: pass
+
 url:
 http://3.17.110.130:8081/Project1-0.0.1-SNAPSHOT/
