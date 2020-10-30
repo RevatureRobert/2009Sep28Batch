@@ -7,6 +7,7 @@ import { Login } from "./components/login/Login";
 import { DemoNavBar } from "./components/nav/DemoNavBar";
 import { PokeInfo } from "./components/pokeInfo/PokeInfo";
 import { PunkinTable } from "./components/PunkinTable/PunkinTable";
+import "./App.css";
 /**
  * This is the routes that are available for the application.
  *

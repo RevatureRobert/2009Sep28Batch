@@ -1,6 +1,7 @@
 import React, { SyntheticEvent, useState } from "react";
 import { Form, Input, Table } from "reactstrap";
 import { axiosInstance } from "../../util/axiosConfig";
+import { Pokemon } from "./Pokemon";
 
 /**
  * This component will utilize axios to retrieve pokemon
@@ -8,31 +9,15 @@ import { axiosInstance } from "../../util/axiosConfig";
  * a table to display it, and a pokemon array in its state to maintain
  * the component.
  */
-interface IProps {}
+interface IProps {
+  pokes: Pokemon[];
+  addPokemon: (id: number) => void;
+}
 
 export const PokeInfo: React.FC<IProps> = (props: IProps) => {
-  const [pokes, setPokes] = useState<
-    { id: number; name: string; type: string; sprite: string }[]
-  >([]);
-
   const addPoke = async (eve: SyntheticEvent<HTMLFormElement>) => {
     eve.preventDefault();
-    const pid = +eve.currentTarget["pId"].value;
-    // const {id, name, type} =
-    const response = await axiosInstance.get("" + pid);
-    console.log(response.data);
-    const { id, name } = response.data;
-    const type = response.data.types[0].type.name;
-    const sprite = response.data.sprites.front_default;
-    setPokes([
-      ...pokes,
-      {
-        id,
-        name,
-        type,
-        sprite,
-      },
-    ]);
+    props.addPokemon(+eve?.currentTarget["pId"].value);
   };
 
   return (
@@ -47,13 +32,13 @@ export const PokeInfo: React.FC<IProps> = (props: IProps) => {
           </tr>
         </thead>
         <tbody>
-          {pokes.map((e, i) => (
+          {props.pokes.map((e, i) => (
             <tr key={i}>
               <td>{e.id}</td>
               <td>{e.name}</td>
               <td>{e.type}</td>
               <td>
-                <img src={e.sprite} />
+                <img src={e.sprite} alt="none available" />
               </td>
             </tr>
           ))}
