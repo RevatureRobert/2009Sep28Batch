@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>User.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Project1</a> &gt; <a href="index.source.html" class="el_package">com.model</a> &gt; <span class="el_source">User.java</span></div><h1>User.java</h1><pre class="source lang-java linenums">package com.model;
+
+public abstract class User 
+{
+	private int users_id;
+	private String username;
+	private String password;
+	private String first_name;
+	private String last_name;
+	private String email;
+	private int user_role_id;
+	
+	public int getUserid() {
+<span class="fc" id="L14">		return users_id;</span>
+	}
+	public void setUserid(int userid) {
+<span class="nc" id="L17">		this.users_id = userid;</span>
+<span class="nc" id="L18">	}</span>
+	public String getUsername() {
+<span class="fc" id="L20">		return username;</span>
+	}
+	public void setUsername(String username) {
+<span class="nc" id="L23">		this.username = username;</span>
+<span class="nc" id="L24">	}</span>
+	public String getPassword() {
+<span class="fc" id="L26">		return password;</span>
+	}
+	public void setPassword(String password) {
+<span class="nc" id="L29">		this.password = password;</span>
+<span class="nc" id="L30">	}</span>
+	public String getFirstname() {
+<span class="fc" id="L32">		return first_name;</span>
+	}
+	public void setFirstname(String firstname) {
+<span class="nc" id="L35">		this.first_name = firstname;</span>
+<span class="nc" id="L36">	}</span>
+	public String getLastname() {
+<span class="fc" id="L38">		return last_name;</span>
+	}
+	public void setLastname(String lastname) {
+<span class="nc" id="L41">		this.last_name = lastname;</span>
+<span class="nc" id="L42">	}</span>
+	public String getEmail() {
+<span class="fc" id="L44">		return email;</span>
+	}
+	public void setEmail(String email) {
+<span class="nc" id="L47">		this.email = email;</span>
+<span class="nc" id="L48">	}</span>
+	public int getUser_role_id() {
+<span class="fc" id="L50">		return user_role_id;</span>
+	}
+	public void setUser_role_id(int user_role_id) {
+<span class="nc" id="L53">		this.user_role_id = user_role_id;</span>
+<span class="nc" id="L54">	}</span>
+	public User(int userid, String username, String password, String firstname, String lastname, String email,
+			int user_role_id) {
+<span class="fc" id="L57">		super();</span>
+<span class="fc" id="L58">		this.users_id = userid;</span>
+<span class="fc" id="L59">		this.username = username;</span>
+<span class="fc" id="L60">		this.password = password;</span>
+<span class="fc" id="L61">		this.first_name = firstname;</span>
+<span class="fc" id="L62">		this.last_name = lastname;</span>
+<span class="fc" id="L63">		this.email = email;</span>
+<span class="fc" id="L64">		this.user_role_id = user_role_id;</span>
+<span class="fc" id="L65">	}</span>
+	@Override
+	public String toString() {
+<span class="nc" id="L68">		return &quot;User [userid=&quot; + users_id + &quot;, username=&quot; + username + &quot;, password=&quot; + password + &quot;, firstname=&quot;</span>
+				+ first_name + &quot;, lastname=&quot; + last_name + &quot;, email=&quot; + email + &quot;, user_role_id=&quot; + user_role_id + &quot;]&quot;;
+	}
+	
+	
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>

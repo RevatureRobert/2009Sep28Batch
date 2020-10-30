@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- <link rel="stylesheet" type="text/css" href= "bcf.css"> -->
+	<link rel="stylesheet" type="text/js" href= "bcf.js">
+	<link rel="stylesheet" type="text/css" href="ner.css">
+	
+<script>	
+function goBack() {
+  window.history.back();
+}
+$(document).on('keydown', 'input[pattern]', function(e){
+	  var input = $(this);
+	  var oldVal = input.val();
+	  var regex = new RegExp(input.attr('pattern'), 'g');
+
+	  setTimeout(function(){
+	    var newVal = input.val();
+	    if(!regex.test(newVal)){
+	      input.val(oldVal); 
+	    }
+	  }, 0);
+	});
+parseFloat($(this).val()).toFixed(2)
+</script>
+</head>
+
+<body>
+<div class="wrapper" style= "color: lightblue">
+<form class="form" action="http://localhost:8080/ExpenseReimbursementApplication/RegisterNewEmployeeServlet" method="POST">
+	
+  <div id = "title" style= "margin-bottom: 35px" class="contact-form" class="form__title">New Employee Registration</div>
+  <div class= "contact-form" class = "input-fields">
+    <label  class = "input-fields">Finance Manager ID</label>
+    <input type="text"   class="input-fields"  name="fmid" >
+    </div>
+  <div class= "contact-form" class = "input-fields">
+    <label   class = "input-fields">Employee Username</label>
+    <input type="text"   class="input-fields" name="usrname">
+  </div>
+  <div class= "contact-form" class = "input-fields">
+    <label   class = "input-fields" >Employee Temporary Password</label>
+    <input type="text"   class="input-fields"  name="pword">
+    </div>
+  <div class= "contact-form" class = "input-fields">
+    <label class="input-fields">Employee First Name</label>
+	   <input type="text"   class="input-fields" name="fname" >
+  </div>
+  <div class= "contact-form" class = "input-fields" >
+    <label  class="input-fields">Employee Last Name</label>
+	<input type="text"   class="input-fields"  name="lname" >
+  </div>
+  <div class= "contact-form" class = "input-fields">
+    <label  class="input-fields">Employee Email</label>
+ 	<input type="text"   class="input-fields"  name="email" >
+  </div>
+  <div class= "contact-form" class = "input-fields">
+    <button style ="height: 50px"   class="btn" type="submit">Register</button>
+		<input style = "height: 50px" type="button"  class="btn" value="Go back!" onclick="history.back()">		
+	</div>
+</form>
+</div>
+</body>
+</html>

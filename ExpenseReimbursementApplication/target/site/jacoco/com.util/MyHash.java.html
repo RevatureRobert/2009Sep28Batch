@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>MyHash.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Project1</a> &gt; <a href="index.source.html" class="el_package">com.util</a> &gt; <span class="el_source">MyHash.java</span></div><h1>MyHash.java</h1><pre class="source lang-java linenums">package com.util;
+
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
+public class MyHash 
+{
+	private String data;
+	
+	private String algorithm;
+	
+	public static String generateHash(String data, String algorithm) throws NoSuchAlgorithmException
+	{
+<span class="fc" id="L14">		MessageDigest digest = MessageDigest.getInstance(algorithm);</span>
+		
+<span class="fc" id="L16">		digest.reset();</span>
+		
+		try
+		{
+<span class="fc" id="L20">		byte[] hash = digest.digest(data.getBytes());</span>
+		
+<span class="fc" id="L22">		return bytesToStringHex(hash);</span>
+		}
+<span class="fc" id="L24">		catch(Exception e)</span>
+		{
+<span class="fc" id="L26">			System.out.println(&quot;Testing&quot;);</span>
+		}
+		
+<span class="fc" id="L29">		return &quot;&quot;;</span>
+	}
+
+	
+<span class="fc" id="L33">	private final static char[] hexArray = &quot;0123456789ABCDEF&quot;.toCharArray();</span>
+	
+	public static String bytesToStringHex(byte[] bytes) 
+	{
+<span class="fc" id="L37">		char[] hexChars = new char[bytes.length * 2];</span>
+		
+<span class="fc bfc" id="L39" title="All 2 branches covered.">		for(int j = 0; j &lt; bytes.length; j++)</span>
+		{
+<span class="fc" id="L41">			int v = bytes[j] &amp; 0xFF;</span>
+			
+<span class="fc" id="L43">			hexChars[j * 2] = hexArray[v &gt;&gt;&gt; 4];</span>
+<span class="fc" id="L44">			hexChars[j * 2  + 1] = hexArray[v &amp; 0x0F];</span>
+		}
+<span class="fc" id="L46">		return new String (hexChars);</span>
+	}
+
+	public MyHash(String data, String algorithm) {
+<span class="fc" id="L50">		super();</span>
+<span class="fc" id="L51">		this.data = data;</span>
+<span class="fc" id="L52">		this.algorithm = algorithm;</span>
+<span class="fc" id="L53">	}</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>

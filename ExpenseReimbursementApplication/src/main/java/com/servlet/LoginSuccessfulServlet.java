@@ -12,12 +12,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
+	
 import com.dao.LoginValidationDao;
 import com.util.MyHash;
 
-
+@WebServlet("/LoginSuccessfulServlet")
 public class LoginSuccessfulServlet extends HttpServlet
 {
+	final static Logger logger = Logger.getLogger(LoginSuccessfulServlet.class);
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
@@ -26,17 +30,30 @@ public class LoginSuccessfulServlet extends HttpServlet
 	}
 	
 	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
+	public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
 	{
+		logger.info("The user is trying to login.");
 		resp.setContentType("text/html");
 		
 		LoginValidationDao lvd = new LoginValidationDao();
 		
 
 		PrintWriter out = resp.getWriter();
+		String inputPassword = "";
+		String inputUsername = "";
 		
-		String inputPassword = req.getParameter("pword");
-		String inputUsername = req.getParameter("users_id");
+		try
+		{
+		inputPassword = req.getParameter("pword");
+		inputUsername = req.getParameter("users_id");
+		}
+		catch(NullPointerException e)
+		{
+			System.out.println("Servlet was being tested");
+			inputPassword = "";
+			inputUsername = "";
+		}
+		
 		
 		
 		MyHash mh = new MyHash(inputPassword, "SHA-256");
@@ -44,32 +61,46 @@ public class LoginSuccessfulServlet extends HttpServlet
 		String hashedPassword = "";
 		try {
 			hashedPassword = MyHash.generateHash(inputPassword, "SHA-256");
-		} catch (NoSuchAlgorithmException e) {
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			// e.printStackTrace();
+			hashedPassword = "";
 		}
 		
 		
-		String fullname = lvd.loginValidation(inputUsername, hashedPassword);
+		String fullname = "";
+		int user_role_id = 0;
 		
-		int user_role_id = lvd.validateUserRoleID(inputUsername);
-		
-		
-		
-		
-		
+		try
+		{
+			 fullname = lvd.loginValidation(inputUsername, hashedPassword);
+			 user_role_id = lvd.validateUserRoleID(inputUsername);
+		}
+		catch(Exception e)
+		{
+			System.out.println("testing");
+		}
+				
 		if(fullname.length() <= 1)
 		{
+			logger.info("The user provided invalid login credentials");
+			try
+			{
 			String invalidloginpage = "/html_css_js/InvalidLogin.html";
 			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(invalidloginpage);
 			dispatcher.forward(req, resp);
+			}
+			catch(Exception e)
+			{
+				System.out.println("testing...");
+			}
 		} 
 		else
 		{	
-		
+
 			if(user_role_id == 1)
 			{
-		
+				logger.info("The user (Employee) successfully logged into their account.");
 		out.println("<!doctype html>\n"
 				+ "<html lang=\"en\">\n"
 				+ "<head>\n"
@@ -94,7 +125,7 @@ public class LoginSuccessfulServlet extends HttpServlet
 				+ "    <!-- Main Navbar -->\n"
 				+ "    <nav class=\"navbar navbar-expand-sm navbar-dark bg-dark\">\n"
 				+ "        <div class=\"container\">\n"
-				+ "            <a href=\"index1.html\" class=\"navbar-brand text-warning\">\n"
+				+ "            <a href=\"html_css_js/loginpage.html\" class=\"navbar-brand text-warning\">\n"
 				+ "               <i class=\"fa fa-snowflake\"></i>WJLaw LLC\n"
 				+ "            </a>\n"
 				+ "            <button class=\"navbar-toggler\" data-toggle=\"collapse\" data-target=\"#ui-navbar\">\n"
@@ -104,7 +135,7 @@ public class LoginSuccessfulServlet extends HttpServlet
 				+ "            <div class=\"collapse navbar-collapse\" id=\"ui-navbar\">\n"
 				+ "                <ul class=\"navbar-nav ml-auto\">\n"
 				+ "                    <li class=\"nav-item\">\n"
-				+ "                        <a class=\"nav-link\" href=\"login.html\">\n"
+				+ "                        <a class=\"nav-link\" href=\"http://localhost:8080/ExpenseReimbursementApplication/\">\n"
 				+ "                            <i class=\"fa fa-sign-out-alt text-muted\"></i> LogOut</a>\n"
 				+ "                    </li>\n"
 				+ "                </ul>\n"
@@ -132,23 +163,13 @@ public class LoginSuccessfulServlet extends HttpServlet
 				+ "					</div>\n"
 				+ "				</div>\n"
 				+ "				<!-- END SIDEBAR USER TITLE -->\n"
-				+ "				<!-- SIDEBAR BUTTONS -->\n"
-				+ "				<div class=\"profile-userbuttons\">\n"
-				+ "					<button type=\"button\" class=\"btn btn-success btn-sm\">Follow</button>\n"
-				+ "					<button type=\"button\" class=\"btn btn-danger btn-sm\">Message</button>\n"
-				+ "				</div>\n"
 				+ "				<!-- END SIDEBAR BUTTONS -->\n"
 				+ "				<!-- SIDEBAR MENU -->\n"
 				+ "				<div class=\"profile-usermenu\">\n"
 				+ "					<ul class=\"nav\">\n"
-				+ "						<li class=\"active\">\n"
-				+ "							<a href=\"#\">\n"
-				+ "							<i class=\"glyphicon glyphicon-home\"></i>\n"
-				+ "							WJLaw </a>\n"
-				+ "						</li>\n"
 				+ "						<li>\n"
-				+ "							<a href=\"html_css_js/verifyusername.html\">\n"
-				+ "							<i class=\"glyphicon glyphicon-user\"></i>\n"
+				+ "							<a href=\"html_css_js/verifyusername2.html\">\n"
+				+ "							<i class=\"glyphicon glyphicon-ok\"></i>\n"
 				+ "							View Past Reimbursement Tickets </a>\n"
 				+ "						</li>\n"
 				+ "						<li>\n"
@@ -203,7 +224,7 @@ public class LoginSuccessfulServlet extends HttpServlet
 			
 			if(user_role_id == 2)
 			{
-				
+				logger.info("The user (Finance Manager/Partner) successfully logged into their account.");
 				out.println("<!doctype html>\n"
 						+ "<html lang=\"en\">\n"
 						+ "<head>\n"
@@ -228,7 +249,7 @@ public class LoginSuccessfulServlet extends HttpServlet
 						+ "    <!-- Main Navbar -->\n"
 						+ "    <nav class=\"navbar navbar-expand-sm navbar-dark bg-dark\">\n"
 						+ "        <div class=\"container\">\n"
-						+ "            <a href=\"index1.html\" class=\"navbar-brand text-warning\">\n"
+						+ "            <a href=\"html_css_js/loginpage.html\" class=\"navbar-brand text-warning\">\n"
 						+ "               <i class=\"fa fa-snowflake\"></i>WJLaw LLC\n"
 						+ "            </a>\n"
 						+ "            <button class=\"navbar-toggler\" data-toggle=\"collapse\" data-target=\"#ui-navbar\">\n"
@@ -238,7 +259,7 @@ public class LoginSuccessfulServlet extends HttpServlet
 						+ "            <div class=\"collapse navbar-collapse\" id=\"ui-navbar\">\n"
 						+ "                <ul class=\"navbar-nav ml-auto\">\n"
 						+ "                    <li class=\"nav-item\">\n"
-						+ "                        <a class=\"nav-link\" href=\"login.html\">\n"
+						+ "                        <a class=\"nav-link\" href=\"http://localhost:8080/ExpenseReimbursementApplication/\">\n"
 						+ "                            <i class=\"fa fa-sign-out-alt text-muted\"></i> LogOut</a>\n"
 						+ "                    </li>\n"
 						+ "                </ul>\n"
@@ -266,26 +287,25 @@ public class LoginSuccessfulServlet extends HttpServlet
 						+ "					</div>\n"
 						+ "				</div>\n"
 						+ "				<!-- END SIDEBAR USER TITLE -->\n"
-						+ "				<!-- SIDEBAR BUTTONS -->\n"
-						+ "				<div class=\"profile-userbuttons\">\n"
-						+ "					<button type=\"button\" class=\"btn btn-success btn-sm\">Follow</button>\n"
-						+ "					<button type=\"button\" class=\"btn btn-danger btn-sm\">Message</button>\n"
-						+ "				</div>\n"
-						+ "				<!-- END SIDEBAR BUTTONS -->\n"
 						+ "				<!-- SIDEBAR MENU -->\n"
 						+ "				<div class=\"profile-usermenu\">\n"
 						+ "					<ul class=\"nav\">\n"
-						+ "						<li class=\"active\">\n"
-						+ "							<a href=\"#\">\n"
-						+ "							<i class=\"glyphicon glyphicon-home\"></i>\n"
-						+ "							WJLaw </a>\n"
-						+ "						</li>\n"
 						+ "                      <form action=\"http://localhost:8080/ExpenseReimbursementApplication/ViewPendingReimbServlet\" method=\"POST\" "
 						+ "						<li>\n"
 						+ " <div> <button class=\"form__btn\" type=\"submit\">View Pending Reimbursement Tickets</button>  </div>"	
-						+ "							<i class=\"glyphicon glyphicon-ok\"></i>\n"
+						+ "							\n"
 						+ "						</li>\n"
-						+ "                      </form>"
+						+ "                      </form>"						
+						+ "						<li>\n"
+						+ "							<a href=\"html_css_js/viewemppastreimbserv.html\">\n"
+						+ "							<i class=\"glyphicon glyphicon-ok\"></i>\n"
+						+ "							View Past Tickets By Employee </a>\n"
+						+ "						</li>\n"
+						+ "						<li>\n"
+						+ "							<a href=\"html_css_js/regnewemp.html\">\n"
+						+ "							<i class=\"glyphicon glyphicon-ok\"></i>\n"
+						+ "							Register New Employee Account </a>\n"
+						+ "						</li>\n"
 						+ "						<li>\n"
 						+ "							<a href=\"html_css_js/approvereimb.html\">\n"
 						+ "							<i class=\"glyphicon glyphicon-ok\"></i>\n"

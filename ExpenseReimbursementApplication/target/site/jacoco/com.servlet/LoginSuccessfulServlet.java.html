@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>LoginSuccessfulServlet.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Project1</a> &gt; <a href="index.source.html" class="el_package">com.servlet</a> &gt; <span class="el_source">LoginSuccessfulServlet.java</span></div><h1>LoginSuccessfulServlet.java</h1><pre class="source lang-java linenums">package com.servlet;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.security.NoSuchAlgorithmException;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.log4j.Logger;
+
+	
+import com.dao.LoginValidationDao;
+import com.util.MyHash;
+
+@WebServlet(&quot;/LoginSuccessfulServlet&quot;)
+<span class="fc" id="L22">public class LoginSuccessfulServlet extends HttpServlet</span>
+{
+<span class="fc" id="L24">	final static Logger logger = Logger.getLogger(LoginSuccessfulServlet.class);</span>
+	
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
+	{
+<span class="nc" id="L29">		req.getRequestDispatcher(new RequestForwarder().routes(req)).forward(req, resp);</span>
+<span class="nc" id="L30">	}</span>
+	
+	@Override
+	public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
+	{
+<span class="fc" id="L35">		logger.info(&quot;The user is trying to login.&quot;);</span>
+<span class="fc" id="L36">		resp.setContentType(&quot;text/html&quot;);</span>
+		
+<span class="fc" id="L38">		LoginValidationDao lvd = new LoginValidationDao();</span>
+		
+
+<span class="fc" id="L41">		PrintWriter out = resp.getWriter();</span>
+<span class="fc" id="L42">		String inputPassword = &quot;&quot;;</span>
+<span class="fc" id="L43">		String inputUsername = &quot;&quot;;</span>
+		
+		try
+		{
+<span class="fc" id="L47">		inputPassword = req.getParameter(&quot;pword&quot;);</span>
+<span class="fc" id="L48">		inputUsername = req.getParameter(&quot;users_id&quot;);</span>
+		}
+<span class="nc" id="L50">		catch(NullPointerException e)</span>
+		{
+<span class="nc" id="L52">			System.out.println(&quot;Servlet was being tested&quot;);</span>
+<span class="nc" id="L53">			inputPassword = &quot;&quot;;</span>
+<span class="nc" id="L54">			inputUsername = &quot;&quot;;</span>
+<span class="fc" id="L55">		}</span>
+		
+		
+		
+<span class="fc" id="L59">		MyHash mh = new MyHash(inputPassword, &quot;SHA-256&quot;);</span>
+		
+<span class="fc" id="L61">		String hashedPassword = &quot;&quot;;</span>
+		try {
+<span class="fc" id="L63">			hashedPassword = MyHash.generateHash(inputPassword, &quot;SHA-256&quot;);</span>
+<span class="nc" id="L64">		} catch (Exception e) {</span>
+			// TODO Auto-generated catch block
+			// e.printStackTrace();
+<span class="nc" id="L67">			hashedPassword = &quot;&quot;;</span>
+<span class="fc" id="L68">		}</span>
+		
+		
+<span class="fc" id="L71">		String fullname = &quot;&quot;;</span>
+<span class="fc" id="L72">		int user_role_id = 0;</span>
+		
+		try
+		{
+<span class="fc" id="L76">			 fullname = lvd.loginValidation(inputUsername, hashedPassword);</span>
+<span class="fc" id="L77">			 user_role_id = lvd.validateUserRoleID(inputUsername);</span>
+		}
+<span class="nc" id="L79">		catch(Exception e)</span>
+		{
+<span class="nc" id="L81">			System.out.println(&quot;testing&quot;);</span>
+<span class="fc" id="L82">		}</span>
+				
+<span class="pc bpc" id="L84" title="1 of 2 branches missed.">		if(fullname.length() &lt;= 1)</span>
+		{
+<span class="fc" id="L86">			logger.info(&quot;The user provided invalid login credentials&quot;);</span>
+			try
+			{
+<span class="fc" id="L89">			String invalidloginpage = &quot;/html_css_js/InvalidLogin.html&quot;;</span>
+<span class="nc" id="L90">			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(invalidloginpage);</span>
+<span class="nc" id="L91">			dispatcher.forward(req, resp);</span>
+			}
+<span class="fc" id="L93">			catch(Exception e)</span>
+			{
+<span class="fc" id="L95">				System.out.println(&quot;testing...&quot;);</span>
+<span class="pc" id="L96">			}</span>
+		} 
+		else
+		{	
+
+<span class="nc bnc" id="L101" title="All 2 branches missed.">			if(user_role_id == 1)</span>
+			{
+<span class="nc" id="L103">				logger.info(&quot;The user (Employee) successfully logged into their account.&quot;);</span>
+<span class="nc" id="L104">		out.println(&quot;&lt;!doctype html&gt;\n&quot;</span>
+				+ &quot;&lt;html lang=\&quot;en\&quot;&gt;\n&quot;
+				+ &quot;&lt;head&gt;\n&quot;
+				+ &quot;    &lt;meta charset=\&quot;UTF-8\&quot;&gt;\n&quot;
+				+ &quot;    &lt;meta name=\&quot;viewport\&quot;\n&quot;
+				+ &quot;          content=\&quot;width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0\&quot;&gt;\n&quot;
+				+ &quot;    &lt;meta http-equiv=\&quot;X-UA-Compatible\&quot; content=\&quot;ie=edge\&quot;&gt;\n&quot;
+				+ &quot;    &lt;!-- Bootstrap CSS Files --&gt;\n&quot;
+				+ &quot;    &lt;link rel=\&quot;stylesheet\&quot; href=\&quot;https://use.fontawesome.com/releases/v5.8.1/css/all.css\&quot;&gt;\n&quot;
+				+ &quot;    &lt;link rel=\&quot;stylesheet\&quot; href=\&quot;html_css_js/font-awesome-5.8.1.css\&quot;&gt;\n&quot;
+				+ &quot;    &lt;link rel=\&quot;stylesheet\&quot; href=\&quot;html_css_js/bootstrap.css\&quot;&gt;\n&quot;
+				+ &quot;    &lt;link rel=\&quot;stylesheet\&quot; href=\&quot;html_css_js/mdb.css\&quot;&gt;\n&quot;
+				+ &quot;    &lt;link rel=\&quot;stylesheet\&quot; href=\&quot;html_css_js/style.css\&quot;&gt;\n&quot;
+				+ &quot;&lt;link href=\&quot;http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css\&quot; rel=\&quot;stylesheet\&quot; id=\&quot;bootstrap-css\&quot;&gt;\n&quot;
+				+ &quot;&lt;script src=\&quot;http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js\&quot;&gt;&lt;/script&gt;\n&quot;
+				+ &quot;&lt;script src=\&quot;http://code.jquery.com/jquery-1.11.1.min.js\&quot;&gt;&lt;/script&gt;\n&quot;
+				+ &quot;&lt;link rel=\&quot;stylesheet\&quot; href=\&quot;html_css_js/userprofile.css\&quot; &gt;&quot;
+				+ &quot;    &lt;title&gt;WJLaw Dashboard&lt;/title&gt;\n&quot;
+				+ &quot;&lt;/head&gt;\n&quot;
+				+ &quot;&lt;body&gt;\n&quot;
+				+ &quot;\n&quot;
+				+ &quot;    &lt;!-- Main Navbar --&gt;\n&quot;
+				+ &quot;    &lt;nav class=\&quot;navbar navbar-expand-sm navbar-dark bg-dark\&quot;&gt;\n&quot;
+				+ &quot;        &lt;div class=\&quot;container\&quot;&gt;\n&quot;
+				+ &quot;            &lt;a href=\&quot;html_css_js/loginpage.html\&quot; class=\&quot;navbar-brand text-warning\&quot;&gt;\n&quot;
+				+ &quot;               &lt;i class=\&quot;fa fa-snowflake\&quot;&gt;&lt;/i&gt;WJLaw LLC\n&quot;
+				+ &quot;            &lt;/a&gt;\n&quot;
+				+ &quot;            &lt;button class=\&quot;navbar-toggler\&quot; data-toggle=\&quot;collapse\&quot; data-target=\&quot;#ui-navbar\&quot;&gt;\n&quot;
+				+ &quot;                &lt;span class=\&quot;navbar-toggler-icon\&quot;&gt;&lt;/span&gt;\n&quot;
+				+ &quot;            &lt;/button&gt;\n&quot;
+				+ &quot;\n&quot;
+				+ &quot;            &lt;div class=\&quot;collapse navbar-collapse\&quot; id=\&quot;ui-navbar\&quot;&gt;\n&quot;
+				+ &quot;                &lt;ul class=\&quot;navbar-nav ml-auto\&quot;&gt;\n&quot;
+				+ &quot;                    &lt;li class=\&quot;nav-item\&quot;&gt;\n&quot;
+				+ &quot;                        &lt;a class=\&quot;nav-link\&quot; href=\&quot;http://localhost:8080/ExpenseReimbursementApplication/\&quot;&gt;\n&quot;
+				+ &quot;                            &lt;i class=\&quot;fa fa-sign-out-alt text-muted\&quot;&gt;&lt;/i&gt; LogOut&lt;/a&gt;\n&quot;
+				+ &quot;                    &lt;/li&gt;\n&quot;
+				+ &quot;                &lt;/ul&gt;\n&quot;
+				+ &quot;            &lt;/div&gt;\n&quot;
+				+ &quot;        &lt;/div&gt;\n&quot;
+				+ &quot;    &lt;/nav&gt;\n&quot;
+				+ &quot;\n&quot;
+				+ &quot;\n&quot;
+				+ &quot;&lt;div class=\&quot;container\&quot;&gt;\n&quot;
+				+ &quot;    &lt;div class=\&quot;row profile\&quot;&gt;\n&quot;
+				+ &quot;		&lt;div class=\&quot;col-md-3\&quot;&gt;\n&quot;
+				+ &quot;			&lt;div class=\&quot;profile-sidebar\&quot;&gt;\n&quot;
+				+ &quot;				&lt;!-- SIDEBAR USERPIC --&gt;\n&quot;
+				+ &quot;				&lt;div class=\&quot;profile-userpic\&quot;&gt;\n&quot;
+				+ &quot;					&lt;img src=\&quot;https://static.change.org/profile-img/default-user-profile.svg\&quot; class=\&quot;img-responsive\&quot; alt=\&quot;\&quot;&gt;\n&quot;
+				+ &quot;				&lt;/div&gt;\n&quot;
+				+ &quot;				&lt;!-- END SIDEBAR USERPIC --&gt;\n&quot;
+				+ &quot;				&lt;!-- SIDEBAR USER TITLE --&gt;\n&quot;
+				+ &quot;				&lt;div class=\&quot;profile-usertitle\&quot;&gt;\n&quot;
+				+ &quot;					&lt;div class=\&quot;profile-usertitle-name\&quot;&gt;\n&quot;
+				+ fullname
+				+ &quot;					&lt;/div&gt;\n&quot;
+				+ &quot;					&lt;div class=\&quot;profile-usertitle-job\&quot;&gt;\n&quot;
+				+ &quot;						Attorney\n&quot;
+				+ &quot;					&lt;/div&gt;\n&quot;
+				+ &quot;				&lt;/div&gt;\n&quot;
+				+ &quot;				&lt;!-- END SIDEBAR USER TITLE --&gt;\n&quot;
+				+ &quot;				&lt;!-- END SIDEBAR BUTTONS --&gt;\n&quot;
+				+ &quot;				&lt;!-- SIDEBAR MENU --&gt;\n&quot;
+				+ &quot;				&lt;div class=\&quot;profile-usermenu\&quot;&gt;\n&quot;
+				+ &quot;					&lt;ul class=\&quot;nav\&quot;&gt;\n&quot;
+				+ &quot;						&lt;li&gt;\n&quot;
+				+ &quot;							&lt;a href=\&quot;html_css_js/verifyusername2.html\&quot;&gt;\n&quot;
+				+ &quot;							&lt;i class=\&quot;glyphicon glyphicon-ok\&quot;&gt;&lt;/i&gt;\n&quot;
+				+ &quot;							View Past Reimbursement Tickets &lt;/a&gt;\n&quot;
+				+ &quot;						&lt;/li&gt;\n&quot;
+				+ &quot;						&lt;li&gt;\n&quot;
+				+ &quot;							&lt;a href=\&quot;html_css_js/bcf.html\&quot;&gt;\n&quot;
+				+ &quot;							&lt;i class=\&quot;glyphicon glyphicon-ok\&quot;&gt;&lt;/i&gt;\n&quot;
+				+ &quot;							Add New Reimbursement Ticket &lt;/a&gt;\n&quot;
+				+ &quot;						&lt;/li&gt;\n&quot;
+				+ &quot;					&lt;/ul&gt;\n&quot;
+				+ &quot;				&lt;/div&gt;\n&quot;
+				+ &quot;				&lt;!-- END MENU --&gt;\n&quot;
+				+ &quot;			&lt;/div&gt;\n&quot;
+				+ &quot;		&lt;/div&gt;\n&quot;
+				+ &quot;		&lt;div class=\&quot;col-md-9\&quot;&gt;\n&quot;
+				+ &quot;            &lt;div class=\&quot;profile-content\&quot;&gt;\n&quot;
+				+ &quot;			   Malesuada accumsan accumsan litora convallis tellus ligula mi eros primis. Aenean morbi sit sollicitudin aenean, orci quis dictum eleifend eros. Libero tortor, sagittis natoque! Nulla ac feugiat dictumst imperdiet risus. Habitant lacinia magna porta cum. Nisi mollis duis diam quisque quam vitae sollicitudin. Amet volutpat fringilla metus integer urna luctus ut volutpat gravida aenean. Nunc, volutpat diam torquent lacinia augue fames tempor parturient massa amet.\n&quot;
+				+ &quot;&lt;br&gt;\n&quot;
+				+ &quot;&lt;br&gt;\n&quot;
+				+ &quot;Non metus tortor purus etiam augue facilisis ad massa, litora duis. Tortor consectetur, blandit ipsum felis sagittis. Inceptos justo sociosqu volutpat eu, himenaeos pharetra ac vivamus felis dapibus hendrerit. Mauris sodales volutpat eleifend parturient vivamus fringilla dictum morbi proin habitasse euismod. Quisque praesent interdum aliquet himenaeos sagittis amet adipiscing non tempus ultricies diam tempus! Lorem cum leo tellus aptent orci vel vivamus. Blandit pharetra blandit pellentesque ut. Felis dis torquent, nam vel aptent sociis. Elit nostra sit sed inceptos mauris magna rutrum quam porttitor magnis tristique proin? Duis facilisi enim nisi vulputate orci felis amet tristique enim nec netus quam. Elementum ipsum fermentum risus ac mi scelerisque ridiculus mus, metus aenean purus. Cum tristique cum aliquam bibendum aptent justo, orci cursus nisl netus. Platea ac tristique cum ut nibh egestas senectus! Platea mi faucibus velit adipiscing natoque aliquam montes leo. Potenti vulputate?\n&quot;
+				+ &quot;&lt;br&gt;\n&quot;
+				+ &quot;&lt;br&gt;\n&quot;
+				+ &quot;Eleifend amet feugiat ac imperdiet pulvinar nisl. Dictum blandit elit ut facilisis vitae nulla, libero risus nec ut blandit cursus. Sollicitudin interdum, orci sit. Vel tempor ipsum tempor lectus fringilla tellus lobortis eget, eu ullamcorper orci. Fusce ornare ridiculus praesent primis ornare magna ullamcorper ornare mauris litora odio! Primis lobortis cum dictum cum accumsan tortor magna gravida; vestibulum eget! Elementum class netus neque ornare. Porta sodales pretium vulputate aenean pretium accumsan vehicula iaculis. Montes ac consectetur molestie nisl tellus eget. Venenatis class lacus sem litora netus maecenas facilisis cursus. Dictumst tempor nullam dignissim curabitur lacus? \n&quot;
+				+ &quot;            &lt;/div&gt;\n&quot;
+				+ &quot;		&lt;/div&gt;\n&quot;
+				+ &quot;	&lt;/div&gt;\n&quot;
+				+ &quot;&lt;/div&gt;&quot;
+				+ &quot;\n&quot;
+				+ &quot;    &lt;!-- Main Footer --&gt;\n&quot;
+				+ &quot;    &lt;footer class=\&quot;p-3 bg-dark text-white text-center\&quot;&gt;\n&quot;
+				+ &quot;        &lt;div class=\&quot;container\&quot;&gt;\n&quot;
+				+ &quot;            &lt;div class=\&quot;row\&quot;&gt;\n&quot;
+				+ &quot;                &lt;div class=\&quot;col\&quot;&gt;\n&quot;
+				+ &quot;                    &lt;h3&gt;Copyright &amp;copy; 2020 , WJLaw LLC&lt;/h3&gt;\n&quot;
+				+ &quot;                    &lt;h6&gt;All Rights Reserved&lt;/h6&gt;\n&quot;
+				+ &quot;                &lt;/div&gt;\n&quot;
+				+ &quot;            &lt;/div&gt;\n&quot;
+				+ &quot;        &lt;/div&gt;\n&quot;
+				+ &quot;    &lt;/footer&gt;\n&quot;
+				+ &quot;\n&quot;
+				+ &quot;\n&quot;
+				+ &quot;&lt;!-- Bootstrap  JS Files --&gt;\n&quot;
+				+ &quot;&lt;script src=\&quot;bootstrap/js/jquery.js\&quot;&gt;&lt;/script&gt;\n&quot;
+				+ &quot;&lt;script src=\&quot;bootstrap/js/popper.js\&quot;&gt;&lt;/script&gt;\n&quot;
+				+ &quot;&lt;script src=\&quot;bootstrap/js/bootstrap.js\&quot;&gt;&lt;/script&gt;\n&quot;
+				+ &quot;&lt;script src=\&quot;bootstrap/js/mdb.js\&quot;&gt;&lt;/script&gt;\n&quot;
+				+ &quot;&lt;script src=\&quot;https://cdn.ckeditor.com/4.14.0/standard/ckeditor.js\&quot;&gt;&lt;/script&gt;\n&quot;
+				+ &quot;    &lt;script&gt;\n&quot;
+				+ &quot;        CKEDITOR.replace( 'editor1' );\n&quot;
+				+ &quot;    &lt;/script&gt;\n&quot;
+				+ &quot;&lt;/body&gt;\n&quot;
+				+ &quot;&lt;/html&gt;&quot;);
+			}
+			
+<span class="nc bnc" id="L225" title="All 2 branches missed.">			if(user_role_id == 2)</span>
+			{
+<span class="nc" id="L227">				logger.info(&quot;The user (Finance Manager/Partner) successfully logged into their account.&quot;);</span>
+<span class="nc" id="L228">				out.println(&quot;&lt;!doctype html&gt;\n&quot;</span>
+						+ &quot;&lt;html lang=\&quot;en\&quot;&gt;\n&quot;
+						+ &quot;&lt;head&gt;\n&quot;
+						+ &quot;    &lt;meta charset=\&quot;UTF-8\&quot;&gt;\n&quot;
+						+ &quot;    &lt;meta name=\&quot;viewport\&quot;\n&quot;
+						+ &quot;          content=\&quot;width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0\&quot;&gt;\n&quot;
+						+ &quot;    &lt;meta http-equiv=\&quot;X-UA-Compatible\&quot; content=\&quot;ie=edge\&quot;&gt;\n&quot;
+						+ &quot;    &lt;!-- Bootstrap CSS Files --&gt;\n&quot;
+						+ &quot;    &lt;link rel=\&quot;stylesheet\&quot; href=\&quot;https://use.fontawesome.com/releases/v5.8.1/css/all.css\&quot;&gt;\n&quot;
+						+ &quot;    &lt;link rel=\&quot;stylesheet\&quot; href=\&quot;html_css_js/font-awesome-5.8.1.css\&quot;&gt;\n&quot;
+						+ &quot;    &lt;link rel=\&quot;stylesheet\&quot; href=\&quot;html_css_js/bootstrap.css\&quot;&gt;\n&quot;
+						+ &quot;    &lt;link rel=\&quot;stylesheet\&quot; href=\&quot;html_css_js/mdb.css\&quot;&gt;\n&quot;
+						+ &quot;    &lt;link rel=\&quot;stylesheet\&quot; href=\&quot;html_css_js/style.css\&quot;&gt;\n&quot;
+						+ &quot;&lt;link href=\&quot;http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css\&quot; rel=\&quot;stylesheet\&quot; id=\&quot;bootstrap-css\&quot;&gt;\n&quot;
+						+ &quot;&lt;script src=\&quot;http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js\&quot;&gt;&lt;/script&gt;\n&quot;
+						+ &quot;&lt;script src=\&quot;http://code.jquery.com/jquery-1.11.1.min.js\&quot;&gt;&lt;/script&gt;\n&quot;
+						+ &quot;&lt;link rel=\&quot;stylesheet\&quot; href=\&quot;html_css_js/userprofile.css\&quot; &gt;&quot;
+						+ &quot;    &lt;title&gt;WJLaw Dashboard&lt;/title&gt;\n&quot;
+						+ &quot;&lt;/head&gt;\n&quot;
+						+ &quot;&lt;body&gt;\n&quot;
+						+ &quot;\n&quot;
+						+ &quot;    &lt;!-- Main Navbar --&gt;\n&quot;
+						+ &quot;    &lt;nav class=\&quot;navbar navbar-expand-sm navbar-dark bg-dark\&quot;&gt;\n&quot;
+						+ &quot;        &lt;div class=\&quot;container\&quot;&gt;\n&quot;
+						+ &quot;            &lt;a href=\&quot;html_css_js/loginpage.html\&quot; class=\&quot;navbar-brand text-warning\&quot;&gt;\n&quot;
+						+ &quot;               &lt;i class=\&quot;fa fa-snowflake\&quot;&gt;&lt;/i&gt;WJLaw LLC\n&quot;
+						+ &quot;            &lt;/a&gt;\n&quot;
+						+ &quot;            &lt;button class=\&quot;navbar-toggler\&quot; data-toggle=\&quot;collapse\&quot; data-target=\&quot;#ui-navbar\&quot;&gt;\n&quot;
+						+ &quot;                &lt;span class=\&quot;navbar-toggler-icon\&quot;&gt;&lt;/span&gt;\n&quot;
+						+ &quot;            &lt;/button&gt;\n&quot;
+						+ &quot;\n&quot;
+						+ &quot;            &lt;div class=\&quot;collapse navbar-collapse\&quot; id=\&quot;ui-navbar\&quot;&gt;\n&quot;
+						+ &quot;                &lt;ul class=\&quot;navbar-nav ml-auto\&quot;&gt;\n&quot;
+						+ &quot;                    &lt;li class=\&quot;nav-item\&quot;&gt;\n&quot;
+						+ &quot;                        &lt;a class=\&quot;nav-link\&quot; href=\&quot;http://localhost:8080/ExpenseReimbursementApplication/\&quot;&gt;\n&quot;
+						+ &quot;                            &lt;i class=\&quot;fa fa-sign-out-alt text-muted\&quot;&gt;&lt;/i&gt; LogOut&lt;/a&gt;\n&quot;
+						+ &quot;                    &lt;/li&gt;\n&quot;
+						+ &quot;                &lt;/ul&gt;\n&quot;
+						+ &quot;            &lt;/div&gt;\n&quot;
+						+ &quot;        &lt;/div&gt;\n&quot;
+						+ &quot;    &lt;/nav&gt;\n&quot;
+						+ &quot;\n&quot;
+						+ &quot;\n&quot;
+						+ &quot;&lt;div class=\&quot;container\&quot;&gt;\n&quot;
+						+ &quot;    &lt;div class=\&quot;row profile\&quot;&gt;\n&quot;
+						+ &quot;		&lt;div class=\&quot;col-md-3\&quot;&gt;\n&quot;
+						+ &quot;			&lt;div class=\&quot;profile-sidebar\&quot;&gt;\n&quot;
+						+ &quot;				&lt;!-- SIDEBAR USERPIC --&gt;\n&quot;
+						+ &quot;				&lt;div class=\&quot;profile-userpic\&quot;&gt;\n&quot;
+						+ &quot;					&lt;img src=\&quot;https://static.change.org/profile-img/default-user-profile.svg\&quot; class=\&quot;img-responsive\&quot; alt=\&quot;\&quot;&gt;\n&quot;
+						+ &quot;				&lt;/div&gt;\n&quot;
+						+ &quot;				&lt;!-- END SIDEBAR USERPIC --&gt;\n&quot;
+						+ &quot;				&lt;!-- SIDEBAR USER TITLE --&gt;\n&quot;
+						+ &quot;				&lt;div class=\&quot;profile-usertitle\&quot;&gt;\n&quot;
+						+ &quot;					&lt;div class=\&quot;profile-usertitle-name\&quot;&gt;\n&quot;
+						+ fullname
+						+ &quot;					&lt;/div&gt;\n&quot;
+						+ &quot;					&lt;div class=\&quot;profile-usertitle-job\&quot;&gt;\n&quot;
+						+ &quot;						Finance Manager/Partner\n&quot;
+						+ &quot;					&lt;/div&gt;\n&quot;
+						+ &quot;				&lt;/div&gt;\n&quot;
+						+ &quot;				&lt;!-- END SIDEBAR USER TITLE --&gt;\n&quot;
+						+ &quot;				&lt;!-- SIDEBAR MENU --&gt;\n&quot;
+						+ &quot;				&lt;div class=\&quot;profile-usermenu\&quot;&gt;\n&quot;
+						+ &quot;					&lt;ul class=\&quot;nav\&quot;&gt;\n&quot;
+						+ &quot;                      &lt;form action=\&quot;http://localhost:8080/ExpenseReimbursementApplication/ViewPendingReimbServlet\&quot; method=\&quot;POST\&quot; &quot;
+						+ &quot;						&lt;li&gt;\n&quot;
+						+ &quot; &lt;div&gt; &lt;button class=\&quot;form__btn\&quot; type=\&quot;submit\&quot;&gt;View Pending Reimbursement Tickets&lt;/button&gt;  &lt;/div&gt;&quot;	
+						+ &quot;							\n&quot;
+						+ &quot;						&lt;/li&gt;\n&quot;
+						+ &quot;                      &lt;/form&gt;&quot;						
+						+ &quot;						&lt;li&gt;\n&quot;
+						+ &quot;							&lt;a href=\&quot;html_css_js/viewemppastreimbserv.html\&quot;&gt;\n&quot;
+						+ &quot;							&lt;i class=\&quot;glyphicon glyphicon-ok\&quot;&gt;&lt;/i&gt;\n&quot;
+						+ &quot;							View Past Tickets By Employee &lt;/a&gt;\n&quot;
+						+ &quot;						&lt;/li&gt;\n&quot;
+						+ &quot;						&lt;li&gt;\n&quot;
+						+ &quot;							&lt;a href=\&quot;html_css_js/regnewemp.html\&quot;&gt;\n&quot;
+						+ &quot;							&lt;i class=\&quot;glyphicon glyphicon-ok\&quot;&gt;&lt;/i&gt;\n&quot;
+						+ &quot;							Register New Employee Account &lt;/a&gt;\n&quot;
+						+ &quot;						&lt;/li&gt;\n&quot;
+						+ &quot;						&lt;li&gt;\n&quot;
+						+ &quot;							&lt;a href=\&quot;html_css_js/approvereimb.html\&quot;&gt;\n&quot;
+						+ &quot;							&lt;i class=\&quot;glyphicon glyphicon-ok\&quot;&gt;&lt;/i&gt;\n&quot;
+						+ &quot;							Approve Reimbursement Ticket &lt;/a&gt;\n&quot;
+						+ &quot;						&lt;/li&gt;\n&quot;
+						+                       &quot;&lt;li&gt;\n&quot;
+						+ &quot;							&lt;a href=\&quot;html_css_js/rejectreimb.html\&quot;&gt;\n&quot;
+						+ &quot;							&lt;i class=\&quot;glyphicon glyphicon-ok\&quot;&gt;&lt;/i&gt;\n&quot;
+						+ &quot;							Reject Reimbursement Ticket &lt;/a&gt;\n&quot;
+						+ &quot;						&lt;/li&gt;\n&quot;
+						+ &quot;					&lt;/ul&gt;\n&quot;
+						+ &quot;				&lt;/div&gt;\n&quot;
+						+ &quot;				&lt;!-- END MENU --&gt;\n&quot;
+						+ &quot;			&lt;/div&gt;\n&quot;
+						+ &quot;		&lt;/div&gt;\n&quot;
+						+ &quot;		&lt;div class=\&quot;col-md-9\&quot;&gt;\n&quot;
+						+ &quot;            &lt;div class=\&quot;profile-content\&quot;&gt;\n&quot;
+						+ &quot;			   Malesuada accumsan accumsan litora convallis tellus ligula mi eros primis. Aenean morbi sit sollicitudin aenean, orci quis dictum eleifend eros. Libero tortor, sagittis natoque! Nulla ac feugiat dictumst imperdiet risus. Habitant lacinia magna porta cum. Nisi mollis duis diam quisque quam vitae sollicitudin. Amet volutpat fringilla metus integer urna luctus ut volutpat gravida aenean. Nunc, volutpat diam torquent lacinia augue fames tempor parturient massa amet.\n&quot;
+						+ &quot;&lt;br&gt;\n&quot;
+						+ &quot;&lt;br&gt;\n&quot;
+						+ &quot;Non metus tortor purus etiam augue facilisis ad massa, litora duis. Tortor consectetur, blandit ipsum felis sagittis. Inceptos justo sociosqu volutpat eu, himenaeos pharetra ac vivamus felis dapibus hendrerit. Mauris sodales volutpat eleifend parturient vivamus fringilla dictum morbi proin habitasse euismod. Quisque praesent interdum aliquet himenaeos sagittis amet adipiscing non tempus ultricies diam tempus! Lorem cum leo tellus aptent orci vel vivamus. Blandit pharetra blandit pellentesque ut. Felis dis torquent, nam vel aptent sociis. Elit nostra sit sed inceptos mauris magna rutrum quam porttitor magnis tristique proin? Duis facilisi enim nisi vulputate orci felis amet tristique enim nec netus quam. Elementum ipsum fermentum risus ac mi scelerisque ridiculus mus, metus aenean purus. Cum tristique cum aliquam bibendum aptent justo, orci cursus nisl netus. Platea ac tristique cum ut nibh egestas senectus! Platea mi faucibus velit adipiscing natoque aliquam montes leo. Potenti vulputate?\n&quot;
+						+ &quot;&lt;br&gt;\n&quot;
+						+ &quot;&lt;br&gt;\n&quot;
+						+ &quot;Eleifend amet feugiat ac imperdiet pulvinar nisl. Dictum blandit elit ut facilisis vitae nulla, libero risus nec ut blandit cursus. Sollicitudin interdum, orci sit. Vel tempor ipsum tempor lectus fringilla tellus lobortis eget, eu ullamcorper orci. Fusce ornare ridiculus praesent primis ornare magna ullamcorper ornare mauris litora odio! Primis lobortis cum dictum cum accumsan tortor magna gravida; vestibulum eget! Elementum class netus neque ornare. Porta sodales pretium vulputate aenean pretium accumsan vehicula iaculis. Montes ac consectetur molestie nisl tellus eget. Venenatis class lacus sem litora netus maecenas facilisis cursus. Dictumst tempor nullam dignissim curabitur lacus? \n&quot;
+						+ &quot;            &lt;/div&gt;\n&quot;
+						+ &quot;		&lt;/div&gt;\n&quot;
+						+ &quot;	&lt;/div&gt;\n&quot;
+						+ &quot;&lt;/div&gt;&quot;
+						+ &quot;\n&quot;
+						+ &quot;    &lt;!-- Main Footer --&gt;\n&quot;
+						+ &quot;    &lt;footer class=\&quot;p-3 bg-dark text-white text-center\&quot;&gt;\n&quot;
+						+ &quot;        &lt;div class=\&quot;container\&quot;&gt;\n&quot;
+						+ &quot;            &lt;div class=\&quot;row\&quot;&gt;\n&quot;
+						+ &quot;                &lt;div class=\&quot;col\&quot;&gt;\n&quot;
+						+ &quot;                    &lt;h3&gt;Copyright &amp;copy; 2020 , WJLaw LLC&lt;/h3&gt;\n&quot;
+						+ &quot;                    &lt;h6&gt;All Rights Reserved&lt;/h6&gt;\n&quot;
+						+ &quot;                &lt;/div&gt;\n&quot;
+						+ &quot;            &lt;/div&gt;\n&quot;
+						+ &quot;        &lt;/div&gt;\n&quot;
+						+ &quot;    &lt;/footer&gt;\n&quot;
+						+ &quot;\n&quot;
+						+ &quot;\n&quot;
+						+ &quot;&lt;!-- Bootstrap  JS Files --&gt;\n&quot;
+						+ &quot;&lt;script src=\&quot;bootstrap/js/jquery.js\&quot;&gt;&lt;/script&gt;\n&quot;
+						+ &quot;&lt;script src=\&quot;bootstrap/js/popper.js\&quot;&gt;&lt;/script&gt;\n&quot;
+						+ &quot;&lt;script src=\&quot;bootstrap/js/bootstrap.js\&quot;&gt;&lt;/script&gt;\n&quot;
+						+ &quot;&lt;script src=\&quot;bootstrap/js/mdb.js\&quot;&gt;&lt;/script&gt;\n&quot;
+						+ &quot;&lt;script src=\&quot;https://cdn.ckeditor.com/4.14.0/standard/ckeditor.js\&quot;&gt;&lt;/script&gt;\n&quot;
+						+ &quot;    &lt;script&gt;\n&quot;
+						+ &quot;        CKEDITOR.replace( 'editor1' );\n&quot;
+						+ &quot;    &lt;/script&gt;\n&quot;
+						+ &quot;&lt;/body&gt;\n&quot;
+						+ &quot;&lt;/html&gt;&quot;);
+				
+			}
+		
+		}
+		
+		// req.getRequestDispatcher(new RequestForwarder().routes(req)).forward(req, resp);
+<span class="fc" id="L368">	}</span>
+	
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>

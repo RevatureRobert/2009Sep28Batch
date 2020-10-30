@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/js" href= "bcf.js">
+	<link rel="stylesheet" type="text/css" href="decorateforms.css">
+	
+<script>
+function goBack() {
+  window.history.back();
+}
+$(document).on('keydown', 'input[pattern]', function(e){
+	  var input = $(this);
+	  var oldVal = input.val();
+	  var regex = new RegExp(input.attr('pattern'), 'g');
+
+	  setTimeout(function(){
+	    var newVal = input.val();
+	    if(!regex.test(newVal)){
+	      input.val(oldVal); 
+	    }
+	  }, 0);
+	});
+parseFloat($(this).val()).toFixed(2)
+</script>
+</head>
+
+<body>
+<form class="form" action="http://localhost:8080/ExpenseReimbursementApplication/ViewPastEmpReimbServlet" method="POST">
+	<div class ="wrapper">
+
+  <div id = "title" style="margin-bottom: 35px">View Past Reimbursements By Employee</div>
+  <div class= "contact-form" class = "input-fields">
+    <label for="givennames" class="form__label" style="margin-bottom: 35px">Employee Full Name:</label>
+    <input class="input" name="empfname" type = "text">
+  </div>
+  <div class="form">
+    <button style="height: 45px" class="btn" type="submit">Submit</button>
+    <input  style="height: 45px"class = "btn" type="button" value="Go back!" onclick="history.back()">
+  </div>
+  </div>
+</form>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>FinanceManagerController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Project1</a> &gt; <a href="index.source.html" class="el_package">com.controller</a> &gt; <span class="el_source">FinanceManagerController.java</span></div><h1>FinanceManagerController.java</h1><pre class="source lang-java linenums">package com.controller;
+
+import java.util.Optional;
+
+import javax.servlet.http.HttpServletRequest;
+
+import com.model.FinanceManager;
+import com.service.FinanceManagerService;
+
+public class FinanceManagerController 
+{
+	private FinanceManagerService fms;
+
+	public FinanceManagerController(FinanceManagerService fms) {
+<span class="fc" id="L15">		super();</span>
+<span class="fc" id="L16">		this.fms = fms;</span>
+<span class="fc" id="L17">	}</span>
+
+	public FinanceManagerController() 
+	{
+<span class="fc" id="L21">		this(new FinanceManagerService());</span>
+<span class="fc" id="L22">	}</span>
+	
+	public String login(HttpServletRequest req)
+	{
+<span class="nc" id="L26">		String user_id = req.getParameter(&quot;users_id&quot;);</span>
+<span class="nc" id="L27">		System.out.println(user_id);</span>
+		
+<span class="nc bnc" id="L29" title="All 2 branches missed.">		if(user_id.equals(null))</span>
+		{
+<span class="nc" id="L31">			user_id = &quot;2&quot;;</span>
+		}
+		
+<span class="nc" id="L34">		int id = Integer.parseInt(user_id);</span>
+		
+<span class="nc" id="L36">		FinanceManager fm = fms.findById(id);</span>
+		
+<span class="nc bnc" id="L38" title="All 2 branches missed.">		if(fm != null)</span>
+		{
+<span class="nc" id="L40">			return &quot;html/financemanager.html&quot;;</span>
+		}
+		else
+		{
+<span class="nc" id="L44">			return &quot;html/landing.html&quot;;</span>
+		}
+	}
+	
+	
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>

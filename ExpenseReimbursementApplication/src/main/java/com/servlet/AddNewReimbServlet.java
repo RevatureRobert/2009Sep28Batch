@@ -43,7 +43,7 @@ public class AddNewReimbServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		
 		resp.setContentType("text/html");
@@ -72,18 +72,7 @@ public class AddNewReimbServlet extends HttpServlet {
 		
 		
 		Reimbursement reimb = new Reimbursement(remamt, description, userID, 1, remtype);
-	/*	
-		System.out.println("The remtype was " + remtype);
-		
-		System.out.println("The username is " + inputUsername);
-		
-		System.out.println(reimb.getReimb_amount());
-		System.out.println(reimb.getReimb_author());
-		System.out.println(reimb.getReimb_description());
-		System.out.println(reimb.getReimb_status_id());
-		System.out.println(reimb.getReimb_type_id());
-		
-	*/	
+
 		String sql = "insert into \"Project1\".reimbursement (reimb_amount, reimb_submitted, reimb_description, reimb_author, reimb_status_id, reimb_type_id)\n"
 				+ "values (?, ?, ?, ?, ?, ?);";
 		
@@ -132,7 +121,7 @@ public class AddNewReimbServlet extends HttpServlet {
 				+ "    <!-- Main Navbar -->\n"
 				+ "    <nav class=\"navbar navbar-expand-sm navbar-dark bg-dark\">\n"
 				+ "        <div class=\"container\">\n"
-				+ "            <a href=\"index1.html\" class=\"navbar-brand text-warning\">\n"
+				+ "            <a href=\"html_css_js/loginpage.html\" class=\"navbar-brand text-warning\">\n"
 				+ "               <i class=\"fa fa-snowflake\"></i>WJLaw LLC\n"
 				+ "            </a>\n"
 				+ "            <button class=\"navbar-toggler\" data-toggle=\"collapse\" data-target=\"#ui-navbar\">\n"
@@ -142,7 +131,7 @@ public class AddNewReimbServlet extends HttpServlet {
 				+ "            <div class=\"collapse navbar-collapse\" id=\"ui-navbar\">\n"
 				+ "                <ul class=\"navbar-nav ml-auto\">\n"
 				+ "                    <li class=\"nav-item\">\n"
-				+ "                        <a class=\"nav-link\" href=\"login.html\">\n"
+				+ "                        <a class=\"nav-link\" href=\"http://localhost:8080/ExpenseReimbursementApplication/\">\n"
 				+ "                            <i class=\"fa fa-sign-out-alt text-muted\"></i> LogOut</a>\n"
 				+ "                    </li>\n"
 				+ "                </ul>\n"
@@ -170,23 +159,13 @@ public class AddNewReimbServlet extends HttpServlet {
 				+ "					</div>\n"
 				+ "				</div>\n"
 				+ "				<!-- END SIDEBAR USER TITLE -->\n"
-				+ "				<!-- SIDEBAR BUTTONS -->\n"
-				+ "				<div class=\"profile-userbuttons\">\n"
-				+ "					<button type=\"button\" class=\"btn btn-success btn-sm\">Follow</button>\n"
-				+ "					<button type=\"button\" class=\"btn btn-danger btn-sm\">Message</button>\n"
-				+ "				</div>\n"
 				+ "				<!-- END SIDEBAR BUTTONS -->\n"
 				+ "				<!-- SIDEBAR MENU -->\n"
 				+ "				<div class=\"profile-usermenu\">\n"
 				+ "					<ul class=\"nav\">\n"
-				+ "						<li class=\"active\">\n"
-				+ "							<a href=\"#\">\n"
-				+ "							<i class=\"glyphicon glyphicon-home\"></i>\n"
-				+ "							WJLaw </a>\n"
-				+ "						</li>\n"
 				+ "						<li>\n"
-				+ "							<a href=\"html_css_js/verifyusername.html\">\n"
-				+ "							<i class=\"glyphicon glyphicon-user\"></i>\n"
+				+ "							<a href=\"html_css_js/verifyusername2.html\">\n"
+				+ "							<i class=\"glyphicon glyphicon-ok\"></i>\n"
 				+ "							View Past Reimbursement Tickets </a>\n"
 				+ "						</li>\n"
 				+ "						<li>\n"

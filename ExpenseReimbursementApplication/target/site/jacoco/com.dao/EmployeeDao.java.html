@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>EmployeeDao.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Project1</a> &gt; <a href="index.source.html" class="el_package">com.dao</a> &gt; <span class="el_source">EmployeeDao.java</span></div><h1>EmployeeDao.java</h1><pre class="source lang-java linenums">package com.dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.util.List;
+
+import com.model.Employee;
+import com.util.ConnectionUtil;
+
+<span class="fc" id="L13">public class EmployeeDao </span>
+{	
+	public int findUserIDByUserName(String username)
+	{
+<span class="fc" id="L17">		String sql = &quot;select users.users_id from \&quot;Project1\&quot;.users where username = ?;&quot;;	</span>
+<span class="fc" id="L18">		int users_id = 0;	</span>
+<span class="fc" id="L19">		try (Connection conn = ConnectionUtil.getInstance().getConnection();</span>
+<span class="fc" id="L20">				PreparedStatement ps = conn.prepareStatement(sql)) </span>
+		{
+<span class="fc" id="L22">			ps.setString(1, username);</span>
+<span class="fc" id="L23">			ResultSet rs = ps.executeQuery();</span>
+			
+<span class="fc bfc" id="L25" title="All 2 branches covered.">			while(rs.next())</span>
+			{
+<span class="fc" id="L27">				users_id = rs.getInt(1);</span>
+			}
+		}
+<span class="nc" id="L30">		catch(SQLException e)</span>
+		{
+<span class="nc" id="L32">			System.out.println(&quot;An exception occurred&quot;);</span>
+<span class="nc" id="L33">			e.printStackTrace();</span>
+<span class="nc" id="L34">			return users_id;		</span>
+<span class="fc" id="L35">		}</span>
+<span class="fc" id="L36">		return users_id;</span>
+	}	
+	
+	public int findUserIDByFullName(String fullname)
+	{
+<span class="nc" id="L41">		String firstname =&quot;&quot;;</span>
+<span class="nc" id="L42">		String lastname =&quot;&quot;;</span>
+<span class="nc" id="L43">		int hit = 0;</span>
+		
+<span class="nc bnc" id="L45" title="All 2 branches missed.">		for(int i = 0; i &lt;fullname.length(); i++)</span>
+		{
+<span class="nc bnc" id="L47" title="All 2 branches missed.">			if(hit == 0)</span>
+			{
+<span class="nc bnc" id="L49" title="All 2 branches missed.">				if(fullname.charAt(i) == ' ')</span>
+				{
+<span class="nc" id="L51">					hit++;</span>
+<span class="nc" id="L52">					continue;</span>
+				}
+<span class="nc" id="L54">				firstname += fullname.charAt(i);</span>
+			}
+			
+<span class="nc bnc" id="L57" title="All 2 branches missed.">			if(hit == 1)</span>
+			{
+<span class="nc" id="L59">				lastname += fullname.charAt(i);</span>
+			}
+		}
+		
+<span class="nc" id="L63">		int userid = 0;</span>
+<span class="nc" id="L64">		String sql = &quot;select users.users_id from \&quot;Project1\&quot;.users where first_name = ? and last_name = ?;&quot;;</span>
+		
+<span class="nc" id="L66">		try (Connection conn = ConnectionUtil.getInstance().getConnection();</span>
+<span class="nc" id="L67">				PreparedStatement ps = conn.prepareStatement(sql)) </span>
+		{
+<span class="nc" id="L69">			ps.setString(1, firstname);</span>
+<span class="nc" id="L70">			ps.setString(2, lastname);</span>
+<span class="nc" id="L71">			ResultSet rs = ps.executeQuery();</span>
+			
+<span class="nc bnc" id="L73" title="All 2 branches missed.">			while(rs.next())</span>
+			{
+<span class="nc" id="L75">				userid = rs.getInt(1);</span>
+			}
+		}
+<span class="nc" id="L78">		catch(SQLException e)</span>
+		{
+<span class="nc" id="L80">			System.out.println(&quot;An exception occurred&quot;);</span>
+<span class="nc" id="L81">			e.printStackTrace();</span>
+<span class="nc" id="L82">			return userid;		</span>
+<span class="nc" id="L83">		}</span>
+<span class="nc" id="L84">		return userid;</span>
+		
+	}
+	public String findfullNamebyUserID(int userid)
+	{
+<span class="fc" id="L89">String sql = &quot;select users.first_name, users.last_name from \&quot;Project1\&quot;.users where users_id = ?;&quot;;</span>
+		
+<span class="fc" id="L91">		String firstname = &quot;&quot;;</span>
+<span class="fc" id="L92">		String lastname = &quot;&quot;;</span>
+		
+<span class="fc" id="L94">		try (Connection conn = ConnectionUtil.getInstance().getConnection();</span>
+<span class="fc" id="L95">				PreparedStatement ps = conn.prepareStatement(sql)) </span>
+		{
+<span class="fc" id="L97">			ps.setInt(1, userid);</span>
+<span class="fc" id="L98">			ResultSet rs = ps.executeQuery();</span>
+			
+<span class="fc bfc" id="L100" title="All 2 branches covered.">			while(rs.next())</span>
+			{
+<span class="fc" id="L102">				firstname = rs.getString(1);</span>
+<span class="fc" id="L103">				lastname = rs.getString(2);</span>
+			}
+		}
+<span class="nc" id="L106">		catch(SQLException e)</span>
+		{
+<span class="nc" id="L108">			System.out.println(&quot;An exception occurred&quot;);</span>
+<span class="nc" id="L109">			e.printStackTrace();</span>
+<span class="nc" id="L110">			return firstname;		</span>
+<span class="fc" id="L111">		}</span>
+<span class="fc" id="L112">		return firstname + &quot; &quot; + lastname;</span>
+	}	
+	public int confirmAddedReimbursement()
+	{
+<span class="fc" id="L116">		String sql = &quot;insert into \&quot;Project1\&quot;.reimbursement (reimb_amount, reimb_submitted, reimb_description, reimb_author, reimb_status_id, reimb_type_id)\n&quot;</span>
+				+ &quot;values (?, ?, ?, ?, ?, ?);&quot;;
+		
+<span class="fc" id="L119">		Timestamp ts = new Timestamp(System.currentTimeMillis());</span>
+		
+<span class="fc" id="L121">		try (Connection conn = ConnectionUtil.getInstance().getConnection();</span>
+<span class="fc" id="L122">				PreparedStatement ps = conn.prepareStatement(sql)) </span>
+		{
+<span class="fc" id="L124">			ps.setFloat(1, 1);</span>
+<span class="fc" id="L125">			ps.setTimestamp(2, ts);</span>
+<span class="fc" id="L126">			ps.setString(3, &quot;&quot;);</span>
+<span class="fc" id="L127">			ps.setInt(4, 1);</span>
+<span class="fc" id="L128">			ps.setInt(5, 1);</span>
+<span class="fc" id="L129">			ps.setInt(6, 1);</span>
+<span class="fc" id="L130">			int rs = ps.executeUpdate();		</span>
+<span class="nc" id="L131">		}catch(SQLException e)</span>
+		{
+<span class="nc" id="L133">			System.out.println(&quot;can't add reimbursement to database&quot;);</span>
+<span class="nc" id="L134">			e.printStackTrace();</span>
+<span class="fc" id="L135">		}</span>
+		
+<span class="fc" id="L137">		return 1;</span>
+	}
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>

@@ -10,10 +10,8 @@ import java.util.List;
 import com.model.FinanceManager;
 import com.util.ConnectionUtil;
 
-public class FinanceManagerDao implements DaoContract <FinanceManager, Integer>
+public class FinanceManagerDao 
 {
-
-	@Override
 	public List<FinanceManager> findAll() {
 		
 		List <FinanceManager> partners = new LinkedList<>();
@@ -35,10 +33,8 @@ public class FinanceManagerDao implements DaoContract <FinanceManager, Integer>
 		{
 			e.printStackTrace();
 		}
-		return partners;
+		return partners;		
 	}
-
-	@Override
 	public FinanceManager findById(int id) 
 	{
 		FinanceManager fm = null;
@@ -60,23 +56,4 @@ public class FinanceManagerDao implements DaoContract <FinanceManager, Integer>
 		
 		return fm;
 	}
-
-	@Override
-	public int update(FinanceManager user) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int create(FinanceManager user) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int delete(Integer id) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
 }

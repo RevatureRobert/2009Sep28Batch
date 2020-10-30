@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Reimbursement.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Project1</a> &gt; <a href="index.source.html" class="el_package">com.model</a> &gt; <span class="el_source">Reimbursement.java</span></div><h1>Reimbursement.java</h1><pre class="source lang-java linenums">package com.model;
+
+public class Reimbursement 
+{
+
+	private float reimb_amount;
+	private String reimb_description;
+	private int reimb_author;
+	private int reimb_status_id;
+	private int reimb_type_id;
+	
+
+	public Reimbursement(float reimb_amount, String reimb_description, int reimb_author, int reimb_status_id,
+			int reimb_type_id) {
+<span class="fc" id="L15">		super();</span>
+<span class="fc" id="L16">		this.reimb_amount = reimb_amount;</span>
+<span class="fc" id="L17">		this.reimb_description = reimb_description;</span>
+<span class="fc" id="L18">		this.reimb_author = reimb_author;</span>
+<span class="fc" id="L19">		this.reimb_status_id = reimb_status_id;</span>
+<span class="fc" id="L20">		this.reimb_type_id = reimb_type_id;</span>
+<span class="fc" id="L21">	}</span>
+
+	public float getReimb_amount() {
+<span class="fc" id="L24">		return reimb_amount;</span>
+	}
+
+	public void setReimb_amount(float reimb_amount) {
+<span class="nc" id="L28">		this.reimb_amount = reimb_amount;</span>
+<span class="nc" id="L29">	}</span>
+
+	public String getReimb_description() {
+<span class="fc" id="L32">		return reimb_description;</span>
+	}
+
+	public void setReimb_description(String reimb_description) {
+<span class="nc" id="L36">		this.reimb_description = reimb_description;</span>
+<span class="nc" id="L37">	}</span>
+
+	public int getReimb_author() {
+<span class="fc" id="L40">		return reimb_author;</span>
+	}
+
+	public void setReimb_author(int reimb_author) {
+<span class="nc" id="L44">		this.reimb_author = reimb_author;</span>
+<span class="nc" id="L45">	}</span>
+
+	public int getReimb_status_id() {
+<span class="fc" id="L48">		return reimb_status_id;</span>
+	}
+
+	public void setReimb_status_id(int reimb_status_id) {
+<span class="nc" id="L52">		this.reimb_status_id = reimb_status_id;</span>
+<span class="nc" id="L53">	}</span>
+
+	public int getReimb_type_id() {
+<span class="fc" id="L56">		return reimb_type_id;</span>
+	}
+
+	public void setReimb_type_id(int reimb_type_id) {
+<span class="nc" id="L60">		this.reimb_type_id = reimb_type_id;</span>
+<span class="nc" id="L61">	}</span>
+
+
+
+	
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>

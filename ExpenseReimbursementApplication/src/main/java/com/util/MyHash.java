@@ -15,9 +15,18 @@ public class MyHash
 		
 		digest.reset();
 		
+		try
+		{
 		byte[] hash = digest.digest(data.getBytes());
 		
 		return bytesToStringHex(hash);
+		}
+		catch(Exception e)
+		{
+			System.out.println("Testing");
+		}
+		
+		return "";
 	}
 
 	

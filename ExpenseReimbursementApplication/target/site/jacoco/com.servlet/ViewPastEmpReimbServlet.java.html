@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ViewPastEmpReimbServlet.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Project1</a> &gt; <a href="index.source.html" class="el_package">com.servlet</a> &gt; <span class="el_source">ViewPastEmpReimbServlet.java</span></div><h1>ViewPastEmpReimbServlet.java</h1><pre class="source lang-java linenums">package com.servlet;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.dao.EmployeeDao;
+import com.util.ConnectionUtil;
+
+/**
+ * Servlet implementation class ViewPastEmpReimbServlet
+ */
+@WebServlet(&quot;/ViewPastEmpReimbServlet&quot;)
+public class ViewPastEmpReimbServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public ViewPastEmpReimbServlet() {
+<span class="nc" id="L30">        super();</span>
+        // TODO Auto-generated constructor stub
+<span class="nc" id="L32">    }</span>
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+<span class="nc" id="L39">		response.getWriter().append(&quot;Served at: &quot;).append(request.getContextPath());</span>
+<span class="nc" id="L40">	}</span>
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+	{
+		
+		
+<span class="nc" id="L49">		response.setContentType(&quot;text/html&quot;);</span>
+<span class="nc" id="L50">		PrintWriter out = response.getWriter();</span>
+<span class="nc" id="L51">		String fullname = &quot;&quot;;</span>
+		
+		try
+		{
+<span class="nc" id="L55">		fullname = request.getParameter(&quot;empfname&quot;);</span>
+		}
+<span class="nc" id="L57">		catch(NullPointerException e)</span>
+		{
+<span class="nc" id="L59">			System.out.println(&quot;Servlets were being tested&quot;);</span>
+<span class="nc" id="L60">		}</span>
+<span class="nc" id="L61">		EmployeeDao ed = new EmployeeDao();</span>
+		
+<span class="nc" id="L63">		int userID = ed.findUserIDByFullName(fullname);</span>
+		
+		
+<span class="nc" id="L66">		out.print(&quot;&lt;!DOCTYPE html&gt;\n&quot;</span>
+				+ &quot;\n&quot;
+				+ &quot;&lt;html&gt;\n&quot;
+				+ &quot;\n&quot;
+				+ &quot;&lt;head&gt;\n&quot;
+				+ &quot;\n&quot;
+				+ &quot; &lt;title&gt;Table layout&lt;/title&gt;\n&quot;
+				+ &quot;\n&quot;
+				+ &quot; &lt;link rel=\&quot;stylesheet\&quot; type=\&quot;text/css\&quot; href=\&quot;html_css_js/tablestyler2.css\&quot;&gt;\n&quot;
+				+ &quot;\n&quot;
+				+ &quot;	&lt;link rel=\&quot;stylesheet\&quot; type=\&quot;text/js\&quot; href= \&quot;html_css_js/bcf.js\&quot;&gt;\n&quot;
+				+ &quot;	\n&quot;
+				+ &quot;&lt;script&gt;\n&quot;
+				+ &quot;function goBack() {\n&quot;
+				+ &quot;  window.history.back();\n&quot;
+				+ &quot;}\n&quot;
+				+ &quot;$(document).on('keydown', 'input[pattern]', function(e){\n&quot;
+				+ &quot;	  var input = $(this);\n&quot;
+				+ &quot;	  var oldVal = input.val();\n&quot;
+				+ &quot;	  var regex = new RegExp(input.attr('pattern'), 'g');\n&quot;
+				+ &quot;\n&quot;
+				+ &quot;	  setTimeout(function(){\n&quot;
+				+ &quot;	    var newVal = input.val();\n&quot;
+				+ &quot;	    if(!regex.test(newVal)){\n&quot;
+				+ &quot;	      input.val(oldVal); \n&quot;
+				+ &quot;	    }\n&quot;
+				+ &quot;	  }, 0);\n&quot;
+				+ &quot;	});\n&quot;
+				+ &quot;parseFloat($(this).val()).toFixed(2)\n&quot;
+				+ &quot;&lt;/script&gt;&quot;
+				+ &quot;&lt;/head&gt;\n&quot;
+				+ &quot;\n&quot;
+				+ &quot;&lt;body&gt;\n&quot;
+				+ &quot;\n&quot;
+				+ &quot;\n&quot;
+				+ &quot;  &lt;div class=\&quot;filter\&quot;&gt;\n&quot;
+				+ &quot;\n&quot;
+				+ &quot; &lt;/div&gt;&quot;);
+		
+<span class="nc" id="L105">		out.print(&quot;&lt;table class=\&quot;content-table\&quot;&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;reimb_id&lt;/th&gt;&lt;th&gt;Amount&lt;/th&gt;&lt;th&gt;Time Submitted&lt;/th&gt;&lt;th&gt;Time Resolved&lt;/th&gt;&lt;th&gt;Description&lt;/th&gt;&lt;th&gt;Receipt&lt;/th&gt;&lt;th&gt;Author&lt;/th&gt;&lt;th&gt;Resolver&lt;/th&gt;&lt;th&gt;Status&lt;/th&gt;&lt;th&gt;Type&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&quot;);</span>
+		
+		
+<span class="nc" id="L108">	String sql = &quot;select * from \&quot;Project1\&quot;.reimbursement where reimb_author = ?&quot;;</span>
+		
+
+		
+<span class="nc" id="L112">		try (Connection conn = ConnectionUtil.getInstance().getConnection();</span>
+<span class="nc" id="L113">				PreparedStatement ps = conn.prepareStatement(sql)) </span>
+		{
+<span class="nc" id="L115">			ps.setInt(1, userID);</span>
+<span class="nc" id="L116">			ResultSet rs = ps.executeQuery();</span>
+			
+<span class="nc bnc" id="L118" title="All 2 branches missed.">			while(rs.next())</span>
+			{
+<span class="nc" id="L120">				out.print(&quot;&lt;tr&gt;&lt;td&gt;&quot;);</span>
+<span class="nc" id="L121">				out.println(rs.getInt(1));</span>
+<span class="nc" id="L122">				out.print(&quot;&lt;/td&gt;&quot;);</span>
+<span class="nc" id="L123">				out.print(&quot;&lt;td&gt;&quot;);</span>
+<span class="nc" id="L124">				out.print(rs.getFloat(2));</span>
+<span class="nc" id="L125">				out.print(&quot;&lt;/td&gt;&quot;);</span>
+<span class="nc" id="L126">				out.print(&quot;&lt;td&gt;&quot;);</span>
+<span class="nc" id="L127">				out.print(rs.getTimestamp(3));</span>
+<span class="nc" id="L128">				out.print(&quot;&lt;/td&gt;&quot;);</span>
+<span class="nc" id="L129">				out.print(&quot;&lt;td&gt;&quot;);</span>
+				
+<span class="nc bnc" id="L131" title="All 2 branches missed.">				if(rs.getTimestamp(4) == null)</span>
+				{
+<span class="nc" id="L133">					out.print(&quot;Unresolved&quot;);</span>
+				}
+				else
+				{
+<span class="nc" id="L137">				out.print(rs.getTimestamp(4));</span>
+				}
+<span class="nc" id="L139">				out.print(&quot;&lt;/td&gt;&quot;);</span>
+<span class="nc" id="L140">				out.print(&quot;&lt;td&gt;&quot;);</span>
+<span class="nc" id="L141">				out.print(rs.getString(5));</span>
+<span class="nc" id="L142">				out.print(&quot;&lt;/td&gt;&quot;);</span>
+<span class="nc" id="L143">				out.print(&quot;&lt;td&gt;&quot;);</span>
+<span class="nc" id="L144">				out.print(rs.getLong(6));</span>
+<span class="nc" id="L145">				out.print(&quot;&lt;/td&gt;&quot;);</span>
+<span class="nc" id="L146">				out.print(&quot;&lt;td&gt;&quot;);		</span>
+<span class="nc" id="L147">				out.print(fullname);</span>
+<span class="nc" id="L148">				out.print(&quot;&lt;/td&gt;&quot;);</span>
+<span class="nc" id="L149">				out.print(&quot;&lt;td&gt;&quot;);</span>
+<span class="nc" id="L150">				int fm_id = rs.getInt(8);</span>
+<span class="nc bnc" id="L151" title="All 2 branches missed.">				if(fm_id == 1)</span>
+				{
+<span class="nc" id="L153">					out.print(&quot;Thomas Wilkins&quot;);</span>
+				}	
+<span class="nc bnc" id="L155" title="All 2 branches missed.">				else if(fm_id == 2)</span>
+				{
+<span class="nc" id="L157">					out.print(&quot;Kenny Jones&quot;);</span>
+				}
+				else
+				{
+<span class="nc" id="L161">					out.print(&quot;Unresolved&quot;);</span>
+				}
+<span class="nc" id="L163">				out.print(&quot;&lt;/td&gt;&quot;);</span>
+<span class="nc" id="L164">				out.print(&quot;&lt;td&gt;&quot;);</span>
+<span class="nc" id="L165">				int statusid = rs.getInt(9);</span>
+<span class="nc bnc" id="L166" title="All 2 branches missed.">				if(statusid == 1)</span>
+				{
+<span class="nc" id="L168">					out.print(&quot;Pending&quot;);</span>
+				}
+<span class="nc bnc" id="L170" title="All 2 branches missed.">				if(statusid == 2)</span>
+				{
+<span class="nc" id="L172">					out.print(&quot;Approved&quot;);</span>
+				}
+<span class="nc bnc" id="L174" title="All 2 branches missed.">				if(statusid == 3)</span>
+				{
+<span class="nc" id="L176">					out.print(&quot;Rejected&quot;);</span>
+				}
+<span class="nc" id="L178">				out.print(&quot;&lt;/td&gt;&quot;);</span>
+<span class="nc" id="L179">				out.print(&quot;&lt;td&gt;&quot;);</span>
+<span class="nc" id="L180">				int type = rs.getInt(10);</span>
+<span class="nc bnc" id="L181" title="All 2 branches missed.">				if(type == 1)</span>
+				{
+<span class="nc" id="L183">					out.print(&quot;Lodging&quot;);</span>
+				}
+<span class="nc bnc" id="L185" title="All 2 branches missed.">				if(type == 2)</span>
+				{
+<span class="nc" id="L187">					out.print(&quot;Travel&quot;);</span>
+				}
+<span class="nc bnc" id="L189" title="All 2 branches missed.">				if(type == 3)</span>
+				{
+<span class="nc" id="L191">					out.print(&quot;Food&quot;);</span>
+				}
+<span class="nc bnc" id="L193" title="All 2 branches missed.">				if(type == 4)</span>
+				{
+<span class="nc" id="L195">					out.print(&quot;Other&quot;);</span>
+				}
+<span class="nc" id="L197">				out.print(&quot;&lt;/td&gt;&quot;);</span>
+<span class="nc" id="L198">				out.print(&quot;&lt;/tr&gt;&quot;);</span>
+				
+<span class="nc" id="L200">			}</span>
+		}
+<span class="nc" id="L202">		catch(SQLException e)</span>
+		{
+			
+<span class="nc" id="L205">			System.out.println(&quot;Exception bro&quot;);</span>
+<span class="nc" id="L206">			e.printStackTrace();</span>
+			
+<span class="nc" id="L208">		}</span>
+		
+<span class="nc" id="L210">		out.print(&quot;&lt;/table&gt;&quot;);</span>
+
+		
+<span class="nc" id="L213">		 out.print(&quot;&lt;input  class = \&quot;btn\&quot; style = \&quot;background-color:limegreen\&quot; type=\&quot;button\&quot; value=\&quot;Go back to Profile Page\&quot; onclick=\&quot;history.go(-2)\&quot;&gt;&quot;);</span>
+		
+		
+<span class="nc" id="L216">	}</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>

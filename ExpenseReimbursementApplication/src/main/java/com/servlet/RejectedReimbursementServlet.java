@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -39,7 +40,7 @@ public class RejectedReimbursementServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException 
+	public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException 
 	{
 		resp.setContentType("text/html");
 		
@@ -52,17 +53,21 @@ public class RejectedReimbursementServlet extends HttpServlet {
 		
 		EmployeeDao ed = new EmployeeDao();
 		
+		Timestamp ts = new Timestamp(System.currentTimeMillis());
 		
 		int userID = ed.findUserIDByUserName(fmusername);
 		
 		String fullname = ed.findfullNamebyUserID(userID);
 		
-		String sql = "update \"Project1\".reimbursement set reimb_status_id = 3 where reimb_id = ?;";
+		String sql = "update \"Project1\".reimbursement set reimb_status_id = 3, reimb_resolved = ?, reimb_resolver = ? where reimb_id = ?;";
 		
 		try (Connection conn = ConnectionUtil.getInstance().getConnection();
 				PreparedStatement ps = conn.prepareStatement(sql)) 
 		{
-			ps.setInt(1, reimb_id);
+			ps.setTimestamp(1, ts);
+			ps.setInt(2, userID);
+			ps.setInt(3, reimb_id);
+			
 			int rs = ps.executeUpdate();
 		}catch(SQLException e)
 		{
@@ -93,7 +98,7 @@ public class RejectedReimbursementServlet extends HttpServlet {
 				+ "    <!-- Main Navbar -->\n"
 				+ "    <nav class=\"navbar navbar-expand-sm navbar-dark bg-dark\">\n"
 				+ "        <div class=\"container\">\n"
-				+ "            <a href=\"index1.html\" class=\"navbar-brand text-warning\">\n"
+				+ "            <a href=\"html_css_js/loginpage.html\" class=\"navbar-brand text-warning\">\n"
 				+ "               <i class=\"fa fa-snowflake\"></i>WJLaw LLC\n"
 				+ "            </a>\n"
 				+ "            <button class=\"navbar-toggler\" data-toggle=\"collapse\" data-target=\"#ui-navbar\">\n"
@@ -103,7 +108,7 @@ public class RejectedReimbursementServlet extends HttpServlet {
 				+ "            <div class=\"collapse navbar-collapse\" id=\"ui-navbar\">\n"
 				+ "                <ul class=\"navbar-nav ml-auto\">\n"
 				+ "                    <li class=\"nav-item\">\n"
-				+ "                        <a class=\"nav-link\" href=\"login.html\">\n"
+				+ "                        <a class=\"nav-link\" href=\"http://localhost:8080/ExpenseReimbursementApplication/\">\n"
 				+ "                            <i class=\"fa fa-sign-out-alt text-muted\"></i> LogOut</a>\n"
 				+ "                    </li>\n"
 				+ "                </ul>\n"
@@ -131,26 +136,25 @@ public class RejectedReimbursementServlet extends HttpServlet {
 				+ "					</div>\n"
 				+ "				</div>\n"
 				+ "				<!-- END SIDEBAR USER TITLE -->\n"
-				+ "				<!-- SIDEBAR BUTTONS -->\n"
-				+ "				<div class=\"profile-userbuttons\">\n"
-				+ "					<button type=\"button\" class=\"btn btn-success btn-sm\">Follow</button>\n"
-				+ "					<button type=\"button\" class=\"btn btn-danger btn-sm\">Message</button>\n"
-				+ "				</div>\n"
-				+ "				<!-- END SIDEBAR BUTTONS -->\n"
 				+ "				<!-- SIDEBAR MENU -->\n"
 				+ "				<div class=\"profile-usermenu\">\n"
 				+ "					<ul class=\"nav\">\n"
-				+ "						<li class=\"active\">\n"
-				+ "							<a href=\"#\">\n"
-				+ "							<i class=\"glyphicon glyphicon-home\"></i>\n"
-				+ "							WJLaw </a>\n"
-				+ "						</li>\n"
 				+ "                      <form action=\"http://localhost:8080/ExpenseReimbursementApplication/ViewPendingReimbServlet\" method=\"POST\" "
 				+ "						<li>\n"
 				+ " <div> <button class=\"form__btn\" type=\"submit\">View Pending Reimbursement Tickets</button>  </div>"	
-				+ "							<i class=\"glyphicon glyphicon-ok\"></i>\n"
+				+ "							\n"
 				+ "						</li>\n"
-				+ "                      </form>"
+				+ "                      </form>"						
+				+ "						<li>\n"
+				+ "							<a href=\"html_css_js/viewemppastreimbserv.html\">\n"
+				+ "							<i class=\"glyphicon glyphicon-ok\"></i>\n"
+				+ "							View Past Tickets By Employee </a>\n"
+				+ "						</li>\n"
+				+ "						<li>\n"
+				+ "							<a href=\"html_css_js/regnewemp.html\">\n"
+				+ "							<i class=\"glyphicon glyphicon-ok\"></i>\n"
+				+ "							Register New Employee Account </a>\n"
+				+ "						</li>\n"
 				+ "						<li>\n"
 				+ "							<a href=\"html_css_js/approvereimb.html\">\n"
 				+ "							<i class=\"glyphicon glyphicon-ok\"></i>\n"

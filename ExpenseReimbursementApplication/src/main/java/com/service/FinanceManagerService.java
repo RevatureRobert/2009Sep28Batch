@@ -1,16 +1,17 @@
 package com.service;
 
-import com.dao.DaoContract;
+
 import com.dao.FinanceManagerDao;
 import com.model.FinanceManager;
 
 public class FinanceManagerService 
 {
-	private DaoContract <FinanceManager, Integer> fmdao;
 
-	public FinanceManagerService(DaoContract<FinanceManager, Integer> fmdao) {
+	FinanceManagerDao fmdao;
+	
+	public FinanceManagerService(FinanceManagerDao financeManagerDao) {
 		super();
-		this.fmdao = fmdao;
+		this.fmdao = financeManagerDao;
 	}
 
 	public FinanceManagerService() {
@@ -21,4 +22,6 @@ public class FinanceManagerService
 	{
 		return fmdao.findById(user_id);
 	}
+	
+	
 }
