@@ -1,3 +1,10 @@
+<<<<<<< HEAD
 #Thu Oct 22 12:24:00 EDT 2020
 org.eclipse.wst.server.core.isServerProject=true
 eclipse.preferences.version=1
+||||||| 9817e6de
+=======
+#Wed Oct 21 18:31:25 EDT 2020
+org.eclipse.wst.server.core.isServerProject=true
+eclipse.preferences.version=1
+>>>>>>> 9ca05587b685d91cfb74715f39a948bd3cfb10b7

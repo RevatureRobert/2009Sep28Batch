@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 SQL exception for User.findAll: The url cannot be null
 SQL exception for User.findById: The url cannot be null
 SQL exception for User.findAll: The url cannot be null
@@ -14,3 +15,77 @@ SQL exception for User.findAll: The url cannot be null
 SQL exception for User.findById: The url cannot be null
 SQL exception for Reimbursements.findAll: The url cannot be null
 SQL exception for User.findByName: The url cannot be null
+||||||| 9817e6de
+=======
+SQL exception for User.findAll: The url cannot be null
+SQL exception for Reimbursements.findReimsByUserId: ERROR: column "id" does not exist
+  Position: 47
+SQL exception for Reimbursements.findReimsByUserId: ERROR: column "id" does not exist
+  Position: 47
+SQL exception for Reimbursements.findReimsByUserId: The url cannot be null
+SQL exception for Reimbursements.findReimsByUserId: ERROR: relation "reimbursement" does not exist
+  Position: 15
+SQL exception for Reimbursements.findReimsByUserId: ERROR: relation "reimbursement" does not exist
+  Position: 15
+SQL exception for Reimbursements.findReimsByUserId: ERROR: column "id" does not exist
+  Position: 47
+SQL exception for Reimbursements.findReimsByUserId: ERROR: column "id" does not exist
+  Position: 47
+SQL exception for User.findByName: ERROR: relation "user_acc" does not exist
+  Position: 15
+SQL exception for User.findByName: ERROR: relation "user_acc" does not exist
+  Position: 15
+SQL exception for User.findByName: ERROR: relation "user_acc" does not exist
+  Position: 15
+SQL exception for User.findByName: ERROR: relation "user_acc" does not exist
+  Position: 15
+SQL exception for User.findByName: ERROR: relation "user_acc" does not exist
+  Position: 15
+SQL exception for User.findByName: ERROR: relation "user_acc" does not exist
+  Position: 15
+SQL exception for User.findByName: ERROR: relation "user_acc" does not exist
+  Position: 15
+SQL exception for User.findByName: ERROR: relation "user_acc" does not exist
+  Position: 15
+SQL exception for User.findByName: ERROR: relation "user_acc" does not exist
+  Position: 15
+SQL exception for User.findAll: ERROR: relation "user_acc" does not exist
+  Position: 15
+SQL exception for User.findById: ERROR: relation "user_acc" does not exist
+  Position: 15
+SQL exception for Reimbursements.findReimsByUserId: ERROR: relation "reimbursement" does not exist
+  Position: 15
+SQL exception for Reimbursements.findAll: ERROR: relation "reimbursement" does not exist
+  Position: 15
+SQL exception for User.findByName: ERROR: relation "user_acc" does not exist
+  Position: 15
+SQL exception for User.findAll: ERROR: relation "user_acc" does not exist
+  Position: 15
+SQL exception for User.findById: ERROR: relation "user_acc" does not exist
+  Position: 15
+SQL exception for Reimbursements.findReimsByUserId: ERROR: relation "reimbursement" does not exist
+  Position: 15
+SQL exception for Reimbursements.findAll: ERROR: relation "reimbursement" does not exist
+  Position: 15
+SQL exception for User.findByName: ERROR: relation "user_acc" does not exist
+  Position: 15
+SQL exception for User.findAll: The url cannot be null
+SQL exception for User.findById: The url cannot be null
+SQL exception for Reimbursements.findReimsByUserId: The url cannot be null
+SQL exception for Reimbursements.findAll: The url cannot be null
+SQL exception for User.findByName: The url cannot be null
+SQL exception for User.findByName: ERROR: relation "user_acc" does not exist
+  Position: 15
+SQL exception for User.findByName: ERROR: relation "user_acc" does not exist
+  Position: 15
+SQL exception for User.findByName: ERROR: relation "user_acc" does not exist
+  Position: 15
+SQL exception for User.findByName: ERROR: relation "user_acc" does not exist
+  Position: 15
+SQL exception for User.findByName: ERROR: relation "user_acc" does not exist
+  Position: 15
+SQL exception for User.findByName: The url cannot be null
+SQL exception for User.findByName: The url cannot be null
+SQL exception for User.findAll: The url cannot be null
+SQL exception for User.findById: The url cannot be null
+>>>>>>> 9ca05587b685d91cfb74715f39a948bd3cfb10b7

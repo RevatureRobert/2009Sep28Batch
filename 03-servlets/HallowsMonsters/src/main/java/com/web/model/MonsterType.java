@@ -1,7 +1,13 @@
 package com.web.model;
 
 public class MonsterType {
+<<<<<<< HEAD
 	private int id;
+||||||| 9817e6de
+=======
+	private int id;
+
+>>>>>>> 9ca05587b685d91cfb74715f39a948bd3cfb10b7
 	private String type;
 	private boolean furry;
 	private boolean paws;

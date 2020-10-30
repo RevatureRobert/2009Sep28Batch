@@ -23,6 +23,7 @@ async function asyncFetch(url, expression) {
   expression(json);
 }
 
+<<<<<<< HEAD
 asyncFetch("http://localhost:8080/HallowsMonsters/all.json", renderTable);
 
 async function addMonster() {
@@ -44,3 +45,34 @@ async function addMonster() {
 }
 
 document.getElementById("monSubmit").addEventListener("click", addMonster);
+||||||| 9817e6de
+asyncFetch(
+"http://localhost:8080/HallowsMonsters/all.json",
+renderTable
+);
+=======
+asyncFetch("http://localhost:8080/HallowsMonsters/all.json", renderTable);
+
+async function addMonster() {
+  const monster = {
+    name: document.getElementById("monName").value,
+    type: {
+      type: document.getElementById("monType").value,
+      furry: document.getElementById("monFur").value,
+      paws: document.getElementById("monPaws").value,
+    },
+  };
+  const fetched = await fetch(
+    "http://localhost:8080/HallowsMonsters/monster.json",
+    {
+      method: "post",
+      body: JSON.stringify(monster),
+    }
+  );
+  const json = await fetched.text();
+  const rows = (document.getElementById("hallowsTableBody").innerHTML = " ");
+  asyncFetch("http://localhost:8080/HallowsMonsters/all.json", renderTable);
+}
+
+document.getElementById("monSubmit").addEventListener("click", addMonster);
+>>>>>>> 9ca05587b685d91cfb74715f39a948bd3cfb10b7
