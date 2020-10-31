@@ -1,0 +1,76 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.sep2009</groupId>
+	<artifactId>MavenJava</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<description>this is the introduction to maven for sep 2009</description>
+
+
+	<properties>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<maven.compiler.source>1.8</maven.compiler.source>
+	</properties>
+
+	<dependencies>
+
+
+		<!-- https://mvnrepository.com/artifact/junit/junit -->
+		<dependency>
+		    <groupId>junit</groupId>
+		    <artifactId>junit</artifactId>
+		    <version>4.13</version>
+		    <scope>test</scope>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.mockito/mockito-core -->
+		<dependency>
+		    <groupId>org.mockito</groupId>
+		    <artifactId>mockito-core</artifactId>
+		    <version>3.5.11</version>
+		    <scope>test</scope>
+		</dependency>
+
+
+	</dependencies>
+
+</project>
+
+<!-- 
+	The pom.xml
+			pom stands for project object model
+			this is your configuration and overall outline for your project
+			you can add dependencies, variables, plugins, and alter the lifecycle of the project
+			what is the lifecycle of a project (the maven lifecycle)
+			
+lifecycles				default (build)								clean									site
+phases						validate								clean									site
+							compile
+							test-compile
+							test
+							package
+							install
+							deploy
+
+goals		individual goals inside of each phase. the phases are the large steps and the goals are the small steps within each phase.
+
+
+purpose				build your application			clean the target folder (rid of all compilations)		generate a documentation site
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+				
+
+ -->
