@@ -1,0 +1,17 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+Project1,com.project1.model,UserRole,24,34,5,6,7,10,6,6,2,4
+Project1,com.project1.model,ReimbursementStatus,48,47,11,9,17,17,13,8,4,4
+Project1,com.project1.model,User,22,36,0,0,11,13,6,6,6,6
+Project1,com.project1.model,Reimbursement,53,62,0,0,24,20,15,7,15,7
+Project1,com.project1.model,ReimbursementType,50,55,10,13,16,21,13,11,4,4
+Project1,com.project1.controller,UserController,56,211,1,5,15,42,2,7,1,5
+Project1,com.project1.controller,ReimbursementController,52,169,0,4,20,46,1,8,1,6
+Project1,com.project1.controller,SessionController,32,4,0,0,8,1,4,1,4,1
+Project1,com.project1.config,EnvironmentConnectionUtil,6,33,0,2,3,12,0,5,0,4
+Project1,com.project1.service,UserService,9,35,0,2,2,11,1,5,1,4
+Project1,com.project1.service,ReimbursementService,13,61,1,1,2,14,2,5,1,5
+Project1,com.project1.servlet,JsonServlet,27,0,0,0,8,0,4,0,4,0
+Project1,com.project1.servlet,NaviServlet,27,0,0,0,8,0,4,0,4,0
+Project1,com.project1.servlet,RequestForwarder,15,118,3,13,5,32,4,12,1,4
+Project1,com.project1.repo,ReimbursementDao,337,463,14,16,79,92,14,9,3,5
+Project1,com.project1.repo,UserDao,197,153,2,4,64,38,6,5,4,4
