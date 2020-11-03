@@ -12,6 +12,7 @@ public class OvenService {
     }
 
     public String create(Oven o) throws JsonProcessingException {
+        System.out.println(o);
         return new ObjectMapper().writeValueAsString(ovenDao.save(o));
     }
 }
