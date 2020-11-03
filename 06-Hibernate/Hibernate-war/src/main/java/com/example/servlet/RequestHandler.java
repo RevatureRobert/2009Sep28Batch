@@ -25,6 +25,13 @@ public class RequestHandler {
                 break;
             case "/api/allTurkey.json":
                 new TurkeyController().getAllTurkey(req,resp);
+                break;
+            case "/api/createOven.json":
+                new OvenController().createOven(req,resp);
+                break;
+            case "/api/createTurkey.json":
+                new TurkeyController().createTurkey(req,resp);
+                break;
         }
     }
 }
