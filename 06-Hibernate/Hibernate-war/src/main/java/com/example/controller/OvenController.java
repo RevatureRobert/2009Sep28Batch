@@ -1,7 +1,6 @@
 package com.example.controller;
 
 import com.example.model.Oven;
-import com.example.model.Turkey;
 import com.example.service.OvenService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 

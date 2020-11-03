@@ -3,6 +3,7 @@ package com.example.dao;
 import java.util.List;
 
 
+import com.example.model.Turkey;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -13,15 +14,15 @@ public class OvenDao implements DaoContract<Oven, Integer>{
 
 	@Override
 	public List<Oven> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		List<Oven> list = HibernateUtil.getSessionFactory().openSession()
+				.createNativeQuery("select * from oven", Oven.class).list();
+		return list;
 	}
 
 	@Override
 	public Oven findById(Integer i) {
-		Session sess = HibernateUtil.getSessionFactory().openSession();
-		Oven o = sess.get(Oven.class, i);
-		return o;
+
+		return null;
 	}
 
 	@Override
