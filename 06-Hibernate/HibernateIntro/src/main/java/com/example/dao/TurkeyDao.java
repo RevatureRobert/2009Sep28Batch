@@ -28,6 +28,32 @@ import com.example.util.HibernateUtil;
  * 		HQL
  * 			Hibernate Query Language, a mix of oop queries
  * 				and sql queries
+ * 
+ * 	session methods
+ * 		save() and persist()				results in a sql insert
+ * 		update() and merge()				results in a sql update
+ * 		delete()							results in a sql delete
+ * 		get() and load()					results in a sql select
+ * 		saveOrUpdate()						results in a sql insert or update
+ * 
+ * 		get()								will go to the db immediately
+ * 		load()								will use a proxy until you need the actual value
+ * 
+ * 		update()							will not allow duplicate id's inside the cache						
+ * 		merge()								will override the object in the cache if it has a duplicate id
+ * 
+ * 		save()								will stay in the cache until the session is flushed
+ * 		persist()							requires a transaction to be sent to the db
+ * 
+ * 
+ * 	states of a persistent entity
+ * 			transient						an object that is not associated with a session or a db
+ * 			persistent						an object that is a part of a session
+ * 			detached						an object that was a part of a session, but not anymore
+ * 
+ * 
+ * 
+ * 
  */
 public class TurkeyDao implements DaoContract<Turkey, Integer>{
 	
