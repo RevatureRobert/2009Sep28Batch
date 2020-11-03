@@ -1,20 +1,23 @@
 package com.example.dao;
 
+import java.util.HashSet;
 import java.util.List;
-
+import java.util.Set;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import com.example.model.Oven;
+import com.example.model.Turkey;
 import com.example.util.HibernateUtil;
 
 public class OvenDao implements DaoContract<Oven, Integer>{
 
 	@Override
 	public List<Oven> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		Session sess = HibernateUtil.getSessionFactory().openSession();
+		List<Oven> ovens = sess.createNativeQuery("select * from turkeys.oven", Oven.class).list();
+		return ovens;
 	}
 
 	@Override
@@ -26,8 +29,11 @@ public class OvenDao implements DaoContract<Oven, Integer>{
 
 	@Override
 	public Oven update(Oven t) {
-		// TODO Auto-generated method stub
-		return null;
+		Session sess = HibernateUtil.getSessionFactory().openSession();
+		Transaction tx = sess.beginTransaction();
+		sess.update(t);
+		tx.commit();
+		return t;
 	}
 
 	@Override
@@ -41,8 +47,18 @@ public class OvenDao implements DaoContract<Oven, Integer>{
 
 	@Override
 	public Oven delete(Integer i) {
-		// TODO Auto-generated method stub
-		return null;
+		Oven o = findById(i);
+		Set<Turkey> turkies = new HashSet<>();
+		turkies = o.getTurkeys();
+
+		Session sess = HibernateUtil.getSessionFactory().openSession();
+		Transaction tx = sess.beginTransaction();
+
+		sess.delete(turkies);
+		sess.delete(o);
+
+		tx.commit();
+		return o;
 	}
 
 }

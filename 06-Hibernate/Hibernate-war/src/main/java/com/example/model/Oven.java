@@ -27,7 +27,7 @@ import javax.persistence.Table;
  *
  */
 @Entity
-//@Table("oven_table")  //optional
+//@Table("oven")  //optional
 public class Oven {
 
 	@Id

@@ -61,20 +61,24 @@ public class TurkeyDao implements DaoContract<Turkey, Integer>{
 	@Override
 	public List<Turkey> findAll() {
 		List<Turkey> list = HibernateUtil.getSessionFactory().openSession()
-				.createNativeQuery("select * from turkey", Turkey.class).list();
+				.createNativeQuery("select * from turkeys.turkey", Turkey.class).list();
 		return list;
 	}
 
 	@Override
 	public Turkey findById(Integer i) {
-		// TODO Auto-generated method stub
-		return null;
+		Session sess = HibernateUtil.getSessionFactory().openSession();
+		Turkey t = sess.get(Turkey.class, i);
+		return t;
 	}
 
 	@Override
 	public Turkey update(Turkey t) {
-		// TODO Auto-generated method stub
-		return null;
+		Session sess = HibernateUtil.getSessionFactory().openSession();
+		Transaction tx = sess.beginTransaction();
+		sess.update(t);
+		tx.commit();
+		return t;
 	}
 
 	@Override
@@ -89,7 +93,13 @@ public class TurkeyDao implements DaoContract<Turkey, Integer>{
 
 	@Override
 	public Turkey delete(Integer i) {
-		return null;
+		Turkey t = findById(i);
+		SessionFactory sessfact = HibernateUtil.getSessionFactory();
+		Session sess = sessfact.openSession();
+		Transaction tx = sess.beginTransaction();
+		sess.delete(t);
+		tx.commit();
+		return t;
 	}
 	
 	public Turkey findByName(String name) {

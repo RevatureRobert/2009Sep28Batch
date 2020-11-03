@@ -5,13 +5,12 @@
 <hibernate-configuration>
 
 <session-factory>
-		<property name="hibernate.connection.username">jdbc_worker</property>
-		<property name="hibernate.connection.password">wasspord</property>
-		<property name="hibernate.connection.url">
-			jdbc:postgresql://postgresql-class.cks98gmxels6.us-west-1.rds.amazonaws.com:5432/hibernate_db
+		<property name="hibernate.connection.username">master</property>
+		<property name="hibernate.connection.password">Nathan13</property>
+		<property name="hibernate.connection.url">jdbc:postgresql://bankapp.cvu4hgznjaru.us-east-1.rds.amazonaws.com:5432/postgres
 		</property>
 		<property name="hibernate.connection.driver.class">org.postgresql.Driver</property>
-		<property name="hibernate.default_schema">public</property><!-- public is default already -->
+		<property name="hibernate.default_schema">turkeys</property><!-- public is default already -->
 		<!-- additional hibernate configurations below -->
 
 		<!-- hibernate should detect this automatically, but good to put it anyways -->
@@ -30,7 +29,7 @@
 			update					will update the tables if something in the mappings changes
 			none					will not affect the tables at all, no ddl.
 		-->
-		<property name="hibernate.hbm2ddl.auto">create</property>
+		<property name="hibernate.hbm2ddl.auto">none</property>
 		<mapping class="com.example.model.Oven"/>
 		<mapping class="com.example.model.Turkey"/>
 	</session-factory>
