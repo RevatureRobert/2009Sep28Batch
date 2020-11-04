@@ -19,5 +19,7 @@ public class Driver {
 		OvenDao od = new OvenDao();
 		od.save(o);
 		System.out.println(od.findById(1));
+
+		System.out.println(":D :D :D :D :D");
 	}
 }

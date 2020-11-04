@@ -40,7 +40,7 @@ public class Oven {
 	@Column(nullable = false)
 	private int degree;
 	
-	@OneToMany(mappedBy = "oven", fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+	@OneToMany(mappedBy = "oven", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private Set<Turkey> turkeys;
 
 	public int getId() {
