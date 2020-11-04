@@ -51,28 +51,17 @@ public class Driver {
 
 	public static void main(String[] args) {
 //		MockService ms = new MockService(new MockDao());
-		ApplicationContext ac = new ClassPathXmlApplicationContext("beans.xml");
-		MockService ms = ac.getBean(MockService.class);
-		ac.getBean(MockService.class);
-		ac.getBean(MockService.class);
-		ac.getBean(MockService.class);
-		ac.getBean(MockService.class);
-		ac.getBean(MockService.class);
-		ac.getBean(MockService.class);
-		ac.getBean(MockService.class);
-		ac.getBean(MockService.class);
-		ac.getBean(MockService.class);
-		ac.getBean(MockService.class);
-		ac.getBean(MockService.class);
-		ac.getBean(MockService.class);
-		ac.getBean(MockService.class);
-		ac.getBean(MockService.class);
-		ac.getBean(MockService.class);
-		ac.getBean(MockService.class);
-		ac.getBean(MockService.class);
-		ac.getBean(MockService.class);
-		ac.getBean(MockService.class);
-		ac.getBean(MockService.class);
+		ApplicationContext ac = 
+//				new ClassPathXmlApplicationContext("beans.xml");
+				new ClassPathXmlApplicationContext("beans2.xml");
+		MockService ms = ac.getBean( MockService.class, "mockservice");
+//		ac.getBean(MockService.class);
+//		ac.getBean(MockService.class);
+//		ac.getBean(MockService.class);
+//		ac.getBean(MockService.class);
+//		ac.getBean(MockService.class);
+//		ac.getBean(MockService.class);
+//		ac.getBean(MockService.class);
 		System.out.println(ms.getAllVotes());
 	}
 }

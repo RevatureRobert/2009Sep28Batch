@@ -3,6 +3,9 @@ package com.springy.repo;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.springframework.stereotype.Repository;
+
+@Repository
 public class MockDao {
 
 	public Map<String, Integer> getAllVotes(){
