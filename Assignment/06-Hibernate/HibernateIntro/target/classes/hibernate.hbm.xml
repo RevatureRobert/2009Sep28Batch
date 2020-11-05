@@ -1,0 +1,23 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0/EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"
+	>
+
+<hibernate-mapping package ="com.example.model">
+	<!--  primary key -->
+	<class name= "Turkey">
+	<id name="id" type="int"  column="t_id">
+		<generator class = "native"></generator>
+	</id>
+	
+	<!-- properties -->
+		<property name ="name">
+		<column name="t_name" not-null="true" unique="true"/>
+		</property>
+		
+		<property name="beardLength" type="double" column= "t_beard"/>
+		
+		<property name="cooked" type ="boolean"/>
+	</class>
+	
+</hibernate-mapping>

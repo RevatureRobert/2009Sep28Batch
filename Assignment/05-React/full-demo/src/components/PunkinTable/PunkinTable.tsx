@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Table } from "reactstrap";
+import { IPunkin } from "./IPunkin";
 import { PunkinCreator } from "./PunkinCreator";
 import { PunkinRow } from "./PunkinRow";
 
