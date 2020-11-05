@@ -11,6 +11,9 @@ public class Driver {
 		ApplicationContext ac = new ClassPathXmlApplicationContext("beaniebaby.xml");
 		Painter p = ac.getBean(Painter.class);
 		p.paintPizza();
+		p.paintedPizzas();
+		p.throwPaint();
+		p.screamOfJoy();
 	
 	}
 }

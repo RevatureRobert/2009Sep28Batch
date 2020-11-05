@@ -7,6 +7,7 @@ public class Painter {
 
 	public void paintPizza() {
 		System.out.println("the painter has made the gallery hungry");
+		return;
 	}
 	
 	public int paintedPizzas() {
@@ -25,5 +26,10 @@ public class Painter {
 	
 	public void paintPizzaHead() {
 		System.out.println("I painted a head in the middle of the pizza, whats your lifelong accomplishments?");
+	}
+	
+	public int throwPaint() {
+		System.out.println("i said over easy");
+		throw new RuntimeException("painting is too hard");
 	}
 }
