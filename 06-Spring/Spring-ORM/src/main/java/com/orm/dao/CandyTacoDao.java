@@ -43,5 +43,9 @@ public class CandyTacoDao {
 	public List<CandyTaco> findAll(){
 		return sessfact.openSession().createQuery("from CandyTaco", CandyTaco.class).list();
 	}
+	
+	public CandyTaco findBySauce(String sauce) {
+		return sessfact.getCurrentSession().createQuery("from CandyTaco where sauce = '"+sauce+"'", CandyTaco.class).list().get(0);
+	}
 
 }
