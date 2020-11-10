@@ -45,14 +45,14 @@ authorized to approve and deny requests for expense reimbursement.
 
 Project Technical Requirements 
 
-● The application shall employ the DAO design pattern, and properly separate your  code into the appropriate layers 
-● The back-end system shall use JDBC to connect to an PostgreSQL database. ○ Use PreparedStatement and CallableStatement 
-● The application shall deploy onto a Tomcat Server in an AWS EC2 ● The middle tier shall use Servlet technology for dynamic Web application  development 
-● The front-end view can use JavaScript and use AJAX to call server-side  components. The web pages should look presentable (try using css and  bootstrap); I’d rather not see a website from 1995.
-● Use Log4J and JUnit. 
-● Passwords should be encrypted and securely stored in the database ● 60% test coverage minimum 
-● Users can upload a document or image of their receipt when submitting  reimbursements(optional) 
-● The application will send an email to employees letting them know that they have  been registered as a new user, giving them their temporary password(optional) 
+The application shall employ the DAO design pattern, and properly separate your  code into the appropriate layers 
+The back-end system shall use JDBC to connect to an PostgreSQL database. ○ Use PreparedStatement and CallableStatement 
+The application shall deploy onto a Tomcat Server in an AWS EC2. The middle tier shall use Servlet technology for dynamic Web application  development 
+The front-end view can use JavaScript and use AJAX to call server-side  components. The web pages should look presentable (try using css and  bootstrap); I’d rather not see a website from 1995.
+Use Log4J and JUnit. 
+Passwords should be encrypted and securely stored in the database. 60% test coverage minimum 
+Users can upload a document or image of their receipt when submitting  reimbursements(optional) 
+The application will send an email to employees letting them know that they have  been registered as a new user, giving them their temporary password(optional) 
 
 
 
