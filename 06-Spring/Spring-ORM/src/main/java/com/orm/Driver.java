@@ -14,5 +14,6 @@ public class Driver {
 		ctd.insert(new CandyTaco(0, true, "chocolate", "m&m's"));
 		ctd.insert(new CandyTaco(0, false, "hot cream", "skittles"));
 		System.out.println(ctd.findAll());
+		System.out.println(ctd.findBySauce("chocolate"));
 	}
 }
