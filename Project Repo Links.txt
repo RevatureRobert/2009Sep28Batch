@@ -1,2 +1,8 @@
 Project 1:
 	https://github.com/enochcho/RevatureProject1
+
+Project 2:
+    Front End:
+	https://github.com/TyroneV/MailMailMail-React
+    Back End: 
+	https://github.com/JordanHunnicutt/MailMailMail-Java
