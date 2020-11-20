@@ -1,6 +1,9 @@
 package com.queue.service;
 
+import javax.annotation.PostConstruct;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
 
@@ -15,14 +18,16 @@ import com.amazonaws.services.sqs.model.SendMessageRequest;
 @Service("queue")
 public class QueueService {
 
-	@Autowired
-	private static Environment env;
 	private AWSCredentials cred;
 	private AmazonSQS sqs;
+	@Value("${cloud.aws.credentials.access-key}")
 	private String accessKey;
+	@Value("${cloud.aws.credentials.secret-key}")
 	private String secretKey;
-	private String url = "";
+	private String url = "https://sqs.us-east-1.amazonaws.com/967240801169/2009Queue";
 	
+
+	@PostConstruct
 	public void BuildQueue() {
 		cred = new BasicAWSCredentials(accessKey, secretKey);
 		sqs = AmazonSQSClientBuilder.standard().withCredentials(new AWSStaticCredentialsProvider(cred))
