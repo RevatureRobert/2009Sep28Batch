@@ -2,11 +2,12 @@ import React, { useEffect } from 'react';
 
 /**
  * with class components, we can utilize the lifecycle hooks
- * and initialize the state in the constructor. Prior to
- * React 16, functions could not handle their own state.
+ * and initialize the state in the constructor.
+ * 
+ * Prior to React 16, FUNCTIONS could not handle their own state.
  */
 
- export const Hooks:React.FC<any> = () => {
+export const Hooks:React.FC<any> = () => {
     //  let num = 0;
 
     /**
@@ -26,8 +27,8 @@ import React, { useEffect } from 'react';
     const [num, setNum] = React.useState(0);
 
     /**
-     * im place of the various lifecycle methods we have in class components,
-     * in functiona components, we have the useEffect hook. The function takes
+     * In place of the various lifecycle methods we have in class components,
+     * in functional components, we have the useEffect hook. The function takes
      * a callback function and will invoke it whenever the component updates.
      */
     React.useEffect(() => {
@@ -47,4 +48,4 @@ import React, { useEffect } from 'react';
              <button onClick={() => setNum(num+1)}>{num}</button>
          </div>
      )
- }
+}

@@ -12,9 +12,9 @@ interface IProps{
  */
 export class ClassPropsExample extends React.Component<IProps, any>{
 
-    constructor(props:IProps){
+    /*constructor(props:IProps){
         super(props);
-    }
+    }*/ // This particular constructor is already the default one
 
     render(){
         return(

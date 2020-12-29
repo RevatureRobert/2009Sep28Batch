@@ -1,4 +1,4 @@
-import React, { SyntheticEvent } from 'react';
+import React from 'react';
 
 interface IProps{
     name:string;
@@ -9,11 +9,11 @@ interface IState{
 }
 
 /**
- * The state of a componend is the immutable and persistend information
+ * The state of a component is the immutable and persistent information
  * vital to the component's functionality. It differs from props because
  * props are meant to be maintained by a parent component and passed
  * down as properties of the child component. Props can provide value to a
- * component's state vut stat is mean to be maintained by the component
+ * component's state, but state is meant to be maintained by the component
  * itself.
  * 
  * A component's state is IMMUTABLE;
@@ -34,7 +34,7 @@ export class ClassStateExample extends React.Component<IProps, IState>{
         super(props);
         this.state={
             name:props.name,
-            value:''
+            value:'Enter stuff!'
         };
     }
 
@@ -43,7 +43,7 @@ export class ClassStateExample extends React.Component<IProps, IState>{
             ...this.state,
             value:event.currentTarget.value
         });
-    }
+    } // re-renders after this method is called
 
     render():JSX.Element{
         return(

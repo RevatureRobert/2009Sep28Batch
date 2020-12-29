@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+		https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context.xsd
+		">
+	
+	<!-- 
+		What happens when Spring makes a bean... Spring Bean lifecycle!
+			Instantiation				Creating the object; constructor injection is done here
+			Populate Properties			Set fields; setter injection
+			Set Name					.
+			Set Factory					.
+			Set Application Context		.
+			Before Post Processing		.When Spring creates a bean, it processes where the created bean is injected into
+			After Populating Properties	.
+			Custom Init					.
+			After Post Processing		.
+			Use							.
+			Destroy						.
+			Custom Destroy				.
+		
+		Can tap into this lifecycle explicitly by implementing certain interfaces
+			and using certain annotations
+		
+		Nov-4, timestamped 11:35 AM, is where Robert explains this
+	 -->
+	
+	<context:component-scan base-package="com.springy" />
+	
+	<!-- 
+	<bean id="mockwahlburg" class="com.springy.service.MockService" autowire="constructor" />
+	 -->
+	
+</beans>

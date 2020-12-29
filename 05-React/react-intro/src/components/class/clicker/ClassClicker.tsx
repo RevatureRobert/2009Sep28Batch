@@ -9,7 +9,7 @@ export class ClassClicker extends React.Component<any, any>{
     render(){
         return(
             <div>
-                <button>This clicks.</button>
+                <button>Button from a class!</button>
             </div>
         );
     }
